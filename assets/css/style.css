@@ -57,13 +57,14 @@ nav .width a{
 	color: white;
 }
 
-nav .width .left{
+nav .width > *{
 	align-self: center;
 }
 
 nav .width .left a{
 	font-family: 'Roboto';
 	font-weight: 900;
+	font-size: 30px;
 }
 
 nav .width .right{

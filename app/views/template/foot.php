@@ -11,14 +11,14 @@
 				</div>
 				<div>
 					<span>Navigasi</span>
-					<a href="">Lapor</a>
-					<a href="">Tentang</a>
-					<a href="">Hubungi Kami</a>
+					<a href="<?= BASEURL ?>/lapor">Lapor</a>
+					<a href="<?= BASEURL ?>/tentang">Tentang</a>
+					<a href="<?= BASEURL ?>/hubungi-kami">Hubungi Kami</a>
 				</div>
 				<div>
 					<span>Kontak</span>
-					<div><i class="fa fa-envelope fa-fw"></i><a href="">info@lapor.com</a></div>
-					<div><i class="fa fa-map-marker fa-fw"></i><a href="">Denpasar, Bali</a></div>
+					<a href="mailto:info@lapor.com"><i class="fa fa-envelope fa-fw"></i>info@lapor.com</a>
+					<a href=""><i class="fa fa-map-marker fa-fw"></i>Denpasar, Bali</a>
 				</div>
 			</div>
 		</footer>

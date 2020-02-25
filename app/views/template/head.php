@@ -16,10 +16,10 @@
 					<a href="<?= BASEURL; ?>">LAPOR!</a>
 				</div>
 				<div class="right">
-					<a href="" class="menu">Tentang</a>
-					<a href="" class="menu">Hubungi Kami</a>
-					<a href="" class="signin">Masuk</a>
-					<a href="" class="signup">Daftar</a>
+					<a href="<?= BASEURL ?>/tentang" class="menu">Tentang</a>
+					<a href="<?= BASEURL ?>/hubungi-kami" class="menu">Hubungi Kami</a>
+					<a href="<?= BASEURL ?>/signin" class="signin">Masuk</a>
+					<a href="<?= BASEURL ?>/signup" class="signup">Daftar</a>
 				</div>
 			</div>
 		</nav>

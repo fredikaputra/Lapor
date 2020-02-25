@@ -1,7 +1,7 @@
 <header>
 	<h1>Layanan Pengaduan Masyarakat Online</h1>
 	<div>
-		<a href="#">LAPOR!</a>
+		<a href="<?= BASEURL ?>/lapor">LAPOR!</a>
 	</div>
 </header>
 
