@@ -18,8 +18,8 @@
 				<div class="right">
 					<a href="<?= BASEURL ?>/tentang" class="menu">Tentang</a>
 					<a href="<?= BASEURL ?>/hubungi-kami" class="menu">Hubungi Kami</a>
-					<a href="<?= BASEURL ?>/signin" class="signin">Masuk</a>
-					<a href="<?= BASEURL ?>/signup" class="signup">Daftar</a>
+					<a href="javascript:void(0)" class="signin" id="signin">Masuk</a>
+					<a href="<?= BASEURL ?>/signup" class="signup" id="signup">Daftar</a>
 				</div>
 			</div>
 		</nav>

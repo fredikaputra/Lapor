@@ -183,3 +183,84 @@ footer .width div:nth-child(3) a{
 	margin-top: 10px;
 	color: gray;
 }
+
+#signin-modal{
+	display: none;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background: #00000055;
+}
+
+#signin-modal .modal-content{
+	position: fixed;
+	transform: translate(-50%, -50%);
+	top: 50%;
+	left: 50%;
+	background: white;
+	box-shadow: 0 0 20px #00000011;
+	width: 12cm;
+	padding: 1.5cm;
+}
+
+#signin-modal .modal-content i.fa-times{
+	text-align: right;
+	display: block;
+	cursor: pointer;
+}
+
+#signin-modal .modal-content form > *{
+	display: block;
+}
+
+#signin-modal .modal-content form div{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 1px solid var(--blue);
+	margin-top: 20px;
+	padding: 10px 0;
+}
+
+#signin-modal .modal-content form div input{
+	width: 100%;
+	font-size: 16px;
+	padding: 5px 15px;
+	border: none;
+	outline: none;
+}
+
+#signin-modal .modal-content form div i{
+	font-size: 25px;
+}
+
+#signin-modal .modal-content form a:first-of-type{
+	margin-top: 20px;
+	color: dimgray;
+	font-size: 14px;
+}
+
+#signin-modal .modal-content form button{
+	margin-top: 20px;
+	width: 100%;
+	background-color: transparent;
+	border: 1px solid var(--blue);
+	padding: 10px 0;
+	color: var(--blue);
+}
+
+#signin-modal .modal-content form button:hover{
+	cursor: pointer;
+	background-color: var(--blue);
+	color: white;
+}
+
+#signin-modal .modal-content form a:last-of-type{
+	margin-top: 20px;
+	color: dimgray;
+	font-size: 14px;
+}

@@ -22,5 +22,40 @@
 				</div>
 			</div>
 		</footer>
+		
+		<div id="signin-modal">
+			<div class="modal-content">
+				<i class="fa fa-times" id="close"></i>
+				<h2 class="section-title">Login</h2>
+				<span class="sub-section-title">Masukkan username dan password anda untuk melanjutkan</span>
+				<form action="" method="post">
+					<div><i class="fa fa-user fa-fw"></i><input type="text" name="username" placeholder="Username"></div>
+					<div><i class="fa fa-lock fa-fw"></i><input type="password" name="password" placeholder="Password"></div>
+					<a href="">Lupa Password?</a>
+					<button type="submit" name="login">Login</button>
+					<a href="">Belum punya akun? Daftar Sekarang!</a>
+				</form>
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+			var modal = document.getElementById('signin-modal');
+			var openbtn = document.getElementById('signin');
+			var closebtn = document.getElementById('close');
+			
+			openbtn.onclick = function(){
+				modal.style.display = 'block';
+			}
+			
+			closebtn.onclick = function(){
+				modal.style.display = 'none';
+			}
+			
+			window.onclick = function(event){
+				if (event.target == modal) {
+					modal.style.display = 'none';
+				}
+			}
+		</script>
 	</body>
 </html>
