@@ -1,0 +1,239 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Poppins|Roboto:400,500,600,700,800,900&display=swap');
+
+:root{
+	--blue: #0092ff;
+	--gray: #8492a6;
+	
+	--border-radius: 8px;
+}
+
+*{
+	margin: 0;
+	padding: 0;
+	font-family: 'Montserrat';
+}
+
+a{
+	text-decoration: none;
+}
+
+p{
+	line-height: 35px;
+	text-align: justify;
+}
+
+h2.section-title{
+	font-family: 'Poppins';
+	letter-spacing: .5px;
+	font-weight: 600;
+	font-size: 30px;
+	text-align: center;
+}
+
+span.sub-section-title{
+	display: block;
+	text-align: center;
+	color: var(--gray);
+	margin-top: 15px;
+}
+
+nav{
+	position: absolute;
+	width: 100%;
+	/* background-color: gray; */
+}
+
+nav .width{
+	display: grid;
+	grid-template-columns: auto 1fr;
+	width: 95%;
+	max-width: 1100px;
+	margin: auto;
+	padding: 30px 0;
+}
+
+nav .width a{
+	color: white;
+}
+
+nav .width .left{
+	align-self: center;
+}
+
+nav .width .left a{
+	font-family: 'Roboto';
+	font-weight: 900;
+}
+
+nav .width .right{
+	text-align: right;
+	font-family: 'Poppins';
+	font-weight: 600;
+}
+
+nav .width .right a{
+	font-size: 13px;
+}
+
+nav .width .right a.menu{
+	margin-right: 30px;
+}
+
+nav .width .right a.signin{
+	background: var(--blue);
+	padding: 10px 20px;
+	border-radius: var(--border-radius);
+	margin-right: 10px;
+	border: 1px solid transparent;
+}
+
+nav .width .right a.signin:hover{
+	background: transparent;
+	border: 1px solid var(--blue);
+}
+
+nav .width .right a.signup{
+	padding: 10px 20px;
+	border: 1px solid var(--blue);
+	border-radius: var(--border-radius);
+}
+
+nav .width .right a.signup:hover{
+	background: var(--blue);
+}
+
+header{
+	background: url(https://mannatthemes.com/assets/images/bg-home.jpg) center center/cover no-repeat fixed;
+	padding: 250px 0;
+	text-align: center;
+}
+
+header h1{
+	font-family: 'Poppins';
+	font-weight: 600;
+	color: white;
+	font-size: 40px;
+}
+
+header a{
+	color: white;
+	background: var(--blue);
+	display: inline-block;
+	margin-top: 30px;
+	padding: 10px 20px;
+	border-radius: var(--border-radius);
+	font-family: 'Poppins';
+	font-weight: 600;
+}
+
+section#lapor{
+	padding: 100px 0;
+	width: 95%;
+	max-width: 1100px;
+	margin: auto;
+}
+
+section#lapor p{
+	margin-top: 30px;
+	color: dimgray;
+}
+
+section#jumlah-laporan{
+	background: #00000005;
+}
+
+section#jumlah-laporan .width{
+	padding: 100px 0;
+	text-align: center;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	width: 95%;
+	max-width: 1100px;
+	margin: auto;
+}
+
+section#jumlah-laporan span{
+	display: inline-block;
+	margin-top: 30px;
+	font-size: 50px;
+}
+
+footer{
+	background: url(https://mannatthemes.com/assets/images/bg-home.jpg) center center/cover no-repeat fixed;
+}
+
+footer .width{
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-gap: 30px;
+	width: 95%;
+	max-width: 1100px;
+	margin: auto;
+	padding: 50px 0;
+}
+
+footer .width div:nth-child(1) a{
+	font-size: 30px;
+	font-family: 'Roboto';
+	font-weight: 900;
+	color: var(--gray);
+}
+
+footer .width div:nth-child(1) p{
+	margin: 10px 0;
+	color: gray;
+	font-size: 15.9px;
+}
+
+footer .width div:nth-child(1) div a{
+	display: inline-block;
+	color: var(--gray);
+	border: 1px solid var(--gray);
+	text-align: center;
+	font-size: 15px;
+	padding: 5px 0;
+	width: 30px;
+}
+
+footer .width div:nth-child(1) div a:hover{
+	background-color: var(--gray);
+	color: white;
+}
+
+footer .width div:nth-child(2) *{
+	display: block;
+}
+
+footer .width div:nth-child(2) span{
+	font-family: 'Poppins';
+	font-size: 20px;
+	color: var(--gray);
+}
+
+footer .width div:nth-child(2) a{
+	margin-top: 10px;
+	color: gray;
+}
+
+footer .width div:nth-child(3) > *{
+	display: block;
+}
+
+footer .width div:nth-child(3) div *{
+	display: inline-block;
+}
+
+footer .width div:nth-child(3) div i{
+	color: gray;
+}
+
+footer .width div:nth-child(3) span{
+	font-family: 'Poppins';
+	font-size: 20px;
+	color: var(--gray);
+}
+
+footer .width div:nth-child(3) a{
+	margin-top: 10px;
+	color: gray;
+}
