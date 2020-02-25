@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-	<head>
-		<meta charset="utf-8">
-		<title>LAPOR!</title>
-	</head>
-	<body>
-		
-	</body>
-</html>
+<?php
+
+if (!session_id()) session_start();
+
+require_once 'app/init.php';
+
+$app = new App;
