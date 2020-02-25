@@ -2,9 +2,12 @@
 <html lang="en" dir="ltr">
 	<head>
 		<meta charset="utf-8">
-		<title></title>
+		<title><?= $data['title'] ?></title>
 		<link rel="stylesheet" href="<?= BASEURL; ?>/assets/css/style.css">
+		<link rel="stylesheet" href="<?= BASEURL; ?>/assets/css/<?= $data['css'] ?>">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 	</head>
 	<body>
 		<nav>
