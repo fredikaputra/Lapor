@@ -293,9 +293,27 @@ footer .width div:nth-child(3) a{
 	margin-top: 40px;
 }
 
-#signup-modal .modal-content form > div{
+#signup-modal .modal-content form > div:not(:nth-child(3)){
 	display: flex;
 	justify-content: space-between;
+}
+
+#signup-modal .modal-content form div:nth-child(3){
+	display: flex;
+	border-bottom: 1px solid #00000022;
+}
+
+#signup-modal .modal-content form div:nth-child(3) i{
+	align-self: center;
+	font-size: 25px;
+}
+
+#signup-modal .modal-content form div:nth-child(3) input{
+	width: 100%;
+	padding: 5px 10px;
+	border: none;
+	outline: none;
+	font-size: 16px;
 }
 
 #signup-modal .modal-content form div div{

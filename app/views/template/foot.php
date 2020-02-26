@@ -23,7 +23,7 @@
 			</div>
 		</footer>
 		
-		<div id="signin-modal">
+		<div id="signin-modal" <?= $data['modalstyle'] ?>>
 			<div class="modal-content">
 				<i class="fa fa-times" id="closeSignin"></i>
 				<h2 class="section-title">Login</h2>
@@ -43,15 +43,16 @@
 				<i class="fa fa-times" id="closeSignup"></i>
 				<h2 class="section-title">Daftar</h2>
 				<span class="sub-section-title">Masukkan data - data anda sebagai berikut!</span>
-				<form action="" method="post">
+				<form action="<?= BASEURL ?>/daftar" method="post">
 					<div>
-						<div><i class="fa fa-user fa-fw"></i><input type="number" name="nik" placeholder="Nomor NIK" autocomplete="off" required></div>
+						<div><i class="fa fa-list fa-fw"></i><input type="number" name="nik" placeholder="Nomor NIK" autocomplete="off" required></div>
 						<div><i class="fa fa-user fa-fw"></i><input type="text" name="name" placeholder="Nama anda" autocomplete="off" required></div>
 					</div>
 					<div>
 						<div><i class="fa fa-user fa-fw"></i><input type="text" name="username" placeholder="Username" autocomplete="off" required></div>
 						<div><i class="fa fa-lock fa-fw"></i><input type="password" name="password" placeholder="Password" autocomplete="off" required></div>
 					</div>
+					<div><i class="fa fa-phone fa-fw"></i><input type="number" name="phone" placeholder="Nomor Telepon" autocomplete="off" required></div>
 					<button type="submit" name="login">Daftar</button>
 					<a href="javascript:void(0)" class="signin" id="signin-modal-btn">Sudah punya akun? Login sekarang!</a>
 				</form>
