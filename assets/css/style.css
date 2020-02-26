@@ -221,21 +221,21 @@ footer .width div:nth-child(3) a{
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	border-bottom: 1px solid var(--gray);
+	border-bottom: 1px solid #00000022;
 	margin-top: 20px;
 	padding: 10px 0;
 }
 
 #signin-modal .modal-content form div input{
 	width: 100%;
-	font-size: 16px;
+	font-size: 15px;
 	padding: 5px 15px;
 	border: none;
 	outline: none;
 }
 
 #signin-modal .modal-content form div i{
-	font-size: 25px;
+	font-size: 20px;
 }
 
 #signin-modal .modal-content form a:first-of-type{
@@ -301,11 +301,12 @@ footer .width div:nth-child(3) a{
 #signup-modal .modal-content form div:nth-child(3){
 	display: flex;
 	border-bottom: 1px solid #00000022;
+	padding: 10px 0;
 }
 
 #signup-modal .modal-content form div:nth-child(3) i{
 	align-self: center;
-	font-size: 25px;
+	font-size: 20px;
 }
 
 #signup-modal .modal-content form div:nth-child(3) input{
@@ -313,19 +314,20 @@ footer .width div:nth-child(3) a{
 	padding: 5px 10px;
 	border: none;
 	outline: none;
-	font-size: 16px;
+	font-size: 15px;
 }
 
 #signup-modal .modal-content form div div{
 	display: flex;
 	width: 47%;
-	margin-bottom: 40px;
+	margin-bottom: 20px;
 	border-bottom: 1px solid #00000022;
+	padding: 10px 0;
 }
 
 #signup-modal .modal-content form div div i{
 	align-self: center;
-	font-size: 25px;
+	font-size: 20px;
 }
 
 #signup-modal .modal-content form div div input{
@@ -333,7 +335,7 @@ footer .width div:nth-child(3) a{
 	padding: 5px 10px;
 	border: none;
 	outline: none;
-	font-size: 16px;
+	font-size: 15px;
 }
 
 #signup-modal .modal-content form button{
