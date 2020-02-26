@@ -25,35 +25,79 @@
 		
 		<div id="signin-modal">
 			<div class="modal-content">
-				<i class="fa fa-times" id="close"></i>
+				<i class="fa fa-times" id="closeSignin"></i>
 				<h2 class="section-title">Login</h2>
 				<span class="sub-section-title">Masukkan username dan password anda untuk melanjutkan</span>
 				<form action="" method="post">
-					<div><i class="fa fa-user fa-fw"></i><input type="text" name="username" placeholder="Username"></div>
-					<div><i class="fa fa-lock fa-fw"></i><input type="password" name="password" placeholder="Password"></div>
+					<div><i class="fa fa-user fa-fw"></i><input type="text" name="username" placeholder="Username" autocomplete="off" required></div>
+					<div><i class="fa fa-lock fa-fw"></i><input type="password" name="password" placeholder="Password" autocomplete="off" required></div>
 					<a href="">Lupa Password?</a>
 					<button type="submit" name="login">Login</button>
-					<a href="">Belum punya akun? Daftar Sekarang!</a>
+					<a href="javascript:void(0)" class="signup" id="signup-modal-btn">Belum punya akun? Daftar Sekarang!</a>
+				</form>
+			</div>
+		</div>
+		
+		<div id="signup-modal">
+			<div class="modal-content">
+				<i class="fa fa-times" id="closeSignup"></i>
+				<h2 class="section-title">Daftar</h2>
+				<span class="sub-section-title">Masukkan data - data anda sebagai berikut!</span>
+				<form action="" method="post">
+					<div>
+						<div><i class="fa fa-user fa-fw"></i><input type="number" name="nik" placeholder="Nomor NIK" autocomplete="off" required></div>
+						<div><i class="fa fa-user fa-fw"></i><input type="text" name="name" placeholder="Nama anda" autocomplete="off" required></div>
+					</div>
+					<div>
+						<div><i class="fa fa-user fa-fw"></i><input type="text" name="username" placeholder="Username" autocomplete="off" required></div>
+						<div><i class="fa fa-lock fa-fw"></i><input type="password" name="password" placeholder="Password" autocomplete="off" required></div>
+					</div>
+					<button type="submit" name="login">Daftar</button>
+					<a href="javascript:void(0)" class="signin" id="signin-modal-btn">Sudah punya akun? Login sekarang!</a>
 				</form>
 			</div>
 		</div>
 		
 		<script type="text/javascript">
-			var modal = document.getElementById('signin-modal');
-			var openbtn = document.getElementById('signin');
-			var closebtn = document.getElementById('close');
+			var signin_modal = document.getElementById('signin-modal');
+			var signup_modal = document.getElementById('signup-modal');
+			var signinbtn = document.getElementById('signin');
+			var signupbtn = document.getElementById('signup');
+			var signupmodalbtn = document.getElementById('signup-modal-btn');
+			var siginpmodalbtn = document.getElementById('signin-modal-btn');
+			var closebtnsignin = document.getElementById('closeSignin');
+			var closebtnsignup = document.getElementById('closeSignup');
 			
-			openbtn.onclick = function(){
-				modal.style.display = 'block';
+			signinbtn.onclick = function(){
+				signin_modal.style.display = 'block';
 			}
 			
-			closebtn.onclick = function(){
-				modal.style.display = 'none';
+			signupbtn.onclick = function(){
+				signup_modal.style.display = 'block';
+			}
+			
+			signupmodalbtn.onclick = function(){
+				signin_modal.style.display = 'none';
+				signup_modal.style.display = 'block';
+			}
+			
+			siginpmodalbtn.onclick = function(){
+				signup_modal.style.display = 'none';
+				signin_modal.style.display = 'block';
+			}
+			
+			closebtnsignin.onclick = function(){
+				signin_modal.style.display = 'none';
+			}
+			
+			closebtnsignup.onclick = function(){
+				signup_modal.style.display = 'none';
 			}
 			
 			window.onclick = function(event){
-				if (event.target == modal) {
-					modal.style.display = 'none';
+				if (event.target == signin_modal || event.target == signup_modal) {
+					signin_modal.style.display = 'none';
+					signup_modal.style.display = 'none';
 				}
 			}
 		</script>
