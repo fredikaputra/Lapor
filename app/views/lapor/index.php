@@ -14,12 +14,12 @@
 			</div>
 			<div>
 				<span>Waktu Tercatat</span>
-				<span>12:32, 23 Juni 2020</span>
+				<span><?= date('H:i, d F Y') ?></span>
 			</div>
 		</div>
 		<div>
 			<label for="perihal">Perihal</label>
-			<input type="text" name="perihal" id="perihal" placeholder="Kecurangan BBM" required>
+			<input type="text" name="perihal" id="perihal" placeholder="Kecurangan BBM" autocomplete="off" required>
 		</div>
 		<div>
 			<textarea name="laporan" placeholder="Ketik laporan anda" required></textarea>

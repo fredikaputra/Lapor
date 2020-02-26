@@ -221,7 +221,7 @@ footer .width div:nth-child(3) a{
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	border-bottom: 1px solid var(--blue);
+	border-bottom: 1px solid var(--gray);
 	margin-top: 20px;
 	padding: 10px 0;
 }
@@ -247,13 +247,8 @@ footer .width div:nth-child(3) a{
 #signin-modal .modal-content form button{
 	margin-top: 20px;
 	width: 100%;
-	background-color: transparent;
 	border: 1px solid var(--blue);
 	padding: 10px 0;
-	color: var(--blue);
-}
-
-#signin-modal .modal-content form button:hover{
 	cursor: pointer;
 	background-color: var(--blue);
 	color: white;

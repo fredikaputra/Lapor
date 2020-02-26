@@ -69,6 +69,7 @@ main form div:nth-child(3) textarea{
 	padding: 0 5px;
 	line-height: 30px;
 	resize: none;
+	text-align: justify;
 }
 
 main form div:nth-child(4){
