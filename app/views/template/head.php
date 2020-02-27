@@ -18,8 +18,20 @@
 				<div class="right">
 					<a href="<?= BASEURL ?>/tentang" class="menu">Tentang</a>
 					<a href="<?= BASEURL ?>/hubungi-kami" class="menu">Hubungi Kami</a>
-					<a href="javascript:void(0)" class="signin" id="signin">Masuk</a>
-					<a href="javascript:void(0)" class="signup" id="signup">Daftar</a>
+					<?php
+					
+					if (isset($_SESSION['masyarakatNIK'])) {
+						?>
+						<a href="<?= BASEURL ?>/logout" class="signin">Log Out</a>
+						<?php
+					}else {
+						?>
+						<a href="javascript:void(0)" class="signin" id="signin">Masuk</a>
+						<a href="javascript:void(0)" class="signup" id="signup">Daftar</a>
+						<?php
+					}
+					
+					?>
 				</div>
 			</div>
 		</nav>
