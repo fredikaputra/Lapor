@@ -5,7 +5,9 @@ class Database{
 	private $user = DB_USER;
 	private $pass = DB_PASS;
 	private $name = DB_NAME;
-	public $dbh;
+	private $dbh;
+	private $sth;
+	public $row;
 	
 	public function connect(){
 		$this->dbh = @new mysqli($this->host, $this->user, $this->pass, $this->name);
@@ -15,5 +17,13 @@ class Database{
 			exit();
 		}
 		return $this->dbh;
+	}
+	
+	public function query($query){
+		$this->sth = $this->connect()->query($query);
+	}
+	
+	public function resultSet(){
+		$this->row = $this->sth->fetch_assoc();
 	}
 }
