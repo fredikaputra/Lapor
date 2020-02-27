@@ -3,7 +3,7 @@
 class Lapor extends Controller{
 	public function index(){
 		if (!isset($_SESSION['userNIK'])) {
-			$data['modalstyle'] = 'style="display: block"';
+			$data['modalstyle'] = 'class="show"';
 		}
 		$data['title'] = 'Lapor! - Sampaikan Aspirasi Anda';
 		$data['css'] = 'lapor.css';

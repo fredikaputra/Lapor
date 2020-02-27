@@ -1,26 +1,22 @@
 <?php
 
-class Daftar_model extends Database{
-	private $tbl = 'masyarakat';
-	private $db;
+class Daftar_model{
+	private $conn;
 	
 	public function __construct(){
-		$this->db = new Database;
+		$this->conn = new Database;
 	}
 	
 	public function addMasyarakat(){
-		extract($_POST);		
-		$query = "INSERT INTO masyarakat VALUES (:nik, :name, :username, :password, :phone)";
+		extract($_POST);
 		
-		$this->db->query($query);
-		$this->db->bind('nik', $nik);
-		$this->db->bind('name', $name);
-		$this->db->bind('username', $username);
-		$this->db->bind('password', $password);
-		$this->db->bind('phone', $phone);
-		
-		$this->db->execute();
-		
-		return $this->db->rowCount();
+		$query = mysqli_query($this->conn->connect(), "INSERT INTO masyarakat VALUES ('$nik', '$name', '$username', '$password', '$phone')");
+		if ($query) {
+			echo 'mantpa';
+			header('location: ' . BASEURL . '/lapor');
+		}else {
+			echo("Error description: " . $this->conn->dbh->error);
+			// header('location: ' . BASEURL . '/lapor');
+		}
 	}
 }
