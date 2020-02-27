@@ -70,7 +70,8 @@
 			var closebtnsignup = document.getElementById('closeSignup');
 			
 			signinbtn.onclick = function(){
-				signin_modal.style.display = 'block';
+				signin_modal.style.opacity = '1';
+				signin_modal.style.visibility = 'visible';
 			}
 			
 			signupbtn.onclick = function(){
@@ -88,7 +89,8 @@
 			}
 			
 			closebtnsignin.onclick = function(){
-				signin_modal.style.display = 'none';
+				signin_modal.style.opacity = '0';
+				signin_modal.style.visibility = 'hidden';
 			}
 			
 			closebtnsignup.onclick = function(){
@@ -97,8 +99,8 @@
 			
 			window.onclick = function(event){
 				if (event.target == signin_modal || event.target == signup_modal) {
-					signin_modal.style.display = 'none';
-					signup_modal.style.display = 'none';
+					signin_modal.style.opacity = '0';
+					signin_modal.style.visibility = 'hidden';
 				}
 			}
 		</script>

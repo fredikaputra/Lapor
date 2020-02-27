@@ -185,7 +185,10 @@ footer .width div:nth-child(3) a{
 }
 
 #signin-modal{
-	display: none;
+	/* display: none; */
+	opacity: 0;
+	visibility: hidden;
+	transition: .3s;
 	position: fixed;
 	z-index: 1;
 	top: 0;
