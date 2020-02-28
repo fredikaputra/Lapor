@@ -2,7 +2,6 @@
 
 class SelectDataFromDB_model{
 	private $db;
-	private $data;
 	
 	public function __construct(){
 		$this->db = new Database;

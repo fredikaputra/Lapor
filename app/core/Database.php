@@ -13,14 +13,18 @@ class Database{
 		$this->dbh = @new mysqli($this->host, $this->user, $this->pass, $this->name);
 		
 		if (mysqli_connect_errno()) {
-			die("Connection failed " . mysqli_connect_error());
+			die("Connection failed: " . mysqli_connect_error());
 			exit();
 		}
 		return $this->dbh;
 	}
 	
 	public function query($query){
-		$this->sth = $this->connect()->query($query);
+		if ($this->connect()->query($query)) {
+			$this->sth = $this->connect()->query($query);
+		}else {
+			die($this->viewErr());
+		}
 	}
 	
 	public function resultSet(){
@@ -29,5 +33,9 @@ class Database{
 	
 	public function rowCount(){
 		return $this->dbh->affected_rows;
+	}
+	
+	public function viewErr(){
+		echo "Error description: " . $this->dbh->error;
 	}
 }
