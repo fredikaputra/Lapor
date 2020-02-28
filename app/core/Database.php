@@ -5,66 +5,37 @@ class Database{
 	private $user = DB_USER;
 	private $pass = DB_PASS;
 	private $name = DB_NAME;
+	public $dbh;
+	private $sth;
+	public $row;
 	
-	private $dbh;
-	private $stmt;
-	
-	public function __construct(){
-		//data source name
-		$dsn = 'mysql:host=' . $this->host . '; dbname=' . $this->name;
+	public function connect(){
+		$this->dbh = @new mysqli($this->host, $this->user, $this->pass, $this->name);
 		
-		$option = [
-			PDO::ATTR_PERSISTENT => true,
-			PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-		];
-		
-		try {
-			$this->dbh = new PDO($dsn, $this->user, $this->pass, $option);
-		} catch (PDOException $e) {
-			die($e->getMessage());
+		if (mysqli_connect_errno()) {
+			die("Connection failed: " . mysqli_connect_error());
+			exit();
 		}
-		
+		return $this->dbh;
 	}
 	
 	public function query($query){
-		$this->stmt = $this->dbh->prepare($query);
-	}
-	
-	public function bind($parameter, $value, $type = null){
-		if (is_null($type)) {
-			switch(true){
-				case is_int($value):
-					$type = PDO::PARAM_INT;
-					break;
-				case is_bool($value):
-					$type = PDO::PARAM_BOOL;
-					break;
-				case is_null($value):
-					$type = PDO::PARAM_NULL;
-					break;
-				default:
-					$type = PDO::PARAM_STR;
-			}
+		if ($this->connect()->query($query)) {
+			$this->sth = $this->connect()->query($query);
+		}else {
+			die($this->viewErr());
 		}
-		
-		$this->stmt->bindValue($parameter, $value, $type);
-	}
-	
-	public function execute(){
-		$this->stmt->execute();
 	}
 	
 	public function resultSet(){
-		$this->execute();
-		return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
-	}
-	
-	public function single(){
-		$this->execute();
-		return $this->stmt->fetch(PDO::FETCH_ASSOC);
+		$this->row = $this->sth->fetch_assoc();
 	}
 	
 	public function rowCount(){
-		return $this->stmt->rowCount();
+		return $this->dbh->affected_rows;
+	}
+	
+	public function viewErr(){
+		echo "Error description: " . $this->dbh->error;
 	}
 }

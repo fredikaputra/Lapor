@@ -10,7 +10,7 @@
 		<div>
 			<div>
 				<span>Pelapor</span>
-				<span>Rama Surya</span>
+				<span><?= $data['masyarakat_name'] ?></span>
 			</div>
 			<div>
 				<span>Waktu Tercatat</span>
@@ -22,7 +22,7 @@
 			<input type="text" name="perihal" id="perihal" placeholder="Kecurangan BBM" autocomplete="off" required>
 		</div>
 		<div>
-			<textarea name="laporan" placeholder="Ketik laporan anda" required></textarea>
+			<textarea name="laporan" id="msg" placeholder="Ketik laporan anda" required></textarea>
 		</div>
 		<div>
 			<input type="file" name="photo" accept="image/*">
@@ -31,9 +31,15 @@
 	</form>
 </main>
 
-<script type="text/javascript"> 
-	$('textarea').on('input', function(){
+<script type="text/javascript">
+	var tx = document.getElementsByTagName('textarea');
+	for (var i = 0; i < tx.length; i++) {
+		tx[i].setAttribute('style', 'height:' + (tx[i].scrollHeight) + 'px;overflow-y:hidden;');
+		tx[i].addEventListener("input", OnInput, false);
+	}
+
+	function OnInput() {
 		this.style.height = 'auto';
 		this.style.height = (this.scrollHeight) + 'px';
-	});
+	}
 </script> 

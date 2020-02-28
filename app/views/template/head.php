@@ -7,9 +7,11 @@
 		<link rel="stylesheet" href="<?= BASEURL; ?>/assets/css/<?= $data['css'] ?>">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		
-		<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+		<!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script> -->
 	</head>
 	<body>
+		<?php Flasher::flash(); ?>
+		
 		<nav>
 			<div class="width">
 				<div class="left">
@@ -18,8 +20,20 @@
 				<div class="right">
 					<a href="<?= BASEURL ?>/tentang" class="menu">Tentang</a>
 					<a href="<?= BASEURL ?>/hubungi-kami" class="menu">Hubungi Kami</a>
-					<a href="javascript:void(0)" class="signin" id="signin">Masuk</a>
-					<a href="javascript:void(0)" class="signup" id="signup">Daftar</a>
+					<?php
+					
+					if (isset($_SESSION['masyarakatNIK'])) {
+						?>
+						<a href="<?= BASEURL ?>/logout" class="signin">Log Out</a>
+						<?php
+					}else {
+						?>
+						<a href="javascript:void(0)" class="signin" id="signin">Masuk</a>
+						<a href="javascript:void(0)" class="signup" id="signup">Daftar</a>
+						<?php
+					}
+					
+					?>
 				</div>
 			</div>
 		</nav>
