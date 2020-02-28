@@ -5,7 +5,7 @@ class Database{
 	private $user = DB_USER;
 	private $pass = DB_PASS;
 	private $name = DB_NAME;
-	private $dbh;
+	public $dbh;
 	private $sth;
 	public $row;
 	
