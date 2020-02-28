@@ -23,7 +23,7 @@
 			</div>
 		</footer>
 		
-		<div id="signin-modal" <?= isset($data['modalstyle']) ? $data['modalstyle'] : '' ?>>
+		<div id="signin-modal" <?= isset($data['viewloginmodal']) ? $data['viewloginmodal'] : '' ?>>
 			<div class="modal-content">
 				<i class="fa fa-times" id="closeSignin"></i>
 				<h2 class="section-title">Login</h2>

@@ -10,7 +10,7 @@
 		<div>
 			<div>
 				<span>Pelapor</span>
-				<span>Rama Surya</span>
+				<span><?= $data['masyarakat']['name'] ?></span>
 			</div>
 			<div>
 				<span>Waktu Tercatat</span>
