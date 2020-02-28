@@ -23,7 +23,7 @@
 			</div>
 		</footer>
 		
-		<div id="signin-modal" <?= $data['modalstyle'] ?>>
+		<div id="signin-modal" <?= isset($data['modalstyle']) ? $data['modalstyle'] : '' ?>>
 			<div class="modal-content">
 				<i class="fa fa-times" id="closeSignin"></i>
 				<h2 class="section-title">Login</h2>
@@ -70,35 +70,46 @@
 			var closebtnsignup = document.getElementById('closeSignup');
 			
 			signinbtn.onclick = function(){
-				signin_modal.style.display = 'block';
+				signin_modal.classList.add('show');
+				signin_modal.classList.remove('hide');
 			}
 			
 			signupbtn.onclick = function(){
-				signup_modal.style.display = 'block';
+				signup_modal.classList.add('show');
+				signup_modal.classList.remove('hide');
 			}
 			
 			signupmodalbtn.onclick = function(){
-				signin_modal.style.display = 'none';
-				signup_modal.style.display = 'block';
+				signin_modal.classList.add('hide');
+				signin_modal.classList.remove('show');
+				signup_modal.classList.add('show');
+				signup_modal.classList.remove('hide');
 			}
 			
 			siginpmodalbtn.onclick = function(){
-				signup_modal.style.display = 'none';
-				signin_modal.style.display = 'block';
+				signup_modal.classList.add('hide');
+				signup_modal.classList.remove('show');
+				signin_modal.classList.add('show');
+				signin_modal.classList.remove('hide');
 			}
 			
 			closebtnsignin.onclick = function(){
-				signin_modal.style.display = 'none';
+				signin_modal.classList.add('hide');
+				signin_modal.classList.remove('show');
 			}
 			
 			closebtnsignup.onclick = function(){
-				signup_modal.style.display = 'none';
+				signup_modal.classList.add('hide');
+				signup_modal.classList.remove('show');
 			}
 			
 			window.onclick = function(event){
-				if (event.target == signin_modal || event.target == signup_modal) {
-					signin_modal.style.display = 'none';
-					signup_modal.style.display = 'none';
+				if (event.target == signin_modal) {
+					signin_modal.classList.add('hide');
+					signin_modal.classList.remove('show');
+				}else if (event.target == signup_modal) {
+					signup_modal.classList.add('hide');
+					signup_modal.classList.remove('show');
 				}
 			}
 		</script>
