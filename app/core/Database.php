@@ -26,4 +26,8 @@ class Database{
 	public function resultSet(){
 		$this->row = $this->sth->fetch_assoc();
 	}
+	
+	public function rowCount(){
+		return $this->dbh->affected_rows;
+	}
 }

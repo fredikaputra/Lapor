@@ -9,12 +9,14 @@ class Lapor extends Controller{
 	
 	public function index(){
 		if (isset($_SESSION['masyarakatNIK'])) {
-			$nik = $_SESSION['masyarakatNIK'];
-			$query = "SELECT * FROM masyarakat WHERE nik = '$nik'";
-			
-			$this->db->query($query);
-			$this->db->resultSet();
-			$data['masyarakat_name'] = $this->db->row['nama'];
+			$nik = $_SESSION['masyarakatNIK'];			
+			if ($query = "SELECT * FROM masyarakat WHERE nik = '$nik'") {
+				$this->db->query($query);
+				$this->db->resultSet();
+				if ($this->db->rowCount() > 0) {
+					$data['masyarakat_name'] = $this->db->row['nama'];
+				}
+			}
 		}else {
 			$data['modalstyle'] = 'class="show"';
 			$data['masyarakat_name'] = '-';

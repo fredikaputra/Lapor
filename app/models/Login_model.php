@@ -9,17 +9,28 @@ class Login_model{
 	
 	public function loginMasyarakat($data){
 		extract($data);
-		
-		$query = mysqli_query($this->db->connect(), "SELECT * FROM masyarakat WHERE username = '$username'");
-		$row = mysqli_fetch_assoc($query);
-		
-		if (mysqli_num_rows($query) > 0) {
-			if (password_verify($password, $row['password'])) {
-				$_SESSION['masyarakatNIK'] = $row['nik'];
-				header('location: ' . BASEURL . '/lapor');
+		if ($query = "SELECT * FROM masyarakat WHERE username = '$username'") {
+			$this->db->query($query);
+			$this->db->resultSet();
+			if ($this->db->rowCount() > 0) {
+				if ($this->checkPass($password, $this->db->row['password']) === TRUE) {
+					$_SESSION['masyarakatNIK'] = $this->db->row['nik'];
+				}else {
+					Flasher::setFlash('Username atau password salah!', 'warning');
+				}
 			}else {
-				echo "tidak";
+				Flasher::setFlash('Username atau password salah!', 'warning');
 			}
+		}else {
+			Flasher::setFlash('Terjadi kesalahan saat memproses!', 'danger');
+		}
+	}
+	
+	public function checkPass($formpass, $dbpass){
+		if (password_verify($formpass, $dbpass)) {
+			return true;
+		}else {
+			return false;
 		}
 	}
 }
