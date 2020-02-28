@@ -28,7 +28,7 @@
 				<i class="fa fa-times" id="closeSignin"></i>
 				<h2 class="section-title">Login</h2>
 				<span class="sub-section-title">Masukkan username dan password anda untuk melanjutkan</span>
-				<form action="" method="post">
+				<form action="<?= BASEURL ?>/masuk" method="post">
 					<div><i class="fa fa-user fa-fw"></i><input type="text" name="username" placeholder="Username" autocomplete="off" required></div>
 					<div><i class="fa fa-lock fa-fw"></i><input type="password" name="password" placeholder="Password" autocomplete="off" required></div>
 					<a href="">Lupa Password?</a>
