@@ -20,7 +20,6 @@ class GetDBData_model{
 			return $this->db->row['nama'];
 		}else { // data not found
 			return '-';
-			echo "something went wrong";
 		}
 	}
 }

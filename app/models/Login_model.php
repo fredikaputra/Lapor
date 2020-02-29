@@ -20,13 +20,12 @@ class Login_model{
 		if ($this->db->getResult() > 0) {
 			//check if password is correct
 			if ($this->checkPass($password, $this->db->row['password']) === TRUE) {
-				// set masyarakat session id
 				$_SESSION['masyarakatNIK'] = $this->db->row['nik'];
 			}else { // password isn't correct
-				echo 'tidak mantap';
+				Flasher::setFlash('Username atau password salah!', 'warning');
 			}
 		}else { // username not found
-			echo 'tidak mantap';
+			Flasher::setFlash('Username atau password salah!', 'warning');
 		}
 	}
 	
