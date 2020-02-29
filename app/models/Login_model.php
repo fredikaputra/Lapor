@@ -16,6 +16,7 @@ class Login_model{
 		$this->db->preparedStatement($this->query);
 		$this->db->sth->bind_param('s', $username);
 		$this->db->executeQuery();
+		// check if data is exists
 		if ($this->db->getResult() > 0) {
 			//check if password is correct
 			if ($this->checkPass($password, $this->db->row['password']) === TRUE) {
