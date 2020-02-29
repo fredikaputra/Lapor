@@ -1,8 +1,7 @@
 <?php
 
 class GetDBData_model{
-	private $db;
-	private $query;
+	private $db, $query;
 	
 	// call database
 	public function __construct(){
@@ -13,7 +12,7 @@ class GetDBData_model{
 	public function getMasyarakatName($nik){
 		$this->query = "SELECT nama FROM masyarakat WHERE nik = ?";
 		$this->db->preparedStatement($this->query);
-		$this->db->sth->bind_param('i', $nik);
+		$this->db->sth->bind_param('s', $nik);
 		$this->db->executeQuery();
 		// check if data exists
 		if ($this->db->getResult() > 0) {

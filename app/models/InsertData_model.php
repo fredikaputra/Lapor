@@ -1,11 +1,8 @@
 <?php
 
 class InsertData_model{
-	private $db;
-	private $query;
-	private $id;
-	private $time;
-	private $errUpload;
+	private $db, $query;
+	private $id, $time, $errUpload, $stringFiltered;
 	private $status = '0';
 	private $imgtype = ['image/jpg', 'image/jpeg', 'image/png'];
 	
@@ -17,7 +14,10 @@ class InsertData_model{
 	// insert laporan proccess
 	public function addLaporan($data, $files){
 		if (isset($_SESSION['masyarakatNIK'])) { // check if user login
-			extract($data);
+			// sanitize filter to prevent from sql injection
+			$this->db->dbh->real_escape_string(extract($data));
+			$this->stringFiltered = filter_var_array([$perihal, $laporan], FILTER_SANITIZE_STRING);
+			
 			$this->time = time();
 			$this->generateId();
 			$this->insertPhoto($files);
@@ -26,15 +26,24 @@ class InsertData_model{
 					if ($this->errUpload != 3) { // check if file is uplaod
 						$this->query = "INSERT INTO pengaduan VALUES(?, ?, ?, ?, ?, ?, ?)";
 						$this->db->preparedStatement($this->query);
-						$this->db->sth->bind_param('siissss', $this->id, $this->time, $_SESSION['masyarakatNIK'], $perihal, $laporan, $this->photo, $this->status);
+						$this->db->sth->bind_param('siissss',
+													$this->id,
+													$this->time,
+													$_SESSION['masyarakatNIK'],
+													$this->stringFiltered[0],
+													$this->stringFiltered[1],
+													$this->photo,
+													$this->status);
 						$this->db->executeQuery();
 						if ($this->db->affectedRows() > 0) {
 							Flasher::setFlash('Laporan anda berhasil dikirim!', 'success');
 						}else { // query error
-							Flasher::setFlash('Terjadi kesalahan saat memproses data!', 'danger');
+							Flasher::setFlash('Terjadi kesalahan saat memproses data! Code [2]', 'danger');
+							var_dump($this->db->affectedRows());
+							die();
 						}
 					}else { // failed to upload
-						Flasher::setFlash('Terjadi kesalahan saat memproses data!', 'danger');
+						Flasher::setFlash('Terjadi kesalahan saat memproses data! Code [1]', 'danger');
 					}
 				}else { // format file not supported
 					Flasher::setFlash('Format gambar tidak didukung!', 'warning');
