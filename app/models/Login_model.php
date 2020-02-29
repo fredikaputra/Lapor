@@ -2,7 +2,7 @@
 
 class Login_model{
 	private $db, $query;
-	private $stringFiltered;
+	private $sanitized;
 	
 	// call database
 	public function __construct(){
@@ -12,10 +12,10 @@ class Login_model{
 	// login proccess
 	public function login($data){
 		$this->db->dbh->real_escape_string(extract($data));
-		$this->stringFiltered = filter_var($username, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+		$this->sanitized = filter_var($username, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 		$this->query = "SELECT * FROM masyarakat WHERE username = ?";
 		$this->db->preparedStatement($this->query);
-		$this->db->sth->bind_param('s', $this->stringFiltered);
+		$this->db->sth->bind_param('s', $this->sanitized);
 		$this->db->executeQuery();
 		// check if data is exists
 		if ($this->db->getResult() > 0) {

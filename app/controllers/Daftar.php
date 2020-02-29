@@ -1,9 +1,11 @@
 <?php
 
-class Daftar{
+class Daftar extends Controller{
 	public function index(){
 		// use register model
-		$this->model('Register_model')->register($_POST);
-		// header('location: ' . BASEURL . '/lapor');
+		if ($this->model('Register_model')->register($_POST) === 'BACKTOSIGNUP') {
+			$_SESSION['backtosignup'] = 'class="show"';
+		}
+		header('location: ' . BASEURL . '/lapor');
 	}
 }

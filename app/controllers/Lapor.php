@@ -15,7 +15,12 @@ class Lapor extends Controller{
 			$data['masyarakat'] = [
 				'name' => '-'
 			];
-			$data['viewloginmodal'] = 'class="show"';
+			if (isset($_SESSION['backtosignup'])) {
+				$data['viewsignupmodal'] = $_SESSION['backtosignup'];
+				unset($_SESSION['backtosignup']);
+			}else {
+				$data['viewloginmodal'] = 'class="show"';
+			}
 		}
 		
 		// use view

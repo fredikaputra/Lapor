@@ -2,7 +2,7 @@
 
 class InsertData_model{
 	private $db, $query;
-	private $id, $time, $errUpload, $stringFiltered;
+	private $id, $time, $errUpload, $sanitized;
 	private $status = '0';
 	private $imgtype = ['image/jpg', 'image/jpeg', 'image/png'];
 	
@@ -16,7 +16,7 @@ class InsertData_model{
 		if (isset($_SESSION['masyarakatNIK'])) { // check if user login
 			// sanitize filter to prevent from sql injection
 			$this->db->dbh->real_escape_string(extract($data));
-			$this->stringFiltered = filter_var_array([$perihal, $laporan], FILTER_SANITIZE_STRING);
+			$this->sanitized = filter_var_array([$perihal, $laporan], FILTER_SANITIZE_STRING);
 			
 			$this->time = time();
 			$this->generateId();
@@ -30,8 +30,8 @@ class InsertData_model{
 													$this->id,
 													$this->time,
 													$_SESSION['masyarakatNIK'],
-													$this->stringFiltered[0],
-													$this->stringFiltered[1],
+													$this->sanitized[0],
+													$this->sanitized[1],
 													$this->photo,
 													$this->status);
 						$this->db->executeQuery();

@@ -38,7 +38,7 @@
 			</div>
 		</div>
 		
-		<div id="signup-modal">
+		<div id="signup-modal" <?= isset($data['viewsignupmodal']) ? $data['viewsignupmodal'] : '' ?>>
 			<div class="modal-content">
 				<i class="fa fa-times" id="closeSignup"></i>
 				<h2 class="section-title">Daftar</h2>
