@@ -25,7 +25,7 @@
 			<textarea name="laporan" id="msg" placeholder="Ketik laporan anda" required></textarea>
 		</div>
 		<div>
-			<input type="file" name="photo" accept="image/*">
+			<input type="file" name="photo" accept="image/jpg, image/jpeg, image/png">
 			<button type="submit" name="report">Lapor</button>
 		</div>
 	</form>
