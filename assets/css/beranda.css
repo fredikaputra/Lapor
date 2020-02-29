@@ -1,5 +1,5 @@
 header{
-	background: url(https://mannatthemes.com/assets/images/bg-home.jpg) center center/cover no-repeat fixed;
+	background: url('../img/bg/background.jpg') center center/cover no-repeat fixed;
 	padding: 250px 0;
 	text-align: center;
 }

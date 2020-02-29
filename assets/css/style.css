@@ -148,7 +148,7 @@ nav .width .right a.signup:hover{
 }
 
 footer{
-	background: url(https://mannatthemes.com/assets/images/bg-home.jpg) center center/cover no-repeat fixed;
+	background: url('../img/bg/background.jpg') center center/cover no-repeat fixed;
 }
 
 footer .width{
