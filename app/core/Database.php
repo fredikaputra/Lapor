@@ -6,8 +6,9 @@ class Database{
 	private $db_pass = DB_PASS;
 	private $db_name = DB_NAME;
 	private $dbh;
-	private $sth;
-	private $row;
+	public $sth;
+	public $row;
+	private $result;
 	
 	public function __construct(){
 		// create connection to database
@@ -22,15 +23,37 @@ class Database{
 		return $this->dbh;
 	}
 	
-	public function query($query){
-		$this->sth = $this->dbh->prepare($query);
+	// prepared statement
+	public function preparedStatement($query){
+		// check if query is correct
+		if ($this->dbh->prepare($query)) {
+			$this->sth = $this->dbh->prepare($query);
+		}else {
+			die($this->viewErr());
+		}
 	}
 	
-	public function execute(){
+	// execute query
+	public function executeQuery(){
 		$this->sth->execute();
 	}
 	
-	public function showResult(){
-		$this->sth->fetch_assoc();
+	// get result
+	public function getResult(){
+		$this->result = $this->sth->get_result();
+		// return all data from database
+		while ($this->row = $this->result->fetch_assoc()) {
+			return $this->row;
+		}
+	}
+	
+	// return value of query insert update delete
+	public function affectedRows(){
+		$this->dbh->affected_rows;
+	}
+	
+	// show error from query
+	public function viewErr(){
+		echo "Query error: " . $this->dbh->error;
 	}
 }
