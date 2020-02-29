@@ -6,7 +6,7 @@
 	<h2 class="section-title">Laporkan Segera</h2>
 	<span class="sub-section-title">Laporan anda akan diverifikasi dan diteruskan kepada instansi berwenang</span>
 	
-	<form action="" method="post" enctype="multipart/form-data">
+	<form action="<?= BASEURL ?>/lapor/tambah" method="post" enctype="multipart/form-data">
 		<div>
 			<div>
 				<span>Pelapor</span>

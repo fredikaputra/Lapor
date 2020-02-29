@@ -23,4 +23,9 @@ class Lapor extends Controller{
 		$this->view('lapor/index', $data);
 		$this->view('template/footer', $data);
 	}
+	
+	public function tambah(){
+		$this->model('InsertData_model')->addLaporan($_POST);
+		header('location: ' . BASEURL . '/lapor');
+	}
 }

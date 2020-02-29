@@ -49,7 +49,7 @@ class Database{
 	
 	// return value of query insert update delete
 	public function affectedRows(){
-		$this->dbh->affected_rows;
+		return $this->dbh->affected_rows;
 	}
 	
 	// show error from query
