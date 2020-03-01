@@ -1,0 +1,128 @@
+:root{
+	--dark-blue: #292e40;
+	--soft-blue: #b9c4ce;
+}
+
+body{
+	/* overflow: hidden; */
+	background: #edf0f5;
+}
+
+.wrapper{
+	display: grid;
+	grid-template-columns: 7cm 1fr;
+	height: 100%;
+	max-height: 100%;
+}
+
+.wrapper nav{
+	background: white;
+	height: 100vh;
+	overflow-y: auto;
+}
+
+.wrapper nav > *{
+	display: block;
+}
+
+.wrapper nav .profile{
+	padding: 1cm 0;
+	box-shadow: 0px 5px 10px #00000009;
+}
+
+.wrapper nav .profile > *{
+	display: block;
+	text-align: center;
+	color: var(--soft-blue);
+}
+
+.wrapper nav .profile img{
+	width: 100px;
+	border-radius: 50%;
+	margin: auto;
+}
+
+.wrapper nav .profile span{
+	margin-top: 5px;
+	font-size: 14px;
+}
+
+.wrapper nav .profile span:first-of-type{
+	font-weight: bold;
+	margin-top: 10px;
+}
+
+.wrapper nav .profile .group{
+	margin-top: .5cm;
+}
+
+.wrapper nav .profile .group a{
+	padding: 5px;
+	color: var(--soft-blue);
+}
+
+.wrapper nav .profile .group a:hover{
+	color: var(--dark-blue);
+}
+
+.wrapper nav > a{
+	padding: 20px 50px 20px 40px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	font-size: 14px;
+	transition: .3s;
+	font-weight: bold;
+	color: var(--dark-blue);
+}
+
+.wrapper nav > a:hover,
+.wrapper nav > a.active{
+	box-shadow: 0px 0 20px #00000010;
+	padding: 20px 40px 20px 40px;
+	color: #8088a5;
+}
+
+.wrapper nav > a img{
+	width: 13px;
+}
+
+.wrapper header{
+	background: var(--dark-blue);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: auto;
+	align-self: center;
+}
+
+.wrapper header .left a{
+	color: white;
+	font-family: "Poppins";
+	font-weight: 900;
+	font-size: 20px;
+	margin-left: 2cm;
+}
+
+.wrapper header .right .user{
+	display: flex;
+	align-items: center;
+	padding: .4cm 1.3cm;
+	cursor: pointer;
+}
+
+.wrapper header .right .user:hover{
+	background-color: #2f3549;
+}
+
+.wrapper header .right .user img{
+	width: 40px;
+	border-radius: 50%;
+}
+
+.wrapper header .right .user span{
+	color: var(--soft-blue);
+	margin-left: 10px;
+	font-size: 14px;
+	font-weight: bold;
+}

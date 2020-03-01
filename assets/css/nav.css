@@ -1,0 +1,65 @@
+nav{
+	position: absolute;
+	width: 100%;
+	/* background-color: gray; */
+}
+
+nav .width{
+	display: grid;
+	grid-template-columns: auto 1fr;
+	width: 95%;
+	max-width: 1100px;
+	margin: auto;
+	padding: 30px 0;
+}
+
+nav .width a{
+	color: white;
+}
+
+nav .width > *{
+	align-self: center;
+}
+
+nav .width .left a{
+	font-family: 'Roboto';
+	font-weight: 900;
+	font-size: 30px;
+}
+
+nav .width .right{
+	text-align: right;
+	font-family: 'Poppins';
+	font-weight: 600;
+}
+
+nav .width .right a{
+	font-size: 13px;
+}
+
+nav .width .right a.menu{
+	margin-right: 30px;
+}
+
+nav .width .right a.signin{
+	background: var(--blue);
+	padding: 10px 20px;
+	border-radius: var(--border-radius);
+	margin-right: 10px;
+	border: 1px solid transparent;
+}
+
+nav .width .right a.signin:hover{
+	background: transparent;
+	border: 1px solid var(--blue);
+}
+
+nav .width .right a.signup{
+	padding: 10px 20px;
+	border: 1px solid var(--blue);
+	border-radius: var(--border-radius);
+}
+
+nav .width .right a.signup:hover{
+	background: var(--blue);
+}

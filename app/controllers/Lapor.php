@@ -3,7 +3,7 @@
 class Lapor extends Controller{
 	public function index(){
 		// set data value
-		$data['css'] = 'lapor.css';
+		$data['css'] = ['lapor.css', 'nav.css'];
 		$data['title'] = 'Lapor! - Sampaikan Aspirasi Anda';
 		
 		// check if user is login set his or her name
@@ -25,6 +25,7 @@ class Lapor extends Controller{
 		
 		// use view
 		$this->view('template/header', $data);
+		$this->view('template/nav');
 		$this->view('lapor/index', $data);
 		$this->view('template/footer', $data);
 	}
