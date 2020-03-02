@@ -126,3 +126,154 @@ body{
 	font-size: 14px;
 	font-weight: bold;
 }
+
+.wrapper main{
+	padding: .5cm 1cm;
+}
+
+.wrapper main .pageinfo{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.wrapper main .pageinfo span{
+	font-family: "Poppins";
+	font-size: 20px;
+	font-weight: 900;
+}
+
+.wrapper main .pageinfo .breadcrumbs{
+	font-size: 15px;
+}
+
+.wrapper main .information{
+	margin-top: 1cm;
+	display: grid;
+	grid-template-columns: 10cm 1fr;
+	grid-gap: 1cm;
+}
+
+.wrapper main .information form{
+	background: white;
+	padding: .7cm;
+	box-shadow: 0 0 10px #0000000a;
+}
+
+.wrapper main .information form span{
+	font-weight: bold;
+	margin-bottom: 20px;
+	display: block;
+}
+
+.wrapper main .information form > div:not(:last-child){
+	margin-top: 10px;
+	padding: 5px 20px;
+	box-shadow: 0 5px 10px #00000009;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.wrapper main .information form div i{
+	font-size: 20px;
+	color: var(--dark-blue);
+}
+
+.wrapper main .information form div input{
+	padding: 10px 0 10px 20px;
+	border: none;
+	font-size: 15px;
+	width: 100%;
+	outline: none;
+	color: #000000aa;
+}
+
+.wrapper main .information form div:last-child{
+	display: flex;
+	justify-content: space-between;
+	margin-top: 30px;
+}
+
+.wrapper main .information form div:last-child a{
+	padding: 10px 10px;
+	font-size: 13px;
+	font-weight: bold;
+	box-shadow: 0 5px 10px #00000010;
+}
+
+.wrapper main .information form div:last-child button{
+	padding: 10px 10px;
+	font-size: 13px;
+	border: 1px;
+	font-weight: bold;
+	cursor: pointer;
+	box-shadow: 0 5px 10px #00000010;
+}
+
+.wrapper main .information .data .greet{
+	background: white;
+	padding: .5cm;
+	box-shadow: 0 0 10px #0000000a;
+	position: relative;
+	display: flex;
+	align-items: center;
+	margin-bottom: .5cm;
+}
+
+.wrapper main .information .data .greet img.user{
+	width: 50px;
+	border-radius: 50%;
+}
+
+.wrapper main .information .data .greet span{
+	margin-left: 15px;
+	/* font-weight: bold; */
+	font-family: 'Poppins';
+	font-size: 16px;
+}
+
+.wrapper main .information .data .greet img.icon{
+	width: 3cm;
+	position: absolute;
+	transform: translate(0, -50%);
+	top: 50%;
+	right: 1cm;
+}
+
+.wrapper main .information .data .card-info{
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(6cm, 1fr));
+	grid-gap: .5cm;
+}
+
+.wrapper main .information .data .card-info .card{
+	background: white;
+	padding: .7cm;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.wrapper main .information .data .card-info .card i{
+	border-radius: 50%;
+	width: 60px;
+	height: 60px;
+	display: flex;
+	font-size: .7cm;
+	justify-content: center;
+	align-items: center;
+}
+
+.wrapper main .information .data .card-info .card div span{
+	display: block;
+	font-family: "Poppins";
+	text-align: right;
+	color: #000000a0;
+	font-size: 14px;
+}
+
+.wrapper main .information .data .card-info .card div span:nth-child(2){
+	font-size: .7cm;
+	font-weight: bold;
+}

@@ -9,7 +9,7 @@ class Lapor extends Controller{
 		// check if user is login set his or her name
 		if (isset($_SESSION['masyarakatNIK'])) {
 			$data['masyarakat'] = [
-				'name' => $this->model('GetDBData_model')->getMasyarakatName($_SESSION['masyarakatNIK'])
+				'name' => $this->model('GetDBData_model')->getMasyarakatData($_SESSION['masyarakatNIK'])['nama']
 			];
 		}else {
 			$data['masyarakat'] = [

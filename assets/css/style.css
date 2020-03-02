@@ -46,25 +46,25 @@ div.alert span{
 	font-family: 'Poppins';
 }
 
-div.alert span.info{
+.info{
 	color: #004085;
 	background-color: #cce5ff;
 	border-color: #b8daff;
 }
 
-div.alert span.success{
+.success{
 	color: #155724;
     background-color: #d4edda;
     border-color: #c3e6cb;
 }
 
-div.alert span.danger{
+.danger{
 	color: #721c24;
     background-color: #f8d7da;
     border-color: #f5c6cb;
 }
 
-div.alert span.warning{
+.warning{
 	color: #856404;
     background-color: #fff3cd;
     border-color: #ffeeba;

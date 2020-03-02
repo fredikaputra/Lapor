@@ -9,14 +9,14 @@ class GetDBData_model{
 	}
 	
 	// get masyarakat name process
-	public function getMasyarakatName($nik){
-		$this->query = "SELECT nama FROM masyarakat WHERE nik = ?";
+	public function getMasyarakatData($nik){
+		$this->query = "SELECT * FROM masyarakat WHERE nik = ?";
 		$this->db->preparedStatement($this->query);
 		$this->db->sth->bind_param('s', $nik);
 		$this->db->executeQuery();
 		// check if data exists
 		if ($this->db->getResult() > 0) {
-			return $this->db->row['nama'];
+			return $this->db->row;
 		}else { // data not found
 			return '-';
 		}
