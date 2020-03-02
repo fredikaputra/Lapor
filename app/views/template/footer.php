@@ -23,6 +23,15 @@
 			</div>
 		</footer>
 		
+		<div id="gotodashboard-modal" <?= isset($data['viewgotodashboard']) ? $data['viewgotodashboard'] : '' ?>>
+			<div class="modal-content">
+				<i class="fa fa-times" id="closeSignin"></i>
+				<span>Pergi Ke Dashboard?</span>
+				<span>Anda punya hak akses untuk masuk ke halaman dashboard</span>
+				<a href="<?= BASEURL ?>/dashboard" class="info">Dashbaord</a>
+			</div>
+		</div>
+		
 		<div id="signin-modal" <?= isset($data['viewloginmodal']) ? $data['viewloginmodal'] : '' ?>>
 			<div class="modal-content">
 				<i class="fa fa-times" id="closeSignin"></i>

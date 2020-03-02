@@ -8,7 +8,7 @@
 			<a href="<?= BASEURL ?>/hubungi-kami" class="menu">Hubungi Kami</a>
 			<?php
 			// check if user session id is isset
-			if (isset($_SESSION['masyarakatNIK'])) {
+			if (isset($_SESSION['masyarakatNIK']) || isset($_SESSION['petugasID'])) {
 				?>
 				<a href="<?= BASEURL ?>/logout" class="signin">Logout</a>
 				<?php

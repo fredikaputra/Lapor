@@ -87,54 +87,13 @@ body{
 	width: 13px;
 }
 
-.wrapper header{
-	background: var(--dark-blue);
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	margin: auto;
-	align-self: center;
-}
-
-.wrapper header .left a{
-	color: white;
-	font-family: "Poppins";
-	font-weight: 900;
-	font-size: 20px;
-	margin-left: 2cm;
-}
-
-.wrapper header .right .user{
-	display: flex;
-	align-items: center;
-	padding: .4cm 1.3cm;
-	cursor: pointer;
-}
-
-.wrapper header .right .user:hover{
-	background-color: #2f3549;
-}
-
-.wrapper header .right .user img{
-	width: 40px;
-	border-radius: 50%;
-}
-
-.wrapper header .right .user span{
-	color: var(--soft-blue);
-	margin-left: 10px;
-	font-size: 14px;
-	font-weight: bold;
-}
-
-.wrapper main{
-	padding: .5cm 1cm;
-}
-
 .wrapper main .pageinfo{
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	background: var(--dark-blue);
+	color: white;
+	padding: .5cm 1cm;
 }
 
 .wrapper main .pageinfo span{
@@ -148,7 +107,7 @@ body{
 }
 
 .wrapper main .information{
-	margin-top: 1cm;
+	margin: 1cm;
 	display: grid;
 	grid-template-columns: 10cm 1fr;
 	grid-gap: 1cm;
@@ -189,9 +148,10 @@ body{
 	color: #000000aa;
 }
 
-.wrapper main .information form div:last-child{
+.wrapper main .information form > div:last-child{
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 	margin-top: 30px;
 }
 
@@ -200,6 +160,14 @@ body{
 	font-size: 13px;
 	font-weight: bold;
 	box-shadow: 0 5px 10px #00000010;
+	transition: .3s;
+	outline: none;
+}
+
+.wrapper main .information form div:last-child a:hover{
+	color: #721c24;
+	background-color: #f8d7da;
+	border-color: #f5c6cb;
 }
 
 .wrapper main .information form div:last-child button{
@@ -209,6 +177,7 @@ body{
 	font-weight: bold;
 	cursor: pointer;
 	box-shadow: 0 5px 10px #00000010;
+	outline: none;
 }
 
 .wrapper main .information .data .greet{
@@ -263,6 +232,7 @@ body{
 	font-size: .7cm;
 	justify-content: center;
 	align-items: center;
+	box-shadow: 0 0 20px #0000001a;
 }
 
 .wrapper main .information .data .card-info .card div span{

@@ -16,7 +16,7 @@ class App{
 				$this->controller = $url[0];
 				unset($url[0]);
 			}else {
-				if (isset($_SESSION['masyarakatNIK'])) {
+				if (isset($_SESSION['petugasID'])) {
 					$this->controller = $url[0];
 					unset($url[0]);
 				}

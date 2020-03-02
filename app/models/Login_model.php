@@ -25,8 +25,23 @@ class Login_model{
 			}else { // password isn't correct
 				Flasher::setFlash('Username atau password salah!', 'warning');
 			}
-		}else { // username not found
-			Flasher::setFlash('Username atau password salah!', 'warning');
+		}else { // username not from masyarakat
+			$this->query = "SELECT * FROM petugas WHERE username = ?";
+			$this->db->preparedStatement($this->query);
+			$this->db->sth->bind_param('s', $this->sanitized);
+			$this->db->executeQuery();
+			// check if data is exists
+			if ($this->db->getResult() > 0) {
+				//check if password is correct
+				if ($this->checkPass($password, $this->db->row['password']) === TRUE) {
+					$_SESSION['petugasID'] = $this->db->row['id_petugas'];
+					$_SESSION['gotodashboard'] = 'class="show"';
+				}else { // password isn't correct
+					Flasher::setFlash('Username atau password salah!', 'warning');
+				}
+			}else { // username not found
+				Flasher::setFlash('Username atau password salah!', 'warning');
+			}
 		}
 	}
 	

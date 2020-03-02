@@ -21,4 +21,17 @@ class GetDBData_model{
 			return '-';
 		}
 	}
+	
+	public function getPetugasData($petugasID){
+		$this->query = "SELECT * FROM petugas JOIN level_petugas ON petugas.level = level_petugas.id WHERE id_petugas = ?";
+		$this->db->preparedStatement($this->query);
+		$this->db->sth->bind_param('s', $petugasID);
+		$this->db->executeQuery();
+		// check if data exists
+		if ($this->db->getResult() > 0) {
+			return $this->db->row;
+		}else { // data not found
+			return '-';
+		}
+	}
 }

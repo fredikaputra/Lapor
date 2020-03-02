@@ -11,6 +11,15 @@ class Lapor extends Controller{
 			$data['masyarakat'] = [
 				'name' => $this->model('GetDBData_model')->getMasyarakatData($_SESSION['masyarakatNIK'])['nama']
 			];
+		}else if (isset($_SESSION['petugasID'])) {
+			$data['masyarakat'] = [
+				'name' => '-'
+			];
+			if (isset($_SESSION['gotodashboard'])) {
+				// die();
+				$data['viewgotodashboard'] = $_SESSION['gotodashboard'];
+				unset($_SESSION['gotodashboard']);
+			}
 		}else {
 			$data['masyarakat'] = [
 				'name' => '-'
