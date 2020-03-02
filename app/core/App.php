@@ -12,8 +12,15 @@ class App{
 		
 		// check if controller exists
 		if (file_exists('app/controllers/' . $url[0] . '.php')) {
-			$this->controller = $url[0];
-			unset($url[0]);
+			if ($url[0] != 'dashboard') {
+				$this->controller = $url[0];
+				unset($url[0]);
+			}else {
+				if (isset($_SESSION['masyarakatNIK'])) {
+					$this->controller = $url[0];
+					unset($url[0]);
+				}
+			}
 		}
 		
 		// require controller

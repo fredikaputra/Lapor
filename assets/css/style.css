@@ -33,6 +33,10 @@ p{
 	text-align: justify;
 }
 
+div.alert{
+	transition: 2s ease-in-out;
+}
+
 div.alert span{
 	position: fixed;
 	right: 5%;
