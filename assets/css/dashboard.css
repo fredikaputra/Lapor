@@ -4,7 +4,7 @@
 }
 
 body{
-	/* overflow: hidden; */
+	overflow: hidden;
 	background: #edf0f5;
 }
 
@@ -16,7 +16,7 @@ body{
 }
 
 .wrapper nav{
-	background: white;
+	background: var(--dark-blue);
 	height: 100vh;
 	overflow-y: auto;
 }
@@ -73,7 +73,7 @@ body{
 	font-size: 14px;
 	transition: .3s;
 	font-weight: bold;
-	color: var(--dark-blue);
+	color: var(--soft-blue);
 }
 
 .wrapper nav > a:hover,
@@ -106,8 +106,12 @@ body{
 	font-size: 15px;
 }
 
+.wrapper main > div:last-of-type{
+	display: block;
+	padding: 1cm;
+}
+
 .wrapper main .information{
-	margin: 1cm;
 	display: grid;
 	grid-template-columns: 10cm 1fr;
 	grid-gap: 1cm;
@@ -162,6 +166,7 @@ body{
 	box-shadow: 0 5px 10px #00000010;
 	transition: .3s;
 	outline: none;
+	color: var(--dark-blue);
 }
 
 .wrapper main .information form div:last-child a:hover{
@@ -178,6 +183,20 @@ body{
 	cursor: pointer;
 	box-shadow: 0 5px 10px #00000010;
 	outline: none;
+	background: white;
+	transition: .3s;
+}
+
+.wrapper main .information form div:last-child button:last-of-type:hover{
+	color: #155724;
+	background-color: #d4edda;
+	border-color: #c3e6cb;
+}
+
+.wrapper main .information form div:last-child button:first-of-type:hover{
+	color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
 }
 
 .wrapper main .information .data .greet{
@@ -246,4 +265,50 @@ body{
 .wrapper main .information .data .card-info .card div span:nth-child(2){
 	font-size: .7cm;
 	font-weight: bold;
+}
+
+.wrapper main .viewpengaduanterbaru{
+	background: white;
+	margin: 1cm 0;
+	padding: 1cm;
+}
+
+.wrapper main .viewpengaduanterbaru h2{
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.wrapper main .viewpengaduanterbaru table{
+	width: 100%;
+	box-shadow: 0 5px 10px #0000000a;
+	padding: 20px;
+	border-collapse: collapse;
+	font-size: 15px;
+	color: dimgray;
+}
+
+.wrapper main .viewpengaduanterbaru table tr{
+	box-shadow: 0 10px 10px #0000000a;
+	transition: .3s;
+}
+
+.wrapper main .viewpengaduanterbaru table:hover tr:not(:first-of-type){
+	box-shadow: none;
+	transition: .3s;
+}
+
+.wrapper main .viewpengaduanterbaru table tr:not(:first-of-type):not(:nth-of-type(2)):hover{
+	box-shadow: 0 0 10px 10px #0000000a;
+}
+
+.wrapper main .viewpengaduanterbaru table tr:nth-of-type(2):hover{
+	box-shadow: 0 10px 10px #0000000a;
+}
+
+.wrapper main .viewpengaduanterbaru table th{
+	padding: .7cm;
+}
+
+.wrapper main .viewpengaduanterbaru table td{
+	padding: 1cm .7cm;
 }

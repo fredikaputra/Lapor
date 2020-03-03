@@ -10,10 +10,8 @@
 					</div>
 				</div>
 				<a class="active" href="">Dashbaord <img src="<?= BASEURL ?>/assets/img/icon/chevron-right.png" alt=""></a>
-				<a href="">Apps <img src="<?= BASEURL ?>/assets/img/icon/chevron-right.png" alt=""></a>
-				<a href="">Menu <img src="<?= BASEURL ?>/assets/img/icon/chevron-right.png" alt=""></a>
-				<a href="">Dashbaord <img src="<?= BASEURL ?>/assets/img/icon/chevron-right.png" alt=""></a>
-				<a href="">Dashbaord <img src="<?= BASEURL ?>/assets/img/icon/chevron-right.png" alt=""></a>
+				<a href="">Laporan Pengaduan <img src="<?= BASEURL ?>/assets/img/icon/chevron-right.png" alt=""></a>
+				<a href="">Pengguna <img src="<?= BASEURL ?>/assets/img/icon/chevron-right.png" alt=""></a>
 			</nav>
 		
 			<div>
@@ -23,58 +21,101 @@
 						<div class="breadcrumbs">Lapor / Dashboard</div>
 					</div>
 					
-					<div class="information">
-						<div>
-							<form action="">
-								<span>User Profile</span>
-								<div><i class="fa fa-user fa-fw"></i><input type="text" id="onChange1" onkeyup="checkValueChange()" name="name" placeholder="Nama Lengkap" value="<?= $data['row']['nama_petugas'] ?>" autocomplete="off" required></div>
-								<div><i class="fa fa-user fa-fw"></i><input type="text" id="onChange2" name="username" onkeyup="checkValueChange()" placeholder="Username" value="<?= $data['row']['username'] ?>" autocomplete="off" required></div>
-								<div><i class="fa fa-phone fa-fw"></i><input type="number" id="onChange3" name="phone" onkeyup="checkValueChange()" placeholder="Nomor Telepon" value="<?= $data['row']['telp'] ?>" autocomplete="off" required></div>
-								<div>
-									<a href="" class="changepassword">Ganti Password</a>
+					<div>
+						<div class="information">
+							<div>
+								<form action="">
+									<span>User Profile</span>
+									<div><i class="fa fa-user fa-fw"></i><input type="text" id="onChange1" onkeyup="checkValueChange()" name="name" placeholder="Nama Lengkap" value="<?= $data['row']['nama_petugas'] ?>" autocomplete="off" required></div>
+									<div><i class="fa fa-user fa-fw"></i><input type="text" id="onChange2" name="username" onkeyup="checkValueChange()" placeholder="Username" value="<?= $data['row']['username'] ?>" autocomplete="off" required></div>
+									<div><i class="fa fa-phone fa-fw"></i><input type="number" id="onChange3" name="phone" onkeyup="checkValueChange()" placeholder="Nomor Telepon" value="<?= $data['row']['telp'] ?>" autocomplete="off" required></div>
 									<div>
-										<button type="reset" class="warning hide" onclick="hide()" id="cancelSaveUserProfile">Batal</button>
-										<button type="submit" class="success hide" id="saveUserProfile" name="updateProfile">Simpan</button>
+										<a href="" class="changepassword">Ganti Password</a>
+										<div>
+											<button type="reset" class="hide" onclick="hide()" id="cancelSaveUserProfile">Batal</button>
+											<button type="submit" class="hide" id="saveUserProfile" name="updateProfile">Simpan</button>
+										</div>
 									</div>
-								</div>
-							</form>
-						</div>
-						<div class="data">
-							<div class="greet">
-								<img class="user" src="<?= BASEURL ?>/assets/img/user/user-2.jpg" alt="">
-								<span>Selamat datang, <strong><?= $data['row']['nama_petugas'] ?></strong></span>
-								<img class="icon" src="<?= BASEURL ?>/assets/img/icon/dashboard-icon1.png" alt="">
+								</form>
 							</div>
-							<div class="card-info">
-								<div class="card">
-									<i class="fa fa-user"></i>
-									<div>
-										<span>Pengguna Baru</span>
-										<span>78k</span>
+							<div class="data">
+								<div class="greet">
+									<img class="user" src="<?= BASEURL ?>/assets/img/user/user-2.jpg" alt="">
+									<span>Selamat datang, <strong><?= $data['row']['nama_petugas'] ?></strong></span>
+									<img class="icon" src="<?= BASEURL ?>/assets/img/icon/dashboard-icon1.png" alt="">
+								</div>
+								<div class="card-info">
+									<div class="card">
+										<i class="fa fa-user"></i>
+										<div>
+											<span>Pengguna Lapor!</span>
+											<span>78k</span>
+										</div>
+									</div>
+									<div class="card">
+										<i class="fa fa-user"></i>
+										<div>
+											<span>Petugas & Admin</span>
+											<span>78k</span>
+										</div>
+									</div>
+									<div class="card">
+										<i class="fa fa-user"></i>
+										<div>
+											<span>Laporan Tercatat</span>
+											<span>78k</span>
+										</div>
+									</div>
+									<div class="card">
+										<i class="fa fa-user"></i>
+										<div>
+											<span>Laporan Tervirifikasi</span>
+											<span>78k</span>
+										</div>
 									</div>
 								</div>
-								<div class="card">
-									<i class="fa fa-user"></i>
-									<div>
-										<span>Pengguna Baru</span>
-										<span>78k</span>
-									</div>
-								</div>
-								<div class="card">
-									<i class="fa fa-user"></i>
-									<div>
-										<span>Pengguna Baru</span>
-										<span>78k</span>
-									</div>
-								</div>
-								<div class="card">
-									<i class="fa fa-user"></i>
-									<div>
-										<span>Pengguna Baru</span>
-										<span>78k</span>
-									</div>
-								</div>
-							</div>
+							</div><!-- data -->
+						</div><!-- information -->
+						
+						<div class="viewpengaduanterbaru">
+							<h2>Aduan Laporan Terbaru</h2>
+							<table>
+								<tr>
+									<th>#ID</th>
+									<th>Waktu</th>
+									<th>Dari</th>
+									<th>Laporan</th>
+									<th>Status</th>
+								</tr>
+								<tr>
+									<td>#LPRID1A3C84A</td>
+									<td>2 Jam yang lalu</td>
+									<td>Lada Sattar</td>
+									<td>Tolong pindahkan kabel listrik yang ada di atas rumah saya, karena itu sanggat mengganggu!</td>
+									<td>Proses</td>
+								</tr>
+								<tr>
+									<td>#LPRID1A3C84A</td>
+									<td>2 Jam yang lalu</td>
+									<td>Lada Sattar</td>
+									<td>Tolong pindahkan kabel listrik yang ada di atas rumah saya, karena itu sanggat mengganggu!</td>
+									<td>Proses</td>
+								</tr>
+								<tr>
+									<td>#LPRID1A3C84A</td>
+									<td>2 Jam yang lalu</td>
+									<td>Lada Sattar</td>
+									<td>Tolong pindahkan kabel listrik yang ada di atas rumah saya, karena itu sanggat mengganggu!</td>
+									<td>Proses</td>
+								</tr>
+								<tr>
+									<td>#LPRID1A3C84A</td>
+									<td>2 Jam yang lalu</td>
+									<td>Lada Sattar</td>
+									<td>Tolong pindahkan kabel listrik yang ada di atas rumah saya, karena itu sanggat mengganggu!</td>
+									<td>Proses</td>
+								</tr>
+							</table>
 						</div>
 					</div>
 				</main>

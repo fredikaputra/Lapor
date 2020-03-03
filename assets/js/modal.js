@@ -1,9 +1,11 @@
+var gotodashboard_modal = document.getElementById('gotodashboard-modal');
 var signin_modal = document.getElementById('signin-modal');
 var signup_modal = document.getElementById('signup-modal');
 var signinbtn = document.getElementById('signin');
 var signupbtn = document.getElementById('signup');
 var signupmodalbtn = document.getElementById('signup-modal-btn');
 var siginpmodalbtn = document.getElementById('signin-modal-btn');
+var closebtngtd = document.getElementById('closeGotoDashboard');
 var closebtnsignin = document.getElementById('closeSignin');
 var closebtnsignup = document.getElementById('closeSignup');
 
@@ -41,6 +43,10 @@ closebtnsignup.onclick = function(){
 	signup_modal.classList.remove('show');
 }
 
+closebtngtd.onclick = function(){
+	gotodashboard_modal.classList.add('hide');
+}
+
 window.onclick = function(event){
 	if (event.target == signin_modal) {
 		signin_modal.classList.add('hide');
@@ -48,5 +54,7 @@ window.onclick = function(event){
 	}else if (event.target == signup_modal) {
 		signup_modal.classList.add('hide');
 		signup_modal.classList.remove('show');
+	}else if (event.target == gotodashboard_modal) {
+		gotodashboard_modal.classList.add('hide');
 	}
 }
