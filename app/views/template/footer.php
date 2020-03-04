@@ -8,5 +8,13 @@
 			<a href=""><img src="<?= BASEURL ?>/assets/img/icon/social-youtube.png" alt=""></a>
 		</div>
 	</footer>
+	
+	<?php
+	
+	foreach ($data['js'] as $js) {
+		?><script src="<?= BASEURL ?>/assets/js/<?= $js ?>"></script><?php
+	}
+	
+	?>
 </body>
 </html>

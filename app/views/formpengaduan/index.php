@@ -16,5 +16,11 @@
 				<span>16:16, 04 March 2020</span>
 			</div>
 		</div>
+		
+		<textarea name="name" placeholder="Ketik laporan anda!"></textarea>
+		<div>
+			<input type="file" name="photo">
+			<button class="bg-flat bg-primary" type="submit" name="insertPengaduan">Lapor!</button>
+		</div>
 	</form>
 </main>

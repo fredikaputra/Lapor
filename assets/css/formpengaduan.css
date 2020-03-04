@@ -16,4 +16,73 @@ header h1{
 main{
 	text-align: center;
 	padding: 3cm 0;
+	width: 95%;
+	max-width: 20cm;
+	margin: auto;
+}
+
+main h2{
+	margin-bottom: 10px;
+}
+
+main > span{
+	color: darkgray;
+}
+
+main form{
+	box-shadow: 0 10px 10px #00000010;
+	padding: 1cm;
+	margin-top: 1cm;
+}
+
+main form > div:first-of-type{
+	display: flex;
+	justify-content: space-between;
+}
+
+main form div:first-of-type div span{
+	display: block;
+}
+
+main form div:first-of-type div:first-of-type span{
+	text-align: left;
+}
+
+main form div:first-of-type div:last-of-type span{
+	text-align: right;
+}
+
+main form div:first-of-type div span:first-of-type{
+	color: dimgray;
+}
+
+main form div:first-of-type div span:last-of-type{
+	color: darkgray;
+	font-size: 18px;
+	margin-top: 5px;
+}
+
+main form textarea{
+	width: 100%;
+	margin-top: 20px;
+	border: none;
+	resize: none;
+	outline: none;
+	font-family: 'Arial';
+	color: dimgray;
+	font-size: 17px;
+	line-height: 25px;
+	text-align: justify;
+	text-indent: 1.5cm;
+}
+
+main form > div:last-of-type{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 1cm;
+}
+
+main form > div:last-of-type button{
+	padding: 3px 10px;
 }
