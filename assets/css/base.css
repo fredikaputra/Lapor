@@ -1,0 +1,151 @@
+:root{
+	--bg-color-primary: #0092FF;
+	--bg-color-green: #D4EDDA;
+	
+	--txt-color-green: #155724;
+}
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Calibri';
+	transition: .3s;
+	scroll-behavior: smooth;
+}
+
+a, button{
+	text-decoration: none;
+	outline: none;
+	cursor: pointer;
+	font-size: 18px;
+}
+
+p{
+	text-indent: 2cm;
+	text-align: justify;
+	line-height: 1cm;
+	font-family: 'Arial';
+	font-size: 17px;
+	letter-spacing: 1px;
+}
+
+span{
+	font-size: 20px;
+}
+
+h1{
+	font-size: 1.2cm;
+}
+
+h2{
+	font-size: .9cm;
+	color: dimgray;
+}
+
+
+
+/* fixclass */
+.bg-flat{
+	padding: 7px 15px;
+}
+
+.bg-rounded{
+	padding: 7px 15px;
+	border-radius: 10px;
+}
+
+.bg-primary{
+	color: white;
+	background: var(--bg-color-primary);
+	border: 1px solid var(--bg-color-primary);
+}
+
+.bg-success{
+	color: var(--txt-color-green);
+    background: var(--bg-color-green);
+    border: 1px solid var(--bg-color-green);
+}
+
+a.logo{
+	font-weight: bold;
+	font-size: 1cm;
+	color: white;
+}
+
+a.logo:hover,
+a.logo:focus{
+	color: var(--bg-color-primary);
+}
+
+
+
+/* nav div */
+nav{
+	position: absolute;
+	width: 100%;
+	padding: .5cm 0;
+}
+
+nav > div{
+	display: flex;
+	justify-content: space-between;
+	width: 95%;
+	max-width: 1100px;
+	margin: auto;
+}
+
+nav div div{
+	display: inline;
+	align-self: center;
+}
+
+nav div div a{
+	display: none;
+}
+
+nav div div div button:first-of-type:hover,
+nav div div div button:first-of-type:focus{
+	background: transparent;
+	border: 1px solid var(--bg-color-primary);
+	color: var(--bg-color-primary);
+}
+
+nav div div div button:last-of-type{
+	background: transparent;
+	border: 1px solid var(--bg-color-primary);
+	color: white;
+	margin-left: 10px;
+}
+
+nav div div div button:last-of-type:hover,
+nav div div div button:last-of-type:focus{
+	background: var(--bg-color-primary);
+	border: 1px solid var(--bg-color-primary);
+	color: white;
+}
+
+
+/* footer */
+footer{
+	background: url('../img/bg/background.jpg') center center/cover no-repeat fixed;
+	padding: 1cm 0;
+	text-align: center;
+}
+
+footer span{
+	display: block;
+	text-align: center;
+	color: lightgray;
+	margin: 10px 1cm 20px;
+	letter-spacing: .5px;
+}
+
+footer div a img{
+	width: 1cm;
+}
+
+footer div a:hover img,
+footer div a:focus img{
+	margin: 0 10px;
+}

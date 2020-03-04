@@ -1,0 +1,19 @@
+/* header */
+header{
+	background: url('../img/bg/background.jpg') center center/cover no-repeat fixed;
+	padding: 4cm 0;
+	text-align: center;
+}
+
+header h1{
+	color: white;
+	letter-spacing: -2px;
+}
+
+
+
+/* main */
+main{
+	text-align: center;
+	padding: 3cm 0;
+}

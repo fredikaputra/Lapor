@@ -10,9 +10,17 @@ class App{
 		$url = $this->parseURL();
 		
 		// controller
-		if (file_exists('app/controllers/' . $url[0] . '.php')) {
-			$this->controller = $url[0];
-			unset($url[0]);
+		if (strpos($url[0], '-')) { // check if controller contain dash (-)
+			$url[0] = str_replace('-', '', $url[0]);
+			if (file_exists('app/controllers/' . $url[0] . '.php')) {
+				$this->controller = $url[0];
+				unset($url[0]);
+			}
+		}else {
+			if (file_exists('app/controllers/' . $url[0] . '.php')) {
+				$this->controller = $url[0];
+				unset($url[0]);
+			}
 		}
 		
 		require_once 'app/controllers/' . $this->controller . '.php';
