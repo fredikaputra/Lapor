@@ -30,7 +30,7 @@ main > span{
 }
 
 main form{
-	box-shadow: 0 10px 20px #0000000F;
+	box-shadow: 0 10px 20px #00000020;
 	padding: 1cm;
 	margin-top: 1cm;
 }
@@ -78,6 +78,7 @@ main form textarea{
 main form > div:last-of-type{
 	display: flex;
 	justify-content: space-between;
+	flex-flow: row wrap;
 	align-items: center;
 	margin-top: 1cm;
 }
@@ -90,4 +91,25 @@ main form > div:last-of-type button:hover,
 main form > div:last-of-type button:focus{
 	background: transparent;
 	color: var(--bg-color-primary);
+}
+
+/* responsive */
+@media screen and (max-width: 394px){
+	main form > div:first-of-type{
+		display: flex;
+		flex-flow: column wrap;
+	}
+	
+	main form div:first-of-type div:last-of-type span{
+		text-align: left;
+	}
+	
+	main form > div:last-of-type button{
+		margin-top: 20px;
+		width: 100%;
+	}
+	
+	main form textarea{
+		text-indent: 0;
+	}
 }
