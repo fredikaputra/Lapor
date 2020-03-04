@@ -30,7 +30,7 @@ main > span{
 }
 
 main form{
-	box-shadow: 0 10px 10px #00000010;
+	box-shadow: 0 10px 20px #0000000F;
 	padding: 1cm;
 	margin-top: 1cm;
 }
@@ -67,7 +67,6 @@ main form textarea{
 	margin-top: 20px;
 	border: none;
 	resize: none;
-	outline: none;
 	font-family: 'Arial';
 	color: dimgray;
 	font-size: 17px;
@@ -85,4 +84,10 @@ main form > div:last-of-type{
 
 main form > div:last-of-type button{
 	padding: 3px 10px;
+}
+
+main form > div:last-of-type button:hover,
+main form > div:last-of-type button:focus{
+	background: transparent;
+	color: var(--bg-color-primary);
 }

@@ -10,15 +10,21 @@
 	padding: 0;
 	box-sizing: border-box;
 	font-family: 'Calibri';
-	transition: .3s;
 	scroll-behavior: smooth;
+}
+
+body.using-mouse :focus{
+	outline: 1px solid transparent !important;
 }
 
 a, button{
 	text-decoration: none;
-	outline: none;
 	cursor: pointer;
 	font-size: 18px;
+}
+
+a:focus, button:focus{
+	outline: 1px solid var(--bg-color-primary);
 }
 
 p{
@@ -108,7 +114,6 @@ nav div div div button:first-of-type:hover,
 nav div div div button:first-of-type:focus{
 	background: transparent;
 	border: 1px solid var(--bg-color-primary);
-	color: var(--bg-color-primary);
 }
 
 nav div div div button:last-of-type{
@@ -141,8 +146,13 @@ footer span{
 	letter-spacing: .5px;
 }
 
+footer div a{
+	display: inline-block;
+}
+
 footer div a img{
 	width: 1cm;
+	transition: .3s;
 }
 
 footer div a:hover img,

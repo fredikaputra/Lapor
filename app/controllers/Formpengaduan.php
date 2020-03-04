@@ -4,7 +4,7 @@ class Formpengaduan extends Controller{
 	public function index(){
 		$data['title'] = 'LAPOR! - Sampaikan Aspirasi Anda';
 		$data['css'] = ['base.css', 'formpengaduan.css'];
-		$data['js'] = ['autoResize.js'];
+		$data['js'] = ['autoResize.js', 'outline.js'];
 		
 		$this->view('template/header', $data);
 		$this->view('formpengaduan/index');
