@@ -160,3 +160,32 @@ footer div a:hover img,
 footer div a:focus img{
 	margin: 0 10px;
 }
+
+
+
+/* responsive */
+@media screen and (max-width: 1366px){
+	a.logo{
+		font-size: .7cm;
+	}
+	
+	h1{
+		font-size: .8cm;
+	}
+	
+	h2{
+		font-size: .6cm;
+	}
+	
+	span{
+		font-size: 16px;
+	}
+	
+	a, button{
+		font-size: 15px;
+	}
+	
+	p{
+		font-size: 15px;
+	}
+}

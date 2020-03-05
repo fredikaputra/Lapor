@@ -1,6 +1,8 @@
 <header>
-	<h1>Layanan Pengaduan Masyarakat Online LAPOR!</h1>
-	<a class="bg-rounded bg-primary" href="<?= BASEURL ?>/form-pengaduan">LAPOR!</a>
+	<div>
+		<h1>Layanan Pengaduan Masyarakat Online LAPOR!</h1>
+		<a class="bg-rounded bg-primary" href="<?= BASEURL ?>/form-pengaduan">LAPOR!</a>
+	</div>
 </header>
 
 <section id="about">

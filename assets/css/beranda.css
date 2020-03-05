@@ -1,22 +1,25 @@
 /* header */
 header{
 	background: url('../img/bg/background.jpg') center center/cover no-repeat fixed;
-	padding: 6cm 0;
 	text-align: center;
+	height: 15cm;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
-header h1{
+header div h1{
 	color: white;
 	letter-spacing: -2px;
 }
 
-header a{
+header div a{
 	display: inline-block;
 	margin-top: 1cm;
 }
 
-header a:hover,
-header a:focus{
+header div a:hover,
+header div a:focus{
 	background: transparent;
 	border: 1px solid var(--bg-color-primary);
 }
@@ -71,4 +74,23 @@ section#report div div span{
 	font-size: 1.5cm;
 	font-weight: lighter;	
 	color: dimgray;
+}
+
+
+
+/* responsive */
+@media screen and (max-width: 500px){	
+	header{
+		height: 95vh;
+	}
+	
+	section#report > div{
+		grid-template-columns: repeat(auto-fit, minmax(5cm, 1fr));
+	}
+}
+
+@media screen and (max-width: 900px) and (orientation: landscape){
+	header{
+		height: 88vh;
+	}
 }

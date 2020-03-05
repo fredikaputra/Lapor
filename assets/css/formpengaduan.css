@@ -1,8 +1,11 @@
 /* header */
 header{
 	background: url('../img/bg/background.jpg') center center/cover no-repeat fixed;
-	padding: 4cm 0;
 	text-align: center;
+	height: 8cm;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 header h1{
@@ -93,23 +96,42 @@ main form > div:last-of-type button:focus{
 	color: var(--bg-color-primary);
 }
 
+
+
 /* responsive */
-@media screen and (max-width: 394px){
+@media screen and (max-width: 900px) and (orientation: landscape){
+	header{
+		height: 88vh;
+	}
+}
+
+@media screen and (max-width: 500px){
 	main form > div:first-of-type{
 		display: flex;
 		flex-flow: column wrap;
 	}
 	
-	main form div:first-of-type div:last-of-type span{
-		text-align: left;
+	main form > div:first-of-type{
+		border-bottom: 1px dashed #00000010;
+		padding-bottom: .5cm;
+	}
+	
+	main form div:first-of-type div:first-of-type{
+		margin-bottom: 10px;
+	}
+	
+	main form div:first-of-type div:first-of-type span{
+		text-align: right;
 	}
 	
 	main form > div:last-of-type button{
 		margin-top: 20px;
 		width: 100%;
+		padding: 10px;
 	}
 	
 	main form textarea{
 		text-indent: 0;
+		margin-top: .5cm;
 	}
 }
