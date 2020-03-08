@@ -11,6 +11,7 @@
 	box-sizing: border-box;
 	font-family: 'Calibri';
 	scroll-behavior: smooth;
+	outline: 1px solid transparent;
 }
 
 body.using-mouse :focus{
@@ -38,6 +39,7 @@ p{
 
 span{
 	font-size: 20px;
+	color: darkgray;
 }
 
 h1{
@@ -160,6 +162,100 @@ footer div a:hover img,
 footer div a:focus img{
 	margin: 0 10px;
 }
+
+
+
+/* modal */
+#modal{
+	position: fixed;
+	background: #000000A0;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#modal form.login{
+	background: white;
+	padding: 1.5cm;
+	text-align: center;
+	width: 12cm;
+	position: relative;
+}
+
+#modal form.login h2{
+	margin-bottom: 5px;
+}
+
+#modal form.login a:first-of-type{
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	font-size: unset;
+	padding: 5px 5px 1px 5px;
+}
+
+#modal form.login a:first-of-type img{
+	width: 15px;
+}
+
+#modal form.login > div:first-of-type{
+	margin-top: 20px;
+}
+
+#modal form.login > div:last-of-type{
+	margin-top: 10px;
+}
+
+#modal form.login > div{
+	border-bottom: 1px solid darkgray;
+	padding: 15px;
+}
+
+#modal form.login div:focus-within{
+	border-bottom: 1px solid var(--bg-color-primary);
+}
+
+#modal form.login div{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#modal form.login div img{
+	width: 20px;
+}
+
+#modal form.login div input{
+	width: 100%;
+	margin-left: 10px;
+	border: none;
+	font-size: 17px;
+}
+
+#modal form.login button{
+	width: 100%;
+	margin: 20px 0;
+}
+
+#modal form.login button:hover,
+#modal form.login button:focus{
+	background: transparent;
+	color: var(--bg-color-primary);
+}
+
+#modal form.login a:last-of-type{
+	color: darkgray;
+}
+
+#modal form.login a:last-of-type:hover,
+#modal form.login a:last-of-type:focus{
+	color: var(--bg-color-primary);
+}
+
 
 
 
