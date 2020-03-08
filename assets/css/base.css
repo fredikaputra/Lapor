@@ -14,6 +14,12 @@
 	outline: 1px solid transparent;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+	-webkit-appearance: none;
+	margin: 0;
+}
+
 body.using-mouse :focus{
 	outline: 1px solid transparent !important;
 }
@@ -24,7 +30,7 @@ a, button{
 	font-size: 18px;
 }
 
-a:focus, button:focus{
+a:focus, button:focus, input[type='file']:focus{
 	outline: 1px solid var(--bg-color-primary);
 }
 

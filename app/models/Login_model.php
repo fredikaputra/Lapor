@@ -3,11 +3,8 @@
 class Login_model{
 	private $db;
 	
-	public function __construct(){
+	public function __construct($data){
 		$this->db = new Database;
-	}
-	
-	public function login($data){
 		$this->db->dbh->real_escape_string(extract($data));
 		if (isset($login)) {
 			$query = 'SELECT * FROM masyarakat WHERE username = ?';
