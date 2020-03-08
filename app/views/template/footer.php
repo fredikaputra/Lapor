@@ -10,17 +10,17 @@
 	</footer>
 	
 	<div id="modal-login" class="<?= $data['modalsignin'] ?>">
-		<form method="post" action="<?= BASEURL ?>">
+		<form method="post" action="<?= BASEURL ?>/login">
 			<a href="javascript:void(0)" onclick="closemodal()"><img src="<?= BASEURL ?>/assets/img/icon/times.png" alt=""></a>
 			<h2>Login</h2>
 			<span>Masukkan username dan password anda untuk melanjutkan!</span>
 			<div>
 				<img src="<?= BASEURL ?>/assets/img/icon/user.png" alt="">
-				<input type="text" placeholder="Username" id="focus-login" autofocus>
+				<input type="text" name="username" placeholder="Username" id="focus-login" autofocus>
 			</div>
 			<div>
 				<img src="<?= BASEURL ?>/assets/img/icon/lock.png" alt="">
-				<input type="password" placeholder="Password">
+				<input type="password" name="password" placeholder="Password">
 			</div>
 			<button type="submit" class="bg-flat bg-primary" name="login">Login</button>
 			<a href="javascript:void(0)" onclick="opensignup()">Belum Punya Akun?</a>

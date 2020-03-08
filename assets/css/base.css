@@ -111,11 +111,12 @@ nav > div{
 
 nav div div{
 	display: inline;
-	align-self: center;
+	align-self: center; 
 }
 
-nav div div a{
-	display: none;
+nav div div a:hover,
+nav div div a:focus{
+	background: transparent;
 }
 
 nav div div div button:first-of-type:hover,
