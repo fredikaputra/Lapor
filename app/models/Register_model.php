@@ -27,8 +27,6 @@ class Register_model{
 			}else {
 				Flasher::setFlash('Username telah digunakan!', 'bg-warning', 'attention');
 			}
-		}else {
-			Flasher::setFlash('Terjadi kesalahan saat memproses data!', 'bg-danger', 'attention');
 		}
 	}
 	

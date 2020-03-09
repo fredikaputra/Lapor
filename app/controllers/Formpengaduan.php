@@ -17,4 +17,10 @@ class Formpengaduan extends Controller{
 		$this->view('formpengaduan/index', $data);
 		$this->view('template/footer', $data);
 	}
+	
+	public function kirim(){
+		if ($this->model('Insert_model')->pengaduan($_POST, $_FILES) === 'CONTINUE') {
+			header('location:' . BASEURL . '/form-pengaduan');
+		};
+	}
 }

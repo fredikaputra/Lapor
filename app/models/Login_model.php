@@ -20,8 +20,6 @@ class Login_model{
 			}else {
 				Flasher::setFlash('Username atau password salah!', 'bg-warning', 'attention');
 			}
-		}else {
-			Flasher::setFlash('Terjadi kesalahan saat memproses data!', 'bg-danger', 'attention');
 		}
 	}
 	
