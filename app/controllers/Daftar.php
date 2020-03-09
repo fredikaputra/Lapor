@@ -2,6 +2,7 @@
 
 class Daftar extends Controller{
 	public function index(){
-		var_dump($_POST);
+		$this->model('Register_model')->masyarakat($_POST);
+		header('location: ' . BASEURL);
 	}
 }

@@ -9,15 +9,15 @@
 		<div>
 			<div>
 				<span>Pelapor</span>
-				<span>-</span>
+				<span><?= $data['name'] ?></span>
 			</div>
 			<div>
 				<span>Waktu Tercatat</span>
-				<span>16:16, 04 March 2020</span>
+				<span><?= date('H:i, d M Y') ?></span>
 			</div>
 		</div>
 		
-		<textarea name="name" placeholder="Ketik laporan anda!"></textarea>
+		<textarea name="name" placeholder="Ketik laporan anda!" required></textarea>
 		<div>
 			<input type="file" name="photo">
 			<button class="bg-flat bg-primary" type="submit" name="insertPengaduan">Lapor!</button>

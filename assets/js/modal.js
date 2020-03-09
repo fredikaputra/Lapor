@@ -40,3 +40,10 @@ window.onclick = function(event){
 		document.getElementById('modal-signup').classList.add('hide');
 	}
 }
+
+document.body.addEventListener('keydown', function(event){
+	if (event.keyCode === 27) {
+		document.getElementById('modal-login').classList.add('hide');
+		document.getElementById('modal-signup').classList.add('hide');
+	}
+});

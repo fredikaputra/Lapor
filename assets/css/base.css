@@ -123,6 +123,7 @@ div#notif{
 	grid-gap: .2cm;
 	z-index: 2;
 	transition: 1s;
+	cursor: default;
 }
 
 div#notif img{

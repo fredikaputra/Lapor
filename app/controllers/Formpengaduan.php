@@ -8,10 +8,13 @@ class Formpengaduan extends Controller{
 		$data['modalsignup'] = 'hide';
 		if (isset($_SESSION['masyarakatNIK'])) {
 			$data['modalsignin'] = 'hide';
+			$data['name'] = $this->model('GetData_model')->autoMasyarakat()['nama'];
+		}else {
+			$data['name'] = '-';
 		}
 		
 		$this->view('template/header', $data);
-		$this->view('formpengaduan/index');
+		$this->view('formpengaduan/index', $data);
 		$this->view('template/footer', $data);
 	}
 }
