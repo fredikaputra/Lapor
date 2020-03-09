@@ -21,7 +21,7 @@ header div a{
 header div a:hover,
 header div a:focus{
 	background: transparent;
-	border: 1px solid var(--bg-color-primary);
+	border: 1px solid var(--bg-color-blue);
 }
 
 

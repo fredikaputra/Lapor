@@ -93,7 +93,7 @@ main form > div:last-of-type button{
 main form > div:last-of-type button:hover,
 main form > div:last-of-type button:focus{
 	background: transparent;
-	color: var(--bg-color-primary);
+	color: var(--bg-color-blue);
 }
 
 

@@ -17,6 +17,9 @@
 		?>
 	</head>
 	<body>
+		
+		<?= Flasher::flash() ?>
+		
 		<nav>
 			<div>
 				<a class="logo" href="<?= BASEURL ?>">LAPOR!</a>

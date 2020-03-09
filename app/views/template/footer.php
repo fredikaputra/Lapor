@@ -16,11 +16,11 @@
 			<span>Masukkan username dan password anda untuk melanjutkan!</span>
 			<div>
 				<img src="<?= BASEURL ?>/assets/img/icon/user.png" alt="">
-				<input type="text" name="username" placeholder="Username" id="focus-login" autofocus>
+				<input type="text" name="username" placeholder="Username" id="focus-login" autofocus required>
 			</div>
 			<div>
 				<img src="<?= BASEURL ?>/assets/img/icon/lock.png" alt="">
-				<input type="password" name="password" placeholder="Password">
+				<input type="password" name="password" placeholder="Password" required>
 			</div>
 			<button type="submit" class="bg-flat bg-primary" name="login">Login</button>
 			<a href="javascript:void(0)" onclick="opensignup()">Belum Punya Akun?</a>
@@ -35,26 +35,26 @@
 			<div>
 				<div>
 					<img src="<?= BASEURL ?>/assets/img/icon/hashtag.png" alt="">
-					<input type="number" name="nik" min="0" placeholder="Nomor NIK" id="focus-signup">
+					<input type="number" name="nik" min="0" placeholder="Nomor NIK" id="focus-signup" required>
 				</div>
 				<div>
 					<img src="<?= BASEURL ?>/assets/img/icon/user.png" alt="">
-					<input type="text" name="name" placeholder="Nama Lengkap">
+					<input type="text" name="name" placeholder="Nama Lengkap" required>
 				</div>
 			</div>
 			<div>
 				<div>
 					<img src="<?= BASEURL ?>/assets/img/icon/user.png" alt="">
-					<input type="text" name="username" placeholder="Username" autofocus>
+					<input type="text" name="username" placeholder="Username" autofocus required>
 				</div>
 				<div>
 					<img src="<?= BASEURL ?>/assets/img/icon/lock.png" alt="">
-					<input type="password" name="password" placeholder="Password">
+					<input type="password" name="password" placeholder="Password" required>
 				</div>
 			</div>
 			<div>
 				<img src="<?= BASEURL ?>/assets/img/icon/phone-book.png" alt="">
-				<input type="number" name="phone" min="0" placeholder="Nomor Telepon">
+				<input type="number" name="phone" min="0" placeholder="Nomor Telepon" required>
 			</div>
 			<button type="submit" class="bg-flat bg-primary" name="signup">Daftar</button>
 			<a href="javascript:void(0)" onclick="openlogin()">Sudah Punya Akun?</a>

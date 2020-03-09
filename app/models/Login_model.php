@@ -15,12 +15,13 @@ class Login_model{
 				if ($this->verifyPass($password, $this->db->row['password']) === TRUE) {
 					$_SESSION['masyarakatNIK'] = $this->db->row['nik'];
 				}else {
-					echo "tidak";
+					Flasher::setFlash('Username atau password salah!', 'bg-warning');
 				}
 			}else {
-				echo 'tida';
-				var_dump($this->db->affectedRows());
+				Flasher::setFlash('Username atau password salah!', 'bg-warning');
 			}
+		}else {
+			Flasher::setFlash('Terjadi kesalahan saat memproses data!', 'bg-danger');
 		}
 	}
 	
