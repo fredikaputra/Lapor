@@ -7,6 +7,7 @@ class Beranda extends Controller{
 		$data['js'] = ['outline.js', 'modal.js'];
 		$data['modalsignin'] = 'hide';
 		$data['modalsignup'] = 'hide';
+		$data['modalgotodash'] = 'hide';
 		
 		$this->view('template/header', $data);
 		$this->view('template/nav');

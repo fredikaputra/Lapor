@@ -4,7 +4,7 @@
 		<div>
 			<?php
 			
-			if (isset($_SESSION['masyarakatNIK'])) {
+			if (isset($_SESSION['masyarakatNIK']) || isset($_SESSION['petugasID'])) {
 				?><a class="bg-rounded bg-primary" href="<?= BASEURL ?>/logout">Logout</a><?php
 			}else {
 				?>

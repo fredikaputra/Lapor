@@ -1,0 +1,60 @@
+body form{
+	position: fixed;
+	transform: translate(-50%, -50%);
+	left: 50%;
+	top: 50%;
+	box-shadow: 0 0 10px #0000001F;
+	padding: 1cm;
+	width: 12cm;
+}
+
+body form div:first-of-type{
+	display: flex;
+	align-items: center;
+}
+
+body form div:first-of-type img{
+	width: 1.5cm;
+	height: 1.5cm;
+	object-fit: cover;
+	object-position: center;
+	border-radius: 50%;
+	border: 2px solid lightgray;
+	margin-right: 10px;
+}
+
+body form div:first-of-type span{
+	font-size: .7cm;
+}
+
+body form div:last-of-type{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 20px;
+	border-bottom: 1px solid lightgray;
+	padding: 10px 0;
+}
+
+body form div:last-of-type:focus-within{
+	border-bottom: 1px solid var(--bg-color-blue);
+}
+
+body form div:last-of-type img{
+	width: 20px;
+	height: 20px;
+}
+
+body form div:last-of-type input{
+	width: 100%;
+	border: none;
+	margin-left: 10px;
+	font-size: 16px;
+	font-family: 'Arial';
+}
+
+body form button{
+	padding: 3px 8px !important;
+	margin: 20px 0 0 auto;
+	display: block;
+}

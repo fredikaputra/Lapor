@@ -3,10 +3,12 @@
 	--bg-color-green: #D4EDDA;
 	--bg-color-yellow: #FFF3CD;
 	--bg-color-red: #F8D7DA;
+	--bg-color-lightblue: #CCE5FF;
 	
 	--txt-color-green: #155724;
 	--txt-color-yellow: #856404;
 	--txt-color-red: #721C24;
+	--txt-color-lightblue: #004085;
 }
 
 *{
@@ -84,6 +86,12 @@ h2{
 	color: var(--txt-color-green);
 	background: var(--bg-color-green);
 	border: 1px solid var(--bg-color-green);
+}
+
+.bg-info{
+	color: var(--txt-color-lightblue);
+	background: var(--bg-color-lightblue);
+	border: 1px solid var(--bg-color-lightblue);
 }
 
 .bg-warning{
@@ -395,6 +403,49 @@ footer div a:focus img{
 	color: var(--bg-color-blue);
 }
 
+
+
+#modal-gotodashboard{
+	position: fixed;
+	background: #000000A0;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: .3s;
+}
+
+#modal-gotodashboard div{
+	background: white;
+	padding: 1.2cm;
+	text-align: center;
+	width: 16cm;
+	position: relative;
+}
+
+#modal-gotodashboard div h2{
+	margin-bottom: 5px;
+}
+
+#modal-gotodashboard div a:first-of-type{
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	font-size: unset;
+	padding: 5px 5px 1px 5px;
+}
+
+#modal-gotodashboard div a:first-of-type img{
+	width: 15px;
+}
+
+#modal-gotodashboard div a:last-of-type{
+	display: inline-block;
+	margin-top: 20px;
+}
 
 
 

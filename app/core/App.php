@@ -13,21 +13,24 @@ class App{
 		if (!empty($url[0])) {
 			if (strpos($url[0], '-')) { // check if controller contain dash (-)
 				$url[0] = str_replace('-', '', $url[0]);
-				if (file_exists('app/controllers/' . $url[0] . '.php')) {
-					$this->controller = $url[0];
-					unset($url[0]);
+			}
+			
+			if (file_exists('app/controllers/' . $url[0] . '.php')) {
+				if ($url[0] == 'dashboard') {
+					if (isset($_SESSION['petugasID']) || isset($_SESSION['petugasUsername'])) {
+						$this->controller = $url[0];
+						unset($url[0]);
+					}else {
+						$this->controller = 'pagenotfound';
+						unset($url[0]);
+					}
 				}else {
-					$this->controller = 'pagenotfound';
+					$this->controller = $url[0];
 					unset($url[0]);
 				}
 			}else {
-				if (file_exists('app/controllers/' . $url[0] . '.php')) {
-					$this->controller = $url[0];
-					unset($url[0]);
-				}else {
-					$this->controller = 'pagenotfound';
-					unset($url[0]);
-				}
+				$this->controller = 'pagenotfound';
+				unset($url[0]);
 			}
 		}
 		
@@ -36,6 +39,10 @@ class App{
 		
 		// method
 		if (isset($url[1])) {
+			if (strpos($url[1], '-')) {
+				$url[1] = str_replace('-', '', $url[1]);
+			}
+			
 			if (method_exists($this->controller, $url[1])) {
 				$this->method = $url[1];
 				unset($url[1]);

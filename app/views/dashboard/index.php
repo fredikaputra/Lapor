@@ -41,5 +41,30 @@
 		
 		?>
 		
+		<script>
+			var timeout;
+			
+			timeout = setInterval(function(){
+				window.location.href = "<?= BASEURL ?>/dashboard/lock-screen";
+			}, 5000);
+			// }, 180000);
+			
+			document.onmousemove = function(){
+				clearTimeout(timeout);
+				timeout = setInterval(function(){
+					window.location.href = "<?= BASEURL ?>/dashboard/lock-screen";
+				}, 5000);
+				// }, 180000);
+			}
+			
+			document.onkeydown = function(){
+				clearTimeout(timeout);
+				timeout = setInterval(function(){
+					window.location.href = "<?= BASEURL ?>/dashboard/lock-screen";
+				}, 5000);
+				// }, 180000);
+			}
+		</script>
+		
 	</body>
 </html>

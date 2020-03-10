@@ -61,6 +61,15 @@
 		</form>
 	</div>
 	
+	<div id="modal-gotodashboard" class="<?= $data['modalgotodash'] ?>">
+		<div>
+			<a href="javascript:void(0)" onclick="closemodal()"><img src="<?= BASEURL ?>/assets/img/icon/times.png" alt=""></a>
+			<h2>Pergi Ke Dashboard?</h2>
+			<span>Anda punya hak akses untuk masuk ke halaman dashboard!</span>
+			<a href="<?= BASEURL ?>/dashboard" class="bg-flat bg-info">Dashboard</a>
+		</div>
+	</div>
+	
 	<?php
 	
 	if (isset($data['js'])) {
