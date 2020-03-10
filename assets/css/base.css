@@ -157,53 +157,6 @@ div#notif span.effect{
 }
 
 
-
-/* nav div */
-nav{
-	position: absolute;
-	width: 100%;
-	padding: .5cm 0;
-}
-
-nav > div{
-	display: flex;
-	justify-content: space-between;
-	width: 95%;
-	max-width: 1100px;
-	margin: auto;
-}
-
-nav div div{
-	display: inline;
-	align-self: center; 
-}
-
-nav div div a:hover,
-nav div div a:focus{
-	background: transparent;
-}
-
-nav div div div button:first-of-type:hover,
-nav div div div button:first-of-type:focus{
-	background: transparent;
-	border: 1px solid var(--bg-color-blue);
-}
-
-nav div div div button:last-of-type{
-	background: transparent;
-	border: 1px solid var(--bg-color-blue);
-	color: white;
-	margin-left: 10px;
-}
-
-nav div div div button:last-of-type:hover,
-nav div div div button:last-of-type:focus{
-	background: var(--bg-color-blue);
-	border: 1px solid var(--bg-color-blue);
-	color: white;
-}
-
-
 /* footer */
 footer{
 	background: url('../img/bg/background.jpg') center center/cover no-repeat fixed;

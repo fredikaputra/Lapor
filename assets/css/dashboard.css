@@ -1,0 +1,111 @@
+:root{
+	--bg-color-darkblue: #292E40;
+	--bg-color-softblue: #B9C4CE;
+}
+
+body{
+	display: grid;
+	grid-template-columns: 7cm 1fr;
+	/* overflow: hidden; */
+}
+
+.sidebar{
+	background: var(--bg-color-darkblue);
+	height: 100vh;
+	overflow-y: auto;	
+	padding: 1cm 0;
+}
+
+.sidebar .profile{
+	margin-bottom: 1cm;
+}
+
+.sidebar .profile > *{
+	display: block;
+	text-align: center;
+}
+
+.sidebar .profile > img{
+	margin: 0 auto 20px;
+	width: 3cm;
+	height: 3cm;
+	object-fit: cover;
+	object-position: center;
+	border-radius: 50%;
+}
+
+.sidebar .profile span:first-of-type{
+	font-weight: bold;
+	font-size: 18px;
+	color: var(--bg-color-softblue);
+}
+
+.sidebar .profile span:last-of-type{
+	font-size: 17px;
+	color: var(--bg-color-softblue);
+	margin: 5px 0 15px;
+}
+
+.sidebar .profile div a{
+	display: inline-block;
+	line-height: 50%;
+}
+
+.sidebar .profile div a img{
+	width: 15px;
+	margin: 5px;
+}
+
+.sidebar nav a{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	color: var(--bg-color-softblue);
+	padding: 20px 40px 20px 30px;
+	font-size: 18px;
+	font-weight: bold;
+	transition: .3s;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a:focus{
+	padding: 20px 30px;
+	opacity: .7;
+}
+
+.sidebar nav a img{
+	width: 15px;
+	height: 15px;
+}
+
+.content{
+	display: grid;
+	grid-template-rows: 2cm 1fr;
+	height: 100vh;
+}
+
+.content .topnav{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background: var(--bg-color-darkblue);
+	padding: 0 1cm;
+}
+
+.content .topnav > a{
+	font-size: 25px;
+	color: white;
+	font-family: 'Calibri';
+	font-weight: bold;
+}
+
+.content .topnav div{
+	color: white;
+	font-family: 'Calibri';
+	font-size: 18px;
+}
+
+.content main{
+	background: aliceblue;
+	overflow-y: auto;
+}

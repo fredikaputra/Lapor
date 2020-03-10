@@ -7,3 +7,9 @@ document.body.addEventListener('keydown', function(event){
 		document.body.classList.remove('using-mouse');
 	}
 });
+
+document.body.addEventListener('keydown', function(event){
+	if (event.keyCode === 27) {
+		document.activeElement.blur();
+	}
+});
