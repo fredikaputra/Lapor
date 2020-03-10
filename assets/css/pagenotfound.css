@@ -1,0 +1,47 @@
+body > div{
+	position: fixed;
+	transform: translate(-50%, -50%);
+	top: 50%;
+	left: 50%;
+}
+
+body > div > *{
+	display: block;
+	text-align: center;
+}
+
+body div span:first-of-type{
+	font-size: 6cm;
+	color: var(--bg-color-blue);
+	line-height: 4cm;
+}
+
+body div span:last-of-type{
+	font-size: 1cm;
+	color: dimgray;
+	font-family: 'Arial';
+	letter-spacing: 1px;
+	margin-top: 1cm;
+}
+
+body div p{
+	text-indent: 0;
+	margin: 20px 0;
+	line-height: normal;
+}
+
+body div p a{
+	color: var(--bg-color-blue);
+	border-bottom: 1px dashed var(--bg-color-blue);
+}
+
+body div div a{
+	display: inline-block;
+	line-height: 50%;
+	margin: 5px;
+}
+
+body div div a img{
+	width: 1cm;
+	height: 1cm;
+}

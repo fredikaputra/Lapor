@@ -10,16 +10,24 @@ class App{
 		$url = $this->parseURL();
 		
 		// controller
-		if (strpos($url[0], '-')) { // check if controller contain dash (-)
-			$url[0] = str_replace('-', '', $url[0]);
-			if (file_exists('app/controllers/' . $url[0] . '.php')) {
-				$this->controller = $url[0];
-				unset($url[0]);
-			}
-		}else {
-			if (file_exists('app/controllers/' . $url[0] . '.php')) {
-				$this->controller = $url[0];
-				unset($url[0]);
+		if (!empty($url[0])) {
+			if (strpos($url[0], '-')) { // check if controller contain dash (-)
+				$url[0] = str_replace('-', '', $url[0]);
+				if (file_exists('app/controllers/' . $url[0] . '.php')) {
+					$this->controller = $url[0];
+					unset($url[0]);
+				}else {
+					$this->controller = 'pagenotfound';
+					unset($url[0]);
+				}
+			}else {
+				if (file_exists('app/controllers/' . $url[0] . '.php')) {
+					$this->controller = $url[0];
+					unset($url[0]);
+				}else {
+					$this->controller = 'pagenotfound';
+					unset($url[0]);
+				}
 			}
 		}
 		
@@ -31,6 +39,11 @@ class App{
 			if (method_exists($this->controller, $url[1])) {
 				$this->method = $url[1];
 				unset($url[1]);
+			}else {
+				$this->controller = 'pagenotfound';
+				unset($url[0]);
+				require_once 'app/controllers/' . $this->controller . '.php';
+				$this->controller = new $this->controller;
 			}
 		}
 		
