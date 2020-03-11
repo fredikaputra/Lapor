@@ -92,20 +92,25 @@ body{
 	padding: 0 1cm;
 }
 
-.content .topnav > a{
+.content .topnav > span{
 	font-size: 25px;
-	color: white;
+	color: aliceblue;
 	font-family: 'Calibri';
 	font-weight: bold;
 }
 
 .content .topnav div{
-	color: white;
+	color: aliceblue;
 	font-family: 'Calibri';
 	font-size: 18px;
+}
+
+.content .topnav div a{
+	color: var(--bg-color-blue);
 }
 
 .content main{
 	background: aliceblue;
 	overflow-y: auto;
+	padding: 1cm;
 }
