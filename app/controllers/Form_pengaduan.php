@@ -1,6 +1,6 @@
 <?php
 
-class Formpengaduan extends Controller{
+class Form_pengaduan extends Controller{
 	public function index(){
 		$data['title'] = 'LAPOR! - Sampaikan Aspirasi Anda';
 		$data['css'] = ['base.css', 'formpengaduan.css', 'topnav.css'];

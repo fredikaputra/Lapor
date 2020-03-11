@@ -21,6 +21,7 @@ class Dashboard extends Controller{
 			unset($_SESSION['petugasID']);
 		}
 		
+		$data['nickname'] = $this->model('Nickname_model')->getName($_SESSION['petugasName']);
 		$data['title'] = 'Locked';
 		$data['css'] = ['base.css', 'lockscreen.css'];
 		$data['js'] = ['outline.js'];

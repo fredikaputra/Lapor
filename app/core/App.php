@@ -12,7 +12,7 @@ class App{
 		// controller
 		if (!empty($url[0])) {
 			if (strpos($url[0], '-')) { // check if controller contain dash (-)
-				$url[0] = str_replace('-', '', $url[0]);
+				$url[0] = str_replace('-', '_', $url[0]);
 			}
 			
 			if (file_exists('app/controllers/' . $url[0] . '.php')) {

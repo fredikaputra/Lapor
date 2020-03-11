@@ -8,6 +8,12 @@ class Login_model{
 	}
 	
 	public function login($data){
+		if (isset($_SESSION['petugasName'])) {
+			unset($_SESSION['petugasName']);
+		}
+		if (isset($_SESSION['petugasUsername'])) {
+			unset($_SESSION['petugasUsername']);
+		}
 		$this->db->dbh->real_escape_string(extract($data));
 		if (isset($login)) {
 			$query = 'SELECT * FROM masyarakat WHERE username = ?';
