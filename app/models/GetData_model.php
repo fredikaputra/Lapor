@@ -20,7 +20,7 @@ class GetData_model{
 	}
 	
 	public function petugas($data){
-		$query = 'SELECT * FROM petugas WHERE id_petugas = ?';
+		$query = 'SELECT * FROM petugas JOIN level_petugas ON petugas.level = level_petugas.id WHERE id_petugas = ?';
 		$this->db->prepare($query);
 		$this->db->sth->bind_param('s', $data);
 		$this->db->execute();

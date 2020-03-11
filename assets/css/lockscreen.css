@@ -12,6 +12,7 @@ form{
 	padding: 1.5cm 1cm;
 	width: 12cm;
 	background: white;
+	border-radius: 1cm 0;
 }
 
 form > *{

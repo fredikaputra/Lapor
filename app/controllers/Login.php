@@ -10,7 +10,7 @@ class Login extends Controller{
 		if ($this->model('Login_model')->unlock($_POST) === TRUE) {
 			header('location: ' . BASEURL . '/dashboard');
 		}else {
-			header('location: ' . BASEURL . '/dashboard/lock-screen');
+			header('location: ' . BASEURL . '/dashboard/user-locked');
 		}
 	}
 }

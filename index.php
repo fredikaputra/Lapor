@@ -11,5 +11,3 @@ require_once 'app/init.php';
 
 // initialize app
 $app = new App;
-
-var_dump($_SESSION);

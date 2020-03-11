@@ -1,13 +1,16 @@
 		<div class="sidebar">
 			<div class="profile">
 				<img src="<?= BASEURL ?>/assets/img/user/user-2.jpg" alt="">
-				<span>I Putu Fredika Putra</span>
-				<span>Admin</span>
+				<span><?= $data['name'] ?></span>
+				<span><?= $data['level'] ?></span>
 				<div>
-					<a href="<?= BASEURL ?>">
+					<a href="<?= BASEURL ?>" title="Pengaturan">
 						<img src="<?= BASEURL ?>/assets/img/icon/gear.png" alt="">
 					</a>
-					<a href="<?= BASEURL ?>">
+					<a href="<?= BASEURL ?>/dashboard/user-locked" title="Lock Account">
+						<img src="<?= BASEURL ?>/assets/img/icon/bold-lock.png" alt="">
+					</a>
+					<a href="<?= BASEURL ?>/logout" title="Logout">
 						<img src="<?= BASEURL ?>/assets/img/icon/logout.png" alt="">
 					</a>
 				</div>
@@ -44,25 +47,22 @@
 		<script>
 			var timeout;
 			
-			timeout = setInterval(function(){
-				window.location.href = "<?= BASEURL ?>/dashboard/lock-screen";
-			}, 5000);
-			// }, 180000);
+			timeout = setTimeout(function(){
+				window.location.href = "<?= BASEURL ?>/dashboard/user-locked";
+			}, 180000);
 			
 			document.onmousemove = function(){
 				clearTimeout(timeout);
-				timeout = setInterval(function(){
-					window.location.href = "<?= BASEURL ?>/dashboard/lock-screen";
-				}, 5000);
-				// }, 180000);
+				timeout = setTimeout(function(){
+					window.location.href = "<?= BASEURL ?>/dashboard/user-locked";
+				}, 180000);
 			}
 			
 			document.onkeydown = function(){
 				clearTimeout(timeout);
-				timeout = setInterval(function(){
-					window.location.href = "<?= BASEURL ?>/dashboard/lock-screen";
-				}, 5000);
-				// }, 180000);
+				timeout = setTimeout(function(){
+					window.location.href = "<?= BASEURL ?>/dashboard/user-locked";
+				}, 180000);
 			}
 		</script>
 		

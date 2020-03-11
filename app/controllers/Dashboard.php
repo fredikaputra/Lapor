@@ -6,15 +6,17 @@ class Dashboard extends Controller{
 			$data['css'] = ['base.css', 'dashboard.css'];
 			$data['title'] = 'Dashboard';
 			$data['js'] = ['outline.js'];
+			$data['name'] = $this->model('GetData_model')->petugas($_SESSION['petugasID'])['nama_petugas'];
+			$data['level'] = ucfirst($this->model('GetData_model')->petugas($_SESSION['petugasID'])['level']);
 			
 			$this->view('template/header', $data);
 			$this->view('dashboard/index', $data);
 		}else {
-			$this->lockscreen();
+			$this->user_locked();
 		}
 	}
 	
-	public function lockscreen(){
+	public function user_locked(){
 		if (!isset($_SESSION['petugasUsername'])) {
 			$_SESSION['petugasName'] = $this->model('GetData_model')->petugas($_SESSION['petugasID'])['nama_petugas'];
 			$_SESSION['petugasUsername'] = $this->model('GetData_model')->petugas($_SESSION['petugasID'])['username'];

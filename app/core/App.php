@@ -40,7 +40,7 @@ class App{
 		// method
 		if (isset($url[1])) {
 			if (strpos($url[1], '-')) {
-				$url[1] = str_replace('-', '', $url[1]);
+				$url[1] = str_replace('-', '_', $url[1]);
 			}
 			
 			if (method_exists($this->controller, $url[1])) {
