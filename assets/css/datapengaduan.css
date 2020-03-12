@@ -1,3 +1,22 @@
-table{
+main > div{
+	overflow-x: auto;
+}
+
+div table{
 	width: 100%;
+	border-collapse: collapse;
+}
+
+div table tr:first-of-type td{
+	color: gray;
+}
+
+table, tr, td{
+	border: 2px solid #0000000A;
+}
+
+div table tr td{
+	padding: 10px;
+	font-family: 'Arial';
+	color: dimgray;
 }

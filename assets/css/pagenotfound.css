@@ -34,14 +34,3 @@ body div p a{
 	color: var(--bg-color-blue);
 	border-bottom: 1px dashed var(--bg-color-blue);
 }
-
-body div div a{
-	display: inline-block;
-	line-height: 50%;
-	margin: 5px;
-}
-
-body div div a img{
-	width: 1cm;
-	height: 1cm;
-}

@@ -68,6 +68,7 @@ main form div:first-of-type div span:last-of-type{
 main form textarea{
 	width: 100%;
 	margin-top: 20px;
+	padding: 1px;
 	border: none;
 	resize: none;
 	font-family: 'Arial';
@@ -75,19 +76,41 @@ main form textarea{
 	font-size: 17px;
 	line-height: 25px;
 	text-align: justify;
-	text-indent: 1.5cm;
 }
 
 main form > div:last-of-type{
+	margin-top: .5cm;
+	text-align: right;
+}
+
+main form > div:last-of-type label{
+	width: 100%;
+	border: 3px dashed #00000020;
+	padding: 10px;
+	cursor: pointer;
 	display: flex;
-	justify-content: space-between;
-	flex-flow: row wrap;
+	justify-content: center;
 	align-items: center;
-	margin-top: 1cm;
+}
+
+main form > div:last-of-type label:hover{
+	border-color: lightgray;
+}
+
+main form > div:last-of-type label img{
+	width: 20px;
+	margin-right: 5px;
+}
+
+main form > div:last-of-type label input{
+	display: none;
 }
 
 main form > div:last-of-type button{
-	padding: 3px 10px;
+	padding: 7px 40px;
+	margin-top: 20px;
+	font-weight: bold;
+	letter-spacing: 1px;
 }
 
 main form > div:last-of-type button:hover,

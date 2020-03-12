@@ -5,13 +5,13 @@
 			<?php
 			
 			if (isset($_SESSION['masyarakatNIK']) || isset($_SESSION['petugasID'])) {
-				?><a class="bg-rounded bg-primary" href="<?= BASEURL ?>/logout">Logout</a><?php
+				?><a class="bg-primary" href="<?= BASEURL ?>/logout">Logout</a><?php
 			}else {
 				?>
 				
 				<div>
-					<button type="button" class="bg-rounded bg-primary" onclick="showmodallogin()">Masuk</button>
-					<button type="button" class="bg-rounded" onclick="showmodalsignup()">Daftar</button>
+					<button type="button" class="bg-primary" onclick="showmodallogin()">Masuk</button>
+					<button type="button" onclick="showmodalsignup()">Daftar</button>
 				</div>
 				
 				<?php

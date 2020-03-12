@@ -2,10 +2,10 @@
 		<a class="logo" href="<?= BASEURL ?>">LAPOR!</a>
 		<span>Kami membantu anda untuk menyalurkan aspirasi anda kepada instansi yang berwenang demi tercapainya kepuasan anda.</span>
 		<div>
-			<a href=""><img src="<?= BASEURL ?>/assets/img/icon/social-facebook.png" alt=""></a>
-			<a href=""><img src="<?= BASEURL ?>/assets/img/icon/social-instagram.png" alt=""></a>
-			<a href=""><img src="<?= BASEURL ?>/assets/img/icon/social-twitter.png" alt=""></a>
-			<a href=""><img src="<?= BASEURL ?>/assets/img/icon/social-youtube.png" alt=""></a>
+			<a href=""><img src="<?= BASEURL ?>/assets/img/icon/facebook.png" alt=""></a>
+			<a href=""><img src="<?= BASEURL ?>/assets/img/icon/twitter.png" alt=""></a>
+			<a href=""><img src="<?= BASEURL ?>/assets/img/icon/youtube.png" alt=""></a>
+			<a href=""><img src="<?= BASEURL ?>/assets/img/icon/telegram.png" alt=""></a>
 		</div>
 	</footer>
 	
@@ -59,15 +59,6 @@
 			<button type="submit" class="bg-flat bg-primary" name="signup">Daftar</button>
 			<a href="javascript:void(0)" onclick="openlogin()">Sudah Punya Akun?</a>
 		</form>
-	</div>
-	
-	<div id="modal-gotodashboard" class="<?= $data['modalgotodash'] ?>">
-		<div>
-			<a href="javascript:void(0)" onclick="closemodal()"><img src="<?= BASEURL ?>/assets/img/icon/times.png" alt=""></a>
-			<h2>Pergi Ke Dashboard?</h2>
-			<span>Anda punya hak akses untuk masuk ke halaman dashboard!</span>
-			<a href="<?= BASEURL ?>/dashboard" class="bg-flat bg-info">Dashboard</a>
-		</div>
 	</div>
 	
 	<?php

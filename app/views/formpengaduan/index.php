@@ -17,10 +17,12 @@
 			</div>
 		</div>
 		
-		<textarea id="txt" name="msg" placeholder="Ketik laporan anda!" required></textarea>
+		<textarea id="txt" name="msg" placeholder="Ketik laporan anda ..." required></textarea>
 		<div>
-			<input type="file" name="photo">
-			<button class="bg-flat bg-primary" type="submit" name="insertPengaduan">Lapor!</button>
+			<label><img src="<?= BASEURL ?>/assets/img/icon/upload.png" alt=""> Upload
+				<input type="file" name="photo" accept=".png, .jpg, .jpeg">
+			</label>
+			<button class="bg-primary" type="submit" name="insertPengaduan">LAPOR!</button>
 		</div>
 	</form>
 </main>

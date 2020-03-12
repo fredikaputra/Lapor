@@ -3,7 +3,8 @@
 // config for base url
 // example: http://localhost/lapor for 'localhost/lapor'
 // don't give '/' at the end of url
-define('BASEURL', 'http://192.168.1.5/website/lapor');
+// define('BASEURL', 'http://192.168.1.5/website/lapor');
+define('BASEURL', 'http://localhost/website/lapor');
 
 // check if base url is correct
 // this proccess just for offline installation perpose only, not for hosting!
