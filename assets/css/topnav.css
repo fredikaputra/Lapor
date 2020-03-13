@@ -13,41 +13,176 @@ nav > div{
 	margin: auto;
 }
 
-nav div div{
+nav div div .logged{
 	display: inline;
 	align-self: center; 
+	position: relative;
 }
 
-nav div div a{
+nav div div .logged button{
+	line-height: 50%;
+	display: flex;
+	align-items: center;
+	font-size: 16px;
+	color: dimgray;
+	background: white;
+	padding: 5px 30px 5px 5px;
+	border-radius: 30px;
+	font-weight: bold;
+	border: none;
+	position: relative;
+}
+
+nav div div .logged button img:first-of-type{
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	margin-right: 5px;
+}
+
+nav div div .logged button img:last-of-type{
+	width: 13px;
+	height: 13px;
+	position: absolute;
+	right: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+nav div div .logged .accountMenu{
+	background: white;
+	display: inline-block;
+	line-height: 50%;
+	padding: .5cm;
+	position: absolute;
+	top: 1.5cm;
+	right: -4.5cm;
+	border-radius: 10px;
+	width: 8cm;
+	text-align: center;
+	box-shadow: 0 0 5px #00000070;
+}
+
+nav div div .logged .accountMenu div{
+	position: relative;
+}
+
+nav div div .logged .accountMenu div img:first-of-type{
+	border-radius: 50%;
+	width: 2cm;
+	height: 2cm;
+	display: block;
+	margin: auto;
+}
+
+nav div div .logged .accountMenu div img:last-of-type{
+	width: .5cm;
+	top: 1.35cm;
+	left: 3.97cm;
+	position: absolute;
+}
+
+nav div div .logged .accountMenu div div{
+	top: 1.2cm;
+	left: 3.8cm;
+	position: absolute;
+	background: white;
+	box-shadow: 0 0 3px lightgray;
+	border-radius: 50%;
+	padding: .4cm;
+}
+
+nav div div .logged .accountMenu > *{
+	display: block;
+	text-align: center;
+}
+
+nav div div .logged .accountMenu span:first-of-type{
+	margin-top: 20px;
+	color: dimgray;
+	font-weight: bold;
+	letter-spacing: -.5px;
+	font-size: 18px;
+}
+
+nav div div .logged .accountMenu span:last-of-type{
+	margin-top: 15px;
+	color: darkgray;
+	font-size: 18px;
+}
+
+nav div div .logged .accountMenu a:first-of-type{
+	position: absolute;
+	right: 20px;
+	z-index: 1;
+}
+
+nav div div .logged .accountMenu a:first-of-type img{
+	width: 20px;
+	transform: rotate(0deg);
+	transition: .3s;
+}
+
+nav div div .logged .accountMenu a:first-of-type:hover img{
+	transform: rotate(100deg);
+}
+
+nav div div .logged .accountMenu a:nth-of-type(2){
+	display: inline-block;
+	margin: 30px 0 10px;
+	border: 1px solid lightgray;
+	padding: 10px 20px;
+	font-size: 16px;
+	border-radius: 30px;
+	color: gray;
+	font-weight: bold;
+	letter-spacing: 1px;
+}
+
+nav div div .logged .accountMenu a:nth-of-type(2):hover{
+	background: #00000005;
+}
+
+nav div div .logged .accountMenu hr{
+	border: 1px solid #0000000F;
+}
+
+nav div div .logged .accountMenu a:last-of-type{
+	display: inline-block;
+	margin-top: 10px;
+	border: 1px solid lightgray;
+	padding: 10px 20px;
+	font-size: 16px;
+	border-radius: 10px;
+	color: gray;
+	font-weight: bold;
+	letter-spacing: 1px;
+}
+
+nav div div .logged .accountMenu a:last-of-type:hover{
+	background: #00000005;
+}
+
+nav div div div.unlog button{
 	padding: 7px 25px;
 	border-radius: 20px;
 }
 
-nav div div a:hover,
-nav div div a:focus{
-	background: transparent;
-}
-
-nav div div div button{
-	padding: 7px 25px;
-	border-radius: 20px;
-}
-
-nav div div div button:first-of-type:hover,
-nav div div div button:first-of-type:focus{
+nav div div div.unlog button:first-of-type:hover,
+nav div div div.unlog button:first-of-type:focus{
 	background: transparent;
 	border: 1px solid var(--bg-color-blue);
 }
 
-nav div div div button:last-of-type{
+nav div div div.unlog button:last-of-type{
 	background: transparent;
 	border: 1px solid var(--bg-color-blue);
 	color: white;
 	margin-left: 10px;
 }
 
-nav div div div button:last-of-type:hover,
-nav div div div button:last-of-type:focus{
+nav div div div.unlog button:last-of-type:hover,
+nav div div div.unlog button:last-of-type:focus{
 	background: var(--bg-color-blue);
 	border: 1px solid var(--bg-color-blue);
 	color: white;
