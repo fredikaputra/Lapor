@@ -1,0 +1,40 @@
+Main Future:
+Login
+- Admin
+- Petugas
+- Masyarakat
+
+Logout
+
+Registrasi
+- Admin Registrasi Masyarakat
+- Masyarakat Registrasi Sendiri
+
+Buat Laporan
+
+Tampilkan Semua Laporan Masuk
+
+Verifikasi dan Validasi
+
+Beri Tanggapan
+
+Cetak Laporan berdasarkan filter
+
+
+
+
+
+
+Side Future:
+
+If Unlogged, doashboard not found
+
+lock-screen feature
+
+notfound feature
+
+Tabable website (Keyboarder)
+
+Form Laporan auto enter
+
+responsive
