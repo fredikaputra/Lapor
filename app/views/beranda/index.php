@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-	<head>
-		<meta charset="utf-8">
-		<title></title>
-	</head>
-	<body>
-		mantap
-	</body>
-</html>
+<main>
+	<div>
+		<h1>Layanan Pengaduan Masyarakat Online!</h1>
+		<a href="<?= BASEURL ?>">LAPOR SEKARANG!</a>
+	</div>
+</main>

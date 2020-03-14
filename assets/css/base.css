@@ -1,0 +1,17 @@
+:root{
+	--blue: #0093ff;
+}
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body{
+	background: url('../img/background/bg.jpg') center center/cover no-repeat fixed;
+}
+
+a{
+	text-decoration: none;
+}
