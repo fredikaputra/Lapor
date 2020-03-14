@@ -25,7 +25,7 @@
 							</div>
 							<span><?= $data['name'] ?></span>
 							<span>@<?= $data['username'] ?></span>
-							<a href="<?= BASEURL ?>/fredikaputra">Dashboard</a>
+							<a href="<?= BASEURL ?>/dashboard/masyarakat/<?= $data['username'] ?>">Dashboard</a>
 							<hr>
 							<a href="<?= BASEURL ?>/logout">Logout</a>
 						</div>

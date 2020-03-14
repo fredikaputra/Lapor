@@ -15,9 +15,10 @@ class App{
 				$url[0] = str_replace('-', '_', $url[0]);
 			}
 			
+			
 			if (file_exists('app/controllers/' . $url[0] . '.php')) {
 				if ($url[0] == 'dashboard') {
-					if (isset($_SESSION['petugasID']) || isset($_SESSION['petugasUsername'])) {
+					if (isset($_SESSION['petugasID']) || isset($_SESSION['petugasUsername']) || isset($_SESSION['masyarakatNIK'])) {
 						$this->controller = $url[0];
 						unset($url[0]);
 					}else {
