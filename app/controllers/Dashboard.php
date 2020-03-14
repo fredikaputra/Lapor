@@ -75,4 +75,23 @@ class Dashboard extends Controller{
 			$this->view('template/footer', $data);
 		}
 	}
+	
+	public function riwayat_aduan($riwayat = NULL){
+		if ($riwayat === NULL) {
+			echo 'tidak ada';
+		}else {
+			$data['title'] = 'Riwayat Aduan #0798';
+			$data['css'] = ['base.css', 'topnav.css', 'riwayataduan.css'];
+			$data['js'] = ['outline.js', 'modal.js'];
+			$data['modalsignup'] = 'hide';
+			$data['modalsignin'] = 'hide';
+			$data['name'] = $this->model('GetData_model')->autoMasyarakat()['nama'];
+			$data['username'] = $this->model('GetData_model')->autoMasyarakat()['username'];
+			
+			$this->view('template/header', $data);
+			$this->view('template/nav', $data);
+			$this->view('dashboard/riwayataduan', $data);
+			$this->view('template/footer', $data);
+		}
+	}
 }
