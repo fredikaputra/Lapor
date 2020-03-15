@@ -9,4 +9,9 @@ class Login extends Controller{
 		$this->view('login/index');
 		$this->view('template/footer');
 	}
+	
+	public function check(){
+		$this->model('Check_model')->login($_POST);
+		// header('location: ' . BASEURL . '/login');
+	}
 }

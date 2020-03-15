@@ -69,7 +69,7 @@ nav > div > div > a{
 	font-size: 16px;
 }
 
-nav div div div a{
+nav div div div.unlogged a{
 	font-family: 'Calibri';
 	border: 1px solid var(--blue);
 	color: white;
@@ -80,6 +80,18 @@ nav div div div a{
 	display: inline-block;
 }
 
-nav div div div a:first-of-type{
+nav div div div.unlogged a:first-of-type{
 	background: var(--blue);
+}
+
+nav div div div.logged a{
+	background: var(--blue);
+	font-family: 'Calibri';
+	border: 1px solid var(--blue);
+	color: white;
+	padding: 5px;
+	border-radius: 20px;
+	width: 2.5cm;
+	text-align: center;
+	display: inline-block;
 }
