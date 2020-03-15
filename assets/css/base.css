@@ -15,3 +15,70 @@ body{
 a{
 	text-decoration: none;
 }
+
+button, label{
+	cursor: pointer;
+}
+
+main{
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+nav{
+	position: absolute;
+	width: 100%;
+	padding: 20px 0;
+}
+
+nav > div{
+	width: 95%;
+	max-width: 1100px;
+	margin: auto;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+nav > div > a{
+	color: white;
+	display: flex;
+	align-items: flex-end;
+	font-size: 1cm;
+	font-family: 'Calibri';
+	font-weight: bold;
+}
+
+nav > div > a img{
+	width: 1cm;
+	margin-right: 5px;
+}
+
+nav div > div{
+	display: inline;
+}
+
+nav > div > div > a{
+	color: white;
+	font-family: 'Calibri';
+	font-weight: bolder;
+	margin-right: 1cm;
+	font-size: 16px;
+}
+
+nav div div div a{
+	font-family: 'Calibri';
+	border: 1px solid var(--blue);
+	color: white;
+	padding: 5px;
+	border-radius: 20px;
+	width: 2.5cm;
+	text-align: center;
+	display: inline-block;
+}
+
+nav div div div a:first-of-type{
+	background: var(--blue);
+}
