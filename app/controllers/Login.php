@@ -11,7 +11,7 @@ class Login extends Controller{
 	}
 	
 	public function proccess(){
-		$this->model('Check_model')->login($_POST);
+		$this->model('Proccess_model')->login($_POST);
 		// header('location: ' . BASEURL . '/login');
 	}
 }

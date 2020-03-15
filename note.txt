@@ -42,3 +42,5 @@ Tabable website (Keyboarder)
 Form Laporan auto enter
 
 responsive
+
+if register uncomplete, make session all data supaya ngg ngetik ulang

@@ -1,6 +1,6 @@
 <?php
 
-class Check_model{
+class Proccess_model{
 	private $db;
 	
 	public function __construct(){
@@ -17,12 +17,20 @@ class Check_model{
 	public function register($data){
 		$this->db->dbh->real_escape_string(extract($data));
 		if (isset($register)) {
+			$_SESSION['register'] = [
+				'nik' => $nik,
+				'name' => $name,
+				'username' => $username,
+				'password' => $password,
+				'phone' => $phone,
+			];
 			if ($this->nikCheck($nik) === TRUE) {
 				if ($this->usernameCheck($username) === TRUE) {
 					if ($this->passCheck($password) === TRUE) {
+						$password = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
 						$query = 'INSERT INTO masyarakat VALUES(?, ?, ?, ?, ?)';
 						$this->db->prepare($query);
-						$this->db->sth->bind_param('isssi', $nik, $name, $username, $password, $phone);
+						$this->db->sth->bind_param('sssss', $nik, $name, $username, $password, $phone);
 						$this->db->execute();
 						var_dump($this->db->affectedRows());
 						if ($this->db->affectedRows() > 0) {
