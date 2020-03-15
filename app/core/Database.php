@@ -21,7 +21,8 @@ class Database{
 		if ($this->dbh->prepare($query)) {
 			$this->sth = $this->dbh->prepare($query);
 		}else{
-			die('Query error: ' . $this->dbh->error);
+			// var_dump($this->dbh->error);
+			die('Query error!');
 		}
 	}
 	
@@ -38,6 +39,11 @@ class Database{
 	}
 	
 	public function affectedRows(){
-		return $this->dbh->affected_rows;
+		if (!$this->dbh->error) {
+			return $this->dbh->affected_rows;
+		}else {
+			// var_dump($this->dbh->error);
+			die('Query error!');
+		}
 	}
 }

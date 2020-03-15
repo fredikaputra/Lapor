@@ -1,5 +1,14 @@
 :root{
 	--blue: #0093ff;
+	--green: #D4EDDA;
+	--yellow: #FFF3CD;
+	--red: #F8D7DA;
+	--lightblue: #CCE5FF;
+	
+	--dark-green: #155724;
+	--dark-yellow: #856404;
+	--dark-red: #721C24;
+	--dark-lightblue: #004085;
 }
 
 *{
@@ -27,6 +36,47 @@ main{
 	align-items: center;
 	justify-content: center;
 }
+
+.hide{
+	visibility: hidden;
+	opacity: 0;
+}
+
+
+
+.bg-primary{
+	background: var(--blue);
+	color: white;
+	border: 1px solid var(--blue);
+}
+
+.bg-danger{
+	background: var(--red);
+	color: var(--dark-red);
+	border: 1px solid var(--red);
+}
+
+.bg-warning{
+	background: var(--yellow);
+	color: var(--dark-yellow);
+	border: 1px solid var(--yellow);
+}
+
+.bg-success{
+	background: var(--green);
+	color: var(--dark-green);
+	border: 1px solid var(--green);
+}
+
+.bg-info{
+	background: var(--lightblue);
+	color: var(--dark-lightblue);
+	border: 1px solid var(--lightblue);
+}
+
+
+
+
 
 nav{
 	position: absolute;
@@ -94,4 +144,58 @@ nav div div div.logged a{
 	width: 2.5cm;
 	text-align: center;
 	display: inline-block;
+}
+
+
+
+
+
+.notif{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	position: fixed;
+	top: 2cm;
+	right: 3cm;
+	transition: .3s;
+}
+
+.notif span:first-of-type{
+	padding: 10px 20px;
+	font-size: 16px;
+	font-family: 'Arial';
+	border-radius: 20px;
+	font-weight: bold;
+}
+
+.notif img{
+	width: 40px;
+	margin-left: 10px;
+	border-radius: 50%;
+	padding: 5px;
+}
+
+.notif div{
+	background: white;
+	position: absolute;
+	top: 50%;
+	right: 0;
+	transform: translateY(-50%);
+	z-index: -1;
+	border-radius: 50%;
+	animation: 1s ease-out loading infinite;
+}
+
+@keyframes loading{
+	from{
+		width: 30px;
+		height: 30px;
+		opacity: 1;
+		right: 5px;
+	}to{
+		width: 70px;
+		height: 70px;
+		opacity: 0;
+		right: -15px;
+	}
 }

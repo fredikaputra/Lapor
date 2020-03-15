@@ -13,4 +13,61 @@ class Check_model{
 			echo 'mantap';
 		}
 	}
+	
+	public function register($data){
+		$this->db->dbh->real_escape_string(extract($data));
+		if (isset($register)) {
+			if ($this->nikCheck($nik) === TRUE) {
+				if ($this->usernameCheck($username) === TRUE) {
+					if ($this->passCheck($password) === TRUE) {
+						$query = 'INSERT INTO masyarakat VALUES(?, ?, ?, ?, ?)';
+						$this->db->prepare($query);
+						$this->db->sth->bind_param('isssi', $nik, $name, $username, $password, $phone);
+						$this->db->execute();
+						var_dump($this->db->affectedRows());
+						if ($this->db->affectedRows() > 0) {
+							Flasher::setFlash('Anda berhasil teregistrasi!', 'bg-success', 'correct.png');
+							return true;
+						}else {
+							Flasher::setFlash('Terjadi kesalahan saat memproses data!', 'bg-danger', 'warning.png');
+						}
+					}else {
+						Flasher::setFlash('Password minimal 8 karakter!', 'bg-warning', 'warning.png');
+					}
+				}else {
+					Flasher::setFlash('Username sudah digunakan!', 'bg-warning', 'warning.png');
+				}
+			}else {
+				Flasher::setFlash('Nomor Induk Kependudukan sudah digunakan!', 'bg-warning', 'warning.png');
+			}
+		}else {
+			Flasher::setFlash('Terjadi kesalahan saat memproses data!', 'bg-danger', 'warning.png');
+		}
+	}
+	
+	public function nikCheck($nik){
+		$query = 'SELECT nik FROM masyarakat WHERE nik = ?';
+		$this->db->prepare($query);
+		$this->db->sth->bind_param('i', $nik);
+		$this->db->execute();
+		if ($this->db->getResult() === NULL) {
+			return true;
+		}
+	}
+	
+	public function usernameCheck($username){
+		$query = 'SELECT username FROM masyarakat WHERE username = ?';
+		$this->db->prepare($query);
+		$this->db->sth->bind_param('s', $username);
+		$this->db->execute();
+		if ($this->db->getResult() === NULL) {
+			return true;
+		}
+	}
+	
+	public function passCheck($password){
+		if (strlen($password) >= 8) {
+			return true;
+		}
+	}
 }

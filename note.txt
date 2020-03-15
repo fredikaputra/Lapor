@@ -33,6 +33,10 @@ lock-screen feature
 
 notfound feature
 
+client-side check in register form
+
+phone input give '-' example 0858-9837-3989
+
 Tabable website (Keyboarder)
 
 Form Laporan auto enter

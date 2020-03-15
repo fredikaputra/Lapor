@@ -1,5 +1,5 @@
 <main>
-	<form action="<?= BASEURL ?>/login/check" method="post">
+	<form action="<?= BASEURL ?>/login/proccess" method="post">
 		<a href="<?= BASEURL ?>">
 			<img src="<?= BASEURL ?>/assets/img/icon/circle-home-page.png" alt="">
 		</a>

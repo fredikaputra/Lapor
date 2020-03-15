@@ -10,7 +10,7 @@ class Login extends Controller{
 		$this->view('template/footer');
 	}
 	
-	public function check(){
+	public function proccess(){
 		$this->model('Check_model')->login($_POST);
 		// header('location: ' . BASEURL . '/login');
 	}
