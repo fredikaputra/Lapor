@@ -6,7 +6,7 @@
 		<h1>Login</h1>
 		<span>Hallo, silahkan untuk masukkan username dan password anda!</span>
 		<div>
-			<img src="<?= BASEURL ?>/assets/img/icon/circle-user.png" alt=""><input type="text" name="username" placeholder="Username" required>
+			<img src="<?= BASEURL ?>/assets/img/icon/circle-user.png" alt=""><input type="text" name="username" placeholder="Username" required autofocus>
 		</div>
 		<div>
 			<img src="<?= BASEURL ?>/assets/img/icon/circle-padlock.png" alt=""><input type="password" name="password" placeholder="Password" required>

@@ -12,7 +12,7 @@
 				?>
 				
 				<div class="logged">
-					<a href="<?= BASEURL ?>/login">LOGIN</a>
+					<a href="<?= BASEURL ?>/logout">LOGOUT</a>
 				</div>
 				
 				<?php
