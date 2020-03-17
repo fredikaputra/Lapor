@@ -33,18 +33,6 @@
 
 <?php
 if (isset($_SESSION['register'])) {
-	?>	
-	<script>
-		window.onbeforeunload = function(){
-			<?php
-				unset($_SESSION['register']);
-			?>
-			return true;
-		}
-		function setNullLoad(){
-			window.onbeforeunload = null;
-		}
-	</script>
-	<?php
+	unset($_SESSION['register']);
 }
 ?>
