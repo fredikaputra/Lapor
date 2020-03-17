@@ -19,7 +19,11 @@ class Login_model{
 					$this->db->execute();
 					if ($this->db->getResult() > 0) {
 						$_SESSION['masyarakatNIK'] = $this->db->row['nik'];
-						return true;
+						if (isset($_SESSION['msg'])) {
+							return 'FORM';
+						}else {
+							return 'HOME';
+						}
 					}else {
 						Flasher::setFlash('Terjadi kesalahan saat memproses data!', 'bg-danger', 'warning.png');
 					}

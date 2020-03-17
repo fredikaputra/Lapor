@@ -11,8 +11,10 @@ class Login extends Controller{
 	}
 	
 	public function proccess(){
-		if ($this->model('Login_model')->login($_POST) === TRUE) {
+		if ($this->model('Login_model')->login($_POST) === 'HOME') {
 			header('location: ' . BASEURL);
+		}else if ($this->model('Login_model')->login($_POST) === 'FORM'){
+			header('location: ' . BASEURL . '/formulir-pengaduan/proccess');
 		}else {
 			header('location: ' . BASEURL . '/login');
 		}

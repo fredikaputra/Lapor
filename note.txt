@@ -49,3 +49,11 @@ if register uncomplete, make session all data supaya ngg ngetik ulang
 UJI COBA
 
 semua fungsi yang ada di index.php (main) pindah ke config.php (run test)
+
+
+
+
+
+
+bahan:
+bawa file ukuran lebih dari 2mb buat test

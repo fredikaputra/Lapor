@@ -10,4 +10,12 @@ class Formulir_pengaduan extends Controller{
 		$this->view('formulir_pengaduan/index');
 		$this->view('template/footer');
 	}
+	
+	public function proccess(){
+		if ($this->model('UploadPengaduan_model')->send($_POST, $_FILES) === 'LOGIN'){
+			header('location: ' . BASEURL . '/login');
+		}else {
+			header('location: ' . BASEURL . '/formulir-pengaduan');
+		}
+	}
 }
