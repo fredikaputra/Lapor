@@ -10,16 +10,16 @@ class Login_model{
 	
 	public function login($data){
 		$this->db->dbh->real_escape_string(extract($data));
-		if (isset($login)) {
-			if ($this->masUserCheck($username) > 0) {
-				if ($this->passVerify($username, $password) === TRUE) {
+		if (isset($login)) { // cek kalau tombol ditekan
+			if ($this->masUserCheck($username) > 0) { // cek kalau username benar
+				if ($this->passVerify($username, $password) === TRUE) { // cek kalau password benar
 					$query = "SELECT * FROM $this->table WHERE username = ?";
 					$this->db->prepare($query);
 					$this->db->sth->bind_param('s', $username);
 					$this->db->execute();
 					if ($this->db->getResult() > 0) {
 						$_SESSION['masyarakatNIK'] = $this->db->row['nik'];
-						if (isset($_SESSION['tmpFormSession'])) {
+						if (isset($_SESSION['tmpFormSession'])) { // cek kalau sesi kebuat (dikhususkan untuk proses saat membuat laporan)
 							return 'FORM';
 						}else {
 							return 'HOME';
@@ -38,7 +38,7 @@ class Login_model{
 		}
 	}
 	
-	public function masUserCheck($username){
+	public function masUserCheck($username){ // cek username benar
 		$query = "SELECT username FROM $this->table WHERE username = ?";
 		$this->db->prepare($query);
 		$this->db->sth->bind_param('s', $username);
@@ -46,7 +46,7 @@ class Login_model{
 		return $this->db->getResult();
 	}
 	
-	public function passVerify($username, $password){
+	public function passVerify($username, $password){ // cek password benar
 		$query = "SELECT password FROM $this->table WHERE username = ?";
 		$this->db->prepare($query);
 		$this->db->sth->bind_param('s', $username);

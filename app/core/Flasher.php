@@ -1,7 +1,7 @@
 <?php
 
 class Flasher{
-	public static function setFlash($msg, $class, $img){
+	public static function setFlash($msg, $class, $img){ // set pesan
 		$_SESSION['flash'] = [
 			'msg' => $msg,
 			'class' => $class,
@@ -9,7 +9,7 @@ class Flasher{
 		];
 	}
 	
-	public static function flash(){
+	public static function flash(){ // tampilkan pesan
 		if (isset($_SESSION['flash'])) {
 			echo '<div class="notif">
 				<span class="' . $_SESSION['flash']['class'] . '">' . $_SESSION['flash']['msg'] . '</span>

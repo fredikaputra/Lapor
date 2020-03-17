@@ -10,17 +10,17 @@ class Daftar_model{
 	
 	public function register($data){
 		$this->db->dbh->real_escape_string(extract($data));
-		if (isset($register)) {
-			$_SESSION['register'] = [
+		if (isset($register)) { // cek ketika tombol di tekan
+			$_SESSION['register'] = [ // buat sesi untuk register
 				'nik' => $nik,
 				'name' => $name,
 				'username' => $username,
 				'password' => $password,
 				'phone' => $phone,
 			];
-			if ($this->nikCheck($nik) === TRUE) {
-				if ($this->masUserCheck($username) === NULL) {
-					if ($this->passCheck($password) === TRUE) {
+			if ($this->nikCheck($nik) === TRUE) { // cek kalau nik belum digunakan
+				if ($this->masUserCheck($username) === NULL) { // cek kalau username belum digunakan
+					if ($this->passCheck($password) === TRUE) { // cek kalau password lebih dari sama dengan 8
 						$password = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
 						$query = "INSERT INTO $this->table VALUES(?, ?, ?, ?, ?)";
 						$this->db->prepare($query);
@@ -51,7 +51,7 @@ class Daftar_model{
 		$this->db->prepare($query);
 		$this->db->sth->bind_param('i', $nik);
 		$this->db->execute();
-		if ($this->db->getResult() === NULL) {
+		if ($this->db->getResult() === NULL) { // cek nik belum ada yang menggunakan
 			return true;
 		}
 	}
@@ -61,11 +61,11 @@ class Daftar_model{
 		$this->db->prepare($query);
 		$this->db->sth->bind_param('s', $username);
 		$this->db->execute();
-		return $this->db->getResult();
+		return $this->db->getResult(); // cek username belum ada yang menggunakan
 	}
 	
 	public function passCheck($password){
-		if (strlen($password) >= 8) {
+		if (strlen($password) >= 8) { // cek password lebih dari sama dengan 8
 			return true;
 		}
 	}

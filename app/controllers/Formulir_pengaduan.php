@@ -2,6 +2,7 @@
 
 class Formulir_pengaduan extends Controller{
 	public function index(){
+		// buat data untuk di kirim ke view()
 		$data['css'] = ['base.css', 'formulir_pengaduan.css'];
 		$data['webtitle'] = 'LAPOR! - Layanan Pengaduan Masyarakat Online';
 		
@@ -12,8 +13,8 @@ class Formulir_pengaduan extends Controller{
 	}
 	
 	public function proccess(){
-		if ($this->model('UploadPengaduan_model')->send($_POST, $_FILES) === 'LOGIN'){
-			header('location: ' . BASEURL . '/login');
+		if ($this->model('UploadPengaduan_model')->send($_POST, $_FILES) === 'LOGIN'){ // kalau user belum login
+			header('location: ' . BASEURL . '/login'); // login terlebih dahulu
 		}else {
 			header('location: ' . BASEURL . '/formulir-pengaduan');
 		}
