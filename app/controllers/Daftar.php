@@ -11,7 +11,7 @@ class Daftar extends Controller{
 	}
 	
 	public function proccess(){
-		if ($this->model('Proccess_model')->register($_POST) === TRUE) {
+		if ($this->model('Daftar_model')->register($_POST) === TRUE) {
 			header('location: ' . BASEURL . '/login');
 			if (isset($_SESSION['register'])) {
 				unset($_SESSION['register']);

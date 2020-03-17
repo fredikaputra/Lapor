@@ -44,3 +44,8 @@ Form Laporan auto enter
 responsive
 
 if register uncomplete, make session all data supaya ngg ngetik ulang
+
+
+UJI COBA
+
+semua fungsi yang ada di index.php (main) pindah ke config.php (run test)

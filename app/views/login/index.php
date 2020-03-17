@@ -6,10 +6,10 @@
 		<h1>Login</h1>
 		<span>Hallo, silahkan untuk masukkan username dan password anda!</span>
 		<div>
-			<img src="<?= BASEURL ?>/assets/img/icon/circle-user.png" alt=""><input type="text" name="username" placeholder="Username" value="<?= (isset($_SESSION['login'])) ? $_SESSION['login']['username'] : '' ?>" required autofocus>
+			<img src="<?= BASEURL ?>/assets/img/icon/circle-user.png" alt=""><input type="text" name="username" oninvalid="setCustomValidity('Masukkan username anda!')" oninput="setCustomValidity('')" placeholder="Username" required autofocus>
 		</div>
 		<div>
-			<img src="<?= BASEURL ?>/assets/img/icon/circle-padlock.png" alt=""><input type="password" name="password" placeholder="Password" required>
+			<img src="<?= BASEURL ?>/assets/img/icon/circle-padlock.png" alt=""><input type="password" name="password" oninvalid="setCustomValidity('Masukkan password anda!')" oninput="setCustomValidity('')" placeholder="Password" required>
 		</div>
 		<button type="submit" name="login">LOGIN</button>
 		<span>Belum punya akun? <a href="<?= BASEURL ?>/daftar">Daftar</a> sekarang!</span>
