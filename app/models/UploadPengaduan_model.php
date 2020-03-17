@@ -11,21 +11,71 @@ class UploadPengaduan_model{
 	
 	public function send($data, $files){		
 		$this->db->dbh->real_escape_string(extract($data));
-		if (isset($report) || isset($_SESSION['msg'])) {
-			if (!isset($_SESSION['msg'])) {
-				$_SESSION['msg'] = $msg;
-				$_SESSION['photo'] = $files;
-			}else {
-				$msg = $_SESSION['msg'];
-				$files = $_SESSION['photo'];
-			}
+		// if (isset($report) || isset($_SESSION['msg'])) {
+		// 	if (!isset($_SESSION['msg'])) {
+		// 		$_SESSION['msg'] = $msg;
+		// 		$_SESSION['photo'] = $files;
+		// 	}else {
+		// 		$msg = $_SESSION['msg'];
+		// 		$files = $_SESSION['photo'];
+		// 	}
+		// 
+		// 	if (isset($_SESSION['masyarakatNIK'])) {
+		// 		do{
+		// 			$this->uniqID = strtoupper('lprid' . substr(md5(uniqid()), 25));
+		// 		}while($this->checkUniqID($this->uniqID) > 1);
+		// 		$date = time();
+		// 		$status = 0;
+		// 
+		// 		if ($files['photo']['error'] === 0) {
+		// 			if ($this->uploadImg($files) === FALSE) {
+		// 				return false;
+		// 			}
+		// 		}else {
+		// 			$this->photo = NULL;
+		// 		}
+		// 
+		// 		$query = "INSERT INTO $this->table VALUES(?, ?, ?, ?, ?, ?)";
+		// 		$this->db->prepare($query);
+		// 		$this->db->sth->bind_param('ssssss',
+		// 									$this->uniqID,
+		// 									$date,
+		// 									$_SESSION['masyarakatNIK'],
+		// 									$msg,
+		// 									$this->photo,
+		// 									$status);
+		// 		$this->db->execute();
+		// 		if ($this->db->affectedRows() > 0) {
+		// 			if (isset($_SESSION['msg'])) {
+		// 				unset($_SESSION['msg']);
+		// 			}
+		// 			if (isset($_SESSION['photo'])) {
+		// 				unset($_SESSION['photo']);
+		// 			}
+		// 			Flasher::setFlash('Laporan anda berhasil terkirim!', 'bg-success', 'correct.png');
+		// 		}else {
+		// 			Flasher::setFlash('Terjadi kesalahan saat memproses data!', 'bg-danger', 'warning.png');
+		// 		}
+		// 	}else {
+		// 		return 'LOGIN';
+		// 	}
+		// }else {
+		// 	Flasher::setFlash('Terjadi kesalahan saat memproses data!', 'bg-danger', 'warning.png');
+		// }
+		
+		if (isset($report) || isset($_SESSION['tmpFormSession'])) {
+			$date = time();
+			$status = 0;
 			
-			if (isset($_SESSION['masyarakatNIK'])) {
+			if (isset($_SESSION['tmpFormSession'])) {
+				$msg = $_SESSION['tmpFormSession']['msg'];
+				$this->uniqID = $_SESSION['tmpFormSession']['uniqID'];
+				$this->photo = $_SESSION['tmpFormSession']['photo'];
+			}else {
+				$_SESSION['msg'] = $msg;
 				do{
 					$this->uniqID = strtoupper('lprid' . substr(md5(uniqid()), 25));
 				}while($this->checkUniqID($this->uniqID) > 1);
-				$date = time();
-				$status = 0;
 				
 				if ($files['photo']['error'] === 0) {
 					if ($this->uploadImg($files) === FALSE) {
@@ -34,7 +84,9 @@ class UploadPengaduan_model{
 				}else {
 					$this->photo = NULL;
 				}
-				
+			}
+			
+			if (isset($_SESSION['masyarakatNIK'])) {
 				$query = "INSERT INTO $this->table VALUES(?, ?, ?, ?, ?, ?)";
 				$this->db->prepare($query);
 				$this->db->sth->bind_param('ssssss',
@@ -49,14 +101,19 @@ class UploadPengaduan_model{
 					if (isset($_SESSION['msg'])) {
 						unset($_SESSION['msg']);
 					}
-					if (isset($_SESSION['photo'])) {
-						unset($_SESSION['photo']);
+					if (isset($_SESSION['tmpFormSession'])) {
+						unset($_SESSION['tmpFormSession']);
 					}
 					Flasher::setFlash('Laporan anda berhasil terkirim!', 'bg-success', 'correct.png');
 				}else {
 					Flasher::setFlash('Terjadi kesalahan saat memproses data!', 'bg-danger', 'warning.png');
 				}
 			}else {
+				$_SESSION['tmpFormSession'] = [
+					'msg' => $msg,
+					'uniqID' => $this->uniqID,
+					'photo' => $this->photo
+				];
 				return 'LOGIN';
 			}
 		}else {

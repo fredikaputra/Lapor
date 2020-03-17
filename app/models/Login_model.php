@@ -19,7 +19,7 @@ class Login_model{
 					$this->db->execute();
 					if ($this->db->getResult() > 0) {
 						$_SESSION['masyarakatNIK'] = $this->db->row['nik'];
-						if (isset($_SESSION['msg'])) {
+						if (isset($_SESSION['tmpFormSession'])) {
 							return 'FORM';
 						}else {
 							return 'HOME';
