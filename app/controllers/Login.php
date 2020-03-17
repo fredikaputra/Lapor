@@ -13,6 +13,9 @@ class Login extends Controller{
 	public function proccess(){
 		if ($this->model('Proccess_model')->login($_POST) === TRUE) {
 			header('location: ' . BASEURL);
+			if (isset($_SESSION['login'])) {
+				unset($_SESSION['login']);
+			}
 		}else {
 			header('location: ' . BASEURL . '/login');
 		}

@@ -10,6 +10,7 @@ class Proccess_model{
 	public function login($data){
 		$this->db->dbh->real_escape_string(extract($data));
 		if (isset($login)) {
+			$_SESSION['login']['username'] = $username;
 			if ($this->masUserCheck($username) > 0) {
 				if ($this->passVerify($username, $password) === TRUE) {
 					$query = 'SELECT * FROM masyarakat WHERE username = ?';

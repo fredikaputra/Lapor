@@ -4,18 +4,9 @@ class Daftar extends Controller{
 	public function index(){
 		$data['webtitle'] = 'Daftar';
 		$data['css'] = ['base.css', 'daftar.css'];
-		if (isset($_SESSION['register'])) {
-			$data['register'] = [
-				'nik' => $_SESSION['register']['nik'],
-				'name' => $_SESSION['register']['name'],
-				'username' => $_SESSION['register']['username'],
-				'password' => $_SESSION['register']['password'],
-				'phone' => $_SESSION['register']['phone'],
-			];
-		}
 		
 		$this->view('template/header', $data);
-		$this->view('daftar/index', $data);
+		$this->view('daftar/index');
 		$this->view('template/footer');
 	}
 	
