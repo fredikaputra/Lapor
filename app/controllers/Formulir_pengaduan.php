@@ -6,6 +6,10 @@ class Formulir_pengaduan extends Controller{
 		$data['css'] = ['base.css', 'formulir_pengaduan.css'];
 		$data['webtitle'] = 'LAPOR! - Layanan Pengaduan Masyarakat Online';
 		
+		if (!isset($_SESSION['masyarakatNIK'])) {
+			Flasher::setFlash('Silahkan login terlebih dahulu untuk membuat laporan!', 'bg-warning', 'warning.png');
+		}
+		
 		$this->view('template/header', $data);
 		$this->view('template/nav');
 		$this->view('formulir_pengaduan/index');

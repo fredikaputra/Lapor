@@ -155,7 +155,7 @@ nav div div div.logged a{
 	justify-content: space-between;
 	align-items: center;
 	position: fixed;
-	top: 2cm;
+	top: 3cm;
 	right: 3cm;
 	transition: .3s;
 }

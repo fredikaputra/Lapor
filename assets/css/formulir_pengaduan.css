@@ -41,6 +41,11 @@ main div form textarea{
 	resize: vertical;
 }
 
+main div form textarea[disabled]{
+	background-color: white;
+	cursor: not-allowed;
+}
+
 main div form label{
 	border: 3px dashed lightgray;
 	border-radius: 5px;
@@ -61,11 +66,15 @@ main div form label input{
 	display: none;
 }
 
-main div  form button{
+main div form button{
 	background: var(--blue);
 	padding: 10px 20px;
 	color: white;
 	border: 1px solid var(--blue);
 	margin: .5cm 0 0 auto;
 	font-weight: bold;
+}
+
+main div form button[disabled]{
+	cursor: not-allowed;
 }

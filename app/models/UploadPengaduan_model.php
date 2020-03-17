@@ -12,62 +12,45 @@ class UploadPengaduan_model{
 	public function send($data, $files){		
 		$this->db->dbh->real_escape_string(extract($data));
 		
-		if (isset($report) || isset($_SESSION['tmpFormSession'])) { // jalankan ketika tombol ditekan atau sesi temporari di buat
+		if (isset($report) && isset($_SESSION['masyarakatNIK'])) { // jalankan ketika tombol ditekan atau sesi temporari di buat
 			$date = time();
 			$status = 0;
+			$_SESSION['msg'] = $msg;
 			
-			if (isset($_SESSION['tmpFormSession'])) {
-				$msg = $_SESSION['tmpFormSession']['msg'];
-				$this->uniqID = $_SESSION['tmpFormSession']['uniqID'];
-				$this->photo = $_SESSION['tmpFormSession']['photo'];
-			}else {
-				$_SESSION['msg'] = $msg;
-				
-				// generate id yang unik
-				do{
-					$this->uniqID = strtoupper('lprid' . substr(md5(uniqid()), 25));
-				}while($this->checkUniqID($this->uniqID) > 1);
-				
-				// upload file
-				if ($files['photo']['error'] === 0) {
-					if ($this->uploadImg($files) === FALSE) {
-						return false;
-					}
-				}else {
-					$this->photo = NULL;
+			// generate id yang unik
+			do{
+				$this->uniqID = strtoupper('lprid' . substr(md5(uniqid()), 25));
+			}while($this->checkUniqID($this->uniqID) > 1);
+			
+			// upload file
+			if ($files['photo']['error'] === 0) {
+				if ($this->uploadImg($files) === FALSE) {
+					return false;
 				}
+			}else {
+				$this->photo = NULL;
 			}
 			
-			if (isset($_SESSION['masyarakatNIK'])) { // cek kalau user sudah login
-				$query = "INSERT INTO $this->table VALUES(?, ?, ?, ?, ?, ?)";
-				$this->db->prepare($query);
-				$this->db->sth->bind_param('ssssss',
-											$this->uniqID,
-											$date,
-											$_SESSION['masyarakatNIK'],
-											$msg,
-											$this->photo,
-											$status);
-				$this->db->execute();
-				if ($this->db->affectedRows() > 0) {
-					if (isset($_SESSION['msg'])) {
-						unset($_SESSION['msg']);
-					}
-					if (isset($_SESSION['tmpFormSession'])) {
-						unset($_SESSION['tmpFormSession']);
-					}
-					Flasher::setFlash('Laporan anda berhasil terkirim!', 'bg-success', 'correct.png');
-				}else {
-					Flasher::setFlash('Terjadi kesalahan saat memproses data!', 'bg-danger', 'warning.png');
+			$query = "INSERT INTO $this->table VALUES(?, ?, ?, ?, ?, ?)";
+			$this->db->prepare($query);
+			$this->db->sth->bind_param('ssssss',
+										$this->uniqID,
+										$date,
+										$_SESSION['masyarakatNIK'],
+										$msg,
+										$this->photo,
+										$status);
+			$this->db->execute();
+			if ($this->db->affectedRows() > 0) {
+				if (isset($_SESSION['msg'])) {
+					unset($_SESSION['msg']);
 				}
+				if (isset($_SESSION['tmpFormSession'])) {
+					unset($_SESSION['tmpFormSession']);
+				}
+				Flasher::setFlash('Laporan anda berhasil terkirim!', 'bg-success', 'correct.png');
 			}else {
-				// jalankan ketika user belum login
-				$_SESSION['tmpFormSession'] = [
-					'msg' => $msg,
-					'uniqID' => $this->uniqID,
-					'photo' => $this->photo
-				];
-				return 'LOGIN';
+				Flasher::setFlash('Terjadi kesalahan saat memproses data!', 'bg-danger', 'warning.png');
 			}
 		}else {
 			Flasher::setFlash('Terjadi kesalahan saat memproses data!', 'bg-danger', 'warning.png');
