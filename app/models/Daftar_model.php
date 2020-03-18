@@ -26,7 +26,7 @@ class Daftar_model{
 						$this->db->prepare($query);
 						$this->db->sth->bind_param('sssss', $nik, $name, $username, $password, $phone);
 						$this->db->execute();
-						if ($this->db->affectedRows() > 0) {
+						if ($this->db->affectedRows() > 0) { // proses berhasil
 							Flasher::setFlash('Anda berhasil teregistrasi!', 'bg-success', 'correct.png');
 							return true;
 						}else {

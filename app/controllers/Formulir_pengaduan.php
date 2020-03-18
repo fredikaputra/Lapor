@@ -6,8 +6,8 @@ class Formulir_pengaduan extends Controller{
 		$data['css'] = ['base.css', 'formulir_pengaduan.css'];
 		$data['webtitle'] = 'LAPOR! - Layanan Pengaduan Masyarakat Online';
 		
-		if (!isset($_SESSION['masyarakatNIK'])) {
-			Flasher::setFlash('Silahkan login terlebih dahulu untuk membuat laporan!', 'bg-warning', 'warning.png');
+		if (!isset($_SESSION['masyarakatNIK'])) { // cek kalau user belum login
+			Flasher::setFlash('Silahkan login terlebih dahulu untuk membuat laporan!', 'bg-info', 'warning.png'); // tampilkan alert 'login terlebih dahulu' supaya bisa buat laporan
 		}
 		
 		$this->view('template/header', $data);
@@ -17,10 +17,6 @@ class Formulir_pengaduan extends Controller{
 	}
 	
 	public function proccess(){
-		if ($this->model('UploadPengaduan_model')->send($_POST, $_FILES) === 'LOGIN'){ // kalau user belum login
-			header('location: ' . BASEURL . '/login'); // login terlebih dahulu
-		}else {
-			header('location: ' . BASEURL . '/formulir-pengaduan');
-		}
+		header('location: ' . BASEURL . '/formulir-pengaduan');
 	}
 }

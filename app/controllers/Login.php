@@ -10,21 +10,19 @@ class Login extends Controller{
 			$this->view('template/header', $data);
 			$this->view('login/index');
 			$this->view('template/footer');
-		}else {
+		}else { // kalau sudah login, ngg bisa login
 			header('location: ' . BASEURL);
 		}
 	}
 	
 	public function proccess(){
 		if (!isset($_SESSION['masyarakatNIK'])) {
-			if ($this->model('Login_model')->login($_POST) === 'HOME') {  // kondisi normal
+			if ($this->model('Login_model')->login($_POST) === TRUE) {  // kondisi normal
 				header('location: ' . BASEURL);
-			}else if ($this->model('Login_model')->login($_POST) === 'FORM'){ // kondisi ketika user diperintahkan untuk login oleh sistem form
-				header('location: ' . BASEURL . '/formulir-pengaduan/proccess');
 			}else { // ketika user salah masukkan data
 				header('location: ' . BASEURL . '/login');
 			}
-		}else {
+		}else { // kalau sudah login, ngg bisa login
 			header('location: ' . BASEURL);
 		}
 	}

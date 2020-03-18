@@ -17,13 +17,9 @@ class Login_model{
 					$this->db->prepare($query);
 					$this->db->sth->bind_param('s', $username);
 					$this->db->execute();
-					if ($this->db->getResult() > 0) {
+					if ($this->db->getResult() > 0) { // proses berhasil
 						$_SESSION['masyarakatNIK'] = $this->db->row['nik'];
-						if (isset($_SESSION['tmpFormSession'])) { // cek kalau sesi kebuat (dikhususkan untuk proses saat membuat laporan)
-							return 'FORM';
-						}else {
-							return 'HOME';
-						}
+						return true;
 					}else {
 						Flasher::setFlash('Terjadi kesalahan saat memproses data!', 'bg-danger', 'warning.png');
 					}

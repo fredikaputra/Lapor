@@ -13,9 +13,9 @@ class UploadPengaduan_model{
 		$this->db->dbh->real_escape_string(extract($data));
 		
 		if (isset($report) && isset($_SESSION['masyarakatNIK'])) { // jalankan ketika tombol ditekan atau sesi temporari di buat
-			$date = time();
-			$status = 0;
-			$_SESSION['msg'] = $msg;
+			$date = time(); // waktu sekarang
+			$status = 0; // status belum di proses
+			$_SESSION['msg'] = $msg; // buat sesi pesan (berguna ketika user melakukan kesalahan saat mengisi formulir)
 			
 			// generate id yang unik
 			do{
@@ -41,12 +41,9 @@ class UploadPengaduan_model{
 										$this->photo,
 										$status);
 			$this->db->execute();
-			if ($this->db->affectedRows() > 0) {
+			if ($this->db->affectedRows() > 0) { // proses berhasil
 				if (isset($_SESSION['msg'])) {
 					unset($_SESSION['msg']);
-				}
-				if (isset($_SESSION['tmpFormSession'])) {
-					unset($_SESSION['tmpFormSession']);
 				}
 				Flasher::setFlash('Laporan anda berhasil terkirim!', 'bg-success', 'correct.png');
 			}else {
