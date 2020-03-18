@@ -7,7 +7,15 @@
 			<label <?= (!isset($_SESSION['masyarakatNIK'])) ? 'style="cursor: not-allowed;" title="Silahkan login terlebih dahulu!"' : '' ?>><img src="<?= BASEURL ?>/assets/img/icon/upload.png" alt="">Upload
 				<input type="file" name="photo" <?= (!isset($_SESSION['masyarakatNIK'])) ? 'disabled' : '' ?>>
 			</label>
-			<button type="submit" name="report" <?= (!isset($_SESSION['masyarakatNIK'])) ? 'disabled title="Silahkan login terlebih dahulu!"' : '' ?>>LAPORKAN!</button>
+			<button type="submit" name="report" <?= (!isset($_SESSION['masyarakatNIK'])) ? 'disabled title="Silahkan login terlebih dahulu!"' : '' ?> onclick="setNullLoad()">LAPORKAN!</button>
 		</form>
 	</div>
 </main>
+
+<?php
+
+if (isset($_SESSION['msg'])) {
+	unset($_SESSION['msg']);
+}
+
+?>

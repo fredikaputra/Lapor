@@ -9,7 +9,7 @@ class UploadPengaduan_model{
 		$this->db = new Database;
 	}
 	
-	public function send($data, $files){		
+	public function send($data, $files){
 		$this->db->dbh->real_escape_string(extract($data));
 		
 		if (isset($report) && isset($_SESSION['masyarakatNIK'])) { // jalankan ketika tombol ditekan atau sesi temporari di buat
