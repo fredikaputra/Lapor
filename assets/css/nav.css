@@ -1,0 +1,179 @@
+nav{
+	position: absolute;
+	width: 100%;
+	padding: 20px 0;
+}
+
+nav > div{
+	width: 95%;
+	max-width: 1100px;
+	margin: auto;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+nav > div > a{
+	color: white;
+	display: flex;
+	align-items: flex-end;
+	font-size: 1cm;
+	font-family: 'Calibri';
+	font-weight: bold;
+}
+
+nav > div > a img{
+	width: 1cm;
+	margin-right: 5px;
+}
+
+nav div > div{
+	display: inline;
+}
+
+nav > div > div > a{
+	color: white;
+	font-family: 'Calibri';
+	font-weight: bolder;
+	margin-right: 1cm;
+	font-size: 16px;
+}
+
+nav div div div.unlogged{
+	position: relative;
+}
+
+nav div div div.unlogged a{
+	font-family: 'Calibri';
+	border: 1px solid var(--blue);
+	color: white;
+	padding: 5px;
+	border-radius: 20px;
+	width: 2.5cm;
+	text-align: center;
+	display: inline-block;
+}
+
+nav div div div.unlogged a:first-of-type{
+	background: var(--blue);
+}
+
+nav > div > div{
+	display: flex;
+	align-items: center;
+}
+
+nav div div div.logged > *{
+	display: block;
+}
+
+nav div div div.logged button{
+	line-height: 50%;
+	display: flex;
+	align-items: center;
+	padding: 5px;
+	border-radius: 30px;
+	border: 1px solid white;
+	background: white;
+}
+
+nav div div div.logged button img{
+	width: 1cm;
+	height: 1cm;
+	border-radius: 50%;
+	margin-right: 5px;
+}
+
+nav div div div.logged > div{
+	position: absolute;
+	background-color: white;
+	top: 2cm;
+	right: 10.85cm;
+	width: 10cm;
+	padding: 1cm;
+	border-radius: 10px;
+}
+
+nav div div div.logged > div > a:first-of-type{
+	position: absolute;
+	right: 20px;
+	top: 20px;
+}
+
+nav div div div.logged > div a img{
+	width: 20px;
+}
+
+nav div div div.logged > div .image{
+	display: block;
+	text-align: center;
+	margin-bottom: .7cm;
+}
+
+nav div div div.logged > div .image > img{
+	width: 4cm;
+	height: 4cm;
+	border-radius: 50%;
+}
+
+nav div div div.logged > div .image a{
+	top: 4cm;
+	right: 3cm;
+	background: white;
+	padding: 8px;
+	border-radius: 50%;
+	line-height: 50%;
+	box-shadow: 3px 3px 5px #00000020;
+	position: absolute;
+}
+
+nav div div div.logged > div .image a img{
+	width: 25px;
+}
+
+nav div div div.logged > div span:first-of-type{
+	text-align: center;
+	display: block;
+	font-family: 'Calibri';
+	color: dimgray;
+	font-size: 20px;
+}
+
+nav div div div.logged > div span:last-of-type{
+	text-align: center;
+	display: block;
+	font-family: 'Calibri';
+	color: gray;
+	font-size: 18px;
+	margin-bottom: 1cm;
+}
+
+nav div div div.logged > div a:nth-of-type(2){
+	border: 1px solid lightgray;
+	text-align: center;
+	display: block;
+	padding: 10px;
+	font-family: 'Arial';
+	color: dimgray;
+	font-weight: bold;
+	border-radius: 20px;
+	font-size: 14px;
+}
+
+nav div div div.logged > div hr{
+	margin-top: 10px;
+	border: 1px solid lightgray;
+}
+
+nav div div div.logged > div a:nth-of-type(3){
+	margin-top: 10px;
+	border: 1px solid lightgray;
+	text-align: center;
+	display: block;
+	padding: 10px;
+	font-family: 'Arial';
+	color: dimgray;
+	font-weight: bold;
+	border-radius: 20px;
+	font-size: 14px;
+}

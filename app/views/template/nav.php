@@ -12,7 +12,26 @@
 				?>
 				
 				<div class="logged">
-					<a href="<?= BASEURL ?>/logout">LOGOUT</a>
+					<button type="button" onclick="showmenu()">
+						<img src="<?= BASEURL ?>/assets/img/user/a male.jpg" alt=""> Fredika Putra
+					</button>
+					<div id="menu-account" class="hide">
+						<a href=""><img src="<?= BASEURL ?>/assets/img/icon/settings.png" alt=""></a>
+						
+						<div class="image">
+							<img src="<?= BASEURL ?>/assets/img/user/a male.jpg" alt="">
+							<a href="">
+								<img src="<?= BASEURL ?>/assets/img/icon/camera.png" alt="">
+							</a>
+						</div>
+						
+						<span>I Putu Fredika Putra</span>
+						<span>@fredikaputra</span>
+						
+						<a href="">Dashboard</a>
+						<hr>
+						<a href="">Logout</a>
+					</div>
 				</div>
 				
 				<?php
@@ -31,3 +50,9 @@
 		</div>
 	</div>
 </nav>
+
+<script type="text/javascript">
+	function showmenu(){
+		document.querySelector('#menu-account').classList.toggle('hide');
+	}
+</script>
