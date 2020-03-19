@@ -15,6 +15,9 @@ class App{
 			if (file_exists('app/controllers/' . $url[0] . '.php')) { // cek kalau file kontroller ada
 				$this->controller = $url[0];
 				unset($url[0]);
+			}else {
+				$this->controller = 'Pagenotfound';
+				unset($url[0]);
 			}
 		}
 		
@@ -24,6 +27,11 @@ class App{
 		if (isset($url[1])) { // cek ketika ada method
 			if (method_exists($this->controller, $url[1])) { // cek ketika method tersedia
 				$this->method = $url[1];
+				unset($url[1]);
+			}else {
+				$this->controller = 'Pagenotfound';
+				require_once 'app/controllers/' . $this->controller . '.php'; // panggil file kontroller
+				$this->controller = new $this->controller; // inisialisasi controller
 				unset($url[1]);
 			}
 		}
