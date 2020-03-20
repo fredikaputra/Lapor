@@ -11,6 +11,15 @@
 	--dark-lightblue: #004085;
 }
 
+::-webkit-scrollbar{
+	width: 10px;
+	background: dimgray;
+}
+
+::-webkit-scrollbar-thumb{
+	background: var(--blue);
+}
+
 *{
 	margin: 0;
 	padding: 0;

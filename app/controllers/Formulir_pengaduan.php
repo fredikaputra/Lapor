@@ -12,10 +12,13 @@ class Formulir_pengaduan extends Controller{
 		
 		if (!isset($_SESSION['masyarakatNIK'])) { // cek kalau user belum login
 			Flasher::setFlash('Silahkan login terlebih dahulu untuk membuat laporan!', 'bg-info', 'warning.png'); // tampilkan alert 'login terlebih dahulu' supaya bisa buat laporan
+		}else {
+			$data['name'] = $this->model('Data_model')->masyarakat($_SESSION['masyarakatNIK'])['nama'];
+			$data['username'] = $this->model('Data_model')->masyarakat($_SESSION['masyarakatNIK'])['username'];
 		}
 		
 		$this->view('template/header', $data);
-		$this->view('template/nav');
+		$this->view('template/nav', $data);
 		$this->view('formulir_pengaduan/index');
 		$this->view('template/footer', $data);
 	}

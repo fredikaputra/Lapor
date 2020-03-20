@@ -71,7 +71,7 @@ nav div div div.logged button{
 	line-height: 50%;
 	display: flex;
 	align-items: center;
-	padding: 5px;
+	padding: 5px 10px 5px 5px;
 	border-radius: 30px;
 	border: 1px solid white;
 	background: white;

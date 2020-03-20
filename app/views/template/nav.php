@@ -13,7 +13,7 @@
 				
 				<div class="logged">
 					<button type="button" onclick="showmenu()">
-						<img src="<?= BASEURL ?>/assets/img/user/a male.jpg" alt=""> Fredika Putra
+						<img src="<?= BASEURL ?>/assets/img/user/a male.jpg" alt=""><?= $data['name'] ?>
 					</button>
 					<div id="menu-account" class="hide">
 						<a href=""><img src="<?= BASEURL ?>/assets/img/icon/settings.png" alt=""></a>
@@ -25,8 +25,8 @@
 							</a>
 						</div>
 						
-						<span>I Putu Fredika Putra</span>
-						<span>@fredikaputra</span>
+						<span><?= $data['name'] ?></span>
+						<span>@<?= $data['username'] ?></span>
 						
 						<a href="<?= BASEURL ?>/riwayat-aduan">Riwayat Aduan</a>
 						<hr>
