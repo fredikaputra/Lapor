@@ -1,0 +1,54 @@
+main div{
+	text-align: center;
+	color: white;
+}
+
+main div h1{
+	font-family: 'Arial';
+	margin-bottom: 10px;
+}
+
+main div span{
+	font-family: 'Calibri';
+	font-size: 20px;
+}
+
+main div div.riwayat{
+	padding: 1cm;
+	margin-top: 1cm;
+	border-radius: 10px;
+	background: white;
+	height: 10cm;
+	overflow-y: auto;
+}
+
+main div table{
+	color: dimgray;
+	border-collapse: collapse;
+}
+
+main div table td{
+	border-bottom: 1px solid #00000020;
+	padding: 10px 1cm;
+}
+
+main div table thead{
+	font-weight: bold;
+	font-family: 'Arial';
+}
+
+main div table tbody{
+	font-family: 'Arial';
+}
+
+main div table tbody tr td p{
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	width: 15cm;
+	text-align: left;
+}
+
+main div table tbody img{
+	width: 2cm;
+}

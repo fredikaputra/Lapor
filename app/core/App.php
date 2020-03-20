@@ -13,10 +13,20 @@ class App{
 				$url[0] = str_replace('-', '_', $url[0]); // ubah string (-) menjadi underscore (_)
 			}
 			if (file_exists('app/controllers/' . $url[0] . '.php')) { // cek kalau file kontroller ada
-				$this->controller = $url[0];
-				unset($url[0]);
-			}else {
-				$this->controller = 'Pagenotfound';
+				if ($url[0] == 'dashboard') { // cek kalau kontroller nya adalah dashboard
+					if (isset($_SESSION['petugasID'])) { // cek kalau petugas sudh login
+						$this->controller = $url[0]; // beri akses
+						unset($url[0]);
+					}else {
+						$this->controller = 'Pagenotfound'; // masyarakat tidak boleh melihat
+						unset($url[0]);
+					}
+				}else {
+					$this->controller = $url[0]; // controller bukan dashboard
+					unset($url[0]);
+				}
+			}else { 
+				$this->controller = 'Pagenotfound'; // halaman tidak ditemukan
 				unset($url[0]);
 			}
 		}

@@ -39,6 +39,12 @@ class Database{
 		}
 	}
 	
+	public function getAllResult(){
+		$this->result = $this->sth->get_result();
+		
+		return $this->row = $this->result->fetch_all();
+	}
+	
 	public function affectedRows(){ // tampilkan int indikasi query jalan atau tidak
 		if (!$this->dbh->error) {
 			return $this->dbh->affected_rows;

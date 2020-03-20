@@ -28,9 +28,9 @@
 						<span>I Putu Fredika Putra</span>
 						<span>@fredikaputra</span>
 						
-						<a href="">Dashboard</a>
+						<a href="<?= BASEURL ?>/riwayat-aduan">Riwayat Aduan</a>
 						<hr>
-						<a href="">Logout</a>
+						<a href="<?= BASEURL ?>/logout">Logout</a>
 					</div>
 				</div>
 				

@@ -3,7 +3,7 @@
 class Formulir_pengaduan extends Controller{
 	public function index(){
 		// buat data untuk di kirim ke view()
-		$data['css'] = ['base.css', 'formulir_pengaduan.css'];
+		$data['css'] = ['base.css', 'formulir_pengaduan.css', 'nav.css'];
 		$data['webtitle'] = 'LAPOR! - Layanan Pengaduan Masyarakat Online';
 		
 		if (isset($_SESSION['msg'])) {

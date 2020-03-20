@@ -92,6 +92,7 @@ nav div div div.logged > div{
 	width: 10cm;
 	padding: 1cm;
 	border-radius: 10px;
+	box-shadow: 0 0 10px #00000030;
 }
 
 nav div div div.logged > div > a:first-of-type{
