@@ -45,6 +45,11 @@ responsive
 
 if register uncomplete, make session all data supaya ngg ngetik ulang
 
+cek BASEURL
+
+
+
+
 
 UJI COBA
 
