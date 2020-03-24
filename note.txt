@@ -47,6 +47,8 @@ if register uncomplete, make session all data supaya ngg ngetik ulang
 
 cek BASEURL
 
+cek coment in all code
+
 
 
 
