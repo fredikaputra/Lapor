@@ -1,0 +1,80 @@
+body{
+	background: url('../img/bg/bg.jpg') center center/cover no-repeat fixed;
+}
+
+
+
+/* MAIN */
+main{
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+}
+
+main h1{
+	color: white;
+	font-size: 1cm;
+	margin-bottom: 10px;
+}
+
+main span{
+	color: lightgray;
+}
+
+main form{
+	margin-top: 1cm;
+	padding: 20px;
+	background: white;
+	border-radius: 5px;
+}
+
+main form textarea{
+	border: 1px solid lightgray;
+	width: 100%;
+	min-height: 3.5cm;
+	max-height: 30vh;
+	resize: vertical;
+	padding: 15px;
+	font-size: 15px;
+	color: dimgray;
+	letter-spacing: 1px;
+	text-align: justify;
+	line-height: 25px;
+}
+
+main form label{
+	border: 3px dashed lightgray;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 7px;
+	font-size: 14px;
+	margin-top: 10px;
+}
+
+main form label img{
+	width: 18px;
+	margin-right: 3px;
+}
+
+main form label input{
+	display: none;
+}
+
+main form button{
+	display: block;
+	margin: 10px 0 0 auto;
+	padding: 7px 15px;
+	background: var(--blue);
+	color: white;
+	border: 1px solid var(--blue);
+	font-weight: bold;
+	letter-spacing: 1px;
+	font-size: 12px;
+}
+
+main form button:focus{
+	filter: brightness(.9);
+}
