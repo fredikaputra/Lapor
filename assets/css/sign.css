@@ -13,6 +13,7 @@ main{
 	text-align: center;
 }
 
+/* FORM */
 main form{
 	padding: 1.5cm 1cm;
 	background: white;
@@ -20,6 +21,7 @@ main form{
 	width: 10cm;
 }
 
+/* HOME BUTTON */
 main form > a{
 	position: absolute;
 	left: 20px;
@@ -31,6 +33,7 @@ main form > a img{
 	width: 1cm;
 }
 
+/* TITLE */
 main form h1{
 	color: var(--blue);
 	margin-bottom: 10px;
@@ -41,6 +44,7 @@ main form span{
 	font-size: 15px;
 }
 
+/* INPUT */
 main form div:first-of-type{
 	margin-top: 20px;
 }
@@ -75,6 +79,7 @@ main form div input{
 	outline: none;
 }
 
+/* SUBMIT BUTTON */
 main form button{
 	display: block;
 	width: 100%;
@@ -92,6 +97,7 @@ main form button:focus{
 	color: var(--blue);
 }
 
+/* LINK SPAN */
 main form span a{
 	color: var(--blue);
 }
