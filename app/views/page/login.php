@@ -1,6 +1,6 @@
 <main>
 	<form>
-		<a href="<?= BASEURL ?>">
+		<a href="<?= BASEURL ?>" title="Beranda">
 			<img src="<?= BASEURL ?>/assets/img/icon/circle-home-page.png">
 		</a>
 		<h1>Login</h1>
@@ -9,7 +9,7 @@
 			<img src="<?= BASEURL ?>/assets/img/icon/circle-user.png"><input type="text" placeholder="Username" autofocus>
 		</div>
 		<div>
-			<img src="<?= BASEURL ?>/assets/img/icon/circle-user.png"><input type="text" placeholder="Password">
+			<img src="<?= BASEURL ?>/assets/img/icon/circle-user.png"><input type="password" placeholder="Password">
 		</div>
 		<button type="submit">LOGIN</button>
 		<span>Belum punya akun? <a href="<?= BASEURL ?>/daftar">Daftar</a> sekarang!</span>

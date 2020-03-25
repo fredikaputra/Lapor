@@ -9,6 +9,14 @@
 	font-family: 'Arial';
 }
 
+body.using-mouse :focus{
+	outline: 1px solid transparent;
+}
+
+a:focus, textarea:focus, button:focus{
+	outline: 1px solid var(--blue);
+}
+
 a{
 	text-decoration: none;
 }
