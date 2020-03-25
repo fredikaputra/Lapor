@@ -9,11 +9,6 @@
 	font-family: 'Arial';
 }
 
-body{
-	background: url('../img/bg/bg.jpg') center center/cover no-repeat fixed;
-}
-
 a{
 	text-decoration: none;
-	font-size: 14px;
 }

@@ -37,6 +37,7 @@ nav div .menu{
 nav div .menu a{
 	color: white;
 	font-weight: bold;
+	font-size: 14px;
 }
 
 nav div .menu > a:hover,

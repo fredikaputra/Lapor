@@ -11,8 +11,15 @@ class App{
 		
 		// cek kontroler
 		if (isset($url[0])) {
+			if (strpos($url[0], '-')) { // ganti kontroller yang mengandung '-' menjadi '_'
+				$url[0] = str_replace('-', '_', $url[0]);
+			}
+			
 			if (file_exists('app/controllers/' . $url[0] . '.php')) {
 				$this->controller = $url[0];
+				unset($url[0]);
+			}else {
+				$this->controller = 'Notfound';
 				unset($url[0]);
 			}
 		}
