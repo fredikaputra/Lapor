@@ -49,6 +49,10 @@ cek BASEURL
 
 cek coment in all code
 
+if screen is freezz, give hint (kasi notif pada suatu page)
+
+on textarea hover give hint to login
+
 
 
 

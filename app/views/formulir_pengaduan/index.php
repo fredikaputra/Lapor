@@ -3,10 +3,10 @@
 	<span>Laporan anda akan diverifikasi dan diteruskan kepada instansi berwenang</span>
 	
 	<form>
-		<textarea placeholder="Ketik laporan anda..."></textarea>
-		<label><img src="<?= BASEURL ?>/assets/img/icon/upload.png">Upload
-			<input type="file">
+		<textarea placeholder="Ketik laporan anda..." disabled></textarea>
+		<label disabled><img src="<?= BASEURL ?>/assets/img/icon/upload.png">Upload
+			<input type="file" disabled>
 		</label>
-		<button type="submit">LAPORKAN!</button>
+		<button type="submit" disabled>LAPORKAN!</button>
 	</form>
 </main>

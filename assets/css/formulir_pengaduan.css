@@ -30,6 +30,10 @@ main form{
 	border-radius: 5px;
 }
 
+main form *[disabled]{
+	cursor: no-drop;
+}
+
 main form textarea{
 	border: 1px solid lightgray;
 	width: 100%;
@@ -42,6 +46,11 @@ main form textarea{
 	letter-spacing: 1px;
 	text-align: justify;
 	line-height: 25px;
+}
+
+main form textarea[disabled]{
+	background: white;
+	resize: none;
 }
 
 main form label{
@@ -58,6 +67,11 @@ main form label{
 main form label:hover,
 main form label:focus{
 	border: 1px dashed var(--blue);
+}
+
+main form label[disabled]:hover,
+main form label[disabled]:focus{
+	border: 1px dashed lightgray;
 }
 
 main form label img{

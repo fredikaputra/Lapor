@@ -38,6 +38,7 @@ main form h1{
 
 main form span{
 	color: darkgray;
+	font-size: 15px;
 }
 
 main form div:first-of-type{
@@ -69,7 +70,7 @@ main form div input{
 	width: 100%;
 	border: none;
 	margin: 0 5px;
-	font-size: 16px;
+	font-size: 15px;
 	color: dimgray;
 	outline: none;
 }
@@ -89,10 +90,6 @@ main form button:hover,
 main form button:focus{
 	background: transparent;
 	color: var(--blue);
-}
-
-main form span:last-of-type{
-	font-size: 15px;
 }
 
 main form span a{
