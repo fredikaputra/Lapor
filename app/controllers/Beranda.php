@@ -8,7 +8,7 @@ class Beranda extends Controller{
 		
 		$this->view('template/header', $data);
 		$this->view('template/nav', $data);
-		$this->view('beranda/index');
+		$this->view('beranda');
 		$this->view('template/footer');
 	}
 }

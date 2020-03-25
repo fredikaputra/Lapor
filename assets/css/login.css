@@ -1,0 +1,95 @@
+body{
+	background: url('../img/bg/bg.jpg') center center/cover no-repeat fixed;
+}
+
+
+
+/* MAIN */
+main{
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+}
+
+main form{
+	padding: 1.5cm 1cm;
+	background: white;
+	border-radius: 1cm 0;
+	width: 10cm;
+}
+
+main form > a{
+	position: absolute;
+	left: 20px;
+	top: 20px;
+}
+
+main form > a img{
+	width: 1cm;
+}
+
+main form h1{
+	color: var(--blue);
+	margin-bottom: 10px;
+}
+
+main form span{
+	color: darkgray;
+}
+
+main form div:first-of-type{
+	margin-top: 20px;
+}
+
+main form div{
+	margin-top: 10px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border: 1px solid lightgray;
+	border-radius: 20px;
+}
+
+main form div:last-of-type{
+	margin-bottom: 20px;
+}
+
+main form div img{
+	width: 1cm;
+}
+
+main form div input{
+	width: 100%;
+	border: none;
+	margin: 0 5px;
+	font-size: 16px;
+	color: dimgray;
+}
+
+main form button{
+	display: block;
+	width: 100%;
+	padding: 10px;
+	background: var(--blue);
+	border: 1px solid var(--blue);
+	border-radius: 20px;
+	color: white;
+	margin-bottom: 15px;
+	transition: .3s;
+}
+
+main form button:hover,
+main form button:focus{
+	background: transparent;
+	color: var(--blue);
+}
+
+main form span:last-of-type{
+	font-size: 15px;
+}
+
+main form span a{
+	color: var(--blue);
+}

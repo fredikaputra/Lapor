@@ -45,13 +45,19 @@ main form textarea{
 }
 
 main form label{
-	border: 3px dashed lightgray;
+	border: 1px dashed lightgray;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	padding: 7px;
 	font-size: 14px;
 	margin-top: 10px;
+	cursor: pointer;
+}
+
+main form label:hover,
+main form label:focus{
+	border: 1px dashed var(--blue);
 }
 
 main form label img{
