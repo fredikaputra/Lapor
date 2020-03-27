@@ -25,3 +25,5 @@
 		<link rel="icon" href="<?= BASEURL ?>/assets/img/icon/logo.png">
 	</head>
 	<body>
+		
+		<?= Flasher::flash() ?>

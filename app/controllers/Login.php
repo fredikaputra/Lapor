@@ -9,4 +9,12 @@ class Login extends Controller{
 		$this->view('page/login');
 		$this->view('template/footer');
 	}
+	
+	public function proccess(){
+		if ($this->model('Login_model')->main($_POST) === FALSE) {
+			header('location: ' . BASEURL . '/login');
+		}else {
+			header('location: ' . BASEURL);
+		}
+	}
 }

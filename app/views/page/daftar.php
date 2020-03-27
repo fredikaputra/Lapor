@@ -6,7 +6,7 @@
 		<h1>Daftar</h1>
 		<span>Hallo, silahkan untuk masukkan data - data anda sebagai berikut!</span>
 		<div title="Masukkan Nomor Induk Kependudukan anda">
-			<img src="<?= BASEURL ?>/assets/img/icon/circle-id.png"><input type="number" placeholder="Nomor Induk Kependudukan" min="0" autofocus>
+			<img src="<?= BASEURL ?>/assets/img/icon/circle-id.png"><input type="number" onkeypress="if (this.value.length == 16) return false;" placeholder="Nomor Induk Kependudukan" min="0" autofocus>
 		</div>
 		<div title="Masukkan nama lengkap anda">
 			<img src="<?= BASEURL ?>/assets/img/icon/circle-user-name.png"><input type="text" placeholder="Nama Lengkap">
@@ -22,7 +22,7 @@
 			<img src="<?= BASEURL ?>/assets/img/icon/circle-padlock.png"><input type="password" placeholder="Konfirmasi Password Anda">
 		</div>
 		<div title="Masukkan nomor telepon anda">
-			<img src="<?= BASEURL ?>/assets/img/icon/circle-phone-book.png"><input type="text" placeholder="Nomor Telepon">
+			<img src="<?= BASEURL ?>/assets/img/icon/circle-phone-book.png"><input type="number" onkeypress="if (this.value.length == 15) return false;" min="0" placeholder="Nomor Telepon">
 		</div>
 		<button type="submit">DAFTAR</button>
 		<span>Sudah punya akun? <a href="<?= BASEURL ?>/login">Login</a> sekarang!</span>

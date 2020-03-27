@@ -21,4 +21,4 @@ if ($path !== BASEURL) { // jika error, ubah konfigurasi BASEURL sesuai alamat r
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASS', '');
-define('DB_NAME', 'db_praktek');
+define('DB_NAME', 'db_lapor');

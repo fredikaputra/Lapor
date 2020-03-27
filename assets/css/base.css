@@ -1,5 +1,14 @@
 :root{
 	--blue: #0093ff;
+	--green: #D4EDDA;
+	--yellow: #FFF3CD;
+	--red: #F8D7DA;
+	--lightblue: #CCE5FF;
+	
+	--darkgreen: #155724;
+	--darkyellow: #856404;
+	--darkred: #721C24;
+	--darklightblue: #004085;
 }
 
 *{
@@ -23,4 +32,82 @@ a{
 
 button{
 	cursor: pointer;
+}
+
+.hide{
+	opacity: 0;
+	visibility: hidden;
+}
+
+
+
+/* ALERT */
+div#alert{
+	position: fixed;
+	top: 3cm;
+	right: 3cm;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: 1s;
+}
+
+div#alert span{
+	font-size: 16px;
+	padding: 10px 20px;
+	margin-right: 10px;
+	border-radius: 20px;
+}
+
+div#alert img{
+	width: 1cm;
+	border-radius: 50%;
+	padding: 2px;
+}
+
+div#alert div{
+	border-radius: 50%;
+	position: absolute;
+	right: 0;
+	z-index: -1;
+	animation: alert 1.3s ease-out infinite;
+}
+
+@keyframes alert{
+	from{
+		height: .9cm;
+		width: .9cm;
+		right: .05cm;
+		background-color: white;
+	}
+	
+	to{
+		height: 1.8cm;
+		width: 1.8cm;
+		right: -.42cm;
+	}
+}
+
+#success-alert{
+	background-color: var(--green);
+	border: 1px solid var(--green);
+	color: var(--darkgreen);
+}
+
+#warning-alert{
+	background-color: var(--yellow);
+	border: 1px solid var(--yellow);
+	color: var(--darkyellow);
+}
+
+#danger-alert{
+	background-color: var(--red);
+	border: 1px solid var(--red);
+	color: var(--darkred);
+}
+
+#info-alert{
+	background-color: var(--lightblue);
+	border: 1px solid var(--lightblue);
+	color: var(--darklightblue);
 }

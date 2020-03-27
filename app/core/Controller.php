@@ -5,8 +5,8 @@ class Controller{
 		require_once 'app/views/' . $view . '.php';
 	}
 	
-	public function method($method, $data = ''){
-		require_once 'app/methods/' . $method . '.php';
-		return new $method($data);
+	public function model($model, $data = ''){
+		require_once 'app/models/' . $model . '.php';
+		return new $model($data);
 	}
 }
