@@ -1,0 +1,65 @@
+header{
+	background: url('../img/bg/bg.jpg') center center/cover no-repeat fixed;
+	padding: 4cm 0;
+	text-align: center;
+}
+
+header h1{
+	color: white;
+	font-size: 1cm;
+}
+
+
+
+/* MAIN */
+main{
+	padding: 2cm 0;
+	width: 95%;
+	max-width: 1100px;
+	margin: auto;
+	text-align: center;
+}
+
+main h2{
+	color: dimgray;
+	margin-bottom: 10px;
+}
+
+main > span{
+	color: gray;
+	letter-spacing: 1px;
+	font-size: 18px;
+}
+
+main table{
+	margin-top: 1cm;
+	border: 1px solid lightgray;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+main table td{
+	border: 1px solid lightgray;
+	padding: 10px;
+}
+
+main table thead td{
+	font-weight: bold;
+}
+
+main table thead td:nth-child(2){
+	width: 6cm;
+}
+
+main table thead td:nth-child(4),
+main table thead td:nth-child(5){
+	width: 4cm;
+}
+
+main table tbody td:nth-child(2){
+	text-align: right;
+}
+
+main table tbody td:nth-child(3){
+	text-align: left;
+}

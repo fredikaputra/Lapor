@@ -29,6 +29,10 @@ class App{
 		
 		// cek method
 		if (isset($url[1])) {
+			if (strpos($url[1], '-')) { // ganti method yang mengandung '-' menjadi '_'
+				$url[1] = str_replace('-', '_', $url[1]);
+			}
+			
 			if (method_exists($this->controller, $url[1])) {
 				$this->method = $url[1];
 				unset($url[1]);
