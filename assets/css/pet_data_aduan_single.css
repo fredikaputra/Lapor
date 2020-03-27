@@ -1,0 +1,132 @@
+main .content h2{
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+main .content > div:first-of-type{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+main .content > div:first-of-type button{
+	background: var(--lightblue);
+	border: 1px solid var(--lightblue);
+	color: var(--darklightblue);
+	padding: 5px 15px;
+	font-weight: bold;
+}
+
+main .content > div:last-child{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 1cm;
+	margin-top: 10px;
+}
+
+main .content div .report > div{
+	padding: 1cm;
+	background: white;
+}
+
+main .content div .report div .header{
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 20px;
+}
+
+main .content div .report div .header span:first-of-type{
+	font-weight: bold;
+	color: var(--blue);
+}
+
+main .content div .report div .header span:last-of-type{
+	color: gray;
+}
+
+main .content div .report div > span{
+	font-size: 16px;
+}
+
+main .content div .report div > span strong{
+	color: dimgray;
+}
+
+main .content div .report div p{
+	margin-top: 1cm;
+	text-align: justify;
+	letter-spacing: 1px;
+	line-height: 30px;
+	color: dimgray;
+	text-indent: 1cm;
+}
+
+main .content div .action form{
+	background: white;
+	padding: 1cm;
+	text-align: center;
+}
+
+main .content div .action form h3{
+	color: dimgray;
+}
+
+main .content div .action form textarea{
+	width: 100%;
+	min-height: 5cm;
+	padding: 20px;
+	font-size: 16px;
+	color: dimgray;
+	margin-top: 20px;
+}
+
+main .content div .action form button{
+	margin-left: auto;
+	display: block;
+	margin-top: 10px;
+	background: var(--blue);
+	border: 1px solid var(--blue);
+	padding: 10px 20px;
+	font-weight: bold;
+	letter-spacing: 1px;
+	color: white;
+}
+
+main .content div .action .comment{
+	background: white;
+	margin-top: 10px;
+	padding: 25px;
+}
+
+main .content div .action .comment > div{
+	display: flex;
+	justify-content: space-between;
+}
+
+main .content div .action .comment div strong{
+	color: dimgray;
+}
+
+main .content div .action .comment div span{
+	color: gray;
+}
+
+main .content div .action .comment p{
+	margin-top: 10px;
+	color: gray;
+	line-height: 20px;
+	text-align: justify;
+}
+
+main .content div .action .comment p::before{
+	content: open-quote;
+}
+
+main .content div .action .comment p::after{
+	content: close-quote;
+}
+
+main .content div .action .comment hr{
+	border: .5px solid lightgray;
+	margin: 10px 0;
+}

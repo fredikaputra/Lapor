@@ -22,6 +22,20 @@
 		}
 		
 		?>
+		
+		<style type="text/css" media="print">
+			nav, main header, .action, .content > div:first-of-type{
+				display: none !important;
+			}
+			
+			main .content > div:last-child, body{
+				grid-template-columns: 1fr;
+			}
+			
+			main{
+				grid-template-rows: 1fr;
+			}
+		</style>
 		<link rel="icon" href="<?= BASEURL ?>/assets/img/icon/logo.png">
 	</head>
 	<body>

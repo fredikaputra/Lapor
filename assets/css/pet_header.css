@@ -92,5 +92,5 @@ main header .breadcrumb a{
 main .content{
 	overflow-y: auto;
 	background: aliceblue;
-	padding: 1cm;
+	padding: 2cm 1cm;
 }
