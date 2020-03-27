@@ -40,7 +40,7 @@ main table{
 
 main table td{
 	border: 1px solid lightgray;
-	padding: 10px;
+	padding: 25px 10px;
 }
 
 main table thead td{
