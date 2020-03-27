@@ -2,7 +2,7 @@
 
 class Data_model{
 	private $db;
-	private $table1 = 'petugas', $table2 = 'masyarakat';
+	private $table1 = 'petugas', $table2 = 'masyarakat', $table3 = 'pengaduan';
 	
 	public function __construct(){
 		$this->db = new Database;
@@ -22,6 +22,15 @@ class Data_model{
 		$query = "SELECT * FROM $this->table2 WHERE nik = ?";
 		$this->db->prepare($query);
 		$this->db->sth->bind_param('s', $nik);
+		$this->db->execute();
+		if ($this->db->getResult() == !NULL) {
+			return $this->db->row;
+		}
+	}
+	
+	public function laporan(){
+		$query = "SELECT * FROM $this->table3";
+		$this->db->prepare($query);
 		$this->db->execute();
 		if ($this->db->getResult() == !NULL) {
 			return $this->db->row;

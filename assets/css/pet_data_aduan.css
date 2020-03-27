@@ -1,0 +1,52 @@
+main .content{
+	text-align: center;
+}
+
+main .content table{
+	margin-top: 1cm;
+	border: 1px solid lightgray;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+main .content table td{
+	border: 1px solid lightgray;
+	padding: 25px 10px;
+}
+
+main .content table thead td{
+	font-weight: bold;
+}
+
+main .content table thead td:nth-child(2){
+	width: 6cm;
+}
+
+main .content table thead td:nth-child(4),
+main .content table thead td:nth-child(5),
+main .content table thead td:nth-child(6){
+	width: 4cm;
+}
+
+main .content table tbody td:nth-child(2){
+	text-align: right;
+}
+
+main .content table tbody td:nth-child(3){
+	text-align: left;
+}
+
+main .content table tbody td p{
+	white-space: nowrap;
+	width: 20cm;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+main .content table tbody td a{
+	background: var(--blue);
+	color: white;
+	padding: 5px 15px;
+	border-radius: 3px;
+	font-size: 15px;
+}

@@ -8,8 +8,8 @@ require_once 'app/init.php'; // panggil file init.php
 
 $app = new App; // jalankan aplikasinya
 
-var_dump($_POST);
-echo '<br />';
-var_dump($_SESSION);
-echo '<br />';
-var_dump($_FILES);
+// var_dump($_POST);
+// echo '<br />';
+// var_dump($_SESSION);
+// echo '<br />';
+// var_dump($_FILES);

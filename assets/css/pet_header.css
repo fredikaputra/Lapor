@@ -1,0 +1,96 @@
+body{
+	display: grid;
+	grid-template-columns: 7cm 1fr;
+}
+
+
+/* NAV */
+nav{
+	background: var(--dash-darkblue);
+	height: 100vh;
+	overflow-y: auto;
+	padding: 1cm 0;
+	text-align: center;
+}
+
+nav > img:first-of-type{
+	width: 2cm;
+	height: 2cm;
+	object-fit: cover;
+	object-position: center;
+	display: block;
+	margin: 0 auto 30px;
+}
+
+nav > span{
+	display: block;
+}
+
+nav span.name{
+	color: lightgray;
+	font-weight: bold;
+}
+
+nav span.level{
+	color: darkgray;
+	margin: 10px 0 20px;
+}
+
+nav > a{
+	margin: 0 5px 20px;
+	display: inline-block;
+}
+
+nav > a img{
+	width: 15px;
+}
+
+nav .menu a{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 20px 30px;
+	color: var(--dash-softblue);
+	font-weight: bold;
+}
+
+nav .menu a.active,
+nav .menu a:hover{
+	background: #b9c4ce20;
+}
+
+nav .menu a img{
+	width: 10px;
+}
+
+
+/* MAIN */
+main{
+	display: grid;
+	grid-template-rows: 2cm 1fr;
+	height: 100vh;
+}
+
+main header{
+	background: var(--dash-darkblue);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 1cm;
+	color: lightgray;
+}
+
+main header > span{
+	font-size: 20px;
+	font-weight: bold;
+}
+
+main header .breadcrumb a{
+	color: var(--blue);
+}
+
+main .content{
+	overflow-y: auto;
+	background: aliceblue;
+	padding: 1cm;
+}

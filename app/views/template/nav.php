@@ -13,7 +13,7 @@
 				
 				<div class="logged">
 					<button type="button" onclick="toggleAccPan()">
-						<img src="https://image.flaticon.com/icons/svg/527/527489.svg">
+						<img src="<?= BASEURL ?>/assets/img/user/user.png">
 						<?= $data['name'] ?>
 					</button>
 					
@@ -21,7 +21,7 @@
 						<a href="<?= BASEURL ?>/dashboard/pengaturan" class="sett">
 							<img src="<?= BASEURL ?>/assets/img/icon/settings.png">
 						</a>
-						<img src="https://image.flaticon.com/icons/svg/527/527489.svg">
+						<img src="<?= BASEURL ?>/assets/img/user/user.png">
 						<a href="<?= BASEURL ?>/dashboard/pengaturan/foto-profil" class="change">
 							<img src="<?= BASEURL ?>/assets/img/icon/camera.png">
 						</a>
