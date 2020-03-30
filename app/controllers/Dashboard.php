@@ -4,7 +4,7 @@ class Dashboard extends Controller{
 	public function index(){
 		if (isset($_SESSION['petugasID'])) {
 			$data['webtitle'] = 'Dashboard';
-			$data['css'] = ['pet_header.css', 'pet_dashboar.css', 'base.css'];
+			$data['css'] = ['pet_header.css', 'pet_dashboard.css', 'base.css'];
 			
 			$this->view('template/header', $data);
 			$this->view('dashboard/header');

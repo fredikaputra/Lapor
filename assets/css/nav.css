@@ -62,8 +62,9 @@ nav div .menu .logged button{
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	background: white;
-	border: 1px solid white;
+	background: var(--blue);
+	border: 1px solid var(--blue);
+	color: white;
 	border-radius: 20px;
 	padding: 5px 10px;
 	font-weight: bold;

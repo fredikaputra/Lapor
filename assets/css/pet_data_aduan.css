@@ -2,16 +2,22 @@ main .content{
 	text-align: center;
 }
 
+main .content > div{
+	background: white;
+	padding: 1cm;
+	box-shadow: 0 5px 10px #0000000f;
+}
+
 main .content table{
 	margin-top: 1cm;
-	border: 1px solid lightgray;
+	border: .5px solid #00000015;
 	border-collapse: collapse;
 	width: 100%;
 }
 
 main .content table td{
-	border: 1px solid lightgray;
-	padding: 25px 10px;
+	border-bottom: .5px solid #00000015;
+	padding: 25px;
 }
 
 main .content table thead td{
@@ -19,13 +25,13 @@ main .content table thead td{
 }
 
 main .content table thead td:nth-child(2){
-	width: 6cm;
+	width: 7cm;
 }
 
 main .content table thead td:nth-child(4),
 main .content table thead td:nth-child(5),
 main .content table thead td:nth-child(6){
-	width: 4cm;
+	width: 5cm;
 }
 
 main .content table tbody td:nth-child(2){
@@ -36,9 +42,17 @@ main .content table tbody td:nth-child(3){
 	text-align: left;
 }
 
+main .content table tbody td button{
+	padding: 5px 10px;
+	background: var(--lightblue);
+	border: 1px solid var(--lightblue);
+	color: black;
+	border-radius: 3px;
+}
+
 main .content table tbody td p{
 	white-space: nowrap;
-	width: 20cm;
+	width: 15cm;
 	overflow: hidden;
 	text-overflow: ellipsis;
 }

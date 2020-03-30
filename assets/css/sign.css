@@ -79,13 +79,6 @@ main form div input{
 	outline: none;
 }
 
-/* REMOVE SPINNER IN CHROME */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-	-webkit-appearance: none;
-	margin: 0;
-}
-
 /* SUBMIT BUTTON */
 main form button{
 	display: block;
