@@ -13,16 +13,16 @@
 	</a>
 	
 	<div class="menu">
-		<a href="<?= BASEURL ?>/dashboard" class="active">Beranda <img src="<?= BASEURL ?>/assets/img/icon/chevron-right.png" alt=""></a>
-		<a href="<?= BASEURL ?>/dashboard/data-aduan">Data aduan <img src="<?= BASEURL ?>/assets/img/icon/chevron-right.png" alt=""></a>
-		<a href="<?= BASEURL ?>/pengguna">Pengguna <img src="<?= BASEURL ?>/assets/img/icon/chevron-right.png" alt=""></a>
+		<div>
+			<a href="<?= BASEURL ?>/dashboard" class="active">Beranda <img src="<?= BASEURL ?>/assets/img/icon/chevron-right.png" alt=""></a>
+			<a href="<?= BASEURL ?>/dashboard/data-aduan">Data aduan <img src="<?= BASEURL ?>/assets/img/icon/chevron-right.png" alt=""></a>
+			<a href="<?= BASEURL ?>/pengguna">Pengguna <img src="<?= BASEURL ?>/assets/img/icon/chevron-right.png" alt=""></a>
+		</div>
+		<a href="<?= BASEURL ?>"> WEBSITE LAPOR!</a>
 	</div>
 </nav>
 
 <main>
 	<header>
 		<span>Dashboard</span>
-		<div class="breadcrumb">
-			Lapor / <a href="">Dashboard</a>
-		</div>
 	</header>

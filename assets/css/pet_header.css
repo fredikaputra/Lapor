@@ -45,7 +45,7 @@ nav > a img{
 	width: 15px;
 }
 
-nav .menu a{
+nav .menu div a{
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -54,13 +54,33 @@ nav .menu a{
 	font-weight: bold;
 }
 
-nav .menu a.active,
-nav .menu a:hover{
+nav .menu div a:last-of-type{
+	margin-bottom: 1cm;
+}
+
+nav .menu div a.active,
+nav .menu div a:hover{
 	background: #b9c4ce20;
 }
 
-nav .menu a img{
+nav .menu div a img{
 	width: 10px;
+}
+
+nav .menu > a{
+	padding: 20px;
+	color: var(--dash-softblue);
+	font-weight: bold;
+	position: fixed;
+	bottom: 0cm;
+	left: 0;
+	align-items: center;
+	width: 7cm;
+	background: #3b4152;
+}
+
+nav .menu > a:hover{
+	color: var(--blue);
 }
 
 
@@ -74,7 +94,6 @@ main{
 main header{
 	background: var(--dash-darkblue);
 	display: flex;
-	justify-content: space-between;
 	align-items: center;
 	padding: 0 1cm;
 	color: lightgray;
@@ -83,10 +102,6 @@ main header{
 main header > span{
 	font-size: 20px;
 	font-weight: bold;
-}
-
-main header .breadcrumb a{
-	color: var(--blue);
 }
 
 main .content{
