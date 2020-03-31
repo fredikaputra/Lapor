@@ -10,3 +10,11 @@
 		<button type="submit" name="report" <?= (isset($_SESSION['masyarakatNIK'])) ? '' : 'disabled' ?>>LAPORKAN!</button>
 	</form>
 </main>
+
+<?php
+
+if (isset($_SESSION['msg'])) {
+	unset($_SESSION['msg']);
+}
+
+?>

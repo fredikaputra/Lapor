@@ -38,6 +38,6 @@
 		</style>
 		<link rel="icon" href="<?= BASEURL ?>/assets/img/icon/logo.png">
 	</head>
-	<body>
+	<body onbeforeunload="<?= (isset($_SESSION['msg'])) ? 'return true;' : '' ?>">
 		
 		<?= Flasher::flash() ?>
