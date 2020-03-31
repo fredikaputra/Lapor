@@ -16,10 +16,10 @@ class Login_model{
 			$this->db->prepare($query);
 			$this->db->sth->bind_param('s', $username);
 			$this->db->execute();
-			if ($this->db->getResult() == !NULL) {
-				$this->pass = $this->db->row[0][3];
+			if ($this->db->getResult() > 0) {
+				$this->pass = $this->db->row[0]['password'];
 				if ($this->passCheck($password) === TRUE) {
-					$_SESSION['masyarakatNIK'] = $this->db->row[0][0];
+					$_SESSION['masyarakatNIK'] = $this->db->row[0]['nik'];
 				}else {
 					Flasher::setFlash('Gagal! ', 'Username atau password anda salah.', 'warning', 'warning');
 					return false;
@@ -29,10 +29,10 @@ class Login_model{
 				$this->db->prepare($query);
 				$this->db->sth->bind_param('s', $username);
 				$this->db->execute();
-				if ($this->db->getResult() == !NULL) {
-					$this->pass = $this->db->row[0][3];
+				if ($this->db->getResult() > 0) {
+					$this->pass = $this->db->row[0]['password'];
 					if ($this->passCheck($password) === TRUE) {
-						$_SESSION['petugasID'] = $this->db->row[0][0];
+						$_SESSION['petugasID'] = $this->db->row[0]['id_petugas'];
 					}else {
 						Flasher::setFlash('Gagal! ', 'Username atau password anda salah.', 'warning', 'warning');
 						return false;

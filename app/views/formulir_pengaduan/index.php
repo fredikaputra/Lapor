@@ -2,11 +2,11 @@
 	<h1>Sampaikan Aspirasi Anda</h1>
 	<span>Laporan anda akan diverifikasi dan diteruskan kepada instansi berwenang</span>
 	
-	<form>
-		<textarea placeholder="Ketik laporan anda..." disabled></textarea>
-		<label disabled><img src="<?= BASEURL ?>/assets/img/icon/upload.png">Upload
-			<input type="file" disabled>
+	<form method="post" action="<?= BASEURL ?>/formulir-pengaduan/upload" enctype="multipart/form-data">
+		<textarea name="msg" placeholder="Ketik laporan anda..." <?= (isset($_SESSION['masyarakatNIK'])) ? '' : 'disabled' ?> required autofocus></textarea>
+		<label <?= (isset($_SESSION['masyarakatNIK'])) ? '' : 'disabled' ?>><img src="<?= BASEURL ?>/assets/img/icon/upload.png">Upload
+			<input name="photo" type="file" <?= (isset($_SESSION['masyarakatNIK'])) ? '' : 'disabled' ?>>
 		</label>
-		<button type="submit" disabled>LAPORKAN!</button>
+		<button type="submit" name="report" <?= (isset($_SESSION['masyarakatNIK'])) ? '' : 'disabled' ?>>LAPORKAN!</button>
 	</form>
 </main>

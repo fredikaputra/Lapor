@@ -21,7 +21,7 @@ class Database{
 		if ($this->dbh->prepare($query)) {
 			$this->sth = $this->dbh->prepare($query);
 		}else {
-			// var_dump($this->dbh->error);
+			// echo $this->dbh->error;
 			die("<br /><strong>Fatal Error</strong>: Query error!");
 		}
 	}
@@ -31,8 +31,12 @@ class Database{
 	}
 	
 	public function getResult(){
-		$result = $this->sth->get_result();
-		return $this->row = $result->fetch_all();
+		$this->result = $this->sth->get_result();
+		
+		while ($row = $this->result->fetch_assoc()) {
+			$this->row[] = $row;
+		}
+		return $this->row;
 	}
 	
 	public function affectedRows(){
