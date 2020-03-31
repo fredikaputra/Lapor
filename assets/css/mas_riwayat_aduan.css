@@ -63,3 +63,10 @@ main table tbody td:nth-child(2){
 main table tbody td:nth-child(3){
 	text-align: left;
 }
+
+main table tbody td p{
+	white-space: nowrap;
+	width: 15cm;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}

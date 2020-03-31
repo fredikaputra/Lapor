@@ -50,11 +50,12 @@ class Dashboard extends Controller{
 		}elseif (isset($_SESSION['masyarakatNIK'])) { // ambil data masyarakat (nav)
 			$data['name'] = $this->model('Data_model')->masyarakat($_SESSION['masyarakatNIK'])[0]['nama'];
 			$data['username'] = $this->model('Data_model')->masyarakat($_SESSION['masyarakatNIK'])[0]['username'];
+			$data['report'] = $this->model('Data_model')->laporan($_SESSION['masyarakatNIK']);
 		}
 		
 		$this->view('template/header', $data);
 		$this->view('template/nav', $data);
-		$this->view('dashboard/mas_riwayat_aduan');
+		$this->view('dashboard/mas_riwayat_aduan', $data);
 		$this->view('template/footer');
 	}
 }

@@ -15,34 +15,27 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td>1</td>
-				<td>Selasa, 25 Juni 2001</td>
-				<td>Lorem ipsum dolor sit amet, consectetur</td>
-				<td>Tidak ada foto</td>
-				<td>Selesai</td>
-			</tr>
-			<tr>
-				<td>2</td>
-				<td>Senin, 5 Juni 2004</td>
-				<td>Lorem ipsum dolor sit amet, consectetur</td>
-				<td>Tidak ada foto</td>
-				<td>Selesai</td>
-			</tr>
-			<tr>
-				<td>3</td>
-				<td>Selasa, 2 Agustus 2007</td>
-				<td>Lorem ipsum dolor sit amet, consectetur</td>
-				<td>Tidak ada foto</td>
-				<td>Selesai</td>
-			</tr>
-			<tr>
-				<td>4</td>
-				<td>Selasa, 25 Juni 2009</td>
-				<td>Lorem ipsum dolor sit amet, consectetur</td>
-				<td>Tidak ada foto</td>
-				<td>Selesai</td>
-			</tr>
+			<?php
+			
+			if (isset($data['report'])) {
+				$no = 1;
+				foreach ($data['report'] as $report) {
+					?>
+					
+					<tr>
+						<td><?= $no ?></td>
+						<td><?= date('l, d F Y', $report['tgl_pengaduan']) ?></td>
+						<td><p><?= $report['isi_laporan'] ?></p></td>
+						<td><?= (isset($report['foto'])) ? '1 Gambar' : 'Tidak ada gambar' ?></td>
+						<td><?= ($report['status'] == 0) ? 'Dalam Proses' : 'Selesai' ?></td>
+					</tr>
+					
+					<?php
+					$no++;
+				}
+			}
+			
+			?>
 		</tbody>
 	</table>
 </main>

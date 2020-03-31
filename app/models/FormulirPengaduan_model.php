@@ -18,6 +18,7 @@ class FormulirPengaduan_model extends Controller{
 	public function upload($data, $files){
 		$this->db->dbh->real_escape_string(extract($data));
 		if (isset($report)) {
+			$_SESSION['msg'] = $msg;
 			$time = time();
 			$nik = $this->model('Data_model')->masyarakat($_SESSION['masyarakatNIK'])[0]['nik'];
 			$status = 0;
@@ -37,6 +38,7 @@ class FormulirPengaduan_model extends Controller{
 						}
 					}else {
 						Flasher::setFlash('Gagal! ', 'Format file tidak didukung.', 'warning', 'warning');
+						return;
 					}
 				}else {
 					Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
@@ -50,6 +52,7 @@ class FormulirPengaduan_model extends Controller{
 			$this->db->sth->bind_param('ssssss', $this->uniqID, $time, $nik, $msg, $photo, $status);
 			$this->db->execute();
 			if ($this->db->affectedRows() > 0) {
+				unset($_SESSION['msg']);
 				Flasher::setFlash('Berhasil! ', 'Laporan aduan anda telah dikirim.', 'success', 'correct');
 			}else {
 				Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
