@@ -5,67 +5,73 @@
 			<img src="<?= BASEURL ?>/assets/img/icon/computer.png">
 		</div>
 		<div>
-			<div>
-				<form method="post" action="<?= BASEURL ?>/dashboard/update-profile" enctype="multipart/form-data">
-					<h2>Pengaturan Profil</h2>
+			<form method="post" action="<?= BASEURL ?>/dashboard/update-profile" enctype="multipart/form-data">
+				<h2>Pengaturan Profil</h2>
+				<div>
+					<?php
+					
+					if (file_exists('assets/img/users/' . $data['photo'])) {
+						?><img src="<?= BASEURL ?>/assets/img/users/<?= $data['photo'] ?>" alt=""><?php
+					}else {
+						?><img src="<?= BASEURL ?>/assets/img/users/default.png" alt=""><?php
+					}
+					
+					?>
+					<label><img src="<?= BASEURL ?>/assets/img/icon/camera.png" alt="">
+						<input type="file" id="onChange3" onchange="checkValueChange()" name="photo" accept=".jpg">
+					</label>
+				</div>
+				<div>
+					<img src="<?= BASEURL ?>/assets/img/icon/circle-user.png" alt="">
+					<input type="text" id="onChange1" onkeyup="checkValueChange()" value="<?= $data['name'] ?>" name="name" autocomplete="off">
+				</div>
+				<div>
+					<img src="<?= BASEURL ?>/assets/img/icon/circle-phone-book.png" alt="">
+					<input type="number" id="onChange2" onkeyup="checkValueChange()" value="<?= $data['phone'] ?>" name="phone" autocomplete="off">
+				</div>
+				<div>
+					<a href="<?= BASEURL ?>/dashboard/change-pass">Ganti Password</a>
 					<div>
+						<button type="reset" class="hide" onclick="hide()" id="cancelSaveUserProfile">Batal</button>
+						<button type="submit" class="hide" name="updateprofile" id="saveUserProfile">Simpan</button>
+					</div>
+				</div>
+			</form>
+			
+			<div>
+				<table>
+					<caption>Aduan Laporan Terbaru</caption>
+					<thead>
+						<tr>
+							<td>#ID</td>
+							<td>Waktu</td>
+							<td>Dari</td>
+							<td>Laporan</td>
+							<td>Status</td>
+						</tr>
+					</thead>
+					<tbody>
 						<?php
 						
-						if (file_exists('assets/img/users/' . $data['photo'])) {
-							?><img src="<?= BASEURL ?>/assets/img/users/<?= $data['photo'] ?>" alt=""><?php
-						}else {
-							?><img src="<?= BASEURL ?>/assets/img/users/default.png" alt=""><?php
+						foreach ($data['history'] as $history) {
+							?>
+							
+							<tr>
+								<td><?= $history['id_pengaduan'] ?></td>
+								<td><?= date('d F', $history['tgl_pengaduan']) ?></td>
+								<td><?= $history['nama'] ?></td>
+								<td>
+									<p><?= $history['isi_laporan'] ?></p>
+								</td>
+								<td><?= ($history['status'] == 0) ? 'Dalam Proses' : 'Selesai' ?></td>
+							</tr>
+							
+							<?php
 						}
 						
 						?>
-						<label><img src="<?= BASEURL ?>/assets/img/icon/camera.png" alt="">
-							<input type="file" id="onChange3" onchange="checkValueChange()" name="photo" accept=".jpg">
-						</label>
-					</div>
-					<div>
-						<img src="<?= BASEURL ?>/assets/img/icon/circle-user.png" alt="">
-						<input type="text" id="onChange1" onkeyup="checkValueChange()" value="<?= $data['name'] ?>" name="name" autocomplete="off">
-					</div>
-					<div>
-						<img src="<?= BASEURL ?>/assets/img/icon/circle-phone-book.png" alt="">
-						<input type="number" id="onChange2" onkeyup="checkValueChange()" value="<?= $data['phone'] ?>" name="phone" autocomplete="off">
-					</div>
-					<div>
-						<a href="<?= BASEURL ?>/dashboard/change-pass">Ganti Password</a>
-						<div>
-							<button type="reset" class="hide" onclick="hide()" id="cancelSaveUserProfile">Batal</button>
-							<button type="submit" class="hide" name="updateprofile" id="saveUserProfile">Simpan</button>
-						</div>
-					</div>
-				</form>
-			</div>
-			
-			<div>
-				<div>
-					<table>
-						<caption>Aduan Laporan Terbaru</caption>
-						<thead>
-							<tr>
-								<td>#ID</td>
-								<td>Waktu</td>
-								<td>Dari</td>
-								<td>Laporan</td>
-								<td>Status</td>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>LPRDID64J87</td>
-								<td>3 Menit yang lalu</td>
-								<td>Lada Sattar</td>
-								<td>
-									<p>Tolong pindahkan kabel listrik yang ada di atas rumah saya, karena itu sanggat mengganggu!</p>
-								</td>
-								<td>Dalam Proses</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</div>

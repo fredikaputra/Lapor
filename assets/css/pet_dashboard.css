@@ -33,24 +33,24 @@ main .content > div:last-of-type{
 	margin-top: 1cm;
 }
 
-main .content > div:last-of-type div form{
+main .content > div:last-of-type form{
 	background: white;
 	padding: 1cm;
 	box-shadow: 0 5px 10px #0000000f;
 }
 
-main .content > div:last-of-type div form h2{
+main .content > div:last-of-type form h2{
 	font-size: 16px;
 	color: dimgray;
 }
 
-main .content > div:last-of-type div form > div:first-of-type{
+main .content > div:last-of-type form > div:first-of-type{
 	margin: 50px 0;
 	text-align: center;
 	position: relative;
 }
 
-main .content > div:last-of-type div form > div:first-of-type > img{
+main .content > div:last-of-type form > div:first-of-type > img{
 	width: 3cm;
 	height: 3cm;
 	border-radius: 50%;
@@ -58,7 +58,7 @@ main .content > div:last-of-type div form > div:first-of-type > img{
 	object-position: center;
 }
 
-main .content > div:last-of-type div form > div:first-of-type label{
+main .content > div:last-of-type form > div:first-of-type label{
 	position: absolute;
 	bottom: 0px;
 	right: 3cm;
@@ -70,33 +70,33 @@ main .content > div:last-of-type div form > div:first-of-type label{
 	cursor: pointer;
 }
 
-main .content > div:last-of-type div form > div:first-of-type label img{
+main .content > div:last-of-type form > div:first-of-type label img{
 	width: 20px;
 }
 
-main .content > div:last-of-type div form > div:first-of-type label input{
+main .content > div:last-of-type form > div:first-of-type label input{
 	display: none;
 }
 
-main .content > div:last-of-type div form > div:not(:first-of-type){
+main .content > div:last-of-type form > div:not(:first-of-type){
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 }
 
-main .content > div:last-of-type div form > div:nth-of-type(2),
-main .content > div:last-of-type div form > div:nth-of-type(3){
+main .content > div:last-of-type form > div:nth-of-type(2),
+main .content > div:last-of-type form > div:nth-of-type(3){
 	margin: 10px 0 0;
 	border: 1px solid lightgray;
 	border-radius: 20px;
 	
 }
 
-main .content > div:last-of-type div form > div:not(:first-of-type) img{
+main .content > div:last-of-type form > div:not(:first-of-type) img{
 	width: 1cm;
 }
 
-main .content > div:last-of-type div form > div:not(:first-of-type) input{
+main .content > div:last-of-type form > div:not(:first-of-type) input{
 	width: 100%;
 	font-size: 15px;
 	color: dimgray;
@@ -104,78 +104,79 @@ main .content > div:last-of-type div form > div:not(:first-of-type) input{
 	border: none;
 }
 
-main .content > div:last-of-type div form > div:last-of-type > a,
-main .content > div:last-of-type div form > div:last-of-type div button:first-of-type,
-main .content > div:last-of-type div form > div:last-of-type div button:last-of-type{
+main .content > div:last-of-type form > div:last-of-type > a,
+main .content > div:last-of-type form > div:last-of-type div button:first-of-type,
+main .content > div:last-of-type form > div:last-of-type div button:last-of-type{
 	padding: 5px 10px;
 	font-size: 14px;
 }
 
-main .content > div:last-of-type div form > div:last-of-type{
+main .content > div:last-of-type form > div:last-of-type{
 	margin-top: 30px;
 }
 
-main .content > div:last-of-type div form > div:last-of-type > a{
+main .content > div:last-of-type form > div:last-of-type > a{
 	background: var(--red);
 	color: var(--darkred);
 	border: 1px solid var(--red);
 }
 
-main .content > div:last-of-type div form > div:last-of-type div button{
+main .content > div:last-of-type form > div:last-of-type div button{
 	padding: 5px 15px;
 }
 
-main .content > div:last-of-type div form > div:last-of-type div button:first-of-type{
+main .content > div:last-of-type form > div:last-of-type div button:first-of-type{
 	/* display: none; */
 	background: var(--yellow);
 	color: var(--darkyellow);
 	border: 1px solid var(--yellow);
 }
 
-main .content > div:last-of-type div form > div:last-of-type div button:last-of-type{
+main .content > div:last-of-type form > div:last-of-type div button:last-of-type{
 	/* display: none; */
 	background: var(--green);
 	color: var(--darkgreen);
 	border: 1px solid var(--green);
 }
 
-main .content > div:last-of-type > div:last-of-type > div{
+main .content > div:last-of-type > div:last-of-type{
 	background: white;
 	padding: 1cm 20px;
+	box-shadow: 0 5px 10px #0000000f;
 }
 
-main .content > div:last-of-type > div:last-of-type > div table{
+main .content > div:last-of-type > div:last-of-type table{
 	border-collapse: collapse;
 	width: 100%;
 }
 
-main .content > div:last-of-type > div:last-of-type > div table caption{
+main .content > div:last-of-type > div:last-of-type table caption{
 	font-size: 20px;
 	font-weight: bold;
 	color: dimgray;
 	margin-bottom: 1cm;
 }
 
-main .content > div:last-of-type > div:last-of-type > div table thead td{
+main .content > div:last-of-type > div:last-of-type table thead td{
 	border-bottom: .5px solid #00000015;
 	padding: 10px;
 }
 
-main .content > div:last-of-type > div:last-of-type > div table tbody td{
+main .content > div:last-of-type > div:last-of-type table tbody td{
 	border-bottom: .5px solid #00000015;
 	padding: 25px 10px;
 }
 
-main .content > div:last-of-type > div:last-of-type > div table thead td{
+main .content > div:last-of-type > div:last-of-type table thead td{
 	font-weight: bold;
 	color: dimgray;
 }
 
-main .content > div:last-of-type > div:last-of-type > div table tbody td{
+main .content > div:last-of-type > div:last-of-type table tbody td{
 	color: gray;
 }
 
-main .content > div:last-of-type > div:last-of-type > div table tbody td p{
+main .content > div:last-of-type > div:last-of-type table tbody td p{
 	white-space: nowrap;
 	width: 10cm;
 	overflow: hidden;
