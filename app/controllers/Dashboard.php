@@ -9,7 +9,7 @@ class Dashboard extends Controller{
 			$data['privilege'] = $this->model('Data_model')->petugas($_SESSION['petugasID'])[0]['level'];
 			$data['phone'] = $this->model('Data_model')->petugas($_SESSION['petugasID'])[0]['telp'];
 			$data['photo'] = $_SESSION['petugasID'] . '.jpg';
-			$data['history'] = $this->model('Data_model')->laporan();
+			$data['history'] = $this->model('Data_model')->laporan('', '4');
 			
 			$this->view('template/header', $data);
 			$this->view('dashboard/header', $data);
@@ -27,22 +27,26 @@ class Dashboard extends Controller{
 	
 	public function data_aduan($id = ''){
 		if (isset($_SESSION['petugasID'])) {
+			$data['photo'] = $_SESSION['petugasID'] . '.jpg';
+			$data['name'] = $this->model('Data_model')->petugas($_SESSION['petugasID'])[0]['nama_petugas'];
+			$data['privilege'] = $this->model('Data_model')->petugas($_SESSION['petugasID'])[0]['level'];
 			if ($id == '') {
 				$data['webtitle'] = 'Dashboard - Data Aduan';
 				$data['css'] = ['pet_header.css', 'pet_data_aduan.css', 'base.css'];
-				$data['data_aduan'] = $this->model('Data_model')->laporan();
+				$data['data_aduan'] = $this->model('Data_model')->laporan('', '10');
 				
 				$this->view('template/header', $data);
-				$this->view('dashboard/header');
+				$this->view('dashboard/header', $data);
 				$this->view('dashboard/pet_data_aduan', $data);
 				$this->view('template/footer');
-			}else{
+			}else if ($id){
 				$data['webtitle'] = 'Data Aduan #LRPD9678';
 				$data['css'] = ['pet_header.css', 'pet_data_aduan_single.css', 'base.css'];
+				$data['data_aduan'] = $this->model('Data_model')->laporan($id);
 				
 				$this->view('template/header', $data);
-				$this->view('dashboard/header');
-				$this->view('dashboard/pet_data_aduan_single');
+				$this->view('dashboard/header', $data);
+				$this->view('dashboard/pet_data_aduan_single', $data);
 				$this->view('template/footer');
 			}
 		}else {

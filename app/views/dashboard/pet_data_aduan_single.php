@@ -8,11 +8,11 @@
 			<div class="report">
 				<div>
 					<div class="header">
-						<span>#LPRID1A3C84A</span>
-						<span>Saturday, 29 February 2020</span>
+						<span><?= $data['data_aduan'][0]['id_pengaduan'] ?></span>
+						<span><?= date('l, d F Y', $data['data_aduan'][0]['tgl_pengaduan']) ?></span>
 					</div>
-					<span>Dari: <strong>Fredika Putra</strong></span>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					<span>Dari: <strong><?= $data['data_aduan'][0]['nama'] ?></strong></span>
+					<p><?= $data['data_aduan'][0]['isi_laporan'] ?></p>
 				</div>
 			</div>
 			<div class="action">

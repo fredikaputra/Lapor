@@ -22,12 +22,12 @@
 							
 							<tr>
 								<td><?= $no ?></td>
-								<td><?= date("l, d F Y", $laporan[1]) ?></td>
-								<td><p><?= $laporan[3] ?></p></td>
+								<td><?= date("l, d F Y", $laporan['tgl_pengaduan']) ?></td>
+								<td><p><?= $laporan['isi_laporan'] ?></p></td>
 								<td>
 									<?php
 									
-									if ($laporan[4] == NULL) {
+									if ($laporan['foto'] == NULL) {
 										echo 'Tidak ada gambar';
 									}else {
 										?>
@@ -42,7 +42,7 @@
 								<td>
 									<?php
 									
-									if ($laporan[5] == '0') {
+									if ($laporan['status'] == '0') {
 										echo 'Dalam Proses';
 									}else if ($laporan[5] == '1') {
 										echo 'Selesai';
@@ -50,7 +50,7 @@
 									
 									?>
 								</td>
-								<td><a href="<?= BASEURL ?>/dashboard/data-aduan/<?= $laporan[0] ?>">Tinjau</a></td>
+								<td><a href="<?= BASEURL ?>/dashboard/data-aduan/<?= $laporan['id_pengaduan'] ?>">Tinjau</a></td>
 							</tr>
 							
 							<?php

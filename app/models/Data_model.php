@@ -27,17 +27,17 @@ class Data_model{
 		}
 	}
 	
-	public function laporan($nik = ''){
+	public function laporan($nik = '', $limit = ''){
 		if ($nik != '') {
-			$query = "SELECT * FROM pengaduan WHERE nik = ?";
+			$query = "SELECT pengaduan.*, nama FROM pengaduan JOIN masyarakat USING (nik) WHERE id_pengaduan = ?";
 			$this->db->prepare($query);
 			$this->db->sth->bind_param('s', $nik);
 			$this->db->execute();
 			if ($this->db->getResult() == !NULL) {
 				return $this->db->row;
 			}
-		}else {
-			$query = "SELECT pengaduan.*, nama FROM pengaduan JOIN masyarakat USING (nik) ORDER BY tgl_pengaduan DESC LIMIT 4";
+		}else if($limit != '') {
+			$query = "SELECT pengaduan.*, nama FROM pengaduan JOIN masyarakat USING (nik) ORDER BY tgl_pengaduan DESC LIMIT $limit";
 			$this->db->prepare($query);
 			$this->db->execute();
 			if ($this->db->getResult() == !NULL) {
