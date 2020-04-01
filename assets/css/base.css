@@ -62,6 +62,7 @@ div#alert{
 	align-items: center;
 	justify-content: center;
 	transition: 1s;
+	z-index: 1;
 }
 
 div#alert span{

@@ -5,14 +5,23 @@ class Dashboard extends Controller{
 		if (isset($_SESSION['petugasID'])) {
 			$data['webtitle'] = 'Dashboard';
 			$data['css'] = ['pet_header.css', 'pet_dashboard.css', 'base.css'];
+			$data['name'] = $this->model('Data_model')->petugas($_SESSION['petugasID'])[0]['nama_petugas'];
+			$data['privilege'] = $this->model('Data_model')->petugas($_SESSION['petugasID'])[0]['level'];
+			$data['phone'] = $this->model('Data_model')->petugas($_SESSION['petugasID'])[0]['telp'];
+			$data['photo'] = $_SESSION['petugasID'] . '.jpg';
 			
 			$this->view('template/header', $data);
-			$this->view('dashboard/header');
-			$this->view('dashboard/pet_dashboard');
+			$this->view('dashboard/header', $data);
+			$this->view('dashboard/pet_dashboard', $data);
 			$this->view('template/footer');
 		}else {
 			header('location: ' . BASEURL . '/dashboard/riwayat_aduan');
 		}
+	}
+	
+	public function update_profile(){
+		$this->model('UpdateProfile_model')->update($_POST, $_FILES);
+		header('location: ' . BASEURL . '/dashboard');
 	}
 	
 	public function data_aduan($id = ''){

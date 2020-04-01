@@ -1,32 +1,40 @@
 	<div class="content">
 		<div>
-			<img src="<?= BASEURL ?>/assets/img/user/user.png">
-			<span>Selamat Datang, <strong>I Putu Fredika Putra</strong></span>
+			<img src="<?= BASEURL ?>/assets/img/users/default.png" alt="">
+			<span>Selamat Datang, <strong><?= $data['name'] ?></strong></span>
 			<img src="<?= BASEURL ?>/assets/img/icon/computer.png">
 		</div>
 		<div>
 			<div>
-				<form>
+				<form method="post" action="<?= BASEURL ?>/dashboard/update-profile" enctype="multipart/form-data">
 					<h2>Pengaturan Profil</h2>
 					<div>
-						<img src="<?= BASEURL ?>/assets/img/user/user.png" alt="">
+						<?php
+						
+						if (file_exists('assets/img/users/' . $data['photo'])) {
+							?><img src="<?= BASEURL ?>/assets/img/users/<?= $data['photo'] ?>" alt=""><?php
+						}else {
+							?><img src="<?= BASEURL ?>/assets/img/users/default.png" alt=""><?php
+						}
+						
+						?>
 						<label><img src="<?= BASEURL ?>/assets/img/icon/camera.png" alt="">
-							<input type="file">
+							<input type="file" name="photo">
 						</label>
 					</div>
 					<div>
 						<img src="<?= BASEURL ?>/assets/img/icon/circle-user.png" alt="">
-						<input type="text" value="I Putu Fredika Putra">
+						<input type="text" value="<?= $data['name'] ?>" name="name">
 					</div>
 					<div>
 						<img src="<?= BASEURL ?>/assets/img/icon/circle-phone-book.png" alt="">
-						<input type="number" value="085829303379">
+						<input type="number" value="<?= $data['phone'] ?>" name="phone">
 					</div>
 					<div>
-						<a href="">Ganti Password</a>
+						<a href="<?= BASEURL ?>/dashboard/change-pass">Ganti Password</a>
 						<div>
 							<button type="reset">Batal</button>
-							<button type="submit">Simpan</button>
+							<button type="submit" name="updateprofile">Simpan</button>
 						</div>
 					</div>
 				</form>

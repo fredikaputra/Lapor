@@ -54,6 +54,8 @@ main .content > div:last-of-type div form > div:first-of-type > img{
 	width: 3cm;
 	height: 3cm;
 	border-radius: 50%;
+	object-fit: cover;
+	object-position: center;
 }
 
 main .content > div:last-of-type div form > div:first-of-type label{

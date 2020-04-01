@@ -1,7 +1,15 @@
 <nav>
-	<img src="<?= BASEURL ?>/assets/img/user/user.png" alt="">
-	<span class="name">I Putu Fredika Putra</span>
-	<span class="level">Admin</span>
+	<?php
+	
+	if (file_exists('assets/img/users/' . $data['photo'])) {
+		?><img src="<?= BASEURL ?>/assets/img/users/<?= $data['photo'] ?>" alt=""><?php
+	}else {
+		?><?php
+	}
+	
+	?>
+	<span class="name"><?= $data['name'] ?></span>
+	<span class="level"><?= ($data['privilege'] == 1) ? 'Admin' : 'Petugas' ?></span>
 	<a href="">
 		<img src="<?= BASEURL ?>/assets/img/icon/settings.png" alt="">
 	</a>
