@@ -61,6 +61,7 @@ class Dashboard extends Controller{
 			$data['name'] = $this->model('Data_model')->masyarakat($_SESSION['masyarakatNIK'])[0]['nama'];
 			$data['username'] = $this->model('Data_model')->masyarakat($_SESSION['masyarakatNIK'])[0]['username'];
 			$data['report'] = $this->model('Data_model')->laporan($_SESSION['masyarakatNIK']);
+			$data['photo'] = $_SESSION['masyarakatNIK'] . '.jpg';
 		}
 		
 		$this->view('template/header', $data);

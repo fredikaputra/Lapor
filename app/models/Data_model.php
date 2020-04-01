@@ -37,7 +37,7 @@ class Data_model{
 				return $this->db->row;
 			}
 		}else {
-			$query = "SELECT pengaduan.*, nama FROM pengaduan JOIN masyarakat USING (nik) ORDER BY tgl_pengaduan DESC";
+			$query = "SELECT pengaduan.*, nama FROM pengaduan JOIN masyarakat USING (nik) ORDER BY tgl_pengaduan DESC LIMIT 4";
 			$this->db->prepare($query);
 			$this->db->execute();
 			if ($this->db->getResult() == !NULL) {
