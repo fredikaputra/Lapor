@@ -9,6 +9,7 @@ class Dashboard extends Controller{
 			$data['privilege'] = $this->model('Data_model')->petugas($_SESSION['petugasID'])[0]['level'];
 			$data['phone'] = $this->model('Data_model')->petugas($_SESSION['petugasID'])[0]['telp'];
 			$data['photo'] = $_SESSION['petugasID'] . '.jpg';
+			$data['history'] = $this->model('Data_model')->laporan();
 			
 			$this->view('template/header', $data);
 			$this->view('dashboard/header', $data);

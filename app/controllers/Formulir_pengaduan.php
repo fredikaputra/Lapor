@@ -8,9 +8,11 @@ class Formulir_pengaduan extends Controller{
 		if (isset($_SESSION['petugasID'])) { // ambil data petugas (nav)
 			$data['name'] = $this->model('Data_model')->petugas($_SESSION['petugasID'])[0]['nama_petugas'];
 			$data['username'] = $this->model('Data_model')->petugas($_SESSION['petugasID'])[0]['username'];
+			$data['photo'] = $_SESSION['petugasID'] . '.jpg';
 		}else if (isset($_SESSION['masyarakatNIK'])) { // ambil data masyarakat (nav)
 			$data['name'] = $this->model('Data_model')->masyarakat($_SESSION['masyarakatNIK'])[0]['nama'];
 			$data['username'] = $this->model('Data_model')->masyarakat($_SESSION['masyarakatNIK'])[0]['username'];
+			$data['photo'] = $_SESSION['masyarakatNIK'] . '.jpg';
 		}else {
 			Flasher::setFlash(NULL, 'Silahkan login terlebih dahulu untuk melapor!', 'warning', 'warning');
 		}

@@ -13,7 +13,15 @@
 				
 				<div class="logged">
 					<button type="button" onclick="toggleAccPan()">
-						<img src="<?= BASEURL ?>/assets/img/user/user.png">
+						<?php
+						
+						if (file_exists('assets/img/users/' . $data['photo'])) {
+							?><img src="<?= BASEURL ?>/assets/img/users/<?= $data['photo'] ?>" alt=""><?php
+						}else {
+							?><img src="<?= BASEURL ?>/assets/img/users/default.png" alt=""><?php
+						}
+						
+						?>
 						<?= $data['name'] ?>
 					</button>
 					
@@ -21,7 +29,15 @@
 						<a href="<?= BASEURL ?>/dashboard/pengaturan" class="sett">
 							<img src="<?= BASEURL ?>/assets/img/icon/settings.png">
 						</a>
-						<img src="<?= BASEURL ?>/assets/img/user/user.png">
+						<?php
+						
+						if (file_exists('assets/img/users/' . $data['photo'])) {
+							?><img src="<?= BASEURL ?>/assets/img/users/<?= $data['photo'] ?>" alt=""><?php
+						}else {
+							?><img src="<?= BASEURL ?>/assets/img/users/default.png" alt=""><?php
+						}
+						
+						?>
 						<a href="<?= BASEURL ?>/dashboard/pengaturan/foto-profil" class="change">
 							<img src="<?= BASEURL ?>/assets/img/icon/camera.png">
 						</a>
