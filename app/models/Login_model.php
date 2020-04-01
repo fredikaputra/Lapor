@@ -20,9 +20,9 @@ class Login_model{
 				$this->pass = $this->db->row[0]['password'];
 				if ($this->passCheck($password) === TRUE) {
 					$_SESSION['masyarakatNIK'] = $this->db->row[0]['nik'];
+					return true;
 				}else {
 					Flasher::setFlash('Gagal! ', 'Username atau password anda salah.', 'warning', 'warning');
-					return false;
 				}
 			}else {
 				$query = "SELECT * FROM $this->table2 WHERE username = ?";
@@ -33,13 +33,12 @@ class Login_model{
 					$this->pass = $this->db->row[0]['password'];
 					if ($this->passCheck($password) === TRUE) {
 						$_SESSION['petugasID'] = $this->db->row[0]['id_petugas'];
+						return true;
 					}else {
 						Flasher::setFlash('Gagal! ', 'Username atau password anda salah.', 'warning', 'warning');
-						return false;
 					}
 				}else {
 					Flasher::setFlash('Gagal! ', 'Username atau password anda salah.', 'warning', 'warning');
-					return false;
 				}
 			}
 		}else {
