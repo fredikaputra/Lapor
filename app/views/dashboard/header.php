@@ -3,8 +3,6 @@
 	
 	if (file_exists('assets/img/users/' . $data['photo'])) {
 		?><img src="<?= BASEURL ?>/assets/img/users/<?= $data['photo'] ?>" alt=""><?php
-	}else {
-		?><?php
 	}
 	
 	?>
@@ -22,9 +20,9 @@
 	
 	<div class="menu">
 		<div>
-			<a href="<?= BASEURL ?>/dashboard" class="<?= ($data['activelink'] == 'dashboard') ? 'active' : '' ?>">Beranda <img src="<?= BASEURL ?>/assets/img/icon/chevron-right.png" alt=""></a>
-			<a href="<?= BASEURL ?>/dashboard/data-aduan" class="<?= ($data['activelink'] == 'dataaduan') ? 'active' : '' ?>">Data aduan <img src="<?= BASEURL ?>/assets/img/icon/chevron-right.png" alt=""></a>
-			<a href="<?= BASEURL ?>/pengguna" class="<?= ($data['activelink'] == 'pengguna') ? 'active' : '' ?>">Pengguna <img src="<?= BASEURL ?>/assets/img/icon/chevron-right.png" alt=""></a>
+			<a href="<?= BASEURL ?>/dashboard" class="<?= ($data['controller'] == 'Beranda') ? 'active' : '' ?>">Beranda <img src="<?= BASEURL ?>/assets/img/icon/chevron-right.png" alt=""></a>
+			<a href="<?= BASEURL ?>/dashboard/data-aduan" class="<?= ($data[''] == 'Data_aduan') ? 'active' : '' ?>">Data aduan <img src="<?= BASEURL ?>/assets/img/icon/chevron-right.png" alt=""></a>
+			<a href="<?= BASEURL ?>/pengguna" class="<?= ($data['controller'] == 'Pengguna') ? 'active' : '' ?>">Pengguna <img src="<?= BASEURL ?>/assets/img/icon/chevron-right.png" alt=""></a>
 		</div>
 		<a href="<?= BASEURL ?>"> WEBSITE LAPOR!</a>
 	</div>

@@ -7,10 +7,10 @@ class Database{
 	private $db_name = DB_NAME;
 	public $dbh, $sth, $row;
 	
-	public function __construct(){
+	public function __construct(){ // koneksi
 		$this->dbh = @new mysqli($this->db_host, $this->db_user, $this->db_pass, $this->db_name);
 		
-		if ($this->dbh->connect_errno) {
+		if ($this->dbh->connect_errno) { // jika koneksi gagal
 			die('Database connection failed!');
 		}
 		
@@ -20,7 +20,7 @@ class Database{
 	public function prepare($query){
 		if ($this->dbh->prepare($query)) {
 			$this->sth = $this->dbh->prepare($query);
-		}else {
+		}else { // jika query salah
 			// echo $this->dbh->error;
 			die("<br /><strong>Fatal Error</strong>: Query error!");
 		}

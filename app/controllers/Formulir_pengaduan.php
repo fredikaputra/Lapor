@@ -5,15 +5,14 @@ class Formulir_pengaduan extends Controller{
 		$data['webtitle'] = 'LAPOR! - Sampaikan Aspirasi Anda';
 		$data['css'] = ['formulir_pengaduan.css', 'nav.css', 'base.css'];
 		$data['controller'] = __CLASS__;
+		
 		if (isset($_SESSION['petugasID'])) { // ambil data petugas (nav)
-			$data['name'] = $this->model('Data_model')->petugas($_SESSION['petugasID'])[0]['nama_petugas'];
-			$data['username'] = $this->model('Data_model')->petugas($_SESSION['petugasID'])[0]['username'];
+			$data['petugas'] = $this->model('Data_model')->petugas($_SESSION['petugasID'])[0];
 			$data['photo'] = $_SESSION['petugasID'] . '.jpg';
 		}else if (isset($_SESSION['masyarakatNIK'])) { // ambil data masyarakat (nav)
-			$data['name'] = $this->model('Data_model')->masyarakat($_SESSION['masyarakatNIK'])[0]['nama'];
-			$data['username'] = $this->model('Data_model')->masyarakat($_SESSION['masyarakatNIK'])[0]['username'];
+			$data['masyarakat'] = $this->model('Data_model')->masyarakat($_SESSION['masyarakatNIK'])[0]['nama'];
 			$data['photo'] = $_SESSION['masyarakatNIK'] . '.jpg';
-		}else {
+		}else { // jika masyarakat belum login
 			Flasher::setFlash(NULL, 'Silahkan login terlebih dahulu untuk melapor!', 'warning', 'warning');
 		}
 		

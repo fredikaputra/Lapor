@@ -7,22 +7,22 @@ class Daftar_model{
 		$this->db = new Database;
 	}
 	
-	public function proccess($data){
+	public function proccess($data){ // proses registrasi masyarakat
 		$this->db->dbh->real_escape_string(extract($data));
 		
-		if (isset($reg)) {
-			$_SESSION['reg'] = [
+		if (isset($reg)) { // cek kalau button submit pada form di tekan
+			$_SESSION['reg'] = [ // buat session isi form (untuk keadaan dimana kondisi salah)
 				'nik' => $nik,
 				'name' => $name,
 				'username' => $username,
 				'phone' => $phone
 			];
 			
-			if ($this->nikCheck($nik) == NULL) {
-				if ($this->usernameCheck($username) == NULL) {
-					if (strlen($pass) >= 8) {
-						if ($pass == $repass) {
-							$password = password_hash($pass, PASSWORD_BCRYPT, ['cost' => 12]);
+			if ($this->nikCheck($nik) == NULL) { // cek kalau nik tidak ada yang menggunakan
+				if ($this->usernameCheck($username) == NULL) { // cek username belum digunakan
+					if (strlen($pass) >= 8) { // cek panjang password, min 8 karakter
+						if ($pass == $repass) { // cek password telah terkonfirmasi
+							$password = password_hash($pass, PASSWORD_BCRYPT, ['cost' => 12]); // encrypt password
 							$query = 'INSERT INTO masyarakat VALUES (?, ?, ?, ?, ?)';
 							$this->db->prepare($query);
 							$this->db->sth->bind_param('sssss', $nik, $name, $username, $password, $phone);
@@ -55,7 +55,7 @@ class Daftar_model{
 		}
 	}
 	
-	public function nikCheck($nik){
+	public function nikCheck($nik){ // proses check nik
 		$query = 'SELECT nik FROM masyarakat WHERE nik = ?';
 		$this->db->prepare($query);
 		$this->db->sth->bind_param('s', $nik);
@@ -63,7 +63,7 @@ class Daftar_model{
 		return $this->db->getResult();
 	}
 	
-	public function usernameCheck($username){
+	public function usernameCheck($username){ // proses check username
 		$query = 'SELECT username FROM masyarakat WHERE username = ?';
 		$this->db->prepare($query);
 		$this->db->sth->bind_param('s', $username);

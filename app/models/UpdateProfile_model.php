@@ -10,11 +10,12 @@ class UpdateProfile_model extends Controller{
 	
 	public function update($data, $files){
 		$this->db->dbh->real_escape_string(extract($data));
-		if (isset($updateprofile)) {			
-			if (isset($files)) {
-				if ($files['photo']['error'] == 0) {
-					if (in_array($files['photo']['type'], $this->imgType)) {
-						if ($files['photo']['size'] <= 2048000) {
+		
+		if (isset($updateprofile)) { // check ketika button submit tertekan pada form
+			if (isset($files)) { // chek kalau gambar di sertakan
+				if ($files['photo']['error'] == 0) { // chek file error atau tidak
+					if (in_array($files['photo']['type'], $this->imgType)) { // check ekstensi gambar
+						if ($files['photo']['size'] <= 2048000) { // check ukuran gambar
 							$photo = $_SESSION['petugasID'] . '.jpg';
 							if (!move_uploaded_file($files['photo']['tmp_name'], 'assets/img/users/' . $photo)) {
 								Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
@@ -31,7 +32,7 @@ class UpdateProfile_model extends Controller{
 				}else {
 					Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
 				}
-			}else {
+			}else { // gambar tidak di sertakan
 				$photo = NULL;
 			}
 		

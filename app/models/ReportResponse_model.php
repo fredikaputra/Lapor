@@ -6,19 +6,21 @@ class ReportResponse_model extends Controller{
 	public function __construct(){
 		$this->db = new Database;
 		
-		do {
+		do { // generate id tanggapan yang unik
 			$this->uniqID = strtoupper('tgpn' . substr(md5(uniqid()), 25));
-			if ($this->uniqIDCheck($this->uniqID) != $this->uniqID) {
+			if ($this->uniqIDCheck($this->uniqID) != $this->uniqID) { // ketika id tersedia
 				break;
 			}
 		} while ($this->uniqIDCheck($this->uniqID) == !NULL);
 	}
 	
-	public function proccess($data, $id){
+	public function proccess($data, $id){ // proses tambah komentar
 		$this->db->dbh->real_escape_string(extract($data));
-		if (isset($comment)) {
-			$_SESSION['response'] = $response;
+		
+		if (isset($comment)) { // cek ketika button submit tertekan pada form
+			$_SESSION['response'] = $response; // buat session isi form (kondisi ketika gagal)
 			$time = time();
+			
 			$query = "INSERT INTO tanggapan VALUES(?, ?, ?, ?, ?)";
 			$this->db->prepare($query);
 			$this->db->sth->bind_param('sssss',
@@ -49,7 +51,7 @@ class ReportResponse_model extends Controller{
 		}
 	}
 	
-	public function uniqIDCheck($id){
+	public function uniqIDCheck($id){ // proses cek id
 		$query = "SELECT id_tanggapan FROM tanggapan WHERE id_tanggapan = ?";
 		$this->db->prepare($query);
 		$this->db->sth->bind_param('s', $id);

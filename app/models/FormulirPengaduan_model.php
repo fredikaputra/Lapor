@@ -7,26 +7,27 @@ class FormulirPengaduan_model extends Controller{
 	public function __construct(){
 		$this->db = new Database;
 		
-		do {
+		do { // generate id laporan yang unik
 			$this->uniqID = strtoupper('lprid' . substr(md5(uniqid()), 25));
-			if ($this->uniqIDCheck($this->uniqID) != $this->uniqID) {
+			if ($this->uniqIDCheck($this->uniqID) != $this->uniqID) { // chek ketika id tersedia
 				break;
 			}
 		} while ($this->uniqIDCheck($this->uniqID) == !NULL);
 	}
 	
-	public function upload($data, $files){
+	public function upload($data, $files){ // proses tambah laporan
 		$this->db->dbh->real_escape_string(extract($data));
-		if (isset($report)) {
-			$_SESSION['msg'] = $msg;
+		if (isset($report)) { // check ketika button submit di tekan pada form
+			$_SESSION['msg'] = $msg; // buat session pada form (untuk kondisi ketika gagal)
+			
 			$time = time();
 			$nik = $this->model('Data_model')->masyarakat($_SESSION['masyarakatNIK'])[0]['nik'];
 			$status = 0;
 			
-			if (isset($files)) {
-				if ($files['photo']['error'] == 0) {
-					if (in_array($files['photo']['type'], $this->imgType)) {
-						if ($files['photo']['size'] <= 2048000) {
+			if (isset($files)) { // ketika masyarakat menyertakan gambar
+				if ($files['photo']['error'] == 0) { // cek file tidak ada masalah
+					if (in_array($files['photo']['type'], $this->imgType)) { // cek ekstensi gambar
+						if ($files['photo']['size'] <= 2048000) { // cek ukuran gambar
 							$photo = $this->uniqID . '.' . pathinfo($files['photo']['name'], PATHINFO_EXTENSION);
 							if (!move_uploaded_file($files['photo']['tmp_name'], 'assets/img/pengaduan/' . $photo)) {
 								Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
@@ -43,7 +44,7 @@ class FormulirPengaduan_model extends Controller{
 				}else {
 					Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
 				}
-			}else {
+			}else { // gambar tidak tercantum
 				$photo = NULL;
 			}
 		
@@ -62,7 +63,7 @@ class FormulirPengaduan_model extends Controller{
 		}
 	}
 	
-	public function uniqIDCheck($id){
+	public function uniqIDCheck($id){ // proses cek id
 		$query = "SELECT id_pengaduan FROM pengaduan WHERE id_pengaduan = ?";
 		$this->db->prepare($query);
 		$this->db->sth->bind_param('s', $id);
