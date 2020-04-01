@@ -1,7 +1,7 @@
 	<div class="content">
 		<h2>Tinjau Data Aduan</h2>
 		<div>
-			<span>Status: <strong>Dalam proses</strong></span>
+			<span>Status: <strong><?= ($data['data_aduan'][0]['status'] == 1) ? 'Selesai' : 'Dalam Proses' ?></strong></span>
 			<button onclick="cetak()">Cetak Laporan</button>
 		</div>
 		<div>
@@ -16,23 +16,32 @@
 				</div>
 			</div>
 			<div class="action">
-				<form>
+				<form method="post" action="<?= BASEURL ?>/dashboard/report-response/<?= $data['id'] ?>">
 					<h3>Tanggapan</h3>
-					<textarea placeholder="Tanggapan anda...."></textarea>
-					<button type="submit">TANGGAPI</button>
+					<textarea placeholder="Tanggapan anda...." name="response"><?= (isset($_SESSION['response'])) ? $_SESSION['response'] : '' ?></textarea>
+					<button type="submit" name="comment">TANGGAPI</button>
 				</form>
 				<div class="comment">
-					<div>
-						<strong>Aldi Pradana | Petugas</strong>
-						<span>2 Menit yang lalu</span>
-					</div>
-					<p>Baik, saya akan tindak lanjuti!</p>
-					<hr>
-					<div>
-						<strong>Fredika Putra | Admin</strong>
-						<span>5 Menit yang lalu</span>
-					</div>
-					<p>Terima kasih atas kepercayaan anda terhadap kami, kami akan melanjutkan kasus ini sampai tuntas. Mohon untuk tetap bersabar!</p>
+					<?php
+					
+					if ($data['comment'] != NULL) {
+						foreach ($data['comment'] as $comment) {
+							?>
+							
+							<div>
+								<strong><?= $comment['nama_petugas'] ?> | <?= ($comment['level'] == 1) ? 'Admin' : 'Petugas' ?></strong>
+								<span><?= date('l, H:i:s', $comment['tgl_tanggapan']) ?></span>
+							</div>
+							<p><?= $comment['tanggapan'] ?></p>
+							<hr>
+							
+							<?php
+						}
+					}else {
+						?><center>Belum Ada Tanggapan</center><?php
+					}
+					
+					?>
 				</div>
 			</div>
 		</div>
@@ -44,3 +53,11 @@ function cetak() {
 window.print();
 }
 </script>
+
+<?php
+
+if (isset($_SESSION['response'])) {
+	unset($_SESSION['response']);
+}
+
+?>

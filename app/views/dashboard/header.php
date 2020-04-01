@@ -16,7 +16,7 @@
 	<a href="">
 		<img src="<?= BASEURL ?>/assets/img/icon/bold-lock.png" alt="">
 	</a>
-	<a href="">
+	<a href="<?= BASEURL ?>/logout">
 		<img src="<?= BASEURL ?>/assets/img/icon/logout.png" alt="">
 	</a>
 	

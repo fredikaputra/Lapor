@@ -45,4 +45,14 @@ class Data_model{
 			}
 		}
 	}
+	
+	public function tanggapan($id){
+		$query = "SELECT tanggapan.*, nama_petugas, level FROM tanggapan JOIN petugas USING(id_petugas) WHERE id_pengaduan = ? ORDER BY tgl_tanggapan DESC";
+		$this->db->prepare($query);
+		$this->db->sth->bind_param('s', $id);
+		$this->db->execute();
+		if ($this->db->getResult() == !NULL) {
+			return $this->db->row;
+		}
+	}
 }

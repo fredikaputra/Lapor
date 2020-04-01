@@ -21,11 +21,6 @@ class Dashboard extends Controller{
 		}
 	}
 	
-	public function update_profile(){
-		$this->model('UpdateProfile_model')->update($_POST, $_FILES);
-		header('location: ' . BASEURL . '/dashboard');
-	}
-	
 	public function data_aduan($id = ''){
 		if (isset($_SESSION['petugasID'])) {
 			$data['photo'] = $_SESSION['petugasID'] . '.jpg';
@@ -42,9 +37,11 @@ class Dashboard extends Controller{
 				$this->view('dashboard/pet_data_aduan', $data);
 				$this->view('template/footer');
 			}else if ($id){
-				$data['webtitle'] = 'Data Aduan #LRPD9678';
+				$data['id'] = $id;
+				$data['webtitle'] = 'Data Aduan ' . $data['id'];
 				$data['css'] = ['pet_header.css', 'pet_data_aduan_single.css', 'base.css'];
-				$data['data_aduan'] = $this->model('Data_model')->laporan($id);
+				$data['data_aduan'] = $this->model('Data_model')->laporan($data['id']);
+				$data['comment'] = $this->model('Data_model')->tanggapan($data['id']);
 				
 				$this->view('template/header', $data);
 				$this->view('dashboard/header', $data);
@@ -74,5 +71,15 @@ class Dashboard extends Controller{
 		$this->view('template/nav', $data);
 		$this->view('dashboard/mas_riwayat_aduan', $data);
 		$this->view('template/footer');
+	}
+	
+	public function update_profile(){
+		$this->model('UpdateProfile_model')->update($_POST, $_FILES);
+		header('location: ' . BASEURL . '/dashboard');
+	}
+	
+	public function report_response($id){
+		$this->model('ReportResponse_model')->proccess($_POST, $id);
+		header('location: ' . BASEURL . '/dashboard/data-aduan/' . $id);
 	}
 }

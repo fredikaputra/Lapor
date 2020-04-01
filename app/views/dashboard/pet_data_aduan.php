@@ -44,7 +44,7 @@
 									
 									if ($laporan['status'] == '0') {
 										echo 'Dalam Proses';
-									}else if ($laporan[5] == '1') {
+									}else if ($laporan['status'] == '1') {
 										echo 'Selesai';
 									}
 									
