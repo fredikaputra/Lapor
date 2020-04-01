@@ -22,9 +22,9 @@
 	
 	<div class="menu">
 		<div>
-			<a href="<?= BASEURL ?>/dashboard" class="active">Beranda <img src="<?= BASEURL ?>/assets/img/icon/chevron-right.png" alt=""></a>
-			<a href="<?= BASEURL ?>/dashboard/data-aduan">Data aduan <img src="<?= BASEURL ?>/assets/img/icon/chevron-right.png" alt=""></a>
-			<a href="<?= BASEURL ?>/pengguna">Pengguna <img src="<?= BASEURL ?>/assets/img/icon/chevron-right.png" alt=""></a>
+			<a href="<?= BASEURL ?>/dashboard" class="<?= ($data['activelink'] == 'dashboard') ? 'active' : '' ?>">Beranda <img src="<?= BASEURL ?>/assets/img/icon/chevron-right.png" alt=""></a>
+			<a href="<?= BASEURL ?>/dashboard/data-aduan" class="<?= ($data['activelink'] == 'dataaduan') ? 'active' : '' ?>">Data aduan <img src="<?= BASEURL ?>/assets/img/icon/chevron-right.png" alt=""></a>
+			<a href="<?= BASEURL ?>/pengguna" class="<?= ($data['activelink'] == 'pengguna') ? 'active' : '' ?>">Pengguna <img src="<?= BASEURL ?>/assets/img/icon/chevron-right.png" alt=""></a>
 		</div>
 		<a href="<?= BASEURL ?>"> WEBSITE LAPOR!</a>
 	</div>

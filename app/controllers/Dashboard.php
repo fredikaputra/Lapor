@@ -10,6 +10,7 @@ class Dashboard extends Controller{
 			$data['phone'] = $this->model('Data_model')->petugas($_SESSION['petugasID'])[0]['telp'];
 			$data['photo'] = $_SESSION['petugasID'] . '.jpg';
 			$data['history'] = $this->model('Data_model')->laporan('', '4');
+			$data['activelink'] = 'dashboard';
 			
 			$this->view('template/header', $data);
 			$this->view('dashboard/header', $data);
@@ -30,6 +31,7 @@ class Dashboard extends Controller{
 			$data['photo'] = $_SESSION['petugasID'] . '.jpg';
 			$data['name'] = $this->model('Data_model')->petugas($_SESSION['petugasID'])[0]['nama_petugas'];
 			$data['privilege'] = $this->model('Data_model')->petugas($_SESSION['petugasID'])[0]['level'];
+			$data['activelink'] = 'dataaduan';
 			if ($id == '') {
 				$data['webtitle'] = 'Dashboard - Data Aduan';
 				$data['css'] = ['pet_header.css', 'pet_data_aduan.css', 'base.css'];
