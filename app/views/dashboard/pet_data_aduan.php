@@ -15,9 +15,9 @@
 				<tbody>
 					<?php
 					
-					if ($data['data_aduan'] == !NULL) {
+					if ($data['laporan'] == !NULL) {
 						$no = 1;
-						foreach ($data['data_aduan'] as $laporan) {
+						foreach ($data['laporan'] as $laporan) {
 							?>
 							
 							<tr>

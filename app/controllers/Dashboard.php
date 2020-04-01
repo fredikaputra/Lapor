@@ -5,7 +5,8 @@ class Dashboard extends Controller{
 		if (isset($_SESSION['petugasID'])) { // yang login petugas
 			$data['webtitle'] = 'Dashboard';
 			$data['css'] = ['pet_header.css', 'pet_dashboard.css', 'base.css'];
-			$data['controller'] = __CLASS__;
+			$data['js'] = ['detectInputChange.js'];
+			$data['method'] = __FUNCTION__;
 			
 			// ambil data
 			$data['petugas'] = $this->model('Data_model')->petugas($_SESSION['petugasID'])[0];
@@ -15,7 +16,7 @@ class Dashboard extends Controller{
 			$this->view('template/header', $data);
 			$this->view('dashboard/header', $data);
 			$this->view('dashboard/pet_dashboard', $data);
-			$this->view('template/footer');
+			$this->view('template/footer', $data);
 		}else { // kalau yang login bukan petugas
 			header('location: ' . BASEURL . '/dashboard/riwayat_aduan');
 		}
@@ -24,7 +25,7 @@ class Dashboard extends Controller{
 	public function data_aduan($id = ''){
 		if (isset($_SESSION['petugasID'])) { // yang login petugas
 			$data['photo'] = $_SESSION['petugasID'] . '.jpg';
-			$data['controller'] = __CLASS__;
+			$data['method'] = __FUNCTION__;
 			
 			// ambil data
 			$data['petugas'] = $this->model('Data_model')->petugas($_SESSION['petugasID'])[0];
@@ -64,12 +65,15 @@ class Dashboard extends Controller{
 		$data['css'] = ['mas_riwayat_aduan.css', 'nav.css', 'base.css'];
 		$data['controller'] = __CLASS__;
 		
-		if (isset($_SESSION['petugasID'])) { // ambil data petugas (nav)
-			$data['petugas'] = $this->model('Data_model')->petugas($_SESSION['petugasID'])[0];
-		}elseif (isset($_SESSION['masyarakatNIK'])) { // ambil data masyarakat (nav)
-			$data['petugas'] = $this->model('Data_model')->masyarakat($_SESSION['masyarakatNIK'])[0];
+		if (isset($_SESSION['masyarakatNIK'])) { // ambil data masyarakat (nav)
+			$data['name'] = $this->model('Data_model')->masyarakat($_SESSION['masyarakatNIK'])[0]['nama'];
+			$data['username'] = $this->model('Data_model')->masyarakat($_SESSION['masyarakatNIK'])[0]['username'];
 			$data['laporan'] = $this->model('Data_model')->laporan($_SESSION['masyarakatNIK']);
 			$data['photo'] = $_SESSION['masyarakatNIK'] . '.jpg';
+		}else if (isset($_SESSION['petugasID'])) {
+			header('location: ' . BASEURL . '/dashboard');
+		}else {
+			header('location: ' . BASEURL . '/login');
 		}
 		
 		$this->view('template/header', $data);

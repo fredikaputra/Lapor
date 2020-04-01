@@ -2,7 +2,6 @@
 
 class Login_model{
 	private $db;
-	private $pass;
 	
 	public function __construct(){
 		$this->db = new Database;
@@ -17,8 +16,8 @@ class Login_model{
 			$this->db->sth->bind_param('s', $username);
 			$this->db->execute();
 			if ($this->db->getResult() > 0) {
-				$this->pass = $this->db->row[0]['password'];
-				if (password_verify($pass, $this->pass) === TRUE) {
+				$password_db = $this->db->row[0]['password'];
+				if (password_verify($password, $password_db) === TRUE) {
 					$_SESSION['masyarakatNIK'] = $this->db->row[0]['nik'];
 					return true;
 				}else {
@@ -30,8 +29,8 @@ class Login_model{
 				$this->db->sth->bind_param('s', $username);
 				$this->db->execute();
 				if ($this->db->getResult() > 0) {
-					$this->pass = $this->db->row[0]['password'];
-					if (password_verify($pass, $this->pass) === TRUE) {
+					$password_db = $this->db->row[0]['password'];
+					if (password_verify($password, $password_db) === TRUE) {
 						$_SESSION['petugasID'] = $this->db->row[0]['id_petugas'];
 						return true;
 					}else {

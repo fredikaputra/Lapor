@@ -1,7 +1,7 @@
 	<div class="content">
 		<div>
 			<img src="<?= BASEURL ?>/assets/img/users/default.png" alt="">
-			<span>Selamat Datang, <strong><?= $data['name'] ?></strong></span>
+			<span>Selamat Datang, <strong><?= $data['petugas']['nama_petugas'] ?></strong></span>
 			<img src="<?= BASEURL ?>/assets/img/icon/computer.png">
 		</div>
 		<div>
@@ -23,11 +23,11 @@
 				</div>
 				<div>
 					<img src="<?= BASEURL ?>/assets/img/icon/circle-user.png" alt="">
-					<input type="text" id="onChange1" onkeyup="checkValueChange()" value="<?= $data['name'] ?>" name="name" autocomplete="off">
+					<input type="text" id="onChange1" onkeyup="checkValueChange()" value="<?= $data['petugas']['nama_petugas'] ?>" name="name" autocomplete="off">
 				</div>
 				<div>
 					<img src="<?= BASEURL ?>/assets/img/icon/circle-phone-book.png" alt="">
-					<input type="number" id="onChange2" onkeyup="checkValueChange()" value="<?= $data['phone'] ?>" name="phone" autocomplete="off">
+					<input type="number" id="onChange2" onkeyup="checkValueChange()" value="<?= $data['petugas']['telp'] ?>" name="phone" autocomplete="off">
 				</div>
 				<div>
 					<a href="<?= BASEURL ?>/dashboard/change-pass">Ganti Password</a>
@@ -53,17 +53,17 @@
 					<tbody>
 						<?php
 						
-						foreach ($data['history'] as $history) {
+						foreach ($data['laporan'] as $laporan) {
 							?>
 							
 							<tr>
-								<td><?= $history['id_pengaduan'] ?></td>
-								<td><?= date('d F', $history['tgl_pengaduan']) ?></td>
-								<td><?= $history['nama'] ?></td>
+								<td><?= $laporan['id_pengaduan'] ?></td>
+								<td><?= date('d F', $laporan['tgl_pengaduan']) ?></td>
+								<td><?= $laporan['nama'] ?></td>
 								<td>
-									<p><?= $history['isi_laporan'] ?></p>
+									<p><?= $laporan['isi_laporan'] ?></p>
 								</td>
-								<td><?= ($history['status'] == 0) ? 'Dalam Proses' : 'Selesai' ?></td>
+								<td><?= ($laporan['status'] == 0) ? 'Dalam Proses' : 'Selesai' ?></td>
 							</tr>
 							
 							<?php
@@ -76,32 +76,3 @@
 		</div>
 	</div>
 </main>
-
-<script type="text/javascript">
-	var saveBtn = document.getElementById('saveUserProfile');
-	var cancelSaveBtn = document.getElementById('cancelSaveUserProfile');
-
-	function checkValueChange(){
-		var defaultVal1 = document.getElementById('onChange1').defaultValue;
-		var curentVal1 = document.getElementById('onChange1').value;
-		var defaultVal2 = document.getElementById('onChange2').defaultValue;
-		var curentVal2 = document.getElementById('onChange2').value;
-		var defaultVal3 = document.getElementById('onChange3').defaultValue;
-		var curentVal3 = document.getElementById('onChange3').value;
-		
-		// check if value is change
-		if (defaultVal1 == curentVal1 && defaultVal2 == curentVal2 && defaultVal3 == curentVal3) {
-			saveBtn.classList.add('hide');
-			cancelSaveBtn.classList.add('hide');
-		}else {
-			saveBtn.classList.remove('hide');
-			cancelSaveBtn.classList.remove('hide');
-		}
-	}
-
-	// hide function
-	function hide(){
-		saveBtn.classList.add('hide');
-		cancelSaveBtn.classList.add('hide');
-	}
-</script>

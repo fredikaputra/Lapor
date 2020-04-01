@@ -6,8 +6,8 @@
 	}
 	
 	?>
-	<span class="name"><?= $data['name'] ?></span>
-	<span class="level"><?= ($data['privilege'] == 1) ? 'Admin' : 'Petugas' ?></span>
+	<span class="name"><?= $data['petugas']['nama_petugas'] ?></span>
+	<span class="level"><?= ($data['petugas']['level'] == 1) ? 'Admin' : 'Petugas' ?></span>
 	<a href="">
 		<img src="<?= BASEURL ?>/assets/img/icon/settings.png" alt="">
 	</a>
@@ -20,9 +20,9 @@
 	
 	<div class="menu">
 		<div>
-			<a href="<?= BASEURL ?>/dashboard" class="<?= ($data['controller'] == 'Beranda') ? 'active' : '' ?>">Beranda <img src="<?= BASEURL ?>/assets/img/icon/chevron-right.png" alt=""></a>
-			<a href="<?= BASEURL ?>/dashboard/data-aduan" class="<?= ($data[''] == 'Data_aduan') ? 'active' : '' ?>">Data aduan <img src="<?= BASEURL ?>/assets/img/icon/chevron-right.png" alt=""></a>
-			<a href="<?= BASEURL ?>/pengguna" class="<?= ($data['controller'] == 'Pengguna') ? 'active' : '' ?>">Pengguna <img src="<?= BASEURL ?>/assets/img/icon/chevron-right.png" alt=""></a>
+			<a href="<?= BASEURL ?>/dashboard" class="<?= ($data['method'] == 'index') ? 'active' : '' ?>">Beranda <img src="<?= BASEURL ?>/assets/img/icon/chevron-right.png" alt=""></a>
+			<a href="<?= BASEURL ?>/dashboard/data-aduan" class="<?= ($data['method'] == 'data_aduan') ? 'active' : '' ?>">Data aduan <img src="<?= BASEURL ?>/assets/img/icon/chevron-right.png" alt=""></a>
+			<a href="<?= BASEURL ?>/pengguna" class="<?= ($data['method'] == 'pengguna') ? 'active' : '' ?>">Pengguna <img src="<?= BASEURL ?>/assets/img/icon/chevron-right.png" alt=""></a>
 		</div>
 		<a href="<?= BASEURL ?>"> WEBSITE LAPOR!</a>
 	</div>
