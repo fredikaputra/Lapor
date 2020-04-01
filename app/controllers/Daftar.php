@@ -9,4 +9,12 @@ class Daftar extends Controller{
 		$this->view('page/daftar');
 		$this->view('template/footer');
 	}
+	
+	public function proccess(){
+		if ($this->model('Daftar_model')->proccess($_POST) === TRUE) {
+			header('location: ' . BASEURL);
+		}else {
+			header('location: ' . BASEURL . '/daftar');
+		}
+	}
 }

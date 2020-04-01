@@ -9,7 +9,7 @@ class Login_model{
 		$this->db = new Database;
 	}
 	
-	public function main($data){
+	public function proccess($data){
 		$this->db->dbh->real_escape_string(extract($data));
 		if (isset($login)) {
 			$query = "SELECT * FROM $this->table1 WHERE username = ?";
