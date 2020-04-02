@@ -3,7 +3,7 @@
 class Riwayat_aduan extends Controller{
 	public function index(){
 		$data['webtitle'] = 'Dashboard - Riwayat Aduan';
-		$data['css'] = ['mas_riwayat_aduan.css', 'nav.css', 'base.css'];
+		$data['css'] = ['riwayat_aduan.css', 'nav.css', 'base.css'];
 		$data['controller'] = __CLASS__;
 		
 		if (isset($_SESSION['masyarakatNIK'])) { // ambil data masyarakat (nav)
@@ -25,7 +25,7 @@ class Riwayat_aduan extends Controller{
 	
 	public function detail($id){
 		$data['webtitle'] = 'Dashboard - Riwayat Aduan';
-		$data['css'] = ['mas_riwayat_aduan_single.css', 'nav.css', 'base.css'];
+		$data['css'] = ['detail_riwayat_aduan.css', 'nav.css', 'base.css'];
 		$data['controller'] = __CLASS__;
 		
 		if (isset($_SESSION['masyarakatNIK'])) { // ambil data masyarakat (nav)

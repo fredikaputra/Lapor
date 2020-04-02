@@ -1,0 +1,102 @@
+body{
+	background: aliceblue;
+}
+
+header{
+	background: url('../img/bg/bg.jpg') center center/cover no-repeat fixed;
+	padding: 4cm 0;
+	text-align: center;
+}
+
+header h1{
+	color: white;
+	font-size: 1cm;
+}
+
+
+
+/* MAIN */
+main{
+	padding: 2cm 0;
+	width: 95%;
+	max-width: 1000px;
+	margin: auto;
+	text-align: center;
+}
+
+main h2{
+	color: dimgray;
+	margin-bottom: 10px;
+}
+
+main > span{
+	color: gray;
+	letter-spacing: 1px;
+	font-size: 18px;
+}
+
+main > div{
+	background: white;
+	margin-top: 1cm;
+	box-shadow: 0 0 10px #0000000f;
+	text-align: left;
+	padding-top: 1cm;
+}
+
+main div h3{
+	margin: 0 1cm 10px;
+	font-size: 20px;
+	font-weight: normal;
+	color: dimgray;
+}
+
+main > div > span{
+	margin: 0 1cm;
+	color: gray;
+	font-size: 15px;
+}
+
+main div > span a{
+	color: var(--blue);
+}
+
+main div .row{
+	margin-top: 1cm;
+}
+
+main div .row > a{
+	display: grid;
+	grid-template-columns: 5cm 1fr 2cm;
+	color: gray;
+	border-bottom: 1px solid #00000015;
+}
+
+main div .row > a{
+	padding: 20px 1cm;
+}
+
+main div .row > a:last-of-type div strong{
+	display: block;
+	margin-top: 5px;
+}
+
+main div .row > a:hover{
+	background: #0000000f;
+}
+
+main div .row a > *{
+	align-self: center;
+}
+
+main div .row a span{
+	font-size: 12px;
+}
+
+main div .row a:first-of-type img{
+	width: 100%;
+}
+
+main div .row a img{
+	width: 20px;
+	margin-left: auto;
+}
