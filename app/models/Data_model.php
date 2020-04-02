@@ -27,11 +27,19 @@ class Data_model{
 		}
 	}
 	
-	public function laporan($nik = '', $limit = ''){ // ambil data pengaduan
+	public function laporan($nik = '', $idlaporan = '', $limit = ''){ // ambil data pengaduan
 		if ($nik != '') { // tampilkan satu data pengaduan
 			$query = "SELECT pengaduan.*, nama FROM pengaduan JOIN masyarakat USING (nik) WHERE nik = ?";
 			$this->db->prepare($query);
 			$this->db->sth->bind_param('s', $nik);
+			$this->db->execute();
+			if ($this->db->getResult() == !NULL) {
+				return $this->db->row;
+			}
+		}else if($idlaporan != '') { // tampilkan semua aduan berdasarkan id laporan
+			$query = "SELECT pengaduan.*, nama FROM pengaduan JOIN masyarakat USING (nik) WHERE id_pengaduan = ?";
+			$this->db->prepare($query);
+			$this->db->sth->bind_param('s', $idlaporan);
 			$this->db->execute();
 			if ($this->db->getResult() == !NULL) {
 				return $this->db->row;

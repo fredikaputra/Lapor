@@ -1,5 +1,5 @@
 <header>
-	<h1>Dashboard</h1>
+	<h1>Data</h1>
 </header>
 <main>
 	<h2>Riwayat Aduan</h2>

@@ -1,0 +1,67 @@
+body{
+	background: aliceblue;
+}
+
+header{
+	background: url('../img/bg/bg.jpg') center center/cover no-repeat fixed;
+	padding: 4cm 0;
+	text-align: center;
+}
+
+header h1{
+	color: white;
+	font-size: 1cm;
+}
+
+
+
+/* MAIN */
+main{
+	padding: 2cm 0;
+	width: 95%;
+	max-width: 800px;
+	margin: auto;
+	text-align: center;
+}
+
+main h2{
+	color: dimgray;
+	margin-bottom: 10px;
+}
+
+main > span{
+	color: gray;
+	letter-spacing: 1px;
+	font-size: 18px;
+}
+
+main .report{
+	padding: 1cm;
+	margin-top: 1cm;
+	background: white;
+	box-shadow: 0 0 20px #0000000f;
+}
+
+main .report .header{
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 20px;
+}
+
+main .report .header span:first-of-type{
+	font-weight: bold;
+	color: var(--blue);
+}
+
+main .report .header span:last-of-type{
+	color: gray;
+}
+
+main .report p{
+	margin-top: 1cm;
+	text-align: justify;
+	letter-spacing: 1px;
+	line-height: 30px;
+	color: dimgray;
+	text-indent: 1cm;
+}
