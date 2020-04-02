@@ -26,7 +26,7 @@
 					</button>
 					
 					<div class="user-menu hide">
-						<a href="<?= BASEURL ?>/dashboard/pengaturan" class="sett">
+						<a href="<?= BASEURL ?>/pengaturan" class="sett">
 							<img src="<?= BASEURL ?>/assets/img/icon/settings.png">
 						</a>
 						<?php
@@ -38,7 +38,7 @@
 						}
 						
 						?>
-						<a href="<?= BASEURL ?>/dashboard/pengaturan/foto-profil" class="change">
+						<a href="<?= BASEURL ?>/pengaturan/foto-profil" class="change">
 							<img src="<?= BASEURL ?>/assets/img/icon/camera.png">
 						</a>
 						<span class="name"><?= $data['name'] ?></span>
