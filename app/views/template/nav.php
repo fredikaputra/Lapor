@@ -54,7 +54,7 @@
 						}else if (isset($_SESSION['masyarakatNIK'])) {
 							?>
 							
-							<a href="<?= BASEURL ?>/dashboard/riwayat-aduan">Riwayat Aduan</a>
+							<a href="<?= BASEURL ?>/riwayat-aduan">Riwayat Aduan</a>
 							
 							<?php
 						}

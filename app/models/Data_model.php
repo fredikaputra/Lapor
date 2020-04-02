@@ -29,7 +29,7 @@ class Data_model{
 	
 	public function laporan($nik = '', $limit = ''){ // ambil data pengaduan
 		if ($nik != '') { // tampilkan satu data pengaduan
-			$query = "SELECT pengaduan.*, nama FROM pengaduan JOIN masyarakat USING (nik) WHERE id_pengaduan = ?";
+			$query = "SELECT pengaduan.*, nama FROM pengaduan JOIN masyarakat USING (nik) WHERE nik = ?";
 			$this->db->prepare($query);
 			$this->db->sth->bind_param('s', $nik);
 			$this->db->execute();

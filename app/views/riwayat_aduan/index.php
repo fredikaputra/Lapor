@@ -17,17 +17,17 @@
 		<tbody>
 			<?php
 			
-			if (isset($data['report'])) {
+			if (isset($data['laporan'])) {
 				$no = 1;
-				foreach ($data['report'] as $report) {
+				foreach ($data['laporan'] as $laporan) {
 					?>
 					
 					<tr>
 						<td><?= $no ?></td>
-						<td><?= date('l, d F Y', $report['tgl_pengaduan']) ?></td>
-						<td><p><?= $report['isi_laporan'] ?></p></td>
-						<td><?= (isset($report['foto'])) ? '1 Gambar' : 'Tidak ada gambar' ?></td>
-						<td><?= ($report['status'] == 0) ? 'Dalam Proses' : 'Selesai' ?></td>
+						<td><?= date('l, d F Y', $laporan['tgl_pengaduan']) ?></td>
+						<td><p><?= $laporan['isi_laporan'] ?></p></td>
+						<td><?= (isset($laporan['foto'])) ? '1 Gambar' : 'Tidak ada gambar' ?></td>
+						<td><?= ($laporan['status'] == 0) ? 'Dalam Proses' : 'Selesai' ?></td>
 					</tr>
 					
 					<?php
