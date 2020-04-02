@@ -12,6 +12,7 @@
 				<td>Isi Laporan</td>
 				<td>Foto</td>
 				<td>Status</td>
+				<td></td>
 			</tr>
 		</thead>
 		<tbody>
@@ -28,6 +29,7 @@
 						<td><p><?= $laporan['isi_laporan'] ?></p></td>
 						<td><?= (isset($laporan['foto'])) ? '1 Gambar' : 'Tidak ada gambar' ?></td>
 						<td><?= ($laporan['status'] == 0) ? 'Dalam Proses' : 'Selesai' ?></td>
+						<td><a href="<?= BASEURL ?>/riwayat-aduan/detail/<?= $laporan['id_pengaduan'] ?>">Lihat</a></td>
 					</tr>
 					
 					<?php
