@@ -1,0 +1,79 @@
+body{
+	background: aliceblue;
+}
+
+header{
+	background: url('../img/bg/bg.jpg') center center/cover no-repeat fixed;
+	padding: 4cm 0;
+	text-align: center;
+}
+
+header h1{
+	color: white;
+	font-size: 1cm;
+}
+
+
+
+/* MAIN */
+main{
+	padding: 2cm 0;
+	width: 95%;
+	max-width: 500px;
+	margin: auto;
+	text-align: center;
+}
+
+main h2{
+	color: dimgray;
+	margin-bottom: 10px;
+}
+
+main > span{
+	color: gray;
+	letter-spacing: 1px;
+	font-size: 18px;
+}
+
+main > div{
+	background: white;
+	margin-top: 1cm;
+	box-shadow: 0 0 10px #0000000f;
+	text-align: left;
+	padding: 1cm;
+}
+
+main div h3{
+	margin-bottom: 10px;
+	font-size: 15px;
+	font-weight: normal;
+	color: dimgray;
+}
+
+main div form{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+main div form input{
+	width: 100%;
+	border-radius: 5px 0 0 5px;
+	border: 1px solid lightgray;
+	padding: 10px 20px;
+	font-size: 16px;
+	color: dimgray;
+}
+
+main div form button{
+	border-radius: 0 5px 5px 0;
+	border: 1px solid lightgray;
+	padding: 10px;
+	font-size: 16px;
+	color: dimgray;
+	background: white;
+}
+
+main div form button:hover{
+	background: #0000000f;
+}

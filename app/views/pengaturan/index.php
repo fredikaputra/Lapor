@@ -27,7 +27,7 @@
 				<strong>25346798</strong>
 				<img src="<?= BASEURL ?>/assets/img/icon/chevron-right.png" alt="">
 			</a>
-			<a href="">
+			<a href="<?= BASEURL ?>/pengaturan/nama">
 				<span>NAMA</span>
 				<strong>I Putu Fredika Putra</strong>
 				<img src="<?= BASEURL ?>/assets/img/icon/chevron-right.png" alt="">
@@ -50,7 +50,6 @@
 				</div>
 				<img src="<?= BASEURL ?>/assets/img/icon/chevron-right.png" alt="">
 			</a>
-			<div>
 		</div>
 	</div>
 </main>
