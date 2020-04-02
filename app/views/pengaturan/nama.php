@@ -10,8 +10,25 @@
 		</a>
 		<h3>Nama</h3>
 		
-		<form action="<?= BASEURL ?>/pengaturan/proccess" method="post">
-			<input type="text"><button type="submit">Simpan</button>
+		<form action="<?= BASEURL ?>/pengaturan/proccess/nama" method="post">
+			<input type="text" id="input" value="<?= $data['name'] ?>" onkeyup="checkValueChange()" name="name"><button type="submit" name="update" id="save" style="color: lightgray;" disabled>Simpan</button>
 		</form>
 	</div>
 </main>
+
+<script type="text/javascript">
+function checkValueChange(){
+	var defaultVal = document.querySelector('#input').defaultValue;
+	var curentVal = document.querySelector('#input').value;
+	var button = document.querySelector('#save');
+	
+	// check if value is change
+	if (defaultVal == curentVal) {
+		button.setAttribute('disabled', '',);
+		button.setAttribute('style', 'color: lightgray;');
+	}else {
+		button.removeAttribute('disabled', '',);
+		button.removeAttribute('style', 'color: dimgray;');
+	}
+}
+</script>

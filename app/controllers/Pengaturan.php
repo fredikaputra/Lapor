@@ -42,4 +42,11 @@ class Pengaturan extends Controller{
 		$this->view('pengaturan/nama', $data);
 		$this->view('template/footer');
 	}
+	
+	public function proccess($setting){
+		if ($setting == 'nama') {
+			$this->model('Setting_model')->name($_POST);
+			header('location: ' . BASEURL . '/pengaturan/nama');
+		}
+	}
 }
