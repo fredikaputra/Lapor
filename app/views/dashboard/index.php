@@ -43,7 +43,6 @@
 					<caption>Aduan Laporan Terbaru</caption>
 					<thead>
 						<tr>
-							<td>#ID</td>
 							<td>Waktu</td>
 							<td>Dari</td>
 							<td>Laporan</td>
@@ -57,8 +56,9 @@
 							?>
 							
 							<tr>
-								<td><?= $laporan['id_pengaduan'] ?></td>
-								<td><?= date('d F', $laporan['tgl_pengaduan']) ?></td>
+								<td>
+									<?= Data_model::timeCounter($laporan['tgl_pengaduan']); ?>
+								</td>
 								<td><?= $laporan['nama'] ?></td>
 								<td>
 									<p><?= $laporan['isi_laporan'] ?></p>

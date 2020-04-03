@@ -63,4 +63,21 @@ class Data_model{
 			return $this->db->row;
 		}
 	}
+	
+	public static function timeCounter($time){
+		$diff = date_diff(date_create(date('Y-m-d H:i:s', $time)), date_create(date('Y-m-d H:i:s')));
+		if ($diff->y) {
+			return $diff->y . ' tahun yang lalu';
+		}else if ($diff->m) {
+			return $diff->m . ' bulan yang lalu';
+		}else if ($diff->d) {
+			return $diff->d . ' hari yang lalu';
+		}else if ($diff->h) {
+			return $diff->h . ' jam yang lalu';
+		}else if ($diff->i) {
+			return $diff->i . ' menit yang lalu';
+		}else if ($diff->s) {
+			return $diff->s . ' detik yang lalu';
+		}
+	}
 }
