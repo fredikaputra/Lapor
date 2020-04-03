@@ -30,7 +30,7 @@
 							
 							<div>
 								<strong><?= $comment['nama_petugas'] ?> | <?= ($comment['level'] == 1) ? 'Admin' : 'Petugas' ?></strong>
-								<span><?= date('l, H:i:s', $comment['tgl_tanggapan']) ?></span>
+								<span><?= Data_model::timeCounter($comment['tgl_tanggapan']) ?></span>
 							</div>
 							<p><?= $comment['tanggapan'] ?></p>
 							<hr>

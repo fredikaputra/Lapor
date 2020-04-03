@@ -11,7 +11,7 @@
 					<?php
 					
 					if (file_exists('assets/img/users/' . $data['photo'])) {
-						?><img src="<?= BASEURL ?>/assets/img/users/<?= $data['photo'] ?>" alt=""><?php
+						?><img src="<?= BASEURL ?>/assets/img/users/<?= $data['photo'] ?>?=<?= filemtime('assets/img/icon/logo.png') ?>" alt=""><?php
 					}else {
 						?><img src="<?= BASEURL ?>/assets/img/users/default.png" alt=""><?php
 					}
@@ -47,6 +47,7 @@
 							<td>Dari</td>
 							<td>Laporan</td>
 							<td>Status</td>
+							<td></td>
 						</tr>
 					</thead>
 					<tbody>
@@ -64,6 +65,7 @@
 									<p><?= $laporan['isi_laporan'] ?></p>
 								</td>
 								<td><?= ($laporan['status'] == 0) ? 'Dalam Proses' : 'Selesai' ?></td>
+								<td><a href="<?= BASEURL ?>/dashboard/data-aduan/<?= $laporan['id_pengaduan'] ?>">Tinjau</a></td>
 							</tr>
 							
 							<?php

@@ -51,6 +51,13 @@ class Data_model{
 			if ($this->db->getResult() == !NULL) {
 				return $this->db->row;
 			}
+		}else {
+			$query = "SELECT pengaduan.*, nama FROM pengaduan JOIN masyarakat USING (nik) ORDER BY tgl_pengaduan DESC";
+			$this->db->prepare($query);
+			$this->db->execute();
+			if ($this->db->getResult() == !NULL) {
+				return $this->db->row;
+			}
 		}
 	}
 	

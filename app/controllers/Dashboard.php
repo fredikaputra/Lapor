@@ -35,7 +35,7 @@ class Dashboard extends Controller{
 				$data['css'] = ['dashboard_header.css', 'data_aduan.css', 'base.css'];
 				
 				// ambil data
-				$data['laporan'] = $this->model('Data_model')->laporan('', '', '10');
+				$data['laporan'] = $this->model('Data_model')->laporan();
 				
 				$this->view('template/header', $data);
 				$this->view('dashboard/header', $data);

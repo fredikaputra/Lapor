@@ -4,8 +4,8 @@
 			<table>
 				<thead>
 					<tr>
-						<td>#</td>
 						<td>Waktu</td>
+						<td>Dari</td>
 						<td>Isi Laporan</td>
 						<td>Foto</td>
 						<td>Status</td>
@@ -16,13 +16,12 @@
 					<?php
 					
 					if ($data['laporan'] == !NULL) {
-						$no = 1;
 						foreach ($data['laporan'] as $laporan) {
 							?>
 							
 							<tr>
-								<td><?= $no ?></td>
 								<td><?= strftime("%A, %d %B %Y", $data['laporan'][0]['tgl_pengaduan']) ?></td>
+								<td><?= $laporan['nama'] ?></td>
 								<td><p><?= $laporan['isi_laporan'] ?></p></td>
 								<td>
 									<?php
@@ -54,7 +53,6 @@
 							</tr>
 							
 							<?php
-							$no++;
 						}
 					}
 					
