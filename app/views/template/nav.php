@@ -1,7 +1,7 @@
 <nav>
 	<div>
 		<a href="<?= BASEURL ?>" class="logo">
-			<img src="<?= BASEURL ?>/assets/img/icon/logo.png">LAPOR!
+			<img src="<?= BASEURL ?>/assets/img/icon/logo.png?=<?= filemtime('assets/img/icon/logo.png') ?>">LAPOR!
 		</a>
 		<div class="menu">
 			<a href="<?= BASEURL ?>/beranda" <?= ($data['controller'] === 'Beranda') ? 'class="active"' : '' ?>>BERANDA</a>
@@ -39,7 +39,7 @@
 						
 						?>
 						<a href="<?= BASEURL ?>/pengaturan/foto-profil" class="change">
-							<img src="<?= BASEURL ?>/assets/img/icon/camera.png">
+							<img src="<?= BASEURL ?>/assets/img/icon/camera.png?=<?= filemtime('assets/img/icon/camera.png') ?>">
 						</a>
 						<span class="name"><?= $data['name'] ?></span>
 						<span class="username">@<?= $data['username'] ?></span>

@@ -15,7 +15,7 @@
 			foreach($data['css'] as $css){
 				?>
 				
-				<link rel="stylesheet" href="<?= BASEURL ?>/assets/css/<?= $css ?>">
+				<link rel="stylesheet" href="<?= BASEURL ?>/assets/css/<?= $css ?>?=<?= filemtime('assets/css/' . $css) ?>">
 				
 				<?php
 			}
@@ -36,7 +36,7 @@
 				grid-template-rows: 1fr;
 			}
 		</style>
-		<link rel="icon" href="<?= BASEURL ?>/assets/img/icon/logo.png">
+		<link rel="icon" href="<?= BASEURL ?>/assets/img/icon/logo.png?=<?= filemtime('assets/img/icon/logo.png') ?>">
 	</head>
 	<body onbeforeunload="<?= (isset($_SESSION['msg']) || isset($_SESSION['reg'])) ? 'return true;' : '' ?>">
 		

@@ -3,6 +3,7 @@
 if (!session_id()) session_start(); // jalankan session ketika session tidak berjalan
 
 date_default_timezone_set('Asia/Makassar'); // atur waktu ke wita
+setlocale(LC_ALL, 'IND'); // ubah standar waktu jadi bahasa indonesia
 
 require_once 'app/init.php'; // panggil file init.php
 

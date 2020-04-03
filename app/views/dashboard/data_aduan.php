@@ -22,7 +22,7 @@
 							
 							<tr>
 								<td><?= $no ?></td>
-								<td><?= date("l, d F Y", $laporan['tgl_pengaduan']) ?></td>
+								<td><?= strftime("%A, %d %B %Y", $data['laporan'][0]['tgl_pengaduan']) ?></td>
 								<td><p><?= $laporan['isi_laporan'] ?></p></td>
 								<td>
 									<?php
