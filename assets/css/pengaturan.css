@@ -93,8 +93,12 @@ main div .row a span{
 }
 
 main div .row a:first-of-type img{
-	width: 100%;
+	width: 2cm;
+	height: 2cm;
+	object-fit: cover;
+	object-position: center;
 	border-radius: 50%;
+	
 }
 
 main div .row a img{

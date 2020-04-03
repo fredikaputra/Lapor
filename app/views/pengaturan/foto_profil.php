@@ -13,7 +13,7 @@
 		<?php
 		
 		if (file_exists('assets/img/users/' . $data['photo'])) {
-			?><img src="<?= BASEURL ?>/assets/img/users/<?= $data['photo'] ?>" alt=""><?php
+			?><img src="<?= BASEURL ?>/assets/img/users/<?= $data['photo'] ?>?=<?= filemtime('assets/img/users/' . $data['photo']) ?>" alt=""><?php
 		}else {
 			?><img src="<?= BASEURL ?>/assets/img/users/default.png" alt=""><?php
 		}
@@ -21,7 +21,7 @@
 		?>
 		<form action="<?= BASEURL ?>/pengaturan/proccess/photo" method="post" enctype="multipart/form-data">
 			<label>Upload Gambar
-				<input type="file" name="photo">
+				<input type="file" name="photo" accept=".jpg, .jpeg">
 			</label>
 			<!-- <button type="submit" name="update" id="save" style="color: lightgray;" disabled>Simpan</button> -->
 			<button type="submit" name="update" id="save">Simpan</button>

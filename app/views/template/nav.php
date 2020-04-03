@@ -16,7 +16,7 @@
 						<?php
 						
 						if (file_exists('assets/img/users/' . $data['photo'])) {
-							?><img src="<?= BASEURL ?>/assets/img/users/<?= $data['photo'] ?>" alt=""><?php
+							?><img src="<?= BASEURL ?>/assets/img/users/<?= $data['photo'] ?>?=<?= filemtime('assets/img/users/' . $data['photo']) ?>"><?php
 						}else {
 							?><img src="<?= BASEURL ?>/assets/img/users/default.png" alt=""><?php
 						}
@@ -32,7 +32,7 @@
 						<?php
 						
 						if (file_exists('assets/img/users/' . $data['photo'])) {
-							?><img src="<?= BASEURL ?>/assets/img/users/<?= $data['photo'] ?>" alt=""><?php
+							?><img src="<?= BASEURL ?>/assets/img/users/<?= $data['photo'] ?>?=<?= filemtime('assets/img/users/' . $data['photo']) ?>"><?php
 						}else {
 							?><img src="<?= BASEURL ?>/assets/img/users/default.png" alt=""><?php
 						}

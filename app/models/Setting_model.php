@@ -122,8 +122,8 @@ class Setting_model{
 		if (isset($update)) {
 			if ($file['photo']['error'] == 0) {
 				$extension = strtolower(pathinfo($file['photo']['name'], PATHINFO_EXTENSION));
-				$photo = $_SESSION['masyarakatNIK'] . '.' . $extension;
-				if ($extension == 'jpg' || $extension == 'jepg') {
+				$photo = $_SESSION['masyarakatNIK'] . '.jpg';
+				if ($extension == 'jpg' || $extension == 'jpeg') {
 					if ($file['photo']['size'] <= 2048000) {
 						if (move_uploaded_file($file['photo']['tmp_name'], 'assets/img/users/' . $photo)) {
 							Flasher::setFlash('Berhasil! ', 'Foto profil anda telah diubah.', 'success', 'correct');
