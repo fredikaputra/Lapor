@@ -18,7 +18,7 @@ class Dashboard extends Controller{
 			$this->view('dashboard/index', $data);
 			$this->view('template/footer', $data);
 		}else { // kalau yang login bukan petugas
-			header('location: ' . BASEURL . '/dashboard/riwayat_aduan');
+			header('location: ' . BASEURL . '/riwayat_aduan');
 		}
 	}
 	
@@ -56,7 +56,7 @@ class Dashboard extends Controller{
 				$this->view('template/footer');
 			}
 		}else { // kalau yang login bukan petugas
-			header('location: ' . BASEURL . '/dashboard/riwayat_aduan');
+			header('location: ' . BASEURL . '/riwayat_aduan');
 		}
 	}
 	

@@ -9,7 +9,7 @@
 		<span>Beberapa informasi dapat dilihat oleh pengguna lainnya saat menggunakan layanan Lapor! <a href="">Pelajari lebih lanjut.</a></span>
 		
 		<div class="row">
-			<a href="">
+			<a href="<?= BASEURL ?>/pengaturan/foto-profil">
 				<span>FOTO</span>
 				<strong>Gambar Anda</strong>
 				<?php
@@ -24,25 +24,25 @@
 			</a>
 			<a href="">
 				<span>NIK</span>
-				<strong>25346798</strong>
+				<strong><?= $data['nik'] ?></strong>
 				<img src="<?= BASEURL ?>/assets/img/icon/chevron-right.png" alt="">
 			</a>
 			<a href="<?= BASEURL ?>/pengaturan/nama">
 				<span>NAMA</span>
-				<strong>I Putu Fredika Putra</strong>
+				<strong><?= $data['name'] ?></strong>
 				<img src="<?= BASEURL ?>/assets/img/icon/chevron-right.png" alt="">
 			</a>
-			<a href="">
+			<a href="<?= BASEURL ?>/pengaturan/username">
 				<span>USERNAME</span>
-				<strong>@redtra</strong>
+				<strong>@<?= $data['username'] ?></strong>
 				<img src="<?= BASEURL ?>/assets/img/icon/chevron-right.png" alt="">
 			</a>
-			<a href="">
+			<a href="<?= BASEURL ?>/pengaturan/telepon">
 				<span>TELEPON</span>
-				<strong>0852567834</strong>
+				<strong><?= $data['phone'] ?></strong>
 				<img src="<?= BASEURL ?>/assets/img/icon/chevron-right.png" alt="">
 			</a>
-			<a href="">
+			<a href="<?= BASEURL ?>/pengaturan/password">
 				<span>PASSWORD</span>
 				<div>
 					&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;

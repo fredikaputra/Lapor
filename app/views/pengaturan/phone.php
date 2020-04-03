@@ -8,10 +8,11 @@
 		<a href="<?= BASEURL ?>/pengaturan">
 			<img src="<?= BASEURL ?>/assets/img/icon/left-arrow.png" alt="">
 		</a>
-		<h3>Nama</h3>
+		<h3>Nomor Telepon</h3>
 		
-		<form action="<?= BASEURL ?>/pengaturan/proccess/nama" method="post">
-			<input type="text" id="input" value="<?= $data['name'] ?>" onkeyup="checkValueChange()" name="name"><button type="submit" name="update" id="save" style="color: lightgray;" disabled>Simpan</button>
+		<form action="<?= BASEURL ?>/pengaturan/proccess/phone" method="post">
+			<input type="text" id="input" value="<?= $data['phone'] ?>" onkeyup="checkValueChange()" name="phone">
+			<button type="submit" name="update" id="save" style="color: lightgray;" disabled>Simpan</button>
 		</form>
 	</div>
 </main>

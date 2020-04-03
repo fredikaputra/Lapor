@@ -72,10 +72,34 @@ main div h3{
 	color: dimgray;
 }
 
+main div > img{
+	width: 3cm;
+	height: 3cm;
+	object-fit: cover;
+	object-position: center;
+	display: block;
+	margin: 20px auto;
+	border-radius: 50%;
+}
+
 main div form{
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+}
+
+main div form label{
+	width: 100%;
+	border-radius: 5px 0 0 5px;
+	border: 1px solid lightgray;
+	padding: 10px 20px;
+	font-size: 15px;
+	color: dimgray;
+	cursor: pointer;
+}
+
+main div form label input{
+	display: none;
 }
 
 main div form input{

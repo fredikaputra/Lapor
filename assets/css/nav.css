@@ -75,7 +75,11 @@ nav div .menu .logged button{
 
 nav div .menu .logged button img{
 	width: .7cm;
+	height: .7cm;
 	margin-right: 5px;
+	border-radius: 50%;
+	object-fit: cover;
+	object-position: center;
 }
 
 nav div .menu .logged div.user-menu{
@@ -107,6 +111,9 @@ nav div .menu .logged div.user-menu > img{
 	object-position: center;
 	display: block;
 	margin: auto;
+	border-radius: 50%;
+	object-fit: cover;
+	object-position: center;
 }
 
 nav div .menu .logged div.user-menu a.change{
