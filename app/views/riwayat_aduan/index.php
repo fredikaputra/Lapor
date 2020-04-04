@@ -8,7 +8,6 @@
 		<table>
 			<thead>
 				<tr>
-					<td>#</td>
 					<td>Waktu</td>
 					<td>Isi Laporan</td>
 					<td>Status</td>
@@ -19,20 +18,19 @@
 				<?php
 				
 				if (isset($data['laporan'])) {
-					$no = 1;
 					foreach ($data['laporan'] as $laporan) {
 						?>
 						
 						<tr>
-							<td><?= $no ?></td>
-							<td><?= date('l, d F Y', $laporan['tgl_pengaduan']) ?></td>
-							<td><p><?= $laporan['isi_laporan'] ?></p></td>
+							<td><?= date('d/m/Y', $laporan['tgl_pengaduan']) ?></td>
+							<td>
+								<div><p><?= $laporan['isi_laporan'] ?></p></div>
+							</td>
 							<td><?= ($laporan['status'] == 0) ? 'Dalam Proses' : 'Selesai' ?></td>
 							<td><a href="<?= BASEURL ?>/riwayat-aduan/detail/<?= $laporan['id_pengaduan'] ?>">Lihat</a></td>
 						</tr>
 						
 						<?php
-						$no++;
 					}
 				}
 				

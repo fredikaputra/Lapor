@@ -35,47 +35,28 @@ main > span{
 	font-size: 18px;
 }
 
-main div{
+main > div{
 	margin-top: 1cm;
 	background: white;
 	padding: 1cm;
 }
 
 main div table{
-	border: 1px solid lightgray;
 	border-collapse: collapse;
 	width: 100%;
 }
 
-main div table td{
+main div table tr td{
 	border: 1px solid lightgray;
-	padding: 25px 10px;
 }
 
-main div table thead td{
-	font-weight: bold;
+main div table tbody tr td div{
+	min-width: 0;
+	width: 100%;
 }
 
-main div table thead td:nth-child(2){
-	width: 6cm;
-}
-
-main div table thead td:nth-child(4),
-main div table thead td:nth-child(5){
-	width: 4cm;
-}
-
-main div table tbody td:nth-child(2){
-	text-align: right;
-}
-
-main div table tbody td:nth-child(3){
-	text-align: left;
-}
-
-main div table tbody td p{
+main div table tbody tr td div p{
 	white-space: nowrap;
-	width: 15cm;
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
