@@ -32,12 +32,6 @@
 	</form>
 </main>
 
-<script type="text/javascript">	
-	function unsetload(){
-		window.onbeforeunload = null;
-	}
-</script>
-
 <?php
 
 if (isset($_SESSION['reg'])) {

@@ -23,12 +23,7 @@
 			<label>Upload Gambar
 				<input type="file" name="photo" accept=".jpg, .jpeg">
 			</label>
-			<!-- <button type="submit" name="update" id="save" style="color: lightgray;" disabled>Simpan</button> -->
 			<button type="submit" name="update" id="save">Simpan</button>
 		</form>
 	</div>
 </main>
-
-<script type="text/javascript">
-
-</script>

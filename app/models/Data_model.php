@@ -27,37 +27,23 @@ class Data_model{
 		}
 	}
 	
-	public function laporan($nik = '', $idlaporan = '', $limit = ''){ // ambil data pengaduan
-		if ($nik != '') { // tampilkan satu data pengaduan
+	public function laporan($id = '', $nik = ''){ // ambil data pengaduan
+		if ($id != '') {
+			$query = "SELECT pengaduan.*, nama FROM pengaduan JOIN masyarakat USING (nik) WHERE id_pengaduan = ?";
+			$this->db->prepare($query);
+			$this->db->sth->bind_param('s', $id);
+		}else if ($nik != '') {
 			$query = "SELECT pengaduan.*, nama FROM pengaduan JOIN masyarakat USING (nik) WHERE nik = ?";
 			$this->db->prepare($query);
 			$this->db->sth->bind_param('s', $nik);
-			$this->db->execute();
-			if ($this->db->getResult() == !NULL) {
-				return $this->db->row;
-			}
-		}else if($idlaporan != '') { // tampilkan semua aduan berdasarkan id laporan
-			$query = "SELECT pengaduan.*, nama FROM pengaduan JOIN masyarakat USING (nik) WHERE id_pengaduan = ?";
-			$this->db->prepare($query);
-			$this->db->sth->bind_param('s', $idlaporan);
-			$this->db->execute();
-			if ($this->db->getResult() == !NULL) {
-				return $this->db->row;
-			}
-		}else if($limit != '') { // tampilkan semua aduan dengan ketentuan batasan n
-			$query = "SELECT pengaduan.*, nama FROM pengaduan JOIN masyarakat USING (nik) ORDER BY tgl_pengaduan DESC LIMIT $limit";
-			$this->db->prepare($query);
-			$this->db->execute();
-			if ($this->db->getResult() == !NULL) {
-				return $this->db->row;
-			}
 		}else {
-			$query = "SELECT pengaduan.*, nama FROM pengaduan JOIN masyarakat USING (nik) ORDER BY tgl_pengaduan DESC";
+			$query = "SELECT pengaduan.*, nama FROM pengaduan JOIN masyarakat USING (nik) ORDER BY tgl_pengaduan DESC LIMIT 20";
 			$this->db->prepare($query);
-			$this->db->execute();
-			if ($this->db->getResult() == !NULL) {
-				return $this->db->row;
-			}
+		}
+		
+		$this->db->execute();
+		if ($this->db->getResult() == !NULL) {
+			return $this->db->row;
 		}
 	}
 	

@@ -15,13 +15,13 @@ class App{
 				$url[0] = str_replace('-', '_', $url[0]);
 			}
 			
-			if (file_exists('app/controllers/' . $url[0] . '.php')) {
-				$this->controller = $url[0];
-				unset($url[0]);
-			}else { // kalau controller tidak ditemukan, pindahkan ke halaman '404'
+			if (!file_exists('app/controllers/' . $url[0] . '.php') || ($url[0] == 'dashboard' && !isset($_SESSION['petugasID']))) {
 				$this->controller = 'Notfound';
-				unset($url[0]);
+			}else {
+				$this->controller = $url[0];
 			}
+			
+			unset($url[0]);
 		}
 		
 		require_once 'app/controllers/' . $this->controller . '.php';
@@ -35,14 +35,13 @@ class App{
 			
 			if (method_exists($this->controller, $url[1])) {
 				$this->method = $url[1];
-				unset($url[1]);
 			}else { // kalau method tidak ditemukan, pindahkan ke halaman '404'
 				$this->controller = 'Notfound';
-				unset($url[1]);
-				
 				require_once 'app/controllers/' . $this->controller . '.php';
 				$this->controller = new $this->controller;
 			}
+			
+			unset($url[1]);
 		}
 		
 		// cek parameter

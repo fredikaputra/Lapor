@@ -24,6 +24,10 @@
 		?>
 		
 		<style type="text/css" media="print">
+			*{
+				overflow: hidden !important;
+			}
+			
 			nav, main header, .action, .content > div:first-of-type{
 				display: none !important;
 			}
@@ -33,6 +37,7 @@
 			}
 			
 			main{
+				overflow: hidden !important;
 				grid-template-rows: 1fr;
 			}
 		</style>

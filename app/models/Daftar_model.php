@@ -18,8 +18,8 @@ class Daftar_model{
 				'phone' => $phone
 			];
 			
-			if ($this->nikCheck($nik) == NULL) { // cek kalau nik tidak ada yang menggunakan
-				if ($this->usernameCheck($username) == NULL) { // cek username belum digunakan
+			if ($this->check($nik, '') == NULL) { // cek kalau nik tidak ada yang menggunakan
+				if ($this->check('', $username) == NULL) { // cek username belum digunakan
 					if (strlen($pass) >= 8) { // cek panjang password, min 8 karakter
 						if ($pass == $repass) { // cek password telah terkonfirmasi
 							$password = password_hash($pass, PASSWORD_BCRYPT, ['cost' => 12]); // encrypt password
@@ -55,18 +55,17 @@ class Daftar_model{
 		}
 	}
 	
-	public function nikCheck($nik){ // proses check nik
-		$query = 'SELECT nik FROM masyarakat WHERE nik = ?';
-		$this->db->prepare($query);
-		$this->db->sth->bind_param('s', $nik);
-		$this->db->execute();
-		return $this->db->getResult();
-	}
-	
-	public function usernameCheck($username){ // proses check username
-		$query = 'SELECT username FROM masyarakat WHERE username = ?';
-		$this->db->prepare($query);
-		$this->db->sth->bind_param('s', $username);
+	public function check($nik = '', $username = ''){ // proses check nik
+		if ($nik != '') {
+			$query = 'SELECT nik FROM masyarakat WHERE nik = ?';
+			$this->db->prepare($query);
+			$this->db->sth->bind_param('s', $nik);
+		}else if ($username != '') {
+			$query = 'SELECT username FROM masyarakat WHERE username = ?';
+			$this->db->prepare($query);
+			$this->db->sth->bind_param('s', $username);
+		}
+		
 		$this->db->execute();
 		return $this->db->getResult();
 	}

@@ -2,21 +2,21 @@
 
 class FormulirPengaduan_model extends Controller{
 	private $db, $uniqID;
-	private $imgType = ['image/jpg', 'image/jpeg', 'image/png'];
 	
 	public function __construct(){
 		$this->db = new Database;
 		
 		do { // generate id laporan yang unik
 			$this->uniqID = strtoupper('lprid' . substr(md5(uniqid()), 25));
-			if ($this->uniqIDCheck($this->uniqID) != $this->uniqID) { // chek ketika id tersedia
+			if ($this->check($this->uniqID) != $this->uniqID) { // chek ketika id tersedia
 				break;
 			}
-		} while ($this->uniqIDCheck($this->uniqID) == !NULL);
+		} while ($this->check($this->uniqID) == !NULL);
 	}
 	
 	public function upload($data, $files){ // proses tambah laporan
 		$this->db->dbh->real_escape_string(extract($data));
+		
 		if (isset($report)) { // check ketika button submit di tekan pada form
 			$_SESSION['msg'] = $msg; // buat session pada form (untuk kondisi ketika gagal)
 			
@@ -26,9 +26,10 @@ class FormulirPengaduan_model extends Controller{
 			
 			if (isset($files)) { // ketika masyarakat menyertakan gambar
 				if ($files['photo']['error'] == 0) { // cek file tidak ada masalah
-					if (in_array($files['photo']['type'], $this->imgType)) { // cek ekstensi gambar
+					$extension = pathinfo($files['photo']['name'], PATHINFO_EXTENSION);
+					if (in_array($extension, ['jpg', 'jpeg', 'png'])) { // cek ekstensi gambar
 						if ($files['photo']['size'] <= 2048000) { // cek ukuran gambar
-							$photo = $this->uniqID . '.' . pathinfo($files['photo']['name'], PATHINFO_EXTENSION);
+							$photo = $this->uniqID . '.' . $extension;
 							if (!move_uploaded_file($files['photo']['tmp_name'], 'assets/img/pengaduan/' . $photo)) {
 								Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
 								return;
@@ -63,7 +64,7 @@ class FormulirPengaduan_model extends Controller{
 		}
 	}
 	
-	public function uniqIDCheck($id){ // proses cek id
+	public function check($id){ // proses cek id
 		$query = "SELECT id_pengaduan FROM pengaduan WHERE id_pengaduan = ?";
 		$this->db->prepare($query);
 		$this->db->sth->bind_param('s', $id);

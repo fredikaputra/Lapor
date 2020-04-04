@@ -1,7 +1,6 @@
 	<div class="content">
 		<h2>Tinjau Data Aduan</h2>
 		<div>
-			<span>Status: <strong><?= ($data['laporan'][0]['status'] == 1) ? 'Selesai' : 'Dalam Proses' ?></strong></span>
 			<button onclick="cetak()">Cetak Laporan</button>
 		</div>
 		<div>
@@ -13,6 +12,14 @@
 					</div>
 					<span>Dari: <strong><?= $data['laporan'][0]['nama'] ?></strong></span>
 					<p><?= $data['laporan'][0]['isi_laporan'] ?></p>
+					<?php
+					
+					if ($data['laporan'][0]['foto'] != NULL) {
+						?><img src="<?= BASEURL ?>/assets/img/pengaduan/<?= $data['laporan'][0]['foto'] ?>?=<?= filemtime('assets/img/pengaduan/' . $data['laporan'][0]['foto']) ?>"><?php
+					}
+					
+					?>
+					<span>Status: <strong><?= ($data['laporan'][0]['status'] == 1) ? 'Selesai' : 'Dalam Proses' ?></strong></span>
 				</div>
 			</div>
 			<div class="action">
@@ -47,12 +54,6 @@
 		</div>
 	</div>
 </main>
-
-<script type="text/javascript">
-function cetak() {
-window.print();
-}
-</script>
 
 <?php
 

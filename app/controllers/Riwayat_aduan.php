@@ -2,46 +2,48 @@
 
 class Riwayat_aduan extends Controller{
 	public function index(){
-		$data['webtitle'] = 'Dashboard - Riwayat Aduan';
-		$data['css'] = ['riwayat_aduan.css', 'nav.css', 'base.css'];
-		$data['controller'] = __CLASS__;
-		
-		if (isset($_SESSION['masyarakatNIK'])) { // ambil data masyarakat (nav)
+		if (isset($_SESSION['masyarakatNIK'])) {
+			$data['webtitle'] = 'Dashboard - Riwayat Aduan';
+			$data['css'] = ['riwayat_aduan.css', 'nav.css', 'base.css'];
+			$data['controller'] = __CLASS__;
+			
+			// ambil data masyarakat
 			$data['name'] = $this->model('Data_model')->masyarakat($_SESSION['masyarakatNIK'])[0]['nama'];
 			$data['username'] = $this->model('Data_model')->masyarakat($_SESSION['masyarakatNIK'])[0]['username'];
-			$data['laporan'] = $this->model('Data_model')->laporan($_SESSION['masyarakatNIK']);
+			$data['laporan'] = $this->model('Data_model')->laporan('', $_SESSION['masyarakatNIK']);
 			$data['photo'] = $_SESSION['masyarakatNIK'] . '.jpg';
+			
+			$this->view('template/header', $data);
+			$this->view('template/nav', $data);
+			$this->view('riwayat_aduan/index', $data);
+			$this->view('template/footer');
 		}else if (isset($_SESSION['petugasID'])) {
-			header('location: ' . BASEURL . '/dashboard');
+			header('location: ' . BASEURL . '/dashboard/data-aduan');
 		}else {
 			header('location: ' . BASEURL . '/login');
 		}
-		
-		$this->view('template/header', $data);
-		$this->view('template/nav', $data);
-		$this->view('riwayat_aduan/index', $data);
-		$this->view('template/footer');
 	}
 	
-	public function detail($id){
-		$data['webtitle'] = 'Dashboard - Riwayat Aduan';
-		$data['css'] = ['detail_riwayat_aduan.css', 'nav.css', 'base.css'];
-		$data['controller'] = __CLASS__;
-		
-		if (isset($_SESSION['masyarakatNIK'])) { // ambil data masyarakat (nav)
+	public function detail($idpengaduan){
+		if (isset($_SESSION['masyarakatNIK'])) {
+			$data['webtitle'] = 'Dashboard - Riwayat Aduan';
+			$data['css'] = ['detail_riwayat_aduan.css', 'nav.css', 'base.css'];
+			$data['controller'] = __CLASS__;
+			
+			// ambil data masyarakat
 			$data['name'] = $this->model('Data_model')->masyarakat($_SESSION['masyarakatNIK'])[0]['nama'];
 			$data['username'] = $this->model('Data_model')->masyarakat($_SESSION['masyarakatNIK'])[0]['username'];
-			$data['laporan'] = $this->model('Data_model')->laporan('', $id);
+			$data['laporan'] = $this->model('Data_model')->laporan($idpengaduan, '');
 			$data['photo'] = $_SESSION['masyarakatNIK'] . '.jpg';
+			
+			$this->view('template/header', $data);
+			$this->view('template/nav', $data);
+			$this->view('riwayat_aduan/detail', $data);
+			$this->view('template/footer');
 		}else if (isset($_SESSION['petugasID'])) {
-			header('location: ' . BASEURL . '/dashboard');
+			header('location: ' . BASEURL . '/dashboard/data-aduan');
 		}else {
 			header('location: ' . BASEURL . '/login');
 		}
-		
-		$this->view('template/header', $data);
-		$this->view('template/nav', $data);
-		$this->view('riwayat_aduan/detail', $data);
-		$this->view('template/footer');
 	}
 }

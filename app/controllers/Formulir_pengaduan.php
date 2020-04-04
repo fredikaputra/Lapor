@@ -4,6 +4,7 @@ class Formulir_pengaduan extends Controller{
 	public function index(){
 		$data['webtitle'] = 'LAPOR! - Sampaikan Aspirasi Anda';
 		$data['css'] = ['formulir_pengaduan.css', 'nav.css', 'base.css'];
+		$data['js'] = ['unsetload.js'];
 		$data['controller'] = __CLASS__;
 		
 		if (isset($_SESSION['petugasID'])) { // ambil data petugas (untuk nav)
@@ -21,7 +22,7 @@ class Formulir_pengaduan extends Controller{
 		$this->view('template/header', $data);
 		$this->view('template/nav', $data);
 		$this->view('formulir_pengaduan/index');
-		$this->view('template/footer');
+		$this->view('template/footer', $data);
 	}
 	
 	public function upload(){

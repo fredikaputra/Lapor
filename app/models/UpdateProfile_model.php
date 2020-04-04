@@ -2,7 +2,6 @@
 
 class UpdateProfile_model extends Controller{
 	private $db;
-	private $imgType = ['image/jpg', 'image/jpeg', 'image/png'];
 	
 	public function __construct(){
 		$this->db = new Database;
@@ -14,7 +13,8 @@ class UpdateProfile_model extends Controller{
 		if (isset($updateprofile)) { // check ketika button submit tertekan pada form
 			if (isset($files)) { // chek kalau gambar di sertakan
 				if ($files['photo']['error'] == 0) { // chek file error atau tidak
-					if (in_array($files['photo']['type'], $this->imgType)) { // check ekstensi gambar
+					$extension = pathinfo($files['photo']['name'], PATHINFO_EXTENSION);
+					if (in_array($extension, ['jpg', 'jpeg'])) { // check ekstensi gambar
 						if ($files['photo']['size'] <= 2048000) { // check ukuran gambar
 							$photo = $_SESSION['petugasID'] . '.jpg';
 							if (!move_uploaded_file($files['photo']['tmp_name'], 'assets/img/users/' . $photo)) {

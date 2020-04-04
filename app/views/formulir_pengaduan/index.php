@@ -7,7 +7,7 @@
 		<label <?= (isset($_SESSION['masyarakatNIK'])) ? '' : 'disabled' ?>><img src="<?= BASEURL ?>/assets/img/icon/upload.png">Upload
 			<input name="photo" type="file" <?= (isset($_SESSION['masyarakatNIK'])) ? '' : 'disabled' ?> accept=".png, .jpg, .jpeg">
 		</label>
-		<button type="submit" name="report" <?= (isset($_SESSION['masyarakatNIK'])) ? '' : 'disabled' ?>>LAPORKAN!</button>
+		<button type="submit" name="report" onclick="unsetload()" <?= (isset($_SESSION['masyarakatNIK'])) ? '' : 'disabled' ?>>LAPORKAN!</button>
 	</form>
 </main>
 

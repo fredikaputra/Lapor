@@ -1,0 +1,3 @@
+function cetak() {
+	window.print();
+}

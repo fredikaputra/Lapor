@@ -3,12 +3,6 @@ main .content h2{
 	margin-bottom: 20px;
 }
 
-main .content > div:first-of-type{
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-
 main .content > div:first-of-type button{
 	background: var(--lightblue);
 	border: 1px solid var(--lightblue);
@@ -44,8 +38,22 @@ main .content div .report div .header span:last-of-type{
 	color: gray;
 }
 
-main .content div .report div > span{
+main .content div .report > div > span{
 	font-size: 16px;
+}
+
+main .content div .report > div > img{
+	width: 100%;
+	border-top: .5px solid lightgray;
+	margin-top: 20px;
+	padding-top: 20px;
+}
+
+main .content div .report > div > span:last-of-type{
+	border-top: .5px solid lightgray;
+	display: block;
+	margin-top: 20px;
+	padding-top: 20px;
 }
 
 main .content div .report div > span strong{
