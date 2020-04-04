@@ -84,24 +84,14 @@ nav div .menu .logged button img{
 
 nav div .menu .logged div.user-menu{
 	background: white;
-	padding: .8cm;
 	position: absolute;
 	right: 0;
 	top: 1.1cm;
 	border-radius: 10px;
-	width: 8cm;
+	width: 9cm;
 	text-align: center;
 	z-index: 1;
-}
-
-nav div .menu .logged div.user-menu a.sett{
-	position: absolute;
-	top: 20px;
-	right: 20px;
-}
-
-nav div .menu .logged div.user-menu a.sett img{
-	width: 20px;
+	box-shadow: 0 0 10px #00000040;
 }
 
 nav div .menu .logged div.user-menu > img{
@@ -110,7 +100,7 @@ nav div .menu .logged div.user-menu > img{
 	object-fit: cover;
 	object-position: center;
 	display: block;
-	margin: auto;
+	margin: .8cm auto 0;
 	border-radius: 50%;
 	object-fit: cover;
 	object-position: center;
@@ -119,7 +109,7 @@ nav div .menu .logged div.user-menu > img{
 nav div .menu .logged div.user-menu a.change{
 	position: absolute;
 	top: 2cm;
-	right: 2.8cm;
+	right: 3.5cm;
 	background: white;
 	line-height: 0;
 	border-radius: 50%;
@@ -145,7 +135,7 @@ nav div .menu .logged div.user-menu span.name{
 
 nav div .menu .logged div.user-menu span.username{
 	display: block;
-	font-size: 16px;
+	font-size: 15px;
 	color: dimgray;
 	white-space: nowrap;
 	width: 100%;
@@ -153,31 +143,53 @@ nav div .menu .logged div.user-menu span.username{
 	text-overflow: ellipsis;
 }
 
-nav div .menu .logged div.user-menu a:nth-of-type(3){
-	border: 1px solid darkgray;
-	padding: 5px 15px;
-	display: block;
+nav div .menu .logged div.user-menu > a:nth-of-type(2){
+	border: .5px solid lightgray;
+	padding: 10px 20px;
+	display: inline-block;
 	margin: 20px 0 5px;
 	border-radius: 20px;
 	color: dimgray;
 	font-weight: bold;
-	font-size: 15px;
+	font-size: 13px;
 }
 
 nav div .menu .logged div.user-menu hr{
-	border: .5px solid lightgray;
+	border: 1px solid #efefef;
 	margin: 10px 0;
 }
 
-nav div .menu .logged div.user-menu a:last-of-type{
-	border: 1px solid darkgray;
-	padding: 5px 15px;
-	display: block;
-	margin: 5px 0 0;
-	border-radius: 20px;
+nav div .menu .logged div.user-menu > a:last-of-type{
+	border: .5px solid lightgray;
+	padding: 10px 20px;
+	display: inline-block;
+	margin: 5px 0;
+	border-radius: 5px;
 	color: dimgray;
 	font-weight: bold;
-	font-size: 15px;
+	font-size: 13px;
+}
+
+nav div .menu .logged div.user-menu > a:nth-of-type(2):hover,
+nav div .menu .logged div.user-menu > a:last-of-type:hover{
+	background: #f5f5f5;
+}
+
+nav div .menu .logged div.user-menu > div{
+	color: gray;
+}
+
+nav div .menu .logged div.user-menu > div a{
+	color: gray;
+	font-weight: normal;
+	font-size: 13px;
+	margin-bottom: 15px;
+	padding: 5px;
+	display: inline-block;
+}
+
+nav div .menu .logged div.user-menu > div a:hover{
+	background: #f5f5f5;
 }
 
 /* UNLOGGED */

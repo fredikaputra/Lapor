@@ -8,6 +8,20 @@
 			<a href="<?= BASEURL ?>/formulir-pengaduan" <?= ($data['controller'] === 'Formulir_pengaduan') ? 'class="active"' : '' ?>>FORMULIR PENGADUAN</a>
 			<?php
 			
+			if (isset($_SESSION['petugasID'])) {
+				?>
+				
+				<a href="<?= BASEURL ?>/dashboard/data-aduan">DATA ADUAN</a>
+				
+				<?php
+			}else if (isset($_SESSION['masyarakatNIK'])) {
+				?>
+				
+				<a href="<?= BASEURL ?>/riwayat-aduan" <?= ($data['controller'] === 'Riwayat_aduan') ? 'class="active"' : '' ?>>RIWAYAT ADUAN</a>
+				
+				<?php
+			}
+			
 			if (isset($_SESSION['masyarakatNIK']) || isset($_SESSION['petugasID'])) {
 				?>
 				
@@ -26,9 +40,6 @@
 					</button>
 					
 					<div class="user-menu hide">
-						<a href="<?= BASEURL ?>/pengaturan" class="sett">
-							<img src="<?= BASEURL ?>/assets/img/icon/settings.png">
-						</a>
 						<?php
 						
 						if (file_exists('assets/img/users/' . $data['photo'])) {
@@ -43,25 +54,15 @@
 						</a>
 						<span class="name"><?= $data['name'] ?></span>
 						<span class="username">@<?= $data['username'] ?></span>
-						<?php
-						
-						if (isset($_SESSION['petugasID'])) {
-							?>
-							
-							<a href="<?= BASEURL ?>/dashboard">Dashboard</a>
-							
-							<?php
-						}else if (isset($_SESSION['masyarakatNIK'])) {
-							?>
-							
-							<a href="<?= BASEURL ?>/riwayat-aduan">Riwayat Aduan</a>
-							
-							<?php
-						}
-						
-						?>
+						<a href="<?= BASEURL ?>/pengaturan">Kelola Akun Lapor Anda</a>
 						<hr>
 						<a href="<?= BASEURL ?>/logout">Logout</a>
+						<hr>
+						<div>
+							<a href="">Kebijakan Pribadi</a>
+							&bullet;
+							<a href="">Ketentuan Layanan</a>
+						</div>
 					</div>
 				</div>
 				
