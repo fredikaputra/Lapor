@@ -4,11 +4,24 @@ main .content h2{
 }
 
 main .content > div:first-of-type button{
-	background: var(--lightblue);
-	border: 1px solid var(--lightblue);
-	color: var(--darklightblue);
-	padding: 5px 15px;
+	background: white;
+	border: none;
+	padding: 10px;
+	box-shadow: 0 0 10px #00000020;
+	display: flex;
+	align-items: center;
+	color: dimgray;
 	font-weight: bold;
+	font-size: 14px;
+}
+
+main .content > div:first-of-type button:hover{
+	background: #f0f0f0;
+}
+
+main .content > div:first-of-type button img{
+	width: 20px;
+	margin-right: 5px;
 }
 
 main .content > div:last-child{

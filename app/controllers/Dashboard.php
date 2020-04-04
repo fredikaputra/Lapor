@@ -18,7 +18,7 @@ class Dashboard extends Controller{
 		$this->view('template/footer', $data);
 	}
 	
-	public function data_aduan($idpengaduan = ''){
+	public function data_aduan($idpengaduan = '', $print = FALSE){
 		$data['photo'] = $_SESSION['petugasID'] . '.jpg';
 		$data['method'] = __FUNCTION__;
 		
@@ -40,7 +40,11 @@ class Dashboard extends Controller{
 			$data['idpengaduan'] = $idpengaduan;
 			$data['webtitle'] = 'Data Aduan ' . $data['idpengaduan'];
 			$data['css'] = ['dashboard_header.css', 'detail_aduan.css', 'base.css'];
-			$data['js'] = ['print.js'];
+			if ($print == 'print') {
+				$data['js'] = ['print.js', 'directprint.js'];
+			}else {
+				$data['js'] = ['print.js'];
+			}
 			
 			// ambil data
 			$data['laporan'] = $this->model('Data_model')->laporan($data['idpengaduan'], '');

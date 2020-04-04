@@ -28,7 +28,7 @@
 								<a href="<?= BASEURL ?>/dashboard/data-aduan/<?= $laporan['id_pengaduan'] ?>">
 									<img src="<?= BASEURL ?>/assets/img/icon/eye.png">
 								</a>
-								<a href="<?= BASEURL ?>/dashboard/data-aduan/<?= $laporan['id_pengaduan'] ?>">
+								<a href="<?= BASEURL ?>/dashboard/data-aduan/<?= $laporan['id_pengaduan'] ?>/print">
 									<img src="<?= BASEURL ?>/assets/img/icon/print.png">
 								</a>
 								<a href="<?= BASEURL ?>/dashboard/data-aduan/<?= $laporan['id_pengaduan'] ?>">
@@ -46,4 +46,3 @@
 		</div>
 	</div>
 </main>
-

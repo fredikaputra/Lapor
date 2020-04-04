@@ -1,7 +1,9 @@
 	<div class="content">
 		<h2>Tinjau Data Aduan</h2>
 		<div>
-			<button onclick="cetak()">Cetak Laporan</button>
+			<button onclick="cetak()">
+				<img src="<?= BASEURL ?>/assets/img/icon/print.png" alt=""> CETAK
+			</button>
 		</div>
 		<div>
 			<div class="report">
