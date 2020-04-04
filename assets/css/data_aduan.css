@@ -21,70 +21,75 @@ main .content div .data{
 }
 
 main .content div .data > div{
-	display: grid;
-	grid-template-columns: 2cm 6cm 1fr 6cm;
-	text-align: left;
+	position: relative;
 	border-bottom: .5px solid #eeeeee;
 	background: #f9f9f9;
-	position: relative;
+	text-align: left;
 }
 
 main .content div .data > div:hover{
-	background: #eeeeee;
+	background: #eee;
 }
 
-main .content div .data div div:not(.action){
+main .content div .data > div > a{
+	display: grid;
+	grid-template-columns: 2cm 6cm 1fr 6cm;
+}
+
+main .content div .data div a div:not(.action){
 	padding: 20px;
 	color: dimgray;
 }
 
-main .content div .data div div:first-of-type{
+main .content div .data div a div:first-of-type{
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	line-height: 0;
 }
 
-main .content div .data div div:nth-of-type(2),
-main .content div .data div div:nth-of-type(3){
+main .content div .data div a div:nth-of-type(2),
+main .content div .data div a div:nth-of-type(3){
 	min-width: 0;
+	align-self: center;
 }
 
-main .content div .data div div:nth-of-type(2) span,
-main .content div .data div div:nth-of-type(3) p{
+main .content div .data div a div:nth-of-type(2) span,
+main .content div .data div a div:nth-of-type(3) p{
 	display: block;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
 
-main .content div .data div div:nth-of-type(4){
+main .content div .data div a div:nth-of-type(4){
 	text-align: center;
 }
 
 main .content div .data div div.action{
+	z-index: 1;
 	position: absolute;
 	top: 50%;
 	right: 0;
 	background: #eeeeee;
 	transform: translateY(-50%);
-	display: flex;
 	padding: 0 1cm;
+	display: none;
+}
+
+main .content div .data > div:hover div.action{
+	display: block;
 }
 
 main .content div .data div div.action a{
-	display: none;
+	display: inline-block;
 	line-height: 0;
 	border-radius: 50%;
 	padding: 10px;
 }
 
-main .content div .data > div:hover div.action a{
-	display: block;
-}
-
 main .content div .data div div.action a:hover{
-	background-color: #e8e8e8;
+	background-color: #dfdfdf;
 }
 
 main .content div .data div div.action a img{

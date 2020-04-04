@@ -10,18 +10,20 @@
 						?>
 						
 						<div>
-							<div>
-								<input type="checkbox">
-							</div>
-							<div>
-								<span><?= $laporan['nama'] ?></span>
-							</div>
-							<div>
-								<p><?= $laporan['isi_laporan'] ?></p>
-							</div>
-							<div>
-								<?= strftime("%A, %d %B %Y", $data['laporan'][0]['tgl_pengaduan']) ?>
-							</div>
+							<a href="<?= BASEURL ?>/dashboard/data-aduan/<?= $laporan['id_pengaduan'] ?>">
+								<div>
+									<input type="checkbox">
+								</div>
+								<div>
+									<span><?= $laporan['nama'] ?></span>
+								</div>
+								<div>
+									<p><?= $laporan['isi_laporan'] ?></p>
+								</div>
+								<div>
+									<?= strftime("%A, %d %B %Y", $data['laporan'][0]['tgl_pengaduan']) ?>
+								</div>
+							</a>
 							<div class="action">
 								<a href="<?= BASEURL ?>/dashboard/data-aduan/<?= $laporan['id_pengaduan'] ?>">
 									<img src="<?= BASEURL ?>/assets/img/icon/eye.png">
