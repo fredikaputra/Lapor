@@ -4,63 +4,89 @@ main .content{
 
 main .content > div{
 	background: white;
-	padding: 1cm;
 	box-shadow: 0 5px 10px #0000000f;
 }
 
-main .content table{
+main .content > div h2{
+	padding: 1cm 0 5px;
+}
+
+main .content > div > span{
+	color: gray;
+	letter-spacing: 1px;
+}
+
+main .content div .data{
 	margin-top: 1cm;
-	border: .5px solid #00000015;
-	border-collapse: collapse;
-	width: 100%;
 }
 
-main .content table td{
-	border-bottom: .5px solid #00000015;
-	padding: 25px;
-}
-
-main .content table thead td{
-	font-weight: bold;
-}
-
-main .content table thead td:nth-child(2){
-	width: 7cm;
-}
-
-main .content table thead td:nth-child(4),
-main .content table thead td:nth-child(5),
-main .content table thead td:nth-child(6){
-	width: 5cm;
-}
-
-main .content table tbody td:nth-child(2){
-	text-align: right;
-}
-
-main .content table tbody td:nth-child(3){
+main .content div .data > div{
+	display: grid;
+	grid-template-columns: 2cm 6cm 1fr 6cm;
 	text-align: left;
+	border-bottom: .5px solid #eeeeee;
+	background: #f9f9f9;
+	position: relative;
 }
 
-main .content table tbody td button{
-	padding: 5px 10px;
-	background: var(--lightblue);
-	border: 1px solid var(--lightblue);
-	color: black;
-	border-radius: 3px;
+main .content div .data > div:hover{
+	background: #eeeeee;
 }
 
-main .content table tbody td p{
+main .content div .data div div:not(.action){
+	padding: 20px;
+	color: dimgray;
+}
+
+main .content div .data div div:first-of-type{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	line-height: 0;
+}
+
+main .content div .data div div:nth-of-type(2),
+main .content div .data div div:nth-of-type(3){
+	min-width: 0;
+}
+
+main .content div .data div div:nth-of-type(2) span,
+main .content div .data div div:nth-of-type(3) p{
+	display: block;
 	white-space: nowrap;
-	width: 15cm;
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
 
-main .content table tbody td a{
-	background: var(--blue);
-	color: white;
-	padding: 5px 15px;
-	border-radius: 3px;
-	font-size: 15px;
+main .content div .data div div:nth-of-type(4){
+	text-align: center;
+}
+
+main .content div .data div div.action{
+	position: absolute;
+	top: 50%;
+	right: 0;
+	background: #eeeeee;
+	transform: translateY(-50%);
+	display: flex;
+	padding: 0 1cm;
+}
+
+main .content div .data div div.action a{
+	display: none;
+	line-height: 0;
+	border-radius: 50%;
+	padding: 10px;
+}
+
+main .content div .data > div:hover div.action a{
+	display: block;
+}
+
+main .content div .data div div.action a:hover{
+	background-color: #e8e8e8;
+}
+
+main .content div .data div div.action a img{
+	width: 25px;
 }

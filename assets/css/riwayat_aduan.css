@@ -35,40 +35,45 @@ main > span{
 	font-size: 18px;
 }
 
-main table{
+main div{
 	margin-top: 1cm;
+	background: white;
+	padding: 1cm;
+}
+
+main div table{
 	border: 1px solid lightgray;
 	border-collapse: collapse;
 	width: 100%;
 }
 
-main table td{
+main div table td{
 	border: 1px solid lightgray;
 	padding: 25px 10px;
 }
 
-main table thead td{
+main div table thead td{
 	font-weight: bold;
 }
 
-main table thead td:nth-child(2){
+main div table thead td:nth-child(2){
 	width: 6cm;
 }
 
-main table thead td:nth-child(4),
-main table thead td:nth-child(5){
+main div table thead td:nth-child(4),
+main div table thead td:nth-child(5){
 	width: 4cm;
 }
 
-main table tbody td:nth-child(2){
+main div table tbody td:nth-child(2){
 	text-align: right;
 }
 
-main table tbody td:nth-child(3){
+main div table tbody td:nth-child(3){
 	text-align: left;
 }
 
-main table tbody td p{
+main div table tbody td p{
 	white-space: nowrap;
 	width: 15cm;
 	overflow: hidden;
