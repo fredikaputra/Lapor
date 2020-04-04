@@ -21,7 +21,7 @@
 									<p><?= $laporan['isi_laporan'] ?></p>
 								</div>
 								<div>
-									<?= strftime("%A, %d %B %Y", $data['laporan'][0]['tgl_pengaduan']) ?>
+									<?= strftime("%A, %d %B %Y", $laporan['tgl_pengaduan']) ?>
 								</div>
 							</a>
 							<div class="action">

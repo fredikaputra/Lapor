@@ -27,6 +27,10 @@ main .content div .data > div{
 	text-align: left;
 }
 
+main .content div .data > div:first-of-type{
+	border-top: 1px solid #ccc;
+}
+
 main .content div .data > div:hover{
 	background: #eee;
 }
@@ -73,8 +77,9 @@ main .content div .data div div.action{
 	right: 0;
 	background: #eeeeee;
 	transform: translateY(-50%);
-	padding: 0 1cm;
 	display: none;
+	width: 5.5cm;
+	text-align: center;
 }
 
 main .content div .data > div:hover div.action{
