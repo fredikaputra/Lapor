@@ -155,6 +155,7 @@ main .content > div:last-of-type > .data > span{
 	text-align: center;
 	margin: 5px 0 1cm;
 	color: gray;
+	letter-spacing: 1px;
 }
 
 main .content > div:last-of-type .data > div{

@@ -42,7 +42,7 @@
 			
 			<div class="data">
 				<h2>Data Aduan Terbaru</h2>
-				<span>Semua data aduan yang masuk dari masyarakat</span>
+				<span>5 data aduan terbaru yang masuk dari masyarakat</span>
 				<?php
 				
 				foreach ($data['laporan'] as $laporan) {

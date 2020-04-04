@@ -10,7 +10,7 @@ class Dashboard extends Controller{
 		// ambil data
 		$data['petugas'] = $this->model('Data_model')->petugas($_SESSION['petugasID'])[0];
 		$data['photo'] = $_SESSION['petugasID'] . '.jpg';
-		$data['laporan'] = $this->model('Data_model')->laporan();
+		$data['laporan'] = $this->model('Data_model')->laporan('', '', '5');
 		
 		$this->view('template/header', $data);
 		$this->view('dashboard/header', $data);
@@ -47,7 +47,7 @@ class Dashboard extends Controller{
 			}
 			
 			// ambil data
-			$data['laporan'] = $this->model('Data_model')->laporan($data['idpengaduan'], '');
+			$data['laporan'] = $this->model('Data_model')->laporan($data['idpengaduan'], '', '');
 			$data['tanggapan'] = $this->model('Data_model')->tanggapan($data['idpengaduan']);
 			
 			$this->view('template/header', $data);

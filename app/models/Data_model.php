@@ -27,7 +27,7 @@ class Data_model{
 		}
 	}
 	
-	public function laporan($id = '', $nik = ''){ // ambil data pengaduan
+	public function laporan($id = '', $nik = '', $limit = ''){ // ambil data pengaduan
 		if ($id != '') {
 			$query = "SELECT pengaduan.*, nama FROM pengaduan JOIN masyarakat USING (nik) WHERE id_pengaduan = ?";
 			$this->db->prepare($query);
@@ -36,6 +36,10 @@ class Data_model{
 			$query = "SELECT pengaduan.*, nama FROM pengaduan JOIN masyarakat USING (nik) WHERE nik = ?";
 			$this->db->prepare($query);
 			$this->db->sth->bind_param('s', $nik);
+		}else if ($limit != '') {
+			$query = "SELECT pengaduan.*, nama FROM pengaduan JOIN masyarakat USING (nik) ORDER BY tgl_pengaduan DESC LIMIT ?";
+			$this->db->prepare($query);
+			$this->db->sth->bind_param('s', $limit);
 		}else {
 			$query = "SELECT pengaduan.*, nama FROM pengaduan JOIN masyarakat USING (nik) ORDER BY tgl_pengaduan DESC LIMIT 20";
 			$this->db->prepare($query);
@@ -60,7 +64,7 @@ class Data_model{
 	public static function timeCounter($time){
 		$diff = date_diff(date_create(date('Y-m-d H:i:s', $time)), date_create(date('Y-m-d H:i:s')));
 		if ($diff->y) {
-			return $diff->y . ' tahun yang lalu';
+			echo date('H:i d/m/Y', $time);
 		}else if ($diff->m) {
 			return $diff->m . ' bulan yang lalu';
 		}else if ($diff->d) {

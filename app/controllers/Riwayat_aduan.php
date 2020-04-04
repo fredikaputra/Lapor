@@ -10,7 +10,7 @@ class Riwayat_aduan extends Controller{
 			// ambil data masyarakat
 			$data['name'] = $this->model('Data_model')->masyarakat($_SESSION['masyarakatNIK'])[0]['nama'];
 			$data['username'] = $this->model('Data_model')->masyarakat($_SESSION['masyarakatNIK'])[0]['username'];
-			$data['laporan'] = $this->model('Data_model')->laporan('', $_SESSION['masyarakatNIK']);
+			$data['laporan'] = $this->model('Data_model')->laporan('', $_SESSION['masyarakatNIK'], '');
 			$data['photo'] = $_SESSION['masyarakatNIK'] . '.jpg';
 			
 			$this->view('template/header', $data);
@@ -33,7 +33,7 @@ class Riwayat_aduan extends Controller{
 			// ambil data masyarakat
 			$data['name'] = $this->model('Data_model')->masyarakat($_SESSION['masyarakatNIK'])[0]['nama'];
 			$data['username'] = $this->model('Data_model')->masyarakat($_SESSION['masyarakatNIK'])[0]['username'];
-			$data['laporan'] = $this->model('Data_model')->laporan($idpengaduan, '');
+			$data['laporan'] = $this->model('Data_model')->laporan($idpengaduan, '', '');
 			$data['photo'] = $_SESSION['masyarakatNIK'] . '.jpg';
 			
 			$this->view('template/header', $data);
