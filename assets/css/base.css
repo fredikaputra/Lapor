@@ -12,6 +12,7 @@
 	
 	--dash-darkblue: #292E40;
 	--dash-softblue: #B9C4CE;
+	--dash-blue: #526484;
 }
 
 *{
@@ -19,14 +20,6 @@
 	padding: 0;
 	box-sizing: border-box;
 	font-family: 'Arial';
-}
-
-body.using-mouse :focus{
-	outline: 1px solid transparent;
-}
-
-a:focus, textarea:focus, button:focus{
-	outline: 1px solid var(--blue);
 }
 
 a{

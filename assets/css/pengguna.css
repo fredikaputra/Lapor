@@ -1,0 +1,175 @@
+main .content .header{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+main .content .header div h1{
+	color: var(--dash-blue);
+	margin-bottom: 5px;
+	font-size: 25px;
+}
+
+main .content .header div span{
+	color: gray;
+	font-size: 15px;
+	letter-spacing: .5px;
+}
+
+main .content .header a{
+	background: white;
+	border: none;
+	padding: 10px;
+	box-shadow: 0 0 10px #00000020;
+	display: flex;
+	align-items: center;
+	color: var(--dash-blue);
+	font-weight: bold;
+	font-size: 14px;
+}
+
+main .content .header a img{
+	width: 20px;
+	margin-right: 5px;
+}
+
+main .content form{
+	background: white;
+	margin-top: 1cm;
+}
+
+main .content form .top{
+	padding: 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+main .content form > .top > button{
+	background: white;
+	border: none;
+	padding: 10px;
+	display: flex;
+	align-items: center;
+	color: dimgray;
+	font-weight: bold;
+	font-size: 14px;
+	opacity: .5;
+}
+
+main .content form > .top > button:hover{
+	box-shadow: 0 0 10px #00000020;
+	opacity: 1;
+}
+
+main .content form .top > button > img{
+	width: 15px;
+	margin-right: 5px;
+}
+
+main .content form .top div{
+	display: flex;
+	align-items: center;
+	width: 100%;
+	position: relative;
+}
+
+main .content form .top div input{
+	text-align: right;
+	border: none;
+	letter-spacing: 1px;
+	outline: none;
+	width: 100%;
+	font-size: 15px;
+	color: var(--dash-blue);
+	margin-right: 5px;
+}
+
+main .content form .top > div > button{
+	background: transparent;
+	border: none;
+	text-align: center;
+	padding: 10px;
+	border-radius: 50%;
+	transition: .3s;
+}
+
+main .content form .top div button:hover{
+	background-color: #e4e8f2;
+}
+
+main .content form .top div button img{
+	width: 15px;
+}
+
+main .content form .top div > img{
+	width: 2px;
+	height: 35px;
+	margin: 0 15px;
+}
+
+main .content form .top div .filter-menu{
+	position: absolute;
+	top: 1.1cm;
+	right: 0;
+	width: 15cm;
+	display: block;
+	background: white;
+	box-shadow: 0 3px 12px 1px rgba(44,55,130,0.15);
+}
+
+main .content form .top div .filter-menu > span{
+	display: block;
+	padding: 20px;
+	font-size: 13px;
+	color: var(--dash-blue);
+	font-weight: bold;
+	border-bottom: 1px solid #eee;
+}
+
+main .content form .top div .filter-menu .filter{
+	padding: 20px;
+}
+
+main .content form .top div .filter-menu .filter > div{
+	display: block;
+	margin: 0 10px;
+}
+
+main .content form .top div .filter-menu .filter > div span{
+	display: block;
+	font-size: 12px;
+	font-weight: bold;
+	letter-spacing: 1px;
+	color: var(--dash-blue);
+	margin-bottom: 5px;
+}
+
+main .content form .top div .filter-menu .filter > div select{
+	width: 100%;
+	padding: 10px;
+	font-size: 12px;
+	letter-spacing: 1px;
+	border-radius: 5px;
+	border: 1px solid #ddd;
+	color: var(--dash-blue);
+	cursor: pointer;
+}
+
+main .content form .top div .filter-menu .footer{
+	justify-content: flex-end;
+	padding: 20px;
+	border-top: 1px solid #eee;
+}
+
+main .content form .top div .filter-menu .footer button{
+	background: var(--dash-blue);
+	color: white;
+	border: none;
+	padding: 10px;
+	width: 2.6cm;
+	margin: 0 5px;
+	font-weight: bold;
+	border-radius: 5px;
+	font-size: 13px;
+}
