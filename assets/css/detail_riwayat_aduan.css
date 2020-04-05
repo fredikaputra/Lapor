@@ -88,7 +88,7 @@ main .report > div > p{
 	letter-spacing: 1px;
 	line-height: 30px;
 	color: dimgray;
-	text-indent: 1cm;
+	white-space: pre-line;
 }
 
 main .report .comment > div{
@@ -125,6 +125,7 @@ main .report .comment div div p{
 	margin-top: 8px;
 	color: gray;
 	line-height: 25px;
+	white-space: pre-line;
 }
 
 main .report .comment div div p::before{

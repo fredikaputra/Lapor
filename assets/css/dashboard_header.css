@@ -14,8 +14,8 @@ nav{
 }
 
 nav > img:first-of-type{
-	width: 2cm;
-	height: 2cm;
+	width: 4cm;
+	height: 4cm;
 	border-radius: 50%;
 	object-fit: cover;
 	object-position: center;

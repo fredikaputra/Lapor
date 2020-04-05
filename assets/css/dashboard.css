@@ -163,7 +163,7 @@ main .content > div:last-of-type .data div > div{
 	text-align: left;
 }
 
-main .content > div:last-of-type .data div > div:first-of-type{
+main .content > div:last-of-type .data > div > div:first-of-type{
 	border-top: 1px solid #ccc;
 }
 

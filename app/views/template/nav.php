@@ -11,7 +11,7 @@
 			if (isset($_SESSION['petugasID'])) {
 				?>
 				
-				<a href="<?= BASEURL ?>/dashboard/data-aduan">DATA ADUAN</a>
+				<a href="<?= BASEURL ?>/dashboard">DASHBOARD</a>
 				
 				<?php
 			}else if (isset($_SESSION['masyarakatNIK'])) {

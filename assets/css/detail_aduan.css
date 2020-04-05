@@ -3,7 +3,12 @@ main .content h2{
 	margin-bottom: 20px;
 }
 
-main .content > div:first-of-type button{
+main .content > div:first-of-type{
+	display: flex;
+}
+
+main .content > div:first-of-type button,
+main .content > div:first-of-type > a{
 	background: white;
 	border: none;
 	padding: 10px;
@@ -15,11 +20,21 @@ main .content > div:first-of-type button{
 	font-size: 14px;
 }
 
-main .content > div:first-of-type button:hover{
+main .content > div:first-of-type button:hover,
+main .content > div:first-of-type > a:hover{
 	background: #f0f0f0;
 }
 
 main .content > div:first-of-type button img{
+	width: 20px;
+	margin-right: 5px;
+}
+
+main .content > div:first-of-type > a{
+	margin-left: 10px;
+}
+
+main .content > div:first-of-type > a img{
 	width: 20px;
 	margin-right: 5px;
 }
@@ -79,7 +94,7 @@ main .content div .report div p{
 	letter-spacing: 1px;
 	line-height: 30px;
 	color: dimgray;
-	text-indent: 1cm;
+	white-space: pre-line;
 }
 
 main .content div .action form{
@@ -138,6 +153,7 @@ main .content div .action .comment p{
 	color: gray;
 	line-height: 20px;
 	text-align: justify;
+	white-space: pre-line;
 }
 
 main .content div .action .comment p::before{

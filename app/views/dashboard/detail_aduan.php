@@ -2,8 +2,11 @@
 		<h2>Tinjau Data Aduan</h2>
 		<div>
 			<button onclick="cetak()">
-				<img src="<?= BASEURL ?>/assets/img/icon/print.png" alt=""> CETAK
+				<img src="<?= BASEURL ?>/assets/img/icon/print.png"> CETAK
 			</button>
+			<a href="<?= BASEURL ?>/dashboard/data-aduan/<?= $laporan['id_pengaduan'] ?>">
+				<img src="<?= BASEURL ?>/assets/img/icon/bin.png"> HAPUS
+			</a>
 		</div>
 		<div>
 			<div class="report">
