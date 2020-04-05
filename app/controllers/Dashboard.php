@@ -37,9 +37,9 @@ class Dashboard extends Controller{
 			$this->view('dashboard/data_aduan', $data);
 			$this->view('template/footer');
 		}else { // tampilkan satu data aduan
-			$data['laporan'] = $this->model('Data_model')->laporan($data['idpengaduan'], '', '');
+			$data['idpengaduan'] = $idpengaduan;
+			$data['laporan'] = $this->model('Data_model')->laporan($data['idpengaduan'], '', '')[0];
 			if ($data['laporan'] != NULL) {
-				$data['idpengaduan'] = $idpengaduan;
 				$data['webtitle'] = 'Data Aduan ' . $data['idpengaduan'];
 				$data['css'] = ['dashboard_header.css', 'detail_aduan.css', 'base.css'];
 				if ($print == 'print') {

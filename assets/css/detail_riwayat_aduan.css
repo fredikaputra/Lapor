@@ -124,6 +124,7 @@ main .report .comment div div p{
 	text-align: left;
 	margin-top: 8px;
 	color: gray;
+	line-height: 25px;
 }
 
 main .report .comment div div p::before{

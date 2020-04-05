@@ -9,23 +9,23 @@
 			<div class="report">
 				<div>
 					<div class="header">
-						<span><?= $data['laporan'][0]['id_pengaduan'] ?></span>
-						<span><?= date('l, d F Y', $data['laporan'][0]['tgl_pengaduan']) ?></span>
+						<span><?= $data['laporan']['id_pengaduan'] ?></span>
+						<span><?= strftime("%A, %d %B %Y %H:%I", $data['laporan']['tgl_pengaduan']) ?></span>
 					</div>
-					<span>Dari: <strong><?= $data['laporan'][0]['nama'] ?></strong></span>
-					<p><?= $data['laporan'][0]['isi_laporan'] ?></p>
+					<span>Dari: <strong><?= $data['laporan']['nama'] ?></strong></span>
+					<p><?= $data['laporan']['isi_laporan'] ?></p>
 					<?php
 					
-					if ($data['laporan'][0]['foto'] != NULL) {
-						?><img src="<?= BASEURL ?>/assets/img/pengaduan/<?= $data['laporan'][0]['foto'] ?>?=<?= filemtime('assets/img/pengaduan/' . $data['laporan'][0]['foto']) ?>"><?php
+					if ($data['laporan']['foto'] != NULL) {
+						?><img src="<?= BASEURL ?>/assets/img/pengaduan/<?= $data['laporan']['foto'] ?>?=<?= filemtime('assets/img/pengaduan/' . $data['laporan']['foto']) ?>"><?php
 					}
 					
 					?>
-					<span>Status: <strong><?= ($data['laporan'][0]['status'] == 1) ? 'Selesai' : 'Dalam Proses' ?></strong></span>
+					<span>Status: <strong><?= ($data['laporan']['status'] == 1) ? 'Selesai' : 'Dalam Proses' ?></strong></span>
 				</div>
 			</div>
 			<div class="action">
-				<form method="post" action="<?= BASEURL ?>/dashboard/report-response/<?= $data['id'] ?>">
+				<form method="post" action="<?= BASEURL ?>/dashboard/report-response/<?= $data['laporan']['id_pengaduan'] ?>">
 					<h3>Tanggapan</h3>
 					<textarea placeholder="Tanggapan anda...." name="response"><?= (isset($_SESSION['response'])) ? $_SESSION['response'] : '' ?></textarea>
 					<button type="submit" name="comment">TANGGAPI</button>

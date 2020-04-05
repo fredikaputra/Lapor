@@ -60,6 +60,10 @@ main .data > div > a{
 	grid-template-columns: 1.5cm 1fr 6cm 4cm;
 }
 
+main .data div a div:not(:last-of-type){
+	border-right: 1px solid #ccc;
+}
+
 main .data div a div:not(.action){
 	padding: 20px;
 	color: dimgray;
@@ -70,7 +74,6 @@ main .data div a div:first-of-type{
 	align-items: center;
 	justify-content: center;
 	line-height: 0;
-	border-right: 1px solid #ccc;
 }
 
 main .data div a div:nth-of-type(2){
@@ -88,4 +91,8 @@ main .data div a div:nth-of-type(2) p{
 main .data div a div:nth-of-type(3){
 	text-align: right;
 	padding-right: 30px;
+}
+
+main .data div a div:nth-of-type(4){
+	text-align: center;
 }

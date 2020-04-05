@@ -43,17 +43,17 @@
 			<div class="data">
 				<div>
 					<h2>Data Aduan Terbaru</h2>
-					<span>5 data aduan terbaru yang masuk dari masyarakat</span>
 					<?php
 					
 					if ($data['laporan'] != NULL) {
+						?><span><?= count($data['laporan']) ?> data aduan terbaru yang masuk dari masyarakat</span><?php
 						foreach ($data['laporan'] as $laporan) {
 							?>
 							
 							<div>
 								<a href="<?= BASEURL ?>/dashboard/data-aduan/<?= $laporan['id_pengaduan'] ?>">
 									<div>
-										<span><?= $laporan['nama'] ?></span>
+										<?= $laporan['nama'] ?>
 									</div>
 									<div>
 										<p><?= $laporan['isi_laporan'] ?></p>
@@ -80,6 +80,7 @@
 					}else {
 						?>
 						
+						<span><?= count($data['laporan']) ?> data aduan terbaru yang masuk dari masyarakat</span>
 						<div style="padding: 1cm; letter-spacing: 1px; font-weight: bold; text-align: center">Tidak ada data!</div>
 						
 						<?php

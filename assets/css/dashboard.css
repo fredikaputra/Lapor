@@ -126,20 +126,18 @@ main .content > div:last-of-type div form > div:last-of-type div button{
 }
 
 main .content > div:last-of-type div form > div:last-of-type div button:first-of-type{
-	/* display: none; */
 	background: var(--yellow);
 	color: var(--darkyellow);
 	border: 1px solid var(--yellow);
 }
 
 main .content > div:last-of-type div form > div:last-of-type div button:last-of-type{
-	/* display: none; */
 	background: var(--green);
 	color: var(--darkgreen);
 	border: 1px solid var(--green);
 }
 
-main .content > div:last-of-type > .data div{
+main .content > div:last-of-type > .data > div{
 	box-shadow: 0 5px 10px #0000000f;
 	background: white;
 }
