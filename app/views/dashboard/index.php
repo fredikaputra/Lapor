@@ -80,9 +80,7 @@
 					}else {
 						?>
 						
-						<div style="padding: 1cm; letter-spacing: 1px; font-weight: bold; text-align: center">
-							Tidak ada data!
-						</div>
+						<div style="padding: 1cm; letter-spacing: 1px; font-weight: bold; text-align: center">Tidak ada data!</div>
 						
 						<?php
 					}

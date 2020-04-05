@@ -37,23 +37,27 @@ class Dashboard extends Controller{
 			$this->view('dashboard/data_aduan', $data);
 			$this->view('template/footer');
 		}else { // tampilkan satu data aduan
-			$data['idpengaduan'] = $idpengaduan;
-			$data['webtitle'] = 'Data Aduan ' . $data['idpengaduan'];
-			$data['css'] = ['dashboard_header.css', 'detail_aduan.css', 'base.css'];
-			if ($print == 'print') {
-				$data['js'] = ['print.js', 'directprint.js'];
-			}else {
-				$data['js'] = ['print.js'];
-			}
-			
-			// ambil data
 			$data['laporan'] = $this->model('Data_model')->laporan($data['idpengaduan'], '', '');
-			$data['tanggapan'] = $this->model('Data_model')->tanggapan($data['idpengaduan']);
-			
-			$this->view('template/header', $data);
-			$this->view('dashboard/header', $data);
-			$this->view('dashboard/detail_aduan', $data);
-			$this->view('template/footer', $data);
+			if ($data['laporan'] != NULL) {
+				$data['idpengaduan'] = $idpengaduan;
+				$data['webtitle'] = 'Data Aduan ' . $data['idpengaduan'];
+				$data['css'] = ['dashboard_header.css', 'detail_aduan.css', 'base.css'];
+				if ($print == 'print') {
+					$data['js'] = ['print.js', 'directprint.js'];
+				}else {
+					$data['js'] = ['print.js'];
+				}
+				
+				// ambil data
+				$data['tanggapan'] = $this->model('Data_model')->tanggapan($data['idpengaduan']);
+				
+				$this->view('template/header', $data);
+				$this->view('dashboard/header', $data);
+				$this->view('dashboard/detail_aduan', $data);
+				$this->view('template/footer', $data);
+			}else{
+				header('location: ' . BASEURL . '/dashboard/data-aduan');
+			}
 		}
 	}
 	
