@@ -139,18 +139,18 @@ main .content > div:last-of-type div form > div:last-of-type div button:last-of-
 	border: 1px solid var(--green);
 }
 
-main .content > div:last-of-type > .data{
+main .content > div:last-of-type > .data div{
 	box-shadow: 0 5px 10px #0000000f;
 	background: white;
 }
 
-main .content > div:last-of-type > .data > h2{
-	margin-top: 1cm;
+main .content > div:last-of-type > .data div > h2{
+	padding-top: 1cm;
 	text-align: center;
 	color: dimgray;
 }
 
-main .content > div:last-of-type > .data > span{
+main .content > div:last-of-type > .data div > span{
 	display: block;
 	text-align: center;
 	margin: 5px 0 1cm;
@@ -158,55 +158,55 @@ main .content > div:last-of-type > .data > span{
 	letter-spacing: 1px;
 }
 
-main .content > div:last-of-type .data > div{
+main .content > div:last-of-type .data div > div{
 	position: relative;
 	border-bottom: .5px solid #eeeeee;
 	background: #f9f9f9;
 	text-align: left;
 }
 
-main .content > div:last-of-type .data > div:first-of-type{
+main .content > div:last-of-type .data div > div:first-of-type{
 	border-top: 1px solid #ccc;
 }
 
-main .content > div:last-of-type .data > div:hover{
+main .content > div:last-of-type .data div > div:hover{
 	background: #eee;
 }
 
-main .content > div:last-of-type .data > div > a{
+main .content > div:last-of-type .data div > div > a{
 	display: grid;
 	grid-template-columns: 6cm 1fr 4.8cm;
 }
 
-main .content > div:last-of-type .data div a div:not(.action){
+main .content > div:last-of-type .data div div a div:not(.action){
 	padding: 20px 10px;
 	color: dimgray;
 }
 
-main .content > div:last-of-type .data div a div:first-of-type{
+main .content > div:last-of-type .data div div a div:first-of-type{
 	padding-left: 30px;
 }
 
-main .content > div:last-of-type .data div a div:nth-of-type(1),
-main .content > div:last-of-type .data div a div:nth-of-type(2){
+main .content > div:last-of-type .data div div a div:nth-of-type(1),
+main .content > div:last-of-type .data div div a div:nth-of-type(2){
 	min-width: 0;
 	align-self: center;
 }
 
-main .content > div:last-of-type .data div a div:nth-of-type(1) span,
-main .content > div:last-of-type .data div a div:nth-of-type(2) p{
+main .content > div:last-of-type .data div div a div:nth-of-type(1) span,
+main .content > div:last-of-type .data div div a div:nth-of-type(2) p{
 	display: block;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
 
-main .content > div:last-of-type .data div a div:nth-of-type(3){
+main .content > div:last-of-type .data div div a div:nth-of-type(3){
 	text-align: right;
 	padding-right: 30px;
 }
 
-main .content > div:last-of-type .data div div.action{
+main .content > div:last-of-type .data div div div.action{
 	z-index: 1;
 	position: absolute;
 	top: 50%;
@@ -218,21 +218,21 @@ main .content > div:last-of-type .data div div.action{
 	text-align: center;
 }
 
-main .content > div:last-of-type .data > div:hover div.action{
+main .content > div:last-of-type .data div > div:hover div.action{
 	display: block;
 }
 
-main .content > div:last-of-type .data div div.action a{
+main .content > div:last-of-type .data div div div.action a{
 	display: inline-block;
 	line-height: 0;
 	border-radius: 50%;
 	padding: 10px;
 }
 
-main .content > div:last-of-type .data div div.action a:hover{
+main .content > div:last-of-type .data div div div.action a:hover{
 	background-color: #dfdfdf;
 }
 
-main .content > div:last-of-type .data div div.action a img{
+main .content > div:last-of-type .data div div div.action a img{
 	width: 25px;
 }
