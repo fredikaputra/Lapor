@@ -57,7 +57,7 @@ main .data > div:hover{
 
 main .data > div > a{
 	display: grid;
-	grid-template-columns: 5cm 1fr 6cm 4cm;
+	grid-template-columns: 1.5cm 1fr 6cm 4cm;
 }
 
 main .data div a div:not(.action){
@@ -70,6 +70,7 @@ main .data div a div:first-of-type{
 	align-items: center;
 	justify-content: center;
 	line-height: 0;
+	border-right: 1px solid #ccc;
 }
 
 main .data div a div:nth-of-type(2){

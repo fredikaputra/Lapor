@@ -8,13 +8,14 @@
 		<?php
 		
 		if ($data['laporan'] == !NULL) {
+			$no = 1;
 			foreach ($data['laporan'] as $laporan) {
 				?>
 				
 				<div>
 					<a href="<?= BASEURL ?>/riwayat-aduan/detail/<?= $laporan['id_pengaduan'] ?>">
 						<div>
-							<span><?= $laporan['id_pengaduan'] ?></span>
+							<span><?= $no ?></span>
 						</div>
 						<div>
 							<p><?= $laporan['isi_laporan'] ?></p>
@@ -37,6 +38,7 @@
 				</div>
 				
 				<?php
+				$no++;
 			}
 		}
 		
