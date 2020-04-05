@@ -19,7 +19,7 @@ header h1{
 main{
 	padding: 2cm 0;
 	width: 95%;
-	max-width: 800px;
+	max-width: 1500px;
 	margin: auto;
 	text-align: center;
 }
@@ -36,32 +36,100 @@ main > span{
 }
 
 main .report{
-	padding: 1cm;
 	margin-top: 1cm;
-	background: white;
-	box-shadow: 0 0 20px #0000000f;
+	display: grid;
+	grid-template-columns: 1fr 15cm;
+	grid-gap: 1cm;
 }
 
-main .report .header{
+main .report > div:first-of-type{
+	padding: 1cm;
+	box-shadow: 0 0 20px #0000000f;
+	background: white;
+}
+
+main .report > div > .header{
 	display: flex;
 	justify-content: space-between;
 	margin-bottom: 20px;
 }
 
-main .report .header span:first-of-type{
+main .report > div > .header span:first-of-type{
 	font-weight: bold;
 	color: var(--blue);
 }
 
-main .report .header span:last-of-type{
+main .report > div > .header span:last-of-type{
 	color: gray;
 }
 
-main .report p{
+main .report > div > img{
+	width: 100%;
+	border-top: .5px solid lightgray;
+	margin-top: 20px;
+	padding-top: 20px;
+}
+
+main .report > div > span:last-of-type{
+	border-top: .5px solid lightgray;
+	display: block;
+	margin-top: 20px;
+	padding-top: 20px;
+	text-align: left;
+}
+
+main .report div > span strong{
+	color: dimgray;
+}
+
+main .report > div > p{
 	margin-top: 1cm;
 	text-align: justify;
 	letter-spacing: 1px;
 	line-height: 30px;
 	color: dimgray;
 	text-indent: 1cm;
+}
+
+main .report .comment > div{
+	background: white;
+	padding: 1cm 0;
+}
+
+main .report .comment div h3{
+	color: dimgray;
+}
+
+main .report .comment > div > div{
+	margin-top: .4cm;
+	padding: .5cm 1cm 0;
+	border-top: .5px solid #eee;
+}
+
+main .report .comment div div .header{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+main .report .comment div div .header strong{
+	color: dimgray;
+}
+
+main .report .comment div div .header span{
+	color: gray;
+}
+
+main .report .comment div div p{
+	text-align: left;
+	margin-top: 8px;
+	color: gray;
+}
+
+main .report .comment div div p::before{
+	content: open-quote;
+}
+
+main .report .comment div div p::after{
+	content: close-quote;
 }

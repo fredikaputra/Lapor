@@ -35,28 +35,56 @@ main > span{
 	font-size: 18px;
 }
 
-main > div{
+main .data{
 	margin-top: 1cm;
+	border: 1px solid #ccc;
+}
+
+main .data{
+	margin-top: 1cm;
+}
+
+main .data > div{
+	position: relative;
+	border-bottom: .5px solid #eeeeee;
 	background: white;
-	padding: 1cm;
+	text-align: left;
 }
 
-main div table{
-	border-collapse: collapse;
-	width: 100%;
+main .data > div:hover{
+	background: #fafafa;
 }
 
-main div table tr td{
-	border: 1px solid lightgray;
+main .data > div > a{
+	display: grid;
+	grid-template-columns: 5cm 1fr 6cm 4cm;
 }
 
-main div table tbody tr td div{
+main .data div a div:not(.action){
+	padding: 20px;
+	color: dimgray;
+}
+
+main .data div a div:first-of-type{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	line-height: 0;
+}
+
+main .data div a div:nth-of-type(2){
 	min-width: 0;
-	width: 100%;
+	align-self: center;
 }
 
-main div table tbody tr td div p{
+main .data div a div:nth-of-type(2) p{
+	display: block;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+}
+
+main .data div a div:nth-of-type(3){
+	text-align: right;
+	padding-right: 30px;
 }

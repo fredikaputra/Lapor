@@ -4,38 +4,42 @@
 <main>
 	<h2>Riwayat Aduan</h2>
 	<span>Semua data aduan anda</span>
-	<div>
-		<table>
-			<thead>
-				<tr>
-					<td>Waktu</td>
-					<td>Isi Laporan</td>
-					<td>Status</td>
-					<td></td>
-				</tr>
-			</thead>
-			<tbody>
-				<?php
-				
-				if (isset($data['laporan'])) {
-					foreach ($data['laporan'] as $laporan) {
-						?>
-						
-						<tr>
-							<td><?= date('d/m/Y', $laporan['tgl_pengaduan']) ?></td>
-							<td>
-								<div><p><?= $laporan['isi_laporan'] ?></p></div>
-							</td>
-							<td><?= ($laporan['status'] == 0) ? 'Dalam Proses' : 'Selesai' ?></td>
-							<td><a href="<?= BASEURL ?>/riwayat-aduan/detail/<?= $laporan['id_pengaduan'] ?>">Lihat</a></td>
-						</tr>
-						
-						<?php
-					}
-				}
-				
+	<div class="data">
+		<?php
+		
+		if ($data['laporan'] == !NULL) {
+			foreach ($data['laporan'] as $laporan) {
 				?>
-			</tbody>
-		</table>
+				
+				<div>
+					<a href="<?= BASEURL ?>/riwayat-aduan/detail/<?= $laporan['id_pengaduan'] ?>">
+						<div>
+							<span><?= $laporan['id_pengaduan'] ?></span>
+						</div>
+						<div>
+							<p><?= $laporan['isi_laporan'] ?></p>
+						</div>
+						<div>
+							<?= strftime("%A, %d %B %Y", $laporan['tgl_pengaduan']) ?>
+						</div>
+						<div>
+							<?php
+							
+							if ($laporan['status'] == 0) {
+								echo 'Dalam Proses';
+							}else {
+								echo 'Selesai';
+							}
+							
+							?>
+						</div>
+					</a>
+				</div>
+				
+				<?php
+			}
+		}
+		
+		?>
 	</div>
 </main>
