@@ -31,7 +31,7 @@
 				<div>
 					<label for="image">Gambar</label>
 					<label>Foto Profil
-						<input type="file" id="image" name="photo">
+						<input type="file" id="image" name="photo" accept=".jpg, .jpeg">
 					</label>
 				</div>
 				<div>

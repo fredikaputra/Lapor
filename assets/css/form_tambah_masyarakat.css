@@ -1,0 +1,78 @@
+main .content .header h1{
+	color: var(--dash-blue);
+	margin-bottom: 5px;
+	font-size: 25px;
+}
+
+main .content form{
+	display: grid;
+	grid-template-columns: 1fr 20cm;
+	grid-gap: 1cm;
+	margin-top: 1cm;
+	background: white;
+	padding: 2cm;
+	align-items: center;
+	border-radius: 1cm;
+	box-shadow: 0 3px 12px 1px rgba(44,55,130,0.15);
+}
+
+main .content form > div:first-of-type{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+main .content form div:first-of-type img{
+	width: 50%;
+}
+
+main .content form div:last-of-type > div{
+	margin-bottom: 20px;
+}
+
+main .content form div:last-of-type > div.group{
+	display: flex;
+	justify-content: space-between;
+}
+
+main .content form div:last-of-type > div.group div{
+	width: 49%;
+}
+
+main .content form div:last-of-type div label{
+	color: var(--dash-blue);
+}
+
+main .content form div:last-of-type div input,
+main .content form div:last-of-type div:nth-of-type(5) label:last-of-type{
+	display: block;
+	font-size: 14px;
+	margin-top: 5px;
+	width: 100%;
+	padding: 15px 20px;
+	border-radius: 30px;
+	border: 1px solid #ccc;
+	outline: none;
+	color: var(--dash-blue);
+	font-weight: bold;
+	letter-spacing: .5px;
+}
+
+main .content form div:last-of-type div:nth-of-type(5) label:last-of-type{
+	cursor: pointer;
+}
+
+main .content form div:last-of-type div input[type="file"]{
+	display: none;
+}
+
+main .content form div:last-of-type div button{
+	margin-left: auto;
+	display: block;
+	background: var(--dash-blue);
+	color: white;
+	padding: 10px 15px;
+	border: 1px solid var(--dash-blue);
+	font-weight: bold;
+	letter-spacing: 1px;
+}

@@ -7,10 +7,10 @@ class Daftar_model{
 		$this->db = new Database;
 	}
 	
-	public function proccess($data){ // proses registrasi masyarakat
+	public function masyarakat($data, $files){ // proses registrasi masyarakat
 		$this->db->dbh->real_escape_string(extract($data));
 		
-		if (isset($reg)) { // cek kalau button submit pada form di tekan
+		if (isset($addmasyarakat)) { // cek kalau button submit pada form di tekan
 			$_SESSION['reg'] = [ // buat session isi form (untuk keadaan dimana kondisi salah)
 				'nik' => $nik,
 				'name' => $name,
@@ -18,8 +18,31 @@ class Daftar_model{
 				'phone' => $phone
 			];
 			
+			if (isset($files)) { // ketika masyarakat menyertakan gambar
+				if ($files['photo']['error'] == 0) { // cek file tidak ada masalah
+					$extension = pathinfo($files['photo']['name'], PATHINFO_EXTENSION);
+					if (in_array($extension, ['jpg', 'jpeg'])) { // cek ekstensi gambar
+						if ($files['photo']['size'] <= 2048000) { // cek ukuran gambar
+							$photo = $nik . '.jpg';
+							if (!move_uploaded_file($files['photo']['tmp_name'], 'assets/img/users/' . $photo)) {
+								Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
+								return;
+							}
+						}else {
+							Flasher::setFlash('Gagal! ', 'Ukuran file maksimal 2MB.', 'warning', 'warning');
+							return;
+						}
+					}else {
+						Flasher::setFlash('Gagal! ', 'Format file tidak didukung.', 'warning', 'warning');
+						return;
+					}
+				}else {
+					Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
+				}
+			}
+			
 			if ($this->check($nik, '') == NULL) { // cek kalau nik tidak ada yang menggunakan
-				if ($this->check('', $username) == NULL) { // cek username belum digunakan
+				if ($this->check('', $username) == TRUE) { // cek username belum digunakan
 					if (strlen($pass) >= 8) { // cek panjang password, min 8 karakter
 						if ($pass == $repass) { // cek password telah terkonfirmasi
 							if (strlen($phone) >= 9) {
@@ -29,7 +52,7 @@ class Daftar_model{
 								$this->db->sth->bind_param('sssss', $nik, $name, $username, $password, $phone);
 								$this->db->execute();
 								if ($this->db->affectedRows() > 0) {
-									Flasher::setFlash('Berhasil! ', 'Anda telah terdaftar.', 'success', 'correct');
+									Flasher::setFlash('Berhasil! ', "$name telah bergabung sebagai petugas", 'success', 'correct');
 									unset($_SESSION['reg']);
 									return true;
 								}else {
@@ -65,14 +88,23 @@ class Daftar_model{
 			$query = 'SELECT nik FROM masyarakat WHERE nik = ?';
 			$this->db->prepare($query);
 			$this->db->sth->bind_param('s', $nik);
+			$this->db->execute();
+			return $this->db->getResult();
 		}else if ($username != '') {
 			$query = 'SELECT username FROM masyarakat WHERE username = ?';
 			$this->db->prepare($query);
 			$this->db->sth->bind_param('s', $username);
+			$this->db->execute();
+			if ($this->db->getResult() == NULL) {
+				$query = 'SELECT username FROM petugas WHERE username = ?';
+				$this->db->prepare($query);
+				$this->db->sth->bind_param('s', $username);
+				$this->db->execute();
+				if ($this->db->getResult() == NULL) {
+					return true;
+				}
+			}
 		}
-		
-		$this->db->execute();
-		return $this->db->getResult();
 	}
 	
 	public function petugas($data, $files){ // proses tambah laporan
@@ -115,8 +147,6 @@ class Daftar_model{
 				}else {
 					Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
 				}
-			}else { // gambar tidak tercantum
-				$photo = NULL;
 			}
 		
 			if ($this->checkPetugas('', $username) == TRUE) {

@@ -19,7 +19,7 @@
 						<button type="button" onclick="hidesearch()">
 							<img src="<?= BASEURL ?>/assets/img/icon/close.png">
 						</button>
-						<input type="text" placeholder="Cari data pengguna..." id="inputsearch">
+						<input type="text" placeholder="Cari nama pengguna..." id="inputsearch">
 					</div>
 					<button type="button" id="search" name="search" onclick="showsearch(this)">
 						<img src="<?= BASEURL ?>/assets/img/icon/search.png">

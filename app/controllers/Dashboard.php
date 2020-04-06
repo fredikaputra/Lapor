@@ -82,7 +82,7 @@ class Dashboard extends Controller{
 	public function tambah_pengguna($user = ''){
 		if ($user == 'petugas') {
 			$data['webtitle'] = 'Dashboard - Tambah Pengguna Sebagai Petugas';
-			$data['css'] = ['dashboard_header.css', 'form_tambah_pengguna.css', 'base.css'];
+			$data['css'] = ['dashboard_header.css', 'form_tambah_petugas.css', 'base.css'];
 			$data['js'] = ['unsetload.js'];
 			$data['method'] = __FUNCTION__;
 			
@@ -92,10 +92,22 @@ class Dashboard extends Controller{
 			
 			$this->view('template/header', $data);
 			$this->view('dashboard/header', $data);
-			$this->view('dashboard/form_tambah_pengguna', $data);
+			$this->view('dashboard/form_tambah_petugas', $data);
 			$this->view('template/footer', $data);
 		}else if($user == 'masyarakat'){
+			$data['webtitle'] = 'Dashboard - Tambah Pengguna Sebagai Masyarakat';
+			$data['css'] = ['dashboard_header.css', 'form_tambah_masyarakat.css', 'base.css'];
+			$data['js'] = ['unsetload.js'];
+			$data['method'] = __FUNCTION__;
 			
+			// ambil data
+			$data['petugas'] = $this->model('Data_model')->petugas($_SESSION['petugasID'])[0];
+			$data['photo'] = $_SESSION['petugasID'] . '.jpg';
+			
+			$this->view('template/header', $data);
+			$this->view('dashboard/header', $data);
+			$this->view('dashboard/form_tambah_masyarakat', $data);
+			$this->view('template/footer', $data);
 		}else{
 			$data['webtitle'] = 'Dashboard - Tambah Pengguna';
 			$data['css'] = ['dashboard_header.css', 'tambah_pengguna.css', 'base.css'];
@@ -127,10 +139,14 @@ class Dashboard extends Controller{
 			if ($this->model('Daftar_model')->petugas($_POST, $_FILES) == TRUE) {
 				header('location: ' . BASEURL . '/dashboard/pengguna');
 			}else {
-				// header('location: ' . BASEURL . '/dashboard/tambah-pengguna/petugas');
+				header('location: ' . BASEURL . '/dashboard/tambah-pengguna/petugas');
 			}
 		}else if ($user == 'masyarakat') {
-			// code...
+			if ($this->model('Daftar_model')->masyarakat($_POST, $_FILES) == TRUE) {
+				header('location: ' . BASEURL . '/dashboard/pengguna');
+			}else {
+				header('location: ' . BASEURL . '/dashboard/tambah-pengguna/masyarakat');
+			}
 		}
 	}
 }
