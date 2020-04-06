@@ -42,11 +42,11 @@ nav div .menu a{
 
 nav div .menu > a:hover,
 nav div .menu > a:focus{
-	color: var(--blue);
+	color: var(--secondary-color);
 }
 
 nav div .menu a.active{
-	color: var(--blue);
+	color: var(--secondary-color);
 }
 
 nav div .menu > a{
@@ -62,8 +62,8 @@ nav div .menu .logged button{
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	background: var(--blue);
-	border: 1px solid var(--blue);
+	background: var(--primary-color);
+	border: 1px solid var(--primary-color);
 	color: white;
 	border-radius: 20px;
 	padding: 5px 10px;
@@ -172,7 +172,9 @@ nav div .menu .logged div.user-menu > a:last-of-type{
 
 nav div .menu .logged div.user-menu > a:nth-of-type(2):hover,
 nav div .menu .logged div.user-menu > a:last-of-type:hover{
-	background: #f5f5f5;
+	border: .5px solid var(--secondary-color);
+	background: var(--secondary-color);
+	color: white;
 }
 
 nav div .menu .logged div.user-menu > div{
@@ -194,7 +196,7 @@ nav div .menu .logged div.user-menu > div a:hover{
 
 /* UNLOGGED */
 nav div .menu .unlogged a{
-	border: 1px solid var(--blue);
+	border: 1px solid var(--primary-color);
 	width: 2.8cm;
 	display: inline-block;
 	text-align: center;
@@ -203,7 +205,7 @@ nav div .menu .unlogged a{
 }
 
 nav div .menu .unlogged a:first-of-type{
-	background: var(--blue);
+	background: var(--primary-color);
 }
 
 nav div .menu .unlogged a:first-of-type:hover,
@@ -213,5 +215,5 @@ nav div .menu .unlogged a:first-of-type:focus{
 
 nav div .menu .unlogged a:last-of-type:hover,
 nav div .menu .unlogged a:last-of-type:focus{
-	background: var(--blue);
+	background: var(--primary-color);
 }

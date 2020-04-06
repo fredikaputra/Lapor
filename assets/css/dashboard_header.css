@@ -6,7 +6,7 @@ body{
 
 /* NAV */
 nav{
-	background: var(--dash-darkblue);
+	background: var(--darkblue);
 	height: 100vh;
 	overflow-y: auto;
 	padding: 1cm 0;
@@ -51,7 +51,7 @@ nav .menu div a{
 	justify-content: space-between;
 	align-items: center;
 	padding: 20px 30px;
-	color: var(--dash-softblue);
+	color: var(--lightblue);
 	font-weight: bold;
 }
 
@@ -70,7 +70,7 @@ nav .menu div a img{
 
 nav .menu > a{
 	padding: 20px;
-	color: var(--dash-softblue);
+	color: var(--lightblue);
 	font-weight: bold;
 	position: fixed;
 	bottom: 0cm;
@@ -81,7 +81,7 @@ nav .menu > a{
 }
 
 nav .menu > a:hover{
-	color: var(--blue);
+	color: var(--primary-color);
 }
 
 
@@ -93,7 +93,7 @@ main{
 }
 
 main header{
-	background: var(--dash-darkblue);
+	background: var(--darkblue);
 	display: flex;
 	align-items: center;
 	padding: 0 1cm;

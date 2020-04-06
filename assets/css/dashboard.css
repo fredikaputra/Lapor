@@ -228,7 +228,7 @@ main .content > div:last-of-type .data div div div.action a{
 }
 
 main .content > div:last-of-type .data div div div.action a:hover{
-	background-color: var(--dash-softblue);
+	background-color: var(--lightblue);
 }
 
 main .content > div:last-of-type .data div div div.action a img{

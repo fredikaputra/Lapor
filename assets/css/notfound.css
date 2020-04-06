@@ -8,7 +8,7 @@ main{
 
 main span{
 	font-size: 5cm;
-	color: var(--blue);
+	color: var(--secondary-color);
 	line-height: 0;
 }
 
@@ -24,8 +24,8 @@ main p{
 }
 
 main p a{
-	color: var(--blue);
-	border-bottom: 1px dashed var(--blue);
+	color: var(--secondary-color);
+	border-bottom: 1px dashed var(--secondary-color);
 }
 
 main p a:hover,

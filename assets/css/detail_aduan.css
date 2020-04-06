@@ -59,7 +59,7 @@ main .content div .report div .header{
 
 main .content div .report div .header span:first-of-type{
 	font-weight: bold;
-	color: var(--blue);
+	color: var(--primary-color);
 }
 
 main .content div .report div .header span:last-of-type{
@@ -121,8 +121,8 @@ main .content div .action form button{
 	margin-left: auto;
 	display: block;
 	margin-top: 10px;
-	background: var(--blue);
-	border: 1px solid var(--blue);
+	background: var(--primary-color);
+	border: 1px solid var(--primary-color);
 	padding: 10px 20px;
 	font-weight: bold;
 	letter-spacing: 1px;

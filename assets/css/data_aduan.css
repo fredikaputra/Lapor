@@ -94,7 +94,7 @@ main .content div .data div div.action a{
 }
 
 main .content div .data div div.action a:hover{
-	background-color: var(--dash-softblue);
+	background-color: var(--lightblue);
 }
 
 main .content div .data div div.action a img{

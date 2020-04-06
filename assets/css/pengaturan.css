@@ -57,7 +57,7 @@ main > div > span{
 }
 
 main div > span a{
-	color: var(--blue);
+	color: var(--primary-color);
 }
 
 main div .row{

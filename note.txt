@@ -1,24 +1,24 @@
 Main Future:
-Login
+ok Login
 - Admin
 - Petugas
 - Masyarakat
 
-Logout
+ok Logout
 
-Registrasi
+ok Registrasi
 - Admin Registrasi Masyarakat
 - Masyarakat Registrasi Sendiri
 
-Buat Laporan
+ok Buat Laporan
 
-Tampilkan Semua Laporan Masuk
+ok Tampilkan Semua Laporan Masuk
 
-Verifikasi dan Validasi
+ok Verifikasi dan Validasi
 
-Beri Tanggapan
+ok Beri Tanggapan
 
-Cetak Laporan berdasarkan filter
+ok Cetak Laporan berdasarkan filter
 
 
 
@@ -27,7 +27,7 @@ Cetak Laporan berdasarkan filter
 
 Side Future:
 
-If Unlogged, doashboard not found
+ok If Unlogged, doashboard not found
 
 lock-screen feature
 

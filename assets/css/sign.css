@@ -35,7 +35,7 @@ main form > a img{
 
 /* TITLE */
 main form h1{
-	color: var(--blue);
+	color: var(--primary-color);
 	margin-bottom: 10px;
 }
 
@@ -59,7 +59,7 @@ main form div{
 }
 
 main form div:focus-within{
-	border: 1px solid var(--blue);
+	border: 1px solid var(--secondary-color);
 }
 
 main form div:last-of-type{
@@ -84,20 +84,19 @@ main form button{
 	display: block;
 	width: 100%;
 	padding: 10px;
-	background: var(--blue);
-	border: 1px solid var(--blue);
+	background: var(--primary-color);
+	border: 1px solid var(--primary-color);
 	border-radius: 20px;
 	color: white;
 	margin-bottom: 15px;
 }
 
-main form button:hover,
 main form button:focus{
-	background: transparent;
-	color: var(--blue);
+	background: var(--secondary-color);
+	border-color: var(--secondary-color);
 }
 
 /* LINK SPAN */
 main form span a{
-	color: var(--blue);
+	color: var(--primary-color);
 }

@@ -5,7 +5,7 @@ main .content > .header{
 }
 
 main .content .header div h1{
-	color: var(--dash-blue);
+	color: var(--primary-color);
 	margin-bottom: 5px;
 	font-size: 25px;
 }
@@ -23,7 +23,7 @@ main .content .header a{
 	box-shadow: 0 0 10px #00000020;
 	display: flex;
 	align-items: center;
-	color: var(--dash-blue);
+	color: var(--primary-color);
 	font-weight: bold;
 	font-size: 14px;
 }
@@ -81,7 +81,7 @@ main .content form .top div input{
 	outline: none;
 	width: 100%;
 	font-size: 15px;
-	color: var(--dash-blue);
+	color: var(--primary-color);
 	margin-right: 5px;
 }
 
@@ -122,7 +122,7 @@ main .content form .top div .filter-menu > span{
 	display: block;
 	padding: 20px;
 	font-size: 13px;
-	color: var(--dash-blue);
+	color: var(--primary-color);
 	font-weight: bold;
 	border-bottom: 1px solid #eee;
 }
@@ -141,7 +141,7 @@ main .content form .top div .filter-menu .filter > div span{
 	font-size: 12px;
 	font-weight: bold;
 	letter-spacing: 1px;
-	color: var(--dash-blue);
+	color: var(--primary-color);
 	margin-bottom: 5px;
 }
 
@@ -152,7 +152,7 @@ main .content form .top div .filter-menu .filter > div select{
 	letter-spacing: 1px;
 	border-radius: 5px;
 	border: 1px solid #ddd;
-	color: var(--dash-blue);
+	color: var(--primary-color);
 	cursor: pointer;
 }
 
@@ -163,7 +163,7 @@ main .content form .top div .filter-menu .footer{
 }
 
 main .content form .top div .filter-menu .footer button{
-	background: var(--dash-blue);
+	background: var(--primary-color);
 	color: white;
 	border: none;
 	padding: 10px;
@@ -195,7 +195,7 @@ main .content form .body > div.header{
 }
 
 main .content form .body > div.header div span{
-	color: var(--dash-blue);
+	color: var(--primary-color);
 	font-size: 13px;
 }
 
@@ -210,7 +210,7 @@ main .content form .body > div.user:hover{
 }
 
 main .content form .body > div.user div span{
-	color: var(--dash-blue);
+	color: var(--primary-color);
 	font-size: 15px;
 }
 

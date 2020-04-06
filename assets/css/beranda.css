@@ -19,7 +19,7 @@ main h1{
 }
 
 main a{
-	background: var(--blue);
+	background: var(--primary-color);
 	color: white;
 	margin-top: 1cm;
 	display: inline-block;
@@ -30,6 +30,5 @@ main a{
 }
 
 main a:focus{
-	background: var(--blue);
 	filter: brightness(.8);
 }

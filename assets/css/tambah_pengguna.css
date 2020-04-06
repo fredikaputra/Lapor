@@ -6,7 +6,7 @@ main .content{
 }
 
 main .content h1{
-	color: var(--dash-blue);
+	color: var(--primary-color);
 	font-size: 16px;
 	background: white;
 	padding: 20px 1cm;
@@ -41,5 +41,5 @@ main .content a img{
 main .content a h2{
 	font-size: 18px;
 	margin-top: 20px;
-	color: var(--dash-blue);
+	color: var(--primary-color);
 }

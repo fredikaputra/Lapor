@@ -56,7 +56,7 @@ main .report > div > .header{
 
 main .report > div > .header span:first-of-type{
 	font-weight: bold;
-	color: var(--blue);
+	color: var(--primary-color);
 }
 
 main .report > div > .header span:last-of-type{

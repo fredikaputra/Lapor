@@ -1,5 +1,5 @@
 main .content .header h1{
-	color: var(--dash-blue);
+	color: var(--primary-color);
 	margin-bottom: 5px;
 	font-size: 25px;
 }
@@ -31,7 +31,7 @@ main .content form div:last-of-type div{
 }
 
 main .content form div:last-of-type div label{
-	color: var(--dash-blue);
+	color: var(--primary-color);
 }
 
 main .content form div:last-of-type div input,
@@ -44,7 +44,7 @@ main .content form div:last-of-type div:nth-of-type(6) label:last-of-type{
 	border-radius: 30px;
 	border: 1px solid #ccc;
 	outline: none;
-	color: var(--dash-blue);
+	color: var(--primary-color);
 	font-weight: bold;
 	letter-spacing: .5px;
 }
@@ -60,10 +60,10 @@ main .content form div:last-of-type div input[type="file"]{
 main .content form div:last-of-type div button{
 	margin-left: auto;
 	display: block;
-	background: var(--dash-blue);
+	background: var(--primary-color);
 	color: white;
 	padding: 10px 15px;
-	border: 1px solid var(--dash-blue);
+	border: 1px solid var(--primary-color);
 	font-weight: bold;
 	letter-spacing: 1px;
 }
