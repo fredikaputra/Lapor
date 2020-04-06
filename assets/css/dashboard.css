@@ -159,7 +159,6 @@ main .content > div:last-of-type > .data div > span{
 main .content > div:last-of-type .data div > div{
 	position: relative;
 	border-bottom: .5px solid #eeeeee;
-	background: #f9f9f9;
 	text-align: left;
 }
 
@@ -168,7 +167,7 @@ main .content > div:last-of-type .data > div > div:first-of-type{
 }
 
 main .content > div:last-of-type .data div > div:hover{
-	background: #eee;
+	background-color: #e4e8f2;
 }
 
 main .content > div:last-of-type .data div > div > a{
@@ -209,11 +208,12 @@ main .content > div:last-of-type .data div div div.action{
 	position: absolute;
 	top: 50%;
 	right: 0;
-	background: #eeeeee;
+	background-color: #e4e8f2;
 	transform: translateY(-50%);
 	display: none;
 	width: 5cm;
 	text-align: center;
+	border-bottom: unset;
 }
 
 main .content > div:last-of-type .data div > div:hover div.action{
@@ -228,7 +228,7 @@ main .content > div:last-of-type .data div div div.action a{
 }
 
 main .content > div:last-of-type .data div div div.action a:hover{
-	background-color: #dfdfdf;
+	background-color: var(--dash-softblue);
 }
 
 main .content > div:last-of-type .data div div div.action a img{

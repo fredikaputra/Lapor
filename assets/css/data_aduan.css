@@ -23,7 +23,6 @@ main .content div .data{
 main .content div .data > div{
 	position: relative;
 	border-bottom: .5px solid #eeeeee;
-	background: #f9f9f9;
 	text-align: left;
 }
 
@@ -32,7 +31,7 @@ main .content div .data > div:first-of-type{
 }
 
 main .content div .data > div:hover{
-	background: #eee;
+	background-color: #e4e8f2;
 }
 
 main .content div .data > div > a{
@@ -76,7 +75,7 @@ main .content div .data div div.action{
 	position: absolute;
 	top: 50%;
 	right: 0;
-	background: #eeeeee;
+	background-color: #e4e8f2;
 	transform: translateY(-50%);
 	display: none;
 	width: 5.5cm;
@@ -95,7 +94,7 @@ main .content div .data div div.action a{
 }
 
 main .content div .data div div.action a:hover{
-	background-color: #dfdfdf;
+	background-color: var(--dash-softblue);
 }
 
 main .content div .data div div.action a img{

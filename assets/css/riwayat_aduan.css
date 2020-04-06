@@ -52,7 +52,7 @@ main .data > div{
 }
 
 main .data > div:hover{
-	background: #fafafa;
+	background-color: #e4e8f2;
 }
 
 main .data > div > a{
