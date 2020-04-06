@@ -69,6 +69,8 @@ class Dashboard extends Controller{
 		// ambil data
 		$data['petugas'] = $this->model('Data_model')->petugas($_SESSION['petugasID'])[0];
 		$data['pengguna'] = $this->model('Data_model')->pengguna();
+		$data['users'] = $this->model('Data_model')->pengguna('count');
+		
 		$data['photo'] = $_SESSION['petugasID'] . '.jpg';
 		
 		$this->view('template/header', $data);
@@ -77,19 +79,37 @@ class Dashboard extends Controller{
 		$this->view('template/footer', $data);
 	}
 	
-	public function tambah_pengguna(){
-		$data['webtitle'] = 'Dashboard - Tambah Pengguna';
-		$data['css'] = ['dashboard_header.css', 'tambah_pengguna.css', 'base.css'];
-		$data['method'] = __FUNCTION__;
-		
-		// ambil data
-		$data['petugas'] = $this->model('Data_model')->petugas($_SESSION['petugasID'])[0];
-		$data['photo'] = $_SESSION['petugasID'] . '.jpg';
-		
-		$this->view('template/header', $data);
-		$this->view('dashboard/header', $data);
-		$this->view('dashboard/tambah_pengguna', $data);
-		$this->view('template/footer', $data);
+	public function tambah_pengguna($user = ''){
+		if ($user == 'petugas') {
+			$data['webtitle'] = 'Dashboard - Tambah Pengguna Sebagai Petugas';
+			$data['css'] = ['dashboard_header.css', 'form_tambah_pengguna.css', 'base.css'];
+			$data['js'] = ['unsetload.js'];
+			$data['method'] = __FUNCTION__;
+			
+			// ambil data
+			$data['petugas'] = $this->model('Data_model')->petugas($_SESSION['petugasID'])[0];
+			$data['photo'] = $_SESSION['petugasID'] . '.jpg';
+			
+			$this->view('template/header', $data);
+			$this->view('dashboard/header', $data);
+			$this->view('dashboard/form_tambah_pengguna', $data);
+			$this->view('template/footer', $data);
+		}else if($user == 'masyarakat'){
+			
+		}else{
+			$data['webtitle'] = 'Dashboard - Tambah Pengguna';
+			$data['css'] = ['dashboard_header.css', 'tambah_pengguna.css', 'base.css'];
+			$data['method'] = __FUNCTION__;
+			
+			// ambil data
+			$data['petugas'] = $this->model('Data_model')->petugas($_SESSION['petugasID'])[0];
+			$data['photo'] = $_SESSION['petugasID'] . '.jpg';
+			
+			$this->view('template/header', $data);
+			$this->view('dashboard/header', $data);
+			$this->view('dashboard/tambah_pengguna', $data);
+			$this->view('template/footer', $data);
+		}
 	}
 	
 	public function update_profile(){
@@ -100,5 +120,17 @@ class Dashboard extends Controller{
 	public function report_response($idpengaduan){
 		$this->model('ReportResponse_model')->proccess($_POST, $idpengaduan);
 		header('location: ' . BASEURL . '/dashboard/data-aduan/' . $idpengaduan);
+	}
+	
+	public function proccess_tambah_pengguna($user){
+		if ($user == 'petugas') {
+			if ($this->model('Daftar_model')->petugas($_POST, $_FILES) == TRUE) {
+				header('location: ' . BASEURL . '/dashboard/pengguna');
+			}else {
+				// header('location: ' . BASEURL . '/dashboard/tambah-pengguna/petugas');
+			}
+		}else if ($user == 'masyarakat') {
+			// code...
+		}
 	}
 }

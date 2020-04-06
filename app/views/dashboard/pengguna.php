@@ -2,7 +2,7 @@
 		<div class="header">
 			<div>
 				<h1>Daftar Pengguna</h1>
-				<span>Terdapat 20 pengguna yang sudah terdaftar.</span>
+				<span>Terdapat <?= $data['users'] ?> pengguna yang sudah bergabung.</span>
 			</div>
 			<a href="<?= BASEURL ?>/dashboard/tambah-pengguna">
 				<img src="<?= BASEURL ?>/assets/img/icon/add-user.png"> Tambah Pengguna

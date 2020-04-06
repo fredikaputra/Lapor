@@ -1,11 +1,11 @@
 	<div class="content">
 		<h1>
 			<img src="<?= BASEURL ?>/assets/img/icon/add-user.png">Tambah Pengguna</h1>
-		<a href="<?= BASEURL ?>/dashboard/tambah_pengguna/admin">
+		<a href="<?= BASEURL ?>/dashboard/tambah-pengguna/petugas">
 			<img src="<?= BASEURL ?>/assets/img/icon/petugas.png">
 			<h2>Sebagai Petugas</h2>
 		</a>
-		<a href="<?= BASEURL ?>/dashboard/tambah_pengguna/masyarakat">
+		<a href="<?= BASEURL ?>/dashboard/tambah-pengguna/masyarakat">
 			<img src="<?= BASEURL ?>/assets/img/icon/masyarakat.png">
 			<h2>Sebagai Masyarakat</h2>
 		</a>
