@@ -22,17 +22,22 @@ class Daftar_model{
 				if ($this->check('', $username) == NULL) { // cek username belum digunakan
 					if (strlen($pass) >= 8) { // cek panjang password, min 8 karakter
 						if ($pass == $repass) { // cek password telah terkonfirmasi
-							$password = password_hash($pass, PASSWORD_BCRYPT, ['cost' => 12]); // encrypt password
-							$query = 'INSERT INTO masyarakat VALUES (?, ?, ?, ?, ?)';
-							$this->db->prepare($query);
-							$this->db->sth->bind_param('sssss', $nik, $name, $username, $password, $phone);
-							$this->db->execute();
-							if ($this->db->affectedRows() > 0) {
-								Flasher::setFlash('Berhasil! ', 'Anda telah terdaftar.', 'success', 'correct');
-								unset($_SESSION['reg']);
-								return true;
+							if (strlen($phone) >= 9) {
+								$password = password_hash($pass, PASSWORD_BCRYPT, ['cost' => 12]); // encrypt password
+								$query = 'INSERT INTO masyarakat VALUES (?, ?, ?, ?, ?)';
+								$this->db->prepare($query);
+								$this->db->sth->bind_param('sssss', $nik, $name, $username, $password, $phone);
+								$this->db->execute();
+								if ($this->db->affectedRows() > 0) {
+									Flasher::setFlash('Berhasil! ', 'Anda telah terdaftar.', 'success', 'correct');
+									unset($_SESSION['reg']);
+									return true;
+								}else {
+									Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
+								}
 							}else {
-								Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
+								Flasher::setFlash('Gagal! ', 'Nomor telepon tidak benar.', 'warning', 'warning');
+								$_SESSION['autofocus']['phone'] = 1;
 							}
 						}else {
 							Flasher::setFlash('Gagal! ', 'Konfirmasi password tidak benar.', 'warning', 'warning');

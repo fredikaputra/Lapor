@@ -1,4 +1,4 @@
-main .content .header{
+main .content > .header{
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -172,4 +172,57 @@ main .content form .top div .filter-menu .footer button{
 	font-weight: bold;
 	border-radius: 5px;
 	font-size: 13px;
+}
+
+main .content form .body > div{
+	display: grid;
+	grid-template-columns: 2cm 1fr 1fr 1fr 1fr 1fr;
+}
+
+main .content form .body > div > div{
+	display: flex;
+	align-items: center;
+}
+
+main .content form .body > div > div:first-of-type{
+	justify-content: center;
+}
+
+main .content form .body > div.header{
+	padding: 10px 0;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+}
+
+main .content form .body > div.header div span{
+	color: var(--dash-blue);
+	font-size: 13px;
+}
+
+main .content form .body > div.user{
+	padding: 10px 0;
+	border-bottom: 1px solid #ddd;
+	transition: .2s;
+}
+
+main .content form .body > div.user:hover{
+	background: #e4e8f2;
+}
+
+main .content form .body > div.user div span{
+	color: var(--dash-blue);
+	font-size: 15px;
+}
+
+main .content form .body > div.user div:nth-of-type(2) span{
+	font-weight: bold;
+}
+
+main .content form .body > div.user div img{
+	width: 1.2cm;
+	height: 1.2cm;
+	border-radius: 50%;
+	object-position: center;
+	object-fit: cover;
+	margin-right: 15px;
 }

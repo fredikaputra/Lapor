@@ -22,10 +22,12 @@
 			<input type="password" name="pass" placeholder="Password Baru" required <?= (isset($_SESSION['autofocus']['pass'])) ? 'autofocus' : '' ?>>
 		</div>
 		<div title="Masukkan password yang telah anda buat">
-			<img src="<?= BASEURL ?>/assets/img/icon/circle-padlock.png"><input type="password" name="repass" placeholder="Konfirmasi Password Anda" required>
+			<img src="<?= BASEURL ?>/assets/img/icon/circle-padlock.png">
+			<input type="password" name="repass" placeholder="Konfirmasi Password Anda" required>
 		</div>
 		<div title="Masukkan nomor telepon anda">
-			<img src="<?= BASEURL ?>/assets/img/icon/circle-phone-book.png"><input type="number" name="phone" value="<?= (isset($_SESSION['reg'])) ? $_SESSION['reg']['phone'] : '' ?>" onkeypress="if (this.value.length == 15) return false;" min="0" placeholder="Nomor Telepon" required>
+			<img src="<?= BASEURL ?>/assets/img/icon/circle-phone-book.png">
+			<input type="number" name="phone" value="<?= (isset($_SESSION['reg'])) ? $_SESSION['reg']['phone'] : '' ?>" onkeypress="if (this.value.length == 15) return false;" min="0" placeholder="Nomor Telepon" required <?= (isset($_SESSION['autofocus']['phone'])) ? 'autofocus' : '' ?>>
 		</div>
 		<button type="submit" name="reg" onclick="unsetload()">DAFTAR</button>
 		<span>Sudah punya akun? <a href="<?= BASEURL ?>/login">Login</a> sekarang!</span>

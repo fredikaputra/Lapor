@@ -68,6 +68,7 @@ class Dashboard extends Controller{
 		
 		// ambil data
 		$data['petugas'] = $this->model('Data_model')->petugas($_SESSION['petugasID'])[0];
+		$data['pengguna'] = $this->model('Data_model')->pengguna();
 		$data['photo'] = $_SESSION['petugasID'] . '.jpg';
 		
 		$this->view('template/header', $data);

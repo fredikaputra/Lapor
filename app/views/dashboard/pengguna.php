@@ -76,9 +76,51 @@
 					<div><span>Username</span></div>
 					<div><span>No Telepon</span></div>
 					<div><span>Terakhir login</span></div>
-					<div><span>HAK</span></div>
+					<div><span>Hak</span></div>
 				</div>
-			</div>
+				
+				<?php
+				
+				foreach ($data['pengguna'] as $user) {
+					?>
+					
+					<div class="user">
+						<div><input type="checkbox" value="<?= $user['id'] ?>"></div>
+						<div>
+							<?php
+							
+							if (file_exists('assets/img/users/' . $user['id'] . '.jpg')) {
+								?><img src="<?= BASEURL ?>/assets/img/users/<?= $user['id'] . '.jpg' ?>?=<?= filemtime('assets/img/users/' . $data['photo']) ?>"><?php
+							}else {
+								?><img src="<?= BASEURL ?>/assets/img/users/default.png" alt=""><?php
+							}
+							
+							?>
+							<span><?= $user['nama'] ?></span>
+						</div>
+						<div><span><?= $user['username'] ?></span></div>
+						<div><span><?= $user['telp'] ?></span></div>
+						<div><span>2 menit yang lalu</span></div>
+						<div>
+							<span>
+								<?php
+									if ($user['level'] == 1) {
+										echo 'Admin';
+									}else if ($user['level'] == 2) {
+										echo 'Petugas';
+									}else{
+										echo 'Masyarakat';
+									}
+								?>
+							</span>
+						</div>
+					</div>
+					
+					<?php
+				}
+				
+				?>
+			</div> <!-- body -->
 		</form>
 	</div>
 </main>
