@@ -98,7 +98,7 @@
 							?>
 							<span><?= $user['nama'] ?></span>
 						</div>
-						<div><span><?= $user['username'] ?></span></div>
+						<div><span>@<?= $user['username'] ?></span></div>
 						<div><span><?= $user['telp'] ?></span></div>
 						<div><span>2 menit yang lalu</span></div>
 						<div>
