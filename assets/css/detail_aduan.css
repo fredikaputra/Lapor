@@ -9,20 +9,20 @@ main .content > div:first-of-type{
 
 main .content > div:first-of-type button,
 main .content > div:first-of-type > a{
-	background: white;
+	background: var(--light-color);
 	border: none;
 	padding: 10px;
-	box-shadow: 0 0 10px #00000020;
+	box-shadow: 0 0 10px #0000000F;
 	display: flex;
 	align-items: center;
-	color: dimgray;
+	color: var(--soft-dark-color);
 	font-weight: bold;
 	font-size: 14px;
 }
 
 main .content > div:first-of-type button:hover,
 main .content > div:first-of-type > a:hover{
-	background: #f0f0f0;
+	background: #0000000F;
 }
 
 main .content > div:first-of-type button img{
@@ -48,7 +48,7 @@ main .content > div:last-child{
 
 main .content div .report > div{
 	padding: 1cm;
-	background: white;
+	background: var(--light-color);
 }
 
 main .content div .report div .header{
@@ -63,7 +63,7 @@ main .content div .report div .header span:first-of-type{
 }
 
 main .content div .report div .header span:last-of-type{
-	color: gray;
+	color: var(--soft-dark-color);
 }
 
 main .content div .report > div > span{
@@ -72,20 +72,20 @@ main .content div .report > div > span{
 
 main .content div .report > div > img{
 	width: 100%;
-	border-top: .5px solid lightgray;
+	border-top: .5px solid var(--soft-light-color);
 	margin-top: 20px;
 	padding-top: 20px;
 }
 
 main .content div .report > div > span:last-of-type{
-	border-top: .5px solid lightgray;
+	border-top: .5px solid var(--soft-light-color);
 	display: block;
 	margin-top: 20px;
 	padding-top: 20px;
 }
 
 main .content div .report div > span strong{
-	color: dimgray;
+	color: var(--soft-dark-color);
 }
 
 main .content div .report div p{
@@ -93,18 +93,18 @@ main .content div .report div p{
 	text-align: justify;
 	letter-spacing: 1px;
 	line-height: 30px;
-	color: dimgray;
+	color: var(--soft-dark-color);
 	white-space: pre-line;
 }
 
 main .content div .action form{
-	background: white;
+	background: var(--light-color);
 	padding: 1cm;
 	text-align: center;
 }
 
 main .content div .action form h3{
-	color: dimgray;
+	color: var(--soft-dark-color);
 }
 
 main .content div .action form textarea{
@@ -112,7 +112,7 @@ main .content div .action form textarea{
 	min-height: 5cm;
 	padding: 20px;
 	font-size: 16px;
-	color: dimgray;
+	color: var(--soft-dark-color);
 	margin-top: 20px;
 	line-height: 25px;
 }
@@ -126,11 +126,11 @@ main .content div .action form button{
 	padding: 10px 20px;
 	font-weight: bold;
 	letter-spacing: 1px;
-	color: white;
+	color: var(--light-color);
 }
 
 main .content div .action .comment{
-	background: white;
+	background: var(--light-color);
 	margin-top: 10px;
 	padding: 25px;
 }
@@ -141,16 +141,16 @@ main .content div .action .comment > div{
 }
 
 main .content div .action .comment div strong{
-	color: dimgray;
+	color: var(--soft-dark-color);
 }
 
 main .content div .action .comment div span{
-	color: gray;
+	color: var(--soft-dark-color);
 }
 
 main .content div .action .comment p{
 	margin-top: 10px;
-	color: gray;
+	color: var(--soft-dark-color);
 	line-height: 20px;
 	text-align: justify;
 	white-space: pre-line;
@@ -165,6 +165,6 @@ main .content div .action .comment p::after{
 }
 
 main .content div .action .comment hr{
-	border: .5px solid lightgray;
+	border: .5px solid var(--soft-light-color);
 	margin: 10px 0;
 }

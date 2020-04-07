@@ -9,11 +9,11 @@ main .content form{
 	grid-template-columns: 1fr 20cm;
 	grid-gap: 1cm;
 	margin-top: 1cm;
-	background: white;
+	background: var(--light-color);
 	padding: 2cm;
 	align-items: center;
 	border-radius: 1cm;
-	box-shadow: 0 3px 12px 1px rgba(44,55,130,0.15);
+	box-shadow: 0 0 10px #0000000F;
 }
 
 main .content form > div:first-of-type{
@@ -51,7 +51,7 @@ main .content form div:last-of-type div:nth-of-type(5) label:last-of-type{
 	width: 100%;
 	padding: 15px 20px;
 	border-radius: 30px;
-	border: 1px solid #ccc;
+	border: 1px solid var(--soft-light-color);
 	outline: none;
 	color: var(--primary-color);
 	font-weight: bold;
@@ -70,7 +70,7 @@ main .content form div:last-of-type div button{
 	margin-left: auto;
 	display: block;
 	background: var(--primary-color);
-	color: white;
+	color: var(--light-color);
 	padding: 10px 15px;
 	border: 1px solid var(--primary-color);
 	font-weight: bold;

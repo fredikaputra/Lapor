@@ -8,13 +8,13 @@ main{
 
 main span{
 	font-size: 5cm;
-	color: var(--secondary-color);
+	color: var(--tertiary-color);
 	line-height: 0;
 }
 
 main h1{
 	font-weight: normal;
-	color: dimgray;
+	color: var(--soft-dark-color);
 	margin: 30px 0 20px;
 }
 
@@ -24,8 +24,8 @@ main p{
 }
 
 main p a{
-	color: var(--secondary-color);
-	border-bottom: 1px dashed var(--secondary-color);
+	color: var(--primary-color);
+	border-bottom: 1px dashed var(--primary-color);
 }
 
 main p a:hover,

@@ -1,5 +1,5 @@
 body{
-	background: aliceblue;
+	background: var(--secondary-color);
 }
 
 header{
@@ -9,7 +9,7 @@ header{
 }
 
 header h1{
-	color: white;
+	color: var(--soft-light-color);
 	font-size: 1cm;
 }
 
@@ -25,20 +25,20 @@ main{
 }
 
 main h2{
-	color: dimgray;
+	color: var(--soft-dark-color);
 	margin-bottom: 10px;
 }
 
 main > span{
-	color: gray;
+	color: var(--soft-dark-color);
 	letter-spacing: 1px;
 	font-size: 18px;
 }
 
 main > div{
-	background: white;
+	background: var(--light-color);
 	margin-top: 1cm;
-	box-shadow: 0 0 10px #0000000f;
+	box-shadow: 0 0 10px #0000000F;
 	text-align: left;
 	padding-top: 1cm;
 }
@@ -47,17 +47,19 @@ main div h3{
 	margin: 0 1cm 10px;
 	font-size: 20px;
 	font-weight: normal;
-	color: dimgray;
+	color: var(--soft-dark-color);
 }
 
 main > div > span{
 	margin: 0 1cm;
-	color: gray;
+	color: var(--soft-dark-color);
 	font-size: 15px;
 }
 
 main div > span a{
 	color: var(--primary-color);
+	padding-bottom: 1px;
+	border-bottom: 1px solid var(--soft-light-color);
 }
 
 main div .row{
@@ -67,7 +69,7 @@ main div .row{
 main div .row > a{
 	display: grid;
 	grid-template-columns: 5cm 1fr 2cm;
-	color: gray;
+	color: var(--soft-dark-color);
 	border-bottom: 1px solid #00000015;
 }
 
@@ -81,7 +83,7 @@ main div .row > a:last-of-type div strong{
 }
 
 main div .row > a:hover{
-	background: #0000000f;
+	background: #0000000F;
 }
 
 main div .row a > *{

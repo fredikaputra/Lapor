@@ -16,7 +16,7 @@ main{
 /* FORM */
 main form{
 	padding: 1.5cm 1cm;
-	background: white;
+	background: var(--light-color);
 	border-radius: 1cm 0;
 	width: 10cm;
 }
@@ -40,7 +40,7 @@ main form h1{
 }
 
 main form span{
-	color: darkgray;
+	color: var(--soft-dark-color);
 	font-size: 15px;
 }
 
@@ -54,12 +54,12 @@ main form div{
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	border: 1px solid lightgray;
+	border: 1px solid var(--soft-light-color);
 	border-radius: 20px;
 }
 
 main form div:focus-within{
-	border: 1px solid var(--secondary-color);
+	border: 1px solid var(--tertiary-color);
 }
 
 main form div:last-of-type{
@@ -75,7 +75,7 @@ main form div input{
 	border: none;
 	margin: 0 5px;
 	font-size: 15px;
-	color: dimgray;
+	color: var(--soft-dark-color);
 	outline: none;
 }
 
@@ -87,7 +87,7 @@ main form button{
 	background: var(--primary-color);
 	border: 1px solid var(--primary-color);
 	border-radius: 20px;
-	color: white;
+	color: var(--light-color);
 	margin-bottom: 15px;
 }
 

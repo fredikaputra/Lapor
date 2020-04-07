@@ -1,5 +1,5 @@
 body{
-	background: aliceblue;
+	background: var(--secondary-color);
 }
 
 header{
@@ -9,7 +9,7 @@ header{
 }
 
 header h1{
-	color: white;
+	color: var(--soft-light-color);
 	font-size: 1cm;
 }
 
@@ -25,12 +25,12 @@ main{
 }
 
 main h2{
-	color: dimgray;
+	color: var(--soft-dark-color);
 	margin-bottom: 10px;
 }
 
 main > span{
-	color: gray;
+	color: var(--soft-dark-color);
 	letter-spacing: 1px;
 	font-size: 18px;
 }
@@ -44,8 +44,8 @@ main .report{
 
 main .report > div:first-of-type{
 	padding: 1cm;
-	box-shadow: 0 0 20px #0000000f;
-	background: white;
+	box-shadow: 0 0 20px #0000000F;
+	background: var(--light-color);
 }
 
 main .report > div > .header{
@@ -60,18 +60,18 @@ main .report > div > .header span:first-of-type{
 }
 
 main .report > div > .header span:last-of-type{
-	color: gray;
+	color: var(--soft-dark-color);
 }
 
 main .report > div > img{
 	width: 100%;
-	border-top: .5px solid lightgray;
+	border-top: .5px solid #00000050;
 	margin-top: 20px;
 	padding-top: 20px;
 }
 
 main .report > div > span:last-of-type{
-	border-top: .5px solid lightgray;
+	border-top: .5px solid #00000050;
 	display: block;
 	margin-top: 20px;
 	padding-top: 20px;
@@ -79,7 +79,7 @@ main .report > div > span:last-of-type{
 }
 
 main .report div > span strong{
-	color: dimgray;
+	color: var(--soft-dark-color);
 }
 
 main .report > div > p{
@@ -87,23 +87,23 @@ main .report > div > p{
 	text-align: justify;
 	letter-spacing: 1px;
 	line-height: 30px;
-	color: dimgray;
+	color: var(--soft-dark-color);
 	white-space: pre-line;
 }
 
 main .report .comment > div{
-	background: white;
+	background: var(--light-color);
 	padding: 1cm 0;
 }
 
 main .report .comment div h3{
-	color: dimgray;
+	color: var(--soft-dark-color);
 }
 
 main .report .comment > div > div{
 	margin-top: .4cm;
 	padding: .5cm 1cm 0;
-	border-top: .5px solid #eee;
+	border-top: .5px solid #00000050;
 }
 
 main .report .comment div div .header{
@@ -113,17 +113,17 @@ main .report .comment div div .header{
 }
 
 main .report .comment div div .header strong{
-	color: dimgray;
+	color: var(--soft-dark-color);
 }
 
 main .report .comment div div .header span{
-	color: gray;
+	color: var(--soft-dark-color);
 }
 
 main .report .comment div div p{
 	text-align: left;
 	margin-top: 8px;
-	color: gray;
+	color: var(--soft-dark-color);
 	line-height: 25px;
 	white-space: pre-line;
 }

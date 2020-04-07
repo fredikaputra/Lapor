@@ -8,7 +8,7 @@ main .content{
 main .content h1{
 	color: var(--primary-color);
 	font-size: 16px;
-	background: white;
+	background: var(--light-color);
 	padding: 20px 1cm;
 	border-radius: 10px;
 	box-shadow: 0 0 12px 1px rgba(44,55,130,0.15);
@@ -23,7 +23,7 @@ main .content h1 img{
 
 main .content a{
 	text-align: center;
-	background: white;
+	background: var(--light-color);
 	padding: 1.5cm;
 	border-radius: 20px;
 	transition: .5s;

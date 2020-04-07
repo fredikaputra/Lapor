@@ -6,7 +6,7 @@ body{
 
 /* NAV */
 nav{
-	background: var(--darkblue);
+	background: var(--dark-color);
 	height: 100vh;
 	overflow-y: auto;
 	padding: 1cm 0;
@@ -28,12 +28,12 @@ nav > span{
 }
 
 nav span.name{
-	color: lightgray;
+	color: var(--soft-light-color);
 	font-weight: bold;
 }
 
 nav span.level{
-	color: darkgray;
+	color: var(--soft-light-color);
 	margin: 10px 0 20px;
 }
 
@@ -51,7 +51,7 @@ nav .menu div a{
 	justify-content: space-between;
 	align-items: center;
 	padding: 20px 30px;
-	color: var(--lightblue);
+	color: var(--soft-light-color);
 	font-weight: bold;
 }
 
@@ -61,7 +61,7 @@ nav .menu div a:last-of-type{
 
 nav .menu div a.active,
 nav .menu div a:hover{
-	background: #b9c4ce20;
+	background: var(--soft-dark-color);
 }
 
 nav .menu div a img{
@@ -70,18 +70,18 @@ nav .menu div a img{
 
 nav .menu > a{
 	padding: 20px;
-	color: var(--lightblue);
+	color: var(--soft-light-color);
 	font-weight: bold;
 	position: fixed;
 	bottom: 0cm;
 	left: 0;
 	align-items: center;
 	width: 7cm;
-	background: #3b4152;
+	background: var(--soft-dark-color);
 }
 
 nav .menu > a:hover{
-	color: var(--primary-color);
+	color: var(--tertiary-color);
 }
 
 
@@ -93,11 +93,11 @@ main{
 }
 
 main header{
-	background: var(--darkblue);
+	background: var(--dark-color);
 	display: flex;
 	align-items: center;
 	padding: 0 1cm;
-	color: lightgray;
+	color: var(--soft-light-color);
 }
 
 main header > span{
@@ -107,6 +107,6 @@ main header > span{
 
 main .content{
 	overflow-y: auto;
-	background: aliceblue;
+	background: var(--secondary-color);
 	padding: 1cm;
 }

@@ -20,7 +20,7 @@ nav div a.logo{
 	align-items: flex-end;
 	font-size: 1cm;
 	font-family: 'Calibri';
-	color: white;
+	color: var(--light-color);
 	font-weight: bold;
 }
 
@@ -35,7 +35,7 @@ nav div .menu{
 }
 
 nav div .menu a{
-	color: white;
+	color: var(--soft-light-color);
 	font-weight: bold;
 	font-size: 14px;
 }
@@ -64,7 +64,7 @@ nav div .menu .logged button{
 	align-items: center;
 	background: var(--primary-color);
 	border: 1px solid var(--primary-color);
-	color: white;
+	color: var(--light-color);
 	border-radius: 20px;
 	padding: 5px 10px;
 	font-weight: bold;
@@ -83,7 +83,7 @@ nav div .menu .logged button img{
 }
 
 nav div .menu .logged div.user-menu{
-	background: white;
+	background: var(--light-color);
 	position: absolute;
 	right: 0;
 	top: 1.1cm;
@@ -110,7 +110,7 @@ nav div .menu .logged div.user-menu a.change{
 	position: absolute;
 	top: 2cm;
 	right: 3.5cm;
-	background: white;
+	background: var(--light-color);
 	line-height: 0;
 	border-radius: 50%;
 	padding: 5px;
@@ -126,7 +126,7 @@ nav div .menu .logged div.user-menu span.name{
 	margin: 20px auto 5px;
 	font-weight: bold;
 	font-size: 16px;
-	color: dimgray;
+	color: var(--soft-dark-color);
 	white-space: nowrap;
 	width: 100%;
 	overflow: hidden;
@@ -136,7 +136,7 @@ nav div .menu .logged div.user-menu span.name{
 nav div .menu .logged div.user-menu span.username{
 	display: block;
 	font-size: 15px;
-	color: dimgray;
+	color: var(--soft-dark-color);
 	white-space: nowrap;
 	width: 100%;
 	overflow: hidden;
@@ -144,28 +144,28 @@ nav div .menu .logged div.user-menu span.username{
 }
 
 nav div .menu .logged div.user-menu > a:nth-of-type(2){
-	border: .5px solid lightgray;
+	border: .5px solid #00000025;
 	padding: 10px 20px;
 	display: inline-block;
 	margin: 20px 0 5px;
 	border-radius: 20px;
-	color: dimgray;
+	color: var(--soft-dark-color);
 	font-weight: bold;
 	font-size: 13px;
 }
 
 nav div .menu .logged div.user-menu hr{
-	border: 1px solid #efefef;
+	border: 1px solid #0000000F;
 	margin: 10px 0;
 }
 
 nav div .menu .logged div.user-menu > a:last-of-type{
-	border: .5px solid lightgray;
+	border: .5px solid #00000025;
 	padding: 10px 20px;
 	display: inline-block;
 	margin: 5px 0;
 	border-radius: 5px;
-	color: dimgray;
+	color: var(--soft-dark-color);
 	font-weight: bold;
 	font-size: 13px;
 }
@@ -174,15 +174,14 @@ nav div .menu .logged div.user-menu > a:nth-of-type(2):hover,
 nav div .menu .logged div.user-menu > a:last-of-type:hover{
 	border: .5px solid var(--secondary-color);
 	background: var(--secondary-color);
-	color: white;
 }
 
 nav div .menu .logged div.user-menu > div{
-	color: gray;
+	color: var(--primary-color);
 }
 
 nav div .menu .logged div.user-menu > div a{
-	color: gray;
+	color: var(--soft-dark-color);
 	font-weight: normal;
 	font-size: 13px;
 	margin-bottom: 15px;
@@ -191,7 +190,7 @@ nav div .menu .logged div.user-menu > div a{
 }
 
 nav div .menu .logged div.user-menu > div a:hover{
-	background: #f5f5f5;
+	background: #0000000F;
 }
 
 /* UNLOGGED */

@@ -14,20 +14,20 @@ main{
 }
 
 main h1{
-	color: white;
+	color: var(--light-color);
 	font-size: 1cm;
 	margin-bottom: 10px;
 }
 
 main span{
-	color: lightgray;
+	color: var(--soft-light-color);
 }
 
 /* FORM */
 main form{
 	margin-top: 1cm;
 	padding: 20px;
-	background: white;
+	background: var(--light-color);
 	border-radius: 5px;
 }
 
@@ -37,27 +37,27 @@ main form *[disabled]{
 
 /* TEXTAREA */
 main form textarea{
-	border: 1px solid lightgray;
+	border: 1px solid var(--soft-dark-color);
 	width: 100%;
 	min-height: 3.5cm;
 	max-height: 30vh;
 	resize: vertical;
 	padding: 15px;
 	font-size: 15px;
-	color: dimgray;
+	color: var(--soft-dark-color);
 	letter-spacing: 1px;
 	text-align: justify;
 	line-height: 25px;
 }
 
 main form textarea[disabled]{
-	background: white;
+	background: var(--light-color);
 	resize: none;
 }
 
 /* INPUT TYPE FILE */
 main form label{
-	border: 1px dashed lightgray;
+	border: 1px dashed var(--soft-dark-color);
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -74,7 +74,7 @@ main form label:focus{
 
 main form label[disabled]:hover,
 main form label[disabled]:focus{
-	border: 1px dashed lightgray;
+	border: 1px dashed var(--soft-dark-color);
 }
 
 main form label img{
@@ -92,7 +92,7 @@ main form button{
 	margin: 10px 0 0 auto;
 	padding: 7px 15px;
 	background: var(--primary-color);
-	color: white;
+	color: var(--light-color);
 	border: 1px solid var(--primary-color);
 	font-weight: bold;
 	letter-spacing: 1px;

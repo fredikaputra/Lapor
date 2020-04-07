@@ -11,16 +11,16 @@ main .content .header div h1{
 }
 
 main .content .header div span{
-	color: gray;
+	color: var(--soft-dark-color);
 	font-size: 15px;
 	letter-spacing: .5px;
 }
 
 main .content .header a{
-	background: white;
+	background: var(--light-color);
 	border: none;
 	padding: 10px;
-	box-shadow: 0 0 10px #00000020;
+	box-shadow: 0 0 10px #0000000F;
 	display: flex;
 	align-items: center;
 	color: var(--primary-color);
@@ -34,7 +34,7 @@ main .content .header a img{
 }
 
 main .content form{
-	background: white;
+	background: var(--light-color);
 	margin-top: 1cm;
 }
 
@@ -46,19 +46,19 @@ main .content form .top{
 }
 
 main .content form > .top > button{
-	background: white;
+	background: var(--light-color);
 	border: none;
 	padding: 10px;
 	display: flex;
 	align-items: center;
-	color: dimgray;
+	color: var(--soft-dark-color);
 	font-weight: bold;
 	font-size: 14px;
 	opacity: .5;
 }
 
 main .content form > .top > button:hover{
-	box-shadow: 0 0 10px #00000020;
+	box-shadow: 0 0 10px #0000000F;
 	opacity: 1;
 }
 
@@ -95,7 +95,7 @@ main .content form .top > div > button{
 }
 
 main .content form .top div button:hover{
-	background-color: #e4e8f2;
+	background-color: var(--secondary-color);
 }
 
 main .content form .top div button img{
@@ -114,8 +114,8 @@ main .content form .top div .filter-menu{
 	right: 0;
 	width: 15cm;
 	display: block;
-	background: white;
-	box-shadow: 0 3px 12px 1px rgba(44,55,130,0.15);
+	background: var(--light-color);
+	box-shadow: 0 0 10px #00000025;
 }
 
 main .content form .top div .filter-menu > span{
@@ -124,7 +124,7 @@ main .content form .top div .filter-menu > span{
 	font-size: 13px;
 	color: var(--primary-color);
 	font-weight: bold;
-	border-bottom: 1px solid #eee;
+	border-bottom: 1px solid #0000000F;
 }
 
 main .content form .top div .filter-menu .filter{
@@ -151,7 +151,7 @@ main .content form .top div .filter-menu .filter > div select{
 	font-size: 12px;
 	letter-spacing: 1px;
 	border-radius: 5px;
-	border: 1px solid #ddd;
+	border: 1px solid var(--soft-light-color);
 	color: var(--primary-color);
 	cursor: pointer;
 }
@@ -159,12 +159,12 @@ main .content form .top div .filter-menu .filter > div select{
 main .content form .top div .filter-menu .footer{
 	justify-content: flex-end;
 	padding: 20px;
-	border-top: 1px solid #eee;
+	border-top: 1px solid #0000000F;
 }
 
 main .content form .top div .filter-menu .footer button{
 	background: var(--primary-color);
-	color: white;
+	color: var(--light-color);
 	border: none;
 	padding: 10px;
 	width: 2.6cm;
@@ -190,8 +190,8 @@ main .content form .body > div > div:first-of-type{
 
 main .content form .body > div.header{
 	padding: 10px 0;
-	border-top: 1px solid #ddd;
-	border-bottom: 1px solid #ddd;
+	border-top: 1px solid #00000025;
+	border-bottom: 1px solid #00000025;
 }
 
 main .content form .body > div.header div span{
@@ -201,12 +201,12 @@ main .content form .body > div.header div span{
 
 main .content form .body > div.user{
 	padding: 10px 0;
-	border-bottom: 1px solid #ddd;
+	border-bottom: 1px solid #00000025;
 	transition: .2s;
 }
 
 main .content form .body > div.user:hover{
-	background: #e4e8f2;
+	background: var(--secondary-color);
 }
 
 main .content form .body > div.user div span{
