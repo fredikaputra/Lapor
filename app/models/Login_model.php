@@ -11,6 +11,14 @@ class Login_model{
 		$this->db->dbh->real_escape_string(extract($data));
 		
 		if (isset($login)) { // cek ketika button submit di tekan pada form
+			if (isset($username)) {
+				if (isset($_SESSION['onLock'])) {
+					unset($_SESSION['onLock']);
+				}
+			}else if (isset($_SESSION['onLock'])) {
+				$username = $_SESSION['onLock']['username'];
+			}
+			
 			$query = "SELECT * FROM masyarakat WHERE username = ?";
 			$this->db->prepare($query);
 			$this->db->sth->bind_param('s', $username);

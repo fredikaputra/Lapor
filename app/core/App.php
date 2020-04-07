@@ -15,7 +15,7 @@ class App{
 				$url[0] = str_replace('-', '_', $url[0]);
 			}
 			
-			if (!file_exists('app/controllers/' . $url[0] . '.php') || ($url[0] == 'dashboard' && !isset($_SESSION['petugasID']))) {
+			if (!file_exists('app/controllers/' . $url[0] . '.php') || ($url[0] == 'dashboard' && (!isset($_SESSION['petugasID']) && !isset($_SESSION['onLock'])))) {
 				$this->controller = 'Notfound';
 			}else {
 				$this->controller = $url[0];
@@ -35,10 +35,6 @@ class App{
 			
 			if (method_exists($this->controller, $url[1])) {
 				$this->method = $url[1];
-			}else { // kalau method tidak ditemukan, pindahkan ke halaman '404'
-				$this->controller = 'Notfound';
-				require_once 'app/controllers/' . $this->controller . '.php';
-				$this->controller = new $this->controller;
 			}
 			
 			unset($url[1]);

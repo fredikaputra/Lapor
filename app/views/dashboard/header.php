@@ -13,7 +13,7 @@
 	<a href="">
 		<img src="<?= BASEURL ?>/assets/img/icon/light-setting.png" alt="">
 	</a>
-	<a href="">
+	<a href="<?= BASEURL ?>/dashboard/kunci">
 		<img src="<?= BASEURL ?>/assets/img/icon/bold-lock.png" alt="">
 	</a>
 	<a href="<?= BASEURL ?>/logout">

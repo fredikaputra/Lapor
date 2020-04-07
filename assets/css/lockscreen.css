@@ -1,0 +1,93 @@
+body{
+	background: url('../img/bg/bg.jpg') center center/cover no-repeat fixed;
+}
+
+/* FORM */
+main form{
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+	padding: 1.5cm 1cm;
+	background: var(--light-color);
+	border-radius: 1cm 0;
+	width: 11cm;
+}
+
+main form h1{
+	font-size: 20px;
+	color: var(--primary-color);
+	margin-bottom: 10px;
+}
+
+main form > span:first-of-type{
+	color: var(--soft-dark-color);
+	font-size: 15px;
+	letter-spacing: .5px;
+}
+
+main form > img{
+	width: 3cm;
+	display: block;
+	margin: 20px auto;
+	border-radius: 50%;
+	border: 2px solid var(--soft-light-color);
+}
+
+main form > span:nth-of-type(2){
+	font-weight: bold;
+	color: var(--soft-dark-color);
+	font-size: 15px;
+}
+
+main form div{
+	margin: 20px 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border: 1px solid var(--soft-light-color);
+	border-radius: 20px;
+}
+
+main form div input{
+	width: 100%;
+	border: none;
+	font-size: 14px;
+	letter-spacing: .5px;
+	margin-left: 15px;
+}
+
+main form div img{
+	width: 30px;
+	padding: 5px;
+	background: var(--secondary-color);
+	border-radius: 50%;
+}
+
+main form button{
+	margin: 0 auto 20px;
+	display: block;
+	background: transparent;
+	padding: 10px 15px;
+	font-size: 11px;
+	border: 1px solid var(--soft-light-color);
+	color: var(--soft-dark-color);
+	letter-spacing: 1px;
+	border-radius: 5px;
+	font-weight: bold;
+}
+
+main form button:focus{
+	background: var(--secondary-color);
+	border: 1px solid transparent;
+}
+
+main form > span:last-of-type{
+	font-size: 15px;
+	color: var(--soft-dark-color);
+}
+
+main form > span:last-of-type a{
+	color: var(--primary-color);
+}

@@ -18,7 +18,14 @@ class Login extends Controller{
 	
 	public function proccess(){
 		if ($this->model('Login_model')->proccess($_POST) === TRUE) {
-			header('location: ' . BASEURL);
+			if (isset($_SESSION['onLock'])) {
+				unset($_SESSION['onLock']);
+				header('location: ' . BASEURL . '/dashboard');
+			}else {
+				header('location: ' . BASEURL);
+			}
+		}else if (isset($_SESSION['onLock'])){
+			header('location: ' . BASEURL . '/dashboard/kunci');
 		}else {
 			header('location: ' . BASEURL . '/login');
 		}

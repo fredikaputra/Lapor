@@ -27,10 +27,13 @@ main form > a{
 	left: 20px;
 	top: 20px;
 	line-height: 0;
+	box-shadow: 0 0 10px #00000050;
+	border-radius: 50%;
+	padding: 5px;
 }
 
 main form > a img{
-	width: 1cm;
+	width: .7cm;
 }
 
 /* TITLE */
@@ -68,6 +71,8 @@ main form div:last-of-type{
 
 main form div img{
 	width: 1cm;
+	padding: 5px;
+	margin-left: 5px;
 }
 
 main form div input{
