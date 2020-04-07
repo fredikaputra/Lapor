@@ -22,3 +22,7 @@ define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASS', '');
 define('DB_NAME', 'db_lapor');
+
+// atur waktu
+date_default_timezone_set('Asia/Makassar'); // atur waktu ke wita
+setlocale(LC_ALL, 'IND'); // ubah standar waktu jadi bahasa indonesia

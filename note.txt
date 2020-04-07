@@ -31,7 +31,7 @@ ok If Unlogged, doashboard not found
 
 lock-screen feature
 
-notfound feature
+ok notfound feature
 
 client-side check in register form
 
@@ -39,19 +39,15 @@ phone input give '-' example 0858-9837-3989
 
 Tabable website (Keyboarder)
 
-Form Laporan auto enter
-
 responsive
 
-if register uncomplete, make session all data supaya ngg ngetik ulang
+ok if register uncomplete, make session all data supaya ngg ngetik ulang
 
-cek BASEURL
+ok cek BASEURL
 
 cek coment in all code
 
-if screen is freezz, give hint (kasi notif pada suatu page)
-
-on textarea hover give hint to login
+ok on textarea hover give hint to login
 
 
 
@@ -59,12 +55,4 @@ on textarea hover give hint to login
 
 UJI COBA
 
-semua fungsi yang ada di index.php (main) pindah ke config.php (run test)
-
-
-
-
-
-
-bahan:
-bawa file ukuran lebih dari 2mb buat test
+ok semua fungsi yang ada di index.php (main) pindah ke config.php (run test)
