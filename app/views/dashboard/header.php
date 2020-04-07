@@ -34,3 +34,25 @@
 	<header>
 		<span>Dashboard</span>
 	</header>
+	
+	<script type="text/javascript">
+		var timeout;
+
+		timeout = setTimeout(function(){
+			window.location.href = "<?= BASEURL ?>/dashboard/kunci";
+		}, 60000);
+
+		document.onmousemove = function(){
+			clearTimeout(timeout);
+			timeout = setTimeout(function(){
+				window.location.href = "<?= BASEURL ?>/dashboard/kunci";
+			}, 60000);
+		}
+
+		document.onkeydown = function(){
+			clearTimeout(timeout);
+			timeout = setTimeout(function(){
+				window.location.href = "<?= BASEURL ?>/dashboard/kunci";
+			}, 60000);
+		}
+	</script>
