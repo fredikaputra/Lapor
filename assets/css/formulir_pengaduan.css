@@ -37,7 +37,7 @@ main form *[disabled]{
 
 /* TEXTAREA */
 main form textarea{
-	border: 1px solid var(--soft-dark-color);
+	border: 1px solid var(--soft-light-color);
 	width: 100%;
 	min-height: 3.5cm;
 	max-height: 30vh;
@@ -57,7 +57,7 @@ main form textarea[disabled]{
 
 /* INPUT TYPE FILE */
 main form label{
-	border: 1px dashed var(--soft-dark-color);
+	border: 1px dashed var(--soft-light-color);
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -74,7 +74,7 @@ main form label:focus{
 
 main form label[disabled]:hover,
 main form label[disabled]:focus{
-	border: 1px dashed var(--soft-dark-color);
+	border: 1px dashed var(--soft-light-color);
 }
 
 main form label img{

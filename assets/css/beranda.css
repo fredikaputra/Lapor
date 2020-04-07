@@ -30,5 +30,6 @@ main a{
 }
 
 main a:focus{
-	filter: brightness(.8);
+	background: var(--tertiary-color);
+	color: var(--dark-color);
 }

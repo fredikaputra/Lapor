@@ -27,7 +27,7 @@
 	padding: 0;
 	box-sizing: border-box;
 	font-family: 'Arial';
-	outline-color: var(--secondary-color);
+	outline-color: var(--light-color);
 }
 
 a{

@@ -59,7 +59,7 @@ main form div{
 }
 
 main form div:focus-within{
-	border: 1px solid var(--tertiary-color);
+	border: 1px solid var(--primary-color);
 }
 
 main form div:last-of-type{
@@ -92,11 +92,13 @@ main form button{
 }
 
 main form button:focus{
-	background: var(--secondary-color);
-	border-color: var(--secondary-color);
+	background: var(--tertiary-color);
+	border-color: var(--tertiary-color);
+	color: var(--dark-color);
 }
 
 /* LINK SPAN */
 main form span a{
 	color: var(--primary-color);
+	border-bottom: 1px solid var(--soft-light-color);
 }

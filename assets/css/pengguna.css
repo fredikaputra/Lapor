@@ -28,6 +28,10 @@ main .content .header a{
 	font-size: 14px;
 }
 
+main .content .header a:focus{
+	background: var(--soft-light-color);
+}
+
 main .content .header a img{
 	width: 20px;
 	margin-right: 5px;

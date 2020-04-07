@@ -83,7 +83,7 @@ main div .row > a:last-of-type div strong{
 }
 
 main div .row > a:hover{
-	background: #0000000F;
+	background: var(--secondary-color);
 }
 
 main div .row a > *{

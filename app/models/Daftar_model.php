@@ -18,7 +18,7 @@ class Daftar_model{
 				'phone' => $phone
 			];
 			
-			if (isset($files)) { // ketika masyarakat menyertakan gambar
+			if (isset($files) && $files != NULL) { // ketika masyarakat menyertakan gambar
 				if ($files['photo']['error'] == 0) { // cek file tidak ada masalah
 					$extension = pathinfo($files['photo']['name'], PATHINFO_EXTENSION);
 					if (in_array($extension, ['jpg', 'jpeg'])) { // cek ekstensi gambar

@@ -30,7 +30,7 @@ main .content a{
 }
 
 main .content a:hover{
-	box-shadow: 0 3px 12px 1px rgba(44,55,130,0.15);
+	box-shadow: 0 0 10px #0000000F;
 	padding: 2cm;
 }
 

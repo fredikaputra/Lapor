@@ -201,6 +201,7 @@ nav div .menu .unlogged a{
 	text-align: center;
 	padding: 7px;
 	border-radius: 20px;
+	color: var(--light-color);
 }
 
 nav div .menu .unlogged a:first-of-type{
