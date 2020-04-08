@@ -69,23 +69,66 @@ class Dashboard extends Controller{
 		}
 	}
 	
-	public function pengguna(){
+	public function pengguna($filter = ''){
 		if (isset($_SESSION['petugasID'])) {
-			$data['webtitle'] = 'Dashboard - Pengguna';
-			$data['css'] = ['dashboard_header.css', 'pengguna.css', 'base.css'];
-			$data['method'] = __FUNCTION__;
-			
-			// ambil data
-			$data['petugas'] = $this->model('Data_model')->petugas($_SESSION['petugasID'])[0];
-			$data['pengguna'] = $this->model('Data_model')->pengguna();
-			$data['users'] = $this->model('Data_model')->pengguna('count');
-			
-			$data['photo'] = $_SESSION['petugasID'] . '.jpg';
-			
-			$this->view('template/header', $data);
-			$this->view('dashboard/header', $data);
-			$this->view('dashboard/pengguna', $data);
-			$this->view('template/footer', $data);
+			if ($filter == '') {
+				$data['webtitle'] = 'Dashboard - Pengguna';
+				$data['css'] = ['dashboard_header.css', 'pengguna.css', 'base.css'];
+				$data['method'] = __FUNCTION__;
+				
+				// ambil data
+				$data['petugas'] = $this->model('Data_model')->petugas($_SESSION['petugasID'])[0];
+				$data['pengguna'] = $this->model('Data_model')->pengguna();
+				$data['users'] = $this->model('Data_model')->pengguna('count');
+				
+				$data['photo'] = $_SESSION['petugasID'] . '.jpg';
+				
+				$this->view('template/header', $data);
+				$this->view('dashboard/header', $data);
+				$this->view('dashboard/pengguna', $data);
+				$this->view('template/footer', $data);
+			}else {
+				if (isset($_POST['delete'])) {
+					echo 'delete proccess';
+				}else if (isset($_POST['search'])) {
+					$data['webtitle'] = 'Dashboard - Pengguna';
+					$data['css'] = ['dashboard_header.css', 'pengguna.css', 'base.css'];
+					$data['method'] = __FUNCTION__;
+					
+					// ambil data
+					$data['petugas'] = $this->model('Data_model')->petugas($_SESSION['petugasID'])[0];
+					$data['pengguna'] = $this->model('PenggunaProccess_model')->search($_POST);
+					$data['users'] = $this->model('Data_model')->pengguna('count');
+					
+					$data['photo'] = $_SESSION['petugasID'] . '.jpg';
+					$data['searchactive'] = true;
+					
+					$this->view('template/header', $data);
+					$this->view('dashboard/header', $data);
+					$this->view('dashboard/pengguna', $data);
+					$this->view('template/footer', $data);
+				}else if (isset($_POST['filter'])) {
+					if ($this->model('PenggunaProccess_model')->filter($_POST) != NULL) {						
+						$data['webtitle'] = 'Dashboard - Pengguna';
+						$data['css'] = ['dashboard_header.css', 'pengguna.css', 'base.css'];
+						$data['method'] = __FUNCTION__;
+						
+						// ambil data
+						$data['petugas'] = $this->model('Data_model')->petugas($_SESSION['petugasID'])[0];
+						$data['pengguna'] = $this->model('PenggunaProccess_model')->filter($_POST);
+						$data['users'] = $this->model('Data_model')->pengguna('count');
+						
+						$data['photo'] = $_SESSION['petugasID'] . '.jpg';
+						
+						$this->view('template/header', $data);
+						$this->view('dashboard/header', $data);
+						$this->view('dashboard/pengguna', $data);
+						$this->view('template/footer', $data);
+					}
+				}else {
+					header('location: ' . BASEURL . '/dashboard/pengguna');
+				}
+			}
 		}else {
 			$this->kunci();
 		}

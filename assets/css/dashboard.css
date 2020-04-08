@@ -62,7 +62,7 @@ main .content > div:last-of-type > .count-data > div > div img{
 }
 
 main .content > div:last-of-type > .count-data > div > div div strong{
-	font-size: 1cm;
+	font-size: .7cm;
 	margin-right: 5px;
 }
 

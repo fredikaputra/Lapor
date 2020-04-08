@@ -40,6 +40,7 @@ main .content .header a img{
 main .content form{
 	background: var(--light-color);
 	margin-top: 1cm;
+	box-shadow: 0 0 10px #0000000F;
 }
 
 main .content form .top{

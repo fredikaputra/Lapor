@@ -40,19 +40,22 @@
 
 		timeout = setTimeout(function(){
 			window.location.href = "<?= BASEURL ?>/dashboard/kunci";
-		}, 60000);
+		// }, 60000);
+	}, 10000000);
 
 		document.onmousemove = function(){
 			clearTimeout(timeout);
 			timeout = setTimeout(function(){
 				window.location.href = "<?= BASEURL ?>/dashboard/kunci";
-			}, 60000);
+			// }, 60000);
+		}, 10000000);
 		}
 
 		document.onkeydown = function(){
 			clearTimeout(timeout);
 			timeout = setTimeout(function(){
 				window.location.href = "<?= BASEURL ?>/dashboard/kunci";
-			}, 60000);
+			// }, 60000);
+		}, 10000000);
 		}
 	</script>
