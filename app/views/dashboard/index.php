@@ -5,39 +5,37 @@
 			<img src="<?= BASEURL ?>/assets/img/icon/computer.png">
 		</div>
 		<div>
-			<div>
-				<form method="post" action="<?= BASEURL ?>/dashboard/update-profile" enctype="multipart/form-data">
-					<h2>Pengaturan Profil</h2>
+			<div class="count-data">
+				<div>
 					<div>
-						<?php
-						
-						if (file_exists('assets/img/users/' . $data['photo'])) {
-							?><img src="<?= BASEURL ?>/assets/img/users/<?= $data['photo'] ?>?=<?= filemtime('assets/img/users/' . $data['photo']) ?>"><?php
-						}else {
-							?><img src="<?= BASEURL ?>/assets/img/users/default.png" alt=""><?php
-						}
-						
-						?>
-						<label><img src="<?= BASEURL ?>/assets/img/icon/camera.png" alt="">
-							<input type="file" id="onChange3" onchange="checkValueChange()" name="photo" accept=".jpg">
-						</label>
-					</div>
-					<div>
-						<img src="<?= BASEURL ?>/assets/img/icon/circle-user.png" alt="">
-						<input type="text" id="onChange1" onkeyup="checkValueChange()" value="<?= $data['petugas']['nama_petugas'] ?>" name="name" autocomplete="off">
-					</div>
-					<div>
-						<img src="<?= BASEURL ?>/assets/img/icon/circle-phone-book.png" alt="">
-						<input type="number" id="onChange2" onkeyup="checkValueChange()" value="<?= $data['petugas']['telp'] ?>" name="phone" autocomplete="off">
-					</div>
-					<div>
-						<a href="<?= BASEURL ?>/dashboard/change-pass">Ganti Password</a>
+						<img src="<?= BASEURL ?>/assets/img/icon/circle-user.png">
 						<div>
-							<button type="reset" class="hide" onclick="hide()" id="cancelSaveUserProfile">Batal</button>
-							<button type="submit" class="hide" name="updateprofile" id="saveUserProfile">Simpan</button>
+							<strong>28</strong>
+							<span>Pengguna</span>
 						</div>
 					</div>
-				</form>
+					<div>
+						<img src="<?= BASEURL ?>/assets/img/icon/paper.png">
+						<div>
+							<strong>28</strong>
+							<span>Laporan</span>
+						</div>
+					</div>
+					<div>
+						<img src="<?= BASEURL ?>/assets/img/icon/information-desk.png">
+						<div>
+							<strong>28</strong>
+							<span>Status Proses</span>
+						</div>
+					</div>
+					<div>
+						<img src="<?= BASEURL ?>/assets/img/icon/tick.png">
+						<div>
+							<strong>28</strong>
+							<span>Status Selesai</span>
+						</div>
+					</div>
+				</div>
 			</div>
 			
 			<div class="data">

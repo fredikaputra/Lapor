@@ -28,91 +28,42 @@ main .content > div:first-of-type img:last-of-type{
 
 main .content > div:last-of-type{
 	display: grid;
-	grid-template-columns: 11cm 1fr;
+	grid-template-columns: 9cm 1fr;
 	grid-gap: 1cm;
 	margin-top: 1cm;
 }
 
-main .content > div:last-of-type div form{
-	background: var(--light-color);
-	padding: 1cm;
-	box-shadow: 0 5px 10px #0000000F;
+main .content > div:last-of-type > .count-data > div{
+	background: white;
+	display: grid;
+	grid-template-columns: 1fr;
+	box-shadow: 0 0 10px #0000000F;
+	border-radius: 1cm 0;
 }
 
-main .content > div:last-of-type div form h2{
-	font-size: 16px;
-	color: var(--soft-dark-color);
-}
-
-main .content > div:last-of-type div form > div:first-of-type{
-	margin: 50px 0;
-	text-align: center;
-	position: relative;
-}
-
-main .content > div:last-of-type div form > div:first-of-type > img{
-	width: 3cm;
-	height: 3cm;
-	border-radius: 50%;
-	object-fit: cover;
-	object-position: center;
-}
-
-main .content > div:last-of-type div form > div:first-of-type label{
-	position: absolute;
-	bottom: 0px;
-	right: 3cm;
-	border-radius: 50%;
-	box-shadow: 0 0 5px #00000050;
-	line-height: 0;
-	padding: 7px;
-	background: var(--light-color);
-	cursor: pointer;
-}
-
-main .content > div:last-of-type div form > div:first-of-type label img{
-	width: 20px;
-}
-
-main .content > div:last-of-type div form > div:first-of-type label input{
-	display: none;
-}
-
-main .content > div:last-of-type div form > div:not(:first-of-type){
-	display: flex;
-	justify-content: space-between;
+main .content > div:last-of-type > .count-data > div > div{
+	display: grid;
+	grid-template-columns: 3cm 1fr;
 	align-items: center;
-}
-
-main .content > div:last-of-type div form > div:nth-of-type(2),
-main .content > div:last-of-type div form > div:nth-of-type(3){
-	margin: 10px 0 0;
-	border: 1px solid var(--soft-light-color);
-	border-radius: 20px;
-	
-}
-
-main .content > div:last-of-type div form > div:not(:first-of-type) img{
-	width: 1cm;
-}
-
-main .content > div:last-of-type div form > div:not(:first-of-type) input{
-	width: 100%;
-	font-size: 15px;
+	padding: 20px 0;
+	grid-column-gap: .8cm;
 	color: var(--soft-dark-color);
-	margin: 0 10px;
-	border: none;
 }
 
-main .content > div:last-of-type div form > div:last-of-type > a,
-main .content > div:last-of-type div form > div:last-of-type div button:first-of-type,
-main .content > div:last-of-type div form > div:last-of-type div button:last-of-type{
-	padding: 5px 10px;
-	font-size: 14px;
+main .content > div:last-of-type > .count-data > div > div:not(:last-of-type){
+	border-bottom: 1px solid #00000025;	
 }
 
-main .content > div:last-of-type div form > div:last-of-type{
-	margin-top: 30px;
+main .content > div:last-of-type > .count-data > div > div img{
+	width: 2cm;
+	margin-left: auto;
+	box-shadow: 0 0 10px #00000020;
+	border-radius: 50%;
+}
+
+main .content > div:last-of-type > .count-data > div > div div strong{
+	font-size: 1cm;
+	margin-right: 5px;
 }
 
 main .content > div:last-of-type > .data > div{

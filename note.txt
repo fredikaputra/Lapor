@@ -29,7 +29,7 @@ Side Future:
 
 ok If Unlogged, doashboard not found
 
-lock-screen feature
+ok lock-screen feature
 
 ok notfound feature
 

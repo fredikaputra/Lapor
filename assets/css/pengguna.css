@@ -23,7 +23,7 @@ main .content .header a{
 	box-shadow: 0 0 10px #0000000F;
 	display: flex;
 	align-items: center;
-	color: var(--primary-color);
+	color: var(--soft-dark-color);
 	font-weight: bold;
 	font-size: 14px;
 }
@@ -126,7 +126,7 @@ main .content form .top div .filter-menu > span{
 	display: block;
 	padding: 20px;
 	font-size: 13px;
-	color: var(--primary-color);
+	color: var(--soft-dark-color);
 	font-weight: bold;
 	border-bottom: 1px solid #0000000F;
 }
@@ -145,7 +145,7 @@ main .content form .top div .filter-menu .filter > div span{
 	font-size: 12px;
 	font-weight: bold;
 	letter-spacing: 1px;
-	color: var(--primary-color);
+	color: var(--soft-dark-color);
 	margin-bottom: 5px;
 }
 
@@ -156,7 +156,7 @@ main .content form .top div .filter-menu .filter > div select{
 	letter-spacing: 1px;
 	border-radius: 5px;
 	border: 1px solid var(--soft-light-color);
-	color: var(--primary-color);
+	color: var(--soft-dark-color);
 	cursor: pointer;
 }
 
@@ -199,7 +199,7 @@ main .content form .body > div.header{
 }
 
 main .content form .body > div.header div span{
-	color: var(--primary-color);
+	color: var(--soft-dark-color);
 	font-size: 13px;
 }
 
@@ -214,7 +214,7 @@ main .content form .body > div.user:hover{
 }
 
 main .content form .body > div.user div span{
-	color: var(--primary-color);
+	color: var(--soft-dark-color);
 	font-size: 15px;
 }
 
