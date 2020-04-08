@@ -7,8 +7,8 @@ class Login_model{
 		$this->db = new Database;
 	}
 	
-	public function proccess($data){
-		$this->db->dbh->real_escape_string(extract($data));
+	public function proccess(){
+		$this->db->dbh->real_escape_string(extract($_POST));
 		
 		if (isset($login)) { // cek ketika button submit di tekan pada form
 			if (isset($username)) {
@@ -25,7 +25,7 @@ class Login_model{
 			$this->db->execute();
 			if ($this->db->getResult() > 0) {
 				$password_db = $this->db->row[0]['password'];
-				if (password_verify($password, $password_db) === TRUE) {
+				if (password_verify($password, $password_db)) {
 					$_SESSION['masyarakatNIK'] = $this->db->row[0]['nik'];
 					return true;
 				}else {
@@ -38,7 +38,7 @@ class Login_model{
 				$this->db->execute();
 				if ($this->db->getResult() > 0) {
 					$password_db = $this->db->row[0]['password'];
-					if (password_verify($password, $password_db) === TRUE) {
+					if (password_verify($password, $password_db)) {
 						$_SESSION['petugasID'] = $this->db->row[0]['id_petugas'];
 						return true;
 					}else {

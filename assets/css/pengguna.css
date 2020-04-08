@@ -167,7 +167,7 @@ main .content form .top div .filter-menu .footer{
 	border-top: 1px solid #0000000F;
 }
 
-main .content form .top div .filter-menu .footer button{
+main .content form .top div .filter-menu .footer > *{
 	background: var(--primary-color);
 	color: var(--light-color);
 	border: none;
@@ -177,6 +177,7 @@ main .content form .top div .filter-menu .footer button{
 	font-weight: bold;
 	border-radius: 5px;
 	font-size: 13px;
+	text-align: center;
 }
 
 main .content form .body > div{

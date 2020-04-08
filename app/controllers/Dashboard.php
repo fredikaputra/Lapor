@@ -9,9 +9,9 @@ class Dashboard extends Controller{
 			$data['method'] = __FUNCTION__;
 			
 			// ambil data
-			$data['petugas'] = $this->model('Data_model')->petugas($_SESSION['petugasID'])[0];
+			$data['petugas'] = $this->model('Data_model')->petugas()[0];
 			$data['photo'] = $_SESSION['petugasID'] . '.jpg';
-			$data['laporan'] = $this->model('Data_model')->laporan('', '', '5');
+			$data['laporan'] = $this->model('Data_model')->laporan(NULL, NULL, '5');
 			
 			$this->view('template/header', $data);
 			$this->view('dashboard/header', $data);
@@ -22,15 +22,15 @@ class Dashboard extends Controller{
 		}
 	}
 	
-	public function data_aduan($idpengaduan = '', $print = FALSE){
+	public function data_aduan($idpengaduan = NULL, $option = NULL){
 		if (isset($_SESSION['petugasID'])) {
 			$data['photo'] = $_SESSION['petugasID'] . '.jpg';
 			$data['method'] = __FUNCTION__;
 			
 			// ambil data
-			$data['petugas'] = $this->model('Data_model')->petugas($_SESSION['petugasID'])[0];
+			$data['petugas'] = $this->model('Data_model')->petugas()[0];
 			
-			if ($idpengaduan == '') { // tampilkan semua data aduan
+			if ($idpengaduan == NULL) { // tampilkan semua data aduan
 				$data['webtitle'] = 'Dashboard - Data Aduan';
 				$data['css'] = ['dashboard_header.css', 'data_aduan.css', 'base.css'];
 				
@@ -42,12 +42,14 @@ class Dashboard extends Controller{
 				$this->view('dashboard/data_aduan', $data);
 				$this->view('template/footer');
 			}else { // tampilkan satu data aduan
-				$data['idpengaduan'] = $idpengaduan;
-				$data['laporan'] = $this->model('Data_model')->laporan($data['idpengaduan'], '', '')[0];
+				$data['laporan'] = $this->model('Data_model')->laporan($idpengaduan, '', '')[0];
+				
 				if ($data['laporan'] != NULL) {
+					$data['idpengaduan'] = $idpengaduan;
 					$data['webtitle'] = 'Data Aduan ' . $data['idpengaduan'];
 					$data['css'] = ['dashboard_header.css', 'detail_aduan.css', 'base.css'];
-					if ($print == 'print') {
+					
+					if ($option == 'print') {
 						$data['js'] = ['print.js', 'directprint.js'];
 					}else {
 						$data['js'] = ['print.js'];
@@ -61,7 +63,7 @@ class Dashboard extends Controller{
 					$this->view('dashboard/detail_aduan', $data);
 					$this->view('template/footer', $data);
 				}else{
-					header('location: ' . BASEURL . '/dashboard/data-aduan');
+					$this->data_aduan();
 				}
 			}
 		}else {
@@ -69,15 +71,15 @@ class Dashboard extends Controller{
 		}
 	}
 	
-	public function pengguna($filter = ''){
+	public function pengguna($filter = NULL){
 		if (isset($_SESSION['petugasID'])) {
-			if ($filter == '') {
+			if ($filter == NULL) {
 				$data['webtitle'] = 'Dashboard - Pengguna';
 				$data['css'] = ['dashboard_header.css', 'pengguna.css', 'base.css'];
 				$data['method'] = __FUNCTION__;
 				
 				// ambil data
-				$data['petugas'] = $this->model('Data_model')->petugas($_SESSION['petugasID'])[0];
+				$data['petugas'] = $this->model('Data_model')->petugas()[0];
 				$data['pengguna'] = $this->model('Data_model')->pengguna();
 				$data['users'] = $this->model('Data_model')->pengguna('count');
 				
@@ -96,8 +98,8 @@ class Dashboard extends Controller{
 					$data['method'] = __FUNCTION__;
 					
 					// ambil data
-					$data['petugas'] = $this->model('Data_model')->petugas($_SESSION['petugasID'])[0];
-					$data['pengguna'] = $this->model('PenggunaProccess_model')->search($_POST);
+					$data['petugas'] = $this->model('Data_model')->petugas()[0];
+					$data['pengguna'] = $this->model('PenggunaProccess_model')->search();
 					$data['users'] = $this->model('Data_model')->pengguna('count');
 					
 					$data['photo'] = $_SESSION['petugasID'] . '.jpg';
@@ -108,14 +110,14 @@ class Dashboard extends Controller{
 					$this->view('dashboard/pengguna', $data);
 					$this->view('template/footer', $data);
 				}else if (isset($_POST['filter'])) {
-					if ($this->model('PenggunaProccess_model')->filter($_POST) != NULL) {						
+					if ($this->model('PenggunaProccess_model')->filter() != NULL) {						
 						$data['webtitle'] = 'Dashboard - Pengguna';
 						$data['css'] = ['dashboard_header.css', 'pengguna.css', 'base.css'];
 						$data['method'] = __FUNCTION__;
 						
 						// ambil data
-						$data['petugas'] = $this->model('Data_model')->petugas($_SESSION['petugasID'])[0];
-						$data['pengguna'] = $this->model('PenggunaProccess_model')->filter($_POST);
+						$data['petugas'] = $this->model('Data_model')->petugas()[0];
+						$data['pengguna'] = $this->model('PenggunaProccess_model')->filter();
 						$data['users'] = $this->model('Data_model')->pengguna('count');
 						
 						$data['photo'] = $_SESSION['petugasID'] . '.jpg';
@@ -126,7 +128,7 @@ class Dashboard extends Controller{
 						$this->view('template/footer', $data);
 					}
 				}else {
-					header('location: ' . BASEURL . '/dashboard/pengguna');
+					$this->pengguna();
 				}
 			}
 		}else {
@@ -134,7 +136,7 @@ class Dashboard extends Controller{
 		}
 	}
 	
-	public function tambah_pengguna($user = ''){
+	public function tambah_pengguna($user = NULL){
 		if (isset($_SESSION['petugasID'])) {
 			if ($user == 'petugas') {
 				$data['webtitle'] = 'Dashboard - Tambah Pengguna Sebagai Petugas';
@@ -143,7 +145,7 @@ class Dashboard extends Controller{
 				$data['method'] = __FUNCTION__;
 				
 				// ambil data
-				$data['petugas'] = $this->model('Data_model')->petugas($_SESSION['petugasID'])[0];
+				$data['petugas'] = $this->model('Data_model')->petugas()[0];
 				$data['photo'] = $_SESSION['petugasID'] . '.jpg';
 				
 				$this->view('template/header', $data);
@@ -157,7 +159,7 @@ class Dashboard extends Controller{
 				$data['method'] = __FUNCTION__;
 				
 				// ambil data
-				$data['petugas'] = $this->model('Data_model')->petugas($_SESSION['petugasID'])[0];
+				$data['petugas'] = $this->model('Data_model')->petugas()[0];
 				$data['photo'] = $_SESSION['petugasID'] . '.jpg';
 				
 				$this->view('template/header', $data);
@@ -170,7 +172,7 @@ class Dashboard extends Controller{
 				$data['method'] = __FUNCTION__;
 				
 				// ambil data
-				$data['petugas'] = $this->model('Data_model')->petugas($_SESSION['petugasID'])[0];
+				$data['petugas'] = $this->model('Data_model')->petugas()[0];
 				$data['photo'] = $_SESSION['petugasID'] . '.jpg';
 				
 				$this->view('template/header', $data);
@@ -195,6 +197,7 @@ class Dashboard extends Controller{
 				'photo' => $_SESSION['petugasID'] . '.jpg'
 			];
 		}
+		
 		if (isset($_SESSION['petugasID'])) {
 			unset($_SESSION['petugasID']);
 		}
@@ -206,36 +209,46 @@ class Dashboard extends Controller{
 	
 	public function update_profile(){
 		if (isset($_SESSION['petugasID'])) {
-			$this->model('UpdateProfile_model')->update($_POST, $_FILES);
+			$this->model('UpdateProfile_model')->update();
 			header('location: ' . BASEURL . '/dashboard');
 		}else {
 			$this->kunci();
 		}
 	}
 	
-	public function report_response($idpengaduan){
+	public function report_response($idpengaduan = NULL){
 		if (isset($_SESSION['petugasID'])) {
-			$this->model('ReportResponse_model')->proccess($_POST, $idpengaduan);
-			header('location: ' . BASEURL . '/dashboard/data-aduan/' . $idpengaduan);
+			if ($idpengaduan != NULL) {
+				$this->model('ReportResponse_model')->proccess($idpengaduan);
+				header('location: ' . BASEURL . '/dashboard/data-aduan/' . $idpengaduan);
+			}else {
+				$this->index();
+			}
 		}else {
 			$this->kunci();
 		}
 	}
 	
-	public function proccess_tambah_pengguna($user){
+	public function proccess_tambah_pengguna($user = NULL){
 		if (isset($_SESSION['petugasID'])) {
-			if ($user == 'petugas') {
-				if ($this->model('Daftar_model')->petugas($_POST, $_FILES) == TRUE) {
-					header('location: ' . BASEURL . '/dashboard/pengguna');
+			if ($user != NULL) {
+				if ($user == 'petugas') {
+					if ($this->model('Daftar_model')->petugas() == TRUE) {
+						header('location: ' . BASEURL . '/dashboard/pengguna');
+					}else {
+						header('location: ' . BASEURL . '/dashboard/tambah-pengguna/petugas');
+					}
+				}else if ($user == 'masyarakat') {
+					if ($this->model('Daftar_model')->masyarakat($_POST, $_FILES) == TRUE) {
+						header('location: ' . BASEURL . '/dashboard/pengguna');
+					}else {
+						header('location: ' . BASEURL . '/dashboard/tambah-pengguna/masyarakat');
+					}
 				}else {
-					header('location: ' . BASEURL . '/dashboard/tambah-pengguna/petugas');
+					$this->index();
 				}
-			}else if ($user == 'masyarakat') {
-				if ($this->model('Daftar_model')->masyarakat($_POST, $_FILES) == TRUE) {
-					header('location: ' . BASEURL . '/dashboard/pengguna');
-				}else {
-					header('location: ' . BASEURL . '/dashboard/tambah-pengguna/masyarakat');
-				}
+			}else {
+				$this->index();
 			}
 		}else {
 			$this->kunci();

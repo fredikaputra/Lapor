@@ -12,7 +12,7 @@ class Daftar extends Controller{
 	}
 	
 	public function proccess(){
-		if ($this->model('Daftar_model')->masyarakat($_POST, $_FILES) === TRUE) {
+		if ($this->model('Daftar_model')->masyarakat() === TRUE) {
 			header('location: ' . BASEURL);
 		}else {
 			header('location: ' . BASEURL . '/daftar');

@@ -14,8 +14,8 @@ class ReportResponse_model extends Controller{
 		} while ($this->check($this->uniqID, '') == !NULL);
 	}
 	
-	public function proccess($data, $id){ // proses tambah komentar
-		$this->db->dbh->real_escape_string(extract($data));
+	public function proccess($id){ // proses tambah komentar
+		$this->db->dbh->real_escape_string(extract($_POST));
 		
 		if (isset($comment)) { // cek ketika button submit tertekan pada form
 			if ($response != NULL) {
@@ -58,23 +58,23 @@ class ReportResponse_model extends Controller{
 		}
 	}
 	
-	public function check($uniqID = '', $id = ''){ // proses cek id
-		if ($uniqID != '') {
+	public function check($uniqID = NULL, $id = NULL){ // proses cek id
+		if ($uniqID != NULL) {
 			$query = "SELECT id_tanggapan FROM tanggapan WHERE id_tanggapan = ?";
 			$this->db->prepare($query);
 			$this->db->sth->bind_param('s', $id);
 			$this->db->execute();
-			if ($this->db->getResult() !== NULL) {
-				return $this->db->row[0]['id_tanggapan'];
-			}
-		}else if ($id != '') {
+			$this->db->getResult()
+			
+			return $this->db->row[0]['id_tanggapan'];
+		}else if ($id != NULL) {
 			$query = "SELECT status FROM pengaduan WHERE id_pengaduan = ?";
 			$this->db->prepare($query);
 			$this->db->sth->bind_param('s', $id);
 			$this->db->execute();
-			if ($this->db->getResult() !== NULL) {
-				return $this->db->row[0]['status'];
-			}
+			$this->db->getResult()
+			
+			return $this->db->row[0]['status'];
 		}
 	}
 }

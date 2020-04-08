@@ -7,8 +7,8 @@ class PenggunaProccess_model{
 		$this->db = new Database;
 	}
 	
-	public function filter($data){
-		$this->db->dbh->real_escape_string(extract($data));
+	public function filter(){
+		$this->db->dbh->real_escape_string(extract($_POST));
 		
 		if ($privilege == 'admin') {
 			$query = "SELECT id_petugas as id, nama_petugas as nama, username, telp, level FROM petugas WHERE level = '1'";
@@ -16,7 +16,7 @@ class PenggunaProccess_model{
 			$query = "SELECT id_petugas as id, nama_petugas as nama, username, telp, level FROM petugas WHERE level = '2'";
 		}else if ($privilege == 'masyarakat') {
 			$query = "SELECT nik as id, nama, username, telp, telp as level FROM masyarakat";
-		}else if ($privilege == 'all') {
+		}else {
 			$query = "SELECT id_petugas AS id, nama_petugas AS nama, username, telp, level FROM petugas
 						UNION
 						SELECT nik AS id, nama, username, telp, telp AS level FROM masyarakat";
@@ -49,13 +49,13 @@ class PenggunaProccess_model{
 		}
 	}
 	
-	public function search($data){
-		$query = "SELECT id_petugas as id, nama_petugas as nama, username, telp, level FROM petugas WHERE nama_petugas LIKE '%" . $data['querysearch'] . "%' OR username LIKE '%" . $data['querysearch'] . "%'";
+	public function search(){
+		$query = "SELECT id_petugas as id, nama_petugas as nama, username, telp, level FROM petugas WHERE nama_petugas LIKE '%" . $_POST['querysearch'] . "%' OR username LIKE '%" . $_POST['querysearch'] . "%'";
 		$this->db->prepare($query);
 		$this->db->execute();
 		$this->db->getResult();
 		
-		$query = "SELECT nik as id, nama, username, telp, telp as level FROM masyarakat WHERE nama LIKE '%" . $data['querysearch'] . "%' OR username LIKE '%" . $data['querysearch'] . "%'";
+		$query = "SELECT nik as id, nama, username, telp, telp as level FROM masyarakat WHERE nama LIKE '%" . $_POST['querysearch'] . "%' OR username LIKE '%" . $_POST['querysearch'] . "%'";
 		$this->db->prepare($query);
 		$this->db->execute();
 		$this->db->getResult();

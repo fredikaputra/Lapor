@@ -14,8 +14,8 @@ class FormulirPengaduan_model extends Controller{
 		} while ($this->check($this->uniqID) == !NULL);
 	}
 	
-	public function upload($data, $files){ // proses tambah laporan
-		$this->db->dbh->real_escape_string(extract($data));
+	public function upload(){ // proses tambah laporan
+		$this->db->dbh->real_escape_string(extract($_POST));
 		
 		if (isset($report)) { // check ketika button submit di tekan pada form
 			$_SESSION['msg'] = $msg; // buat session pada form (untuk kondisi ketika gagal)
@@ -24,13 +24,13 @@ class FormulirPengaduan_model extends Controller{
 			$nik = $this->model('Data_model')->masyarakat($_SESSION['masyarakatNIK'])[0]['nik'];
 			$status = 0;
 			
-			if (isset($files)) { // ketika masyarakat menyertakan gambar
-				if ($files['photo']['error'] == 0) { // cek file tidak ada masalah
-					$extension = pathinfo($files['photo']['name'], PATHINFO_EXTENSION);
+			if (isset($_FILES)) { // ketika masyarakat menyertakan gambar
+				if ($_FILES['photo']['error'] == 0) { // cek file tidak ada masalah
+					$extension = pathinfo($_FILES['photo']['name'], PATHINFO_EXTENSION);
 					if (in_array($extension, ['jpg', 'jpeg', 'png'])) { // cek ekstensi gambar
-						if ($files['photo']['size'] <= 2048000) { // cek ukuran gambar
+						if ($_FILES['photo']['size'] <= 2048000) { // cek ukuran gambar
 							$photo = $this->uniqID . '.' . $extension;
-							if (!move_uploaded_file($files['photo']['tmp_name'], 'assets/img/pengaduan/' . $photo)) {
+							if (!move_uploaded_file($_FILES['photo']['tmp_name'], 'assets/img/pengaduan/' . $photo)) {
 								Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
 								return;
 							}

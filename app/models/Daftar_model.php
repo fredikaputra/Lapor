@@ -7,8 +7,8 @@ class Daftar_model{
 		$this->db = new Database;
 	}
 	
-	public function masyarakat($data, $files){ // proses registrasi masyarakat
-		$this->db->dbh->real_escape_string(extract($data));
+	public function masyarakat(){ // proses registrasi masyarakat
+		$this->db->dbh->real_escape_string(extract($_POST));
 		
 		if (isset($addmasyarakat)) { // cek kalau button submit pada form di tekan
 			$_SESSION['reg'] = [ // buat session isi form (untuk keadaan dimana kondisi salah)
@@ -18,13 +18,13 @@ class Daftar_model{
 				'phone' => $phone
 			];
 			
-			if (isset($files) && $files != NULL) { // ketika masyarakat menyertakan gambar
-				if ($files['photo']['error'] == 0) { // cek file tidak ada masalah
-					$extension = pathinfo($files['photo']['name'], PATHINFO_EXTENSION);
+			if (isset($_FILES) && $_FILES != NULL) { // ketika masyarakat menyertakan gambar
+				if ($_FILES['photo']['error'] == 0) { // cek file tidak ada masalah
+					$extension = pathinfo($_FILES['photo']['name'], PATHINFO_EXTENSION);
 					if (in_array($extension, ['jpg', 'jpeg'])) { // cek ekstensi gambar
-						if ($files['photo']['size'] <= 2048000) { // cek ukuran gambar
+						if ($_FILES['photo']['size'] <= 2048000) { // cek ukuran gambar
 							$photo = $nik . '.jpg';
-							if (!move_uploaded_file($files['photo']['tmp_name'], 'assets/img/users/' . $photo)) {
+							if (!move_uploaded_file($_FILES['photo']['tmp_name'], 'assets/img/users/' . $photo)) {
 								Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
 								return;
 							}
@@ -41,8 +41,8 @@ class Daftar_model{
 				}
 			}
 			
-			if ($this->check($nik, '') == NULL) { // cek kalau nik tidak ada yang menggunakan
-				if ($this->check('', $username) == TRUE) { // cek username belum digunakan
+			if ($this->check($nik, NULL) == NULL) { // cek kalau nik tidak ada yang menggunakan
+				if ($this->check(NULL, $username) == NULL) { // cek username belum digunakan
 					if (strlen($pass) >= 8) { // cek panjang password, min 8 karakter
 						if ($pass == $repass) { // cek password telah terkonfirmasi
 							if (strlen($phone) >= 9) {
@@ -83,40 +83,39 @@ class Daftar_model{
 		}
 	}
 	
-	public function check($nik = '', $username = ''){ // proses check nik
-		if ($nik != '') {
+	public function check($nik = NULL, $username = NULL){ // proses check nik
+		if ($nik != NULL) {
 			$query = 'SELECT nik FROM masyarakat WHERE nik = ?';
 			$this->db->prepare($query);
 			$this->db->sth->bind_param('s', $nik);
 			$this->db->execute();
 			return $this->db->getResult();
-		}else if ($username != '') {
+		}else if ($username != NULL) {
 			$query = 'SELECT username FROM masyarakat WHERE username = ?';
 			$this->db->prepare($query);
 			$this->db->sth->bind_param('s', $username);
 			$this->db->execute();
-			if ($this->db->getResult() == NULL) {
-				$query = 'SELECT username FROM petugas WHERE username = ?';
-				$this->db->prepare($query);
-				$this->db->sth->bind_param('s', $username);
-				$this->db->execute();
-				if ($this->db->getResult() == NULL) {
-					return true;
-				}
-			}
+			$this->db->getResult();
+			
+			$query = 'SELECT username FROM petugas WHERE username = ?';
+			$this->db->prepare($query);
+			$this->db->sth->bind_param('s', $username);
+			$this->db->execute();
+			
+			return $this->db->getResult();
 		}
 	}
 	
-	public function petugas($data, $files){ // proses tambah laporan
-		$this->db->dbh->real_escape_string(extract($data));
+	public function petugas(){ // proses tambah laporan
+		$this->db->dbh->real_escape_string(extract($_POST));
 		
 		if (isset($addpetugas)) { // check ketika button submit di tekan pada form
 			do { // generate id laporan yang unik
 				$this->uniqID = strtoupper('ptgs' . substr(md5(uniqid()), 25));
-				if ($this->checkPetugas($this->uniqID, '') != $this->uniqID) { // chek ketika id tersedia
+				if ($this->checkPetugas($this->uniqID, NULL) != $this->uniqID) { // chek ketika id tersedia
 					break;
 				}
-			} while ($this->checkPetugas($this->uniqID, '') == !NULL);
+			} while ($this->checkPetugas($this->uniqID, NULL) == !NULL);
 			
 			$_SESSION['reg'] = [
 				'name' => $name,
@@ -124,15 +123,13 @@ class Daftar_model{
 				'phone' => $phone,
 			]; // buat session pada form (untuk kondisi ketika gagal)
 			
-			$level = '2';
-			
-			if (isset($files)) { // ketika masyarakat menyertakan gambar
-				if ($files['photo']['error'] == 0) { // cek file tidak ada masalah
-					$extension = pathinfo($files['photo']['name'], PATHINFO_EXTENSION);
+			if (isset($_FILES)) { // ketika masyarakat menyertakan gambar
+				if ($_FILES['photo']['error'] == 0) { // cek file tidak ada masalah
+					$extension = pathinfo($_FILES['photo']['name'], PATHINFO_EXTENSION);
 					if (in_array($extension, ['jpg', 'jpeg'])) { // cek ekstensi gambar
-						if ($files['photo']['size'] <= 2048000) { // cek ukuran gambar
+						if ($_FILES['photo']['size'] <= 2048000) { // cek ukuran gambar
 							$photo = $this->uniqID . '.jpg';
-							if (!move_uploaded_file($files['photo']['tmp_name'], 'assets/img/users/' . $photo)) {
+							if (!move_uploaded_file($_FILES['photo']['tmp_name'], 'assets/img/users/' . $photo)) {
 								Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
 								return;
 							}
@@ -149,10 +146,11 @@ class Daftar_model{
 				}
 			}
 		
-			if ($this->checkPetugas('', $username) == TRUE) {
+			if ($this->checkPetugas(NULL, $username) == NULL) {
 				if (strlen($password) >= 8) {
 					if ($password == $repass) {
 						$password = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
+						$level = 2;
 						$query = "INSERT INTO petugas VALUES(?, ?, ?, ?, ?, ?)";
 						$this->db->prepare($query);
 						$this->db->sth->bind_param('ssssss', $this->uniqID, $name, $username, $password, $phone, $level);
@@ -181,23 +179,28 @@ class Daftar_model{
 		}
 	}
 	
-	public function checkPetugas($id = '', $username = ''){ // proses cek id
-		if ($id != '') {
+	public function checkPetugas($id = NULL, $username = NULL){ // proses cek id
+		if ($id != NULL) {
 			$query = "SELECT id_petugas FROM petugas WHERE id_petugas = ?";
 			$this->db->prepare($query);
 			$this->db->sth->bind_param('s', $id);
 			$this->db->execute();
-			if ($this->db->getResult() !== NULL) {
-				return $this->db->row[0]['id_petugas'];
-			};
-		}else if ($username != '') {
-			$query = "SELECT username FROM petugas WHERE username = ?";
+			$this->db->getResult();
+			
+			return $this->db->row[0]['id_petugas'];
+		}else if ($username != NULL) {
+			$query = 'SELECT username FROM masyarakat WHERE username = ?';
 			$this->db->prepare($query);
 			$this->db->sth->bind_param('s', $username);
 			$this->db->execute();
-			if ($this->db->getResult() == NULL) {
-				return true;
-			};
+			$this->db->getResult();
+			
+			$query = 'SELECT username FROM petugas WHERE username = ?';
+			$this->db->prepare($query);
+			$this->db->sth->bind_param('s', $username);
+			$this->db->execute();
+			
+			return $this->db->getResult();
 		}
 	}
 }

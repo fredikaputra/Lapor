@@ -8,10 +8,10 @@ class Pengaturan extends Controller{
 			$data['controller'] = __CLASS__;
 			
 			// ambil data masyarakat
-			$data['name'] = $this->model('Data_model')->masyarakat($_SESSION['masyarakatNIK'])[0]['nama'];
-			$data['username'] = $this->model('Data_model')->masyarakat($_SESSION['masyarakatNIK'])[0]['username'];
-			$data['nik'] = $this->model('Data_model')->masyarakat($_SESSION['masyarakatNIK'])[0]['nik'];
-			$data['phone'] = $this->model('Data_model')->masyarakat($_SESSION['masyarakatNIK'])[0]['telp'];
+			$data['name'] = $this->model('Data_model')->masyarakat()[0]['nama'];
+			$data['username'] = $this->model('Data_model')->masyarakat()[0]['username'];
+			$data['nik'] = $this->model('Data_model')->masyarakat()[0]['nik'];
+			$data['phone'] = $this->model('Data_model')->masyarakat()[0]['telp'];
 			$data['photo'] = $_SESSION['masyarakatNIK'] . '.jpg';
 			
 			$this->view('template/header', $data);
@@ -33,8 +33,8 @@ class Pengaturan extends Controller{
 			$data['controller'] = __CLASS__;
 			
 			// ambil data masyarakat
-			$data['name'] = $this->model('Data_model')->masyarakat($_SESSION['masyarakatNIK'])[0]['nama'];
-			$data['username'] = $this->model('Data_model')->masyarakat($_SESSION['masyarakatNIK'])[0]['username'];
+			$data['name'] = $this->model('Data_model')->masyarakat()[0]['nama'];
+			$data['username'] = $this->model('Data_model')->masyarakat()[0]['username'];
 			$data['photo'] = $_SESSION['masyarakatNIK'] . '.jpg';
 			
 			$this->view('template/header', $data);
@@ -56,8 +56,8 @@ class Pengaturan extends Controller{
 			$data['controller'] = __CLASS__;
 			
 			// ambil data masyarakat
-			$data['name'] = $this->model('Data_model')->masyarakat($_SESSION['masyarakatNIK'])[0]['nama'];
-			$data['username'] = $this->model('Data_model')->masyarakat($_SESSION['masyarakatNIK'])[0]['username'];
+			$data['name'] = $this->model('Data_model')->masyarakat()[0]['nama'];
+			$data['username'] = $this->model('Data_model')->masyarakat()[0]['username'];
 			$data['photo'] = $_SESSION['masyarakatNIK'] . '.jpg';
 			
 			$this->view('template/header', $data);
@@ -79,9 +79,9 @@ class Pengaturan extends Controller{
 			$data['controller'] = __CLASS__;
 			
 			// ambil data masyarakat
-			$data['name'] = $this->model('Data_model')->masyarakat($_SESSION['masyarakatNIK'])[0]['nama'];
-			$data['username'] = $this->model('Data_model')->masyarakat($_SESSION['masyarakatNIK'])[0]['username'];
-			$data['phone'] = $this->model('Data_model')->masyarakat($_SESSION['masyarakatNIK'])[0]['telp'];
+			$data['name'] = $this->model('Data_model')->masyarakat()[0]['nama'];
+			$data['username'] = $this->model('Data_model')->masyarakat()[0]['username'];
+			$data['phone'] = $this->model('Data_model')->masyarakat()[0]['telp'];
 			$data['photo'] = $_SESSION['masyarakatNIK'] . '.jpg';
 			
 			$this->view('template/header', $data);
@@ -102,8 +102,8 @@ class Pengaturan extends Controller{
 			$data['controller'] = __CLASS__;
 			
 			// ambil data masyarakat
-			$data['name'] = $this->model('Data_model')->masyarakat($_SESSION['masyarakatNIK'])[0]['nama'];
-			$data['username'] = $this->model('Data_model')->masyarakat($_SESSION['masyarakatNIK'])[0]['username'];
+			$data['name'] = $this->model('Data_model')->masyarakat()[0]['nama'];
+			$data['username'] = $this->model('Data_model')->masyarakat()[0]['username'];
 			$data['photo'] = $_SESSION['masyarakatNIK'] . '.jpg';
 			
 			$this->view('template/header', $data);
@@ -117,19 +117,25 @@ class Pengaturan extends Controller{
 		}
 	}
 	
-	public function proccess($setting){
-		if ($setting == 'nama') {
-			$this->model('Setting_model')->name($_POST);
-			header('location: ' . BASEURL . '/pengaturan/nama');
-		}else if ($setting == 'username') {
-			$this->model('Setting_model')->username($_POST);
-			header('location: ' . BASEURL . '/pengaturan/username');
-		}else if ($setting == 'phone') {
-			$this->model('Setting_model')->phone($_POST);
-			header('location: ' . BASEURL . '/pengaturan/telepon');
-		}else if ($setting == 'photo') {
-			$this->model('Setting_model')->photo($_POST, $_FILES);
-			header('location: ' . BASEURL . '/pengaturan/foto-profil');
+	public function proccess($setting = NULL){
+		if ($setting != NULL) {
+			if ($setting == 'nama') {
+				$this->model('Setting_model')->name();
+				header('location: ' . BASEURL . '/pengaturan/nama');
+			}else if ($setting == 'username') {
+				$this->model('Setting_model')->username();
+				header('location: ' . BASEURL . '/pengaturan/username');
+			}else if ($setting == 'phone') {
+				$this->model('Setting_model')->phone();
+				header('location: ' . BASEURL . '/pengaturan/telepon');
+			}else if ($setting == 'photo') {
+				$this->model('Setting_model')->photo();
+				header('location: ' . BASEURL . '/pengaturan/foto-profil');
+			}else {
+				$this->index();
+			}
+		}else {
+			$this->index();
 		}
 	}
 }

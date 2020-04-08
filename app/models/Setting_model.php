@@ -8,8 +8,8 @@ class Setting_model{
 		$this->nik = $_SESSION['masyarakatNIK'];
 	}
 	
-	public function name($data){
-		$this->db->dbh->real_escape_string(extract($data));
+	public function name(){
+		$this->db->dbh->real_escape_string(extract($_POST));
 		
 		if (isset($update)) {
 			if ($this->check($name, '', '') == 0) {
@@ -30,8 +30,8 @@ class Setting_model{
 		}
 	}
 	
-	public function username($data){
-		$this->db->dbh->real_escape_string(extract($data));
+	public function username(){
+		$this->db->dbh->real_escape_string(extract($_POST));
 		
 		if (isset($update)) {
 			if ($this->check('', $username, '') == 0) {
@@ -52,8 +52,8 @@ class Setting_model{
 		}
 	}
 	
-	public function phone($data){
-		$this->db->dbh->real_escape_string(extract($data));
+	public function phone(){
+		$this->db->dbh->real_escape_string(extract($_POST));
 		
 		if (isset($update)) {
 			if ($this->check('', '', $phone) == 0) {
@@ -75,16 +75,16 @@ class Setting_model{
 		}
 	}
 	
-	public function photo($data, $file){
-		$this->db->dbh->real_escape_string(extract($data));
+	public function photo(){
+		$this->db->dbh->real_escape_string(extract($_POST));
 		
 		if (isset($update)) {
-			if ($file['photo']['error'] == 0) {
-				$extension = strtolower(pathinfo($file['photo']['name'], PATHINFO_EXTENSION));
+			if ($_FILES['photo']['error'] == 0) {
+				$extension = strtolower(pathinfo($_FILES['photo']['name'], PATHINFO_EXTENSION));
 				$photo = $_SESSION['masyarakatNIK'] . '.jpg';
 				if ($extension == 'jpg' || $extension == 'jpeg') {
-					if ($file['photo']['size'] <= 2048000) {
-						if (move_uploaded_file($file['photo']['tmp_name'], 'assets/img/users/' . $photo)) {
+					if ($_FILES['photo']['size'] <= 2048000) {
+						if (move_uploaded_file($_FILES['photo']['tmp_name'], 'assets/img/users/' . $photo)) {
 							Flasher::setFlash('Berhasil! ', 'Foto profil anda telah diubah.', 'success', 'correct');
 						}else {
 							Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');

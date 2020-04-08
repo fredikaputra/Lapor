@@ -17,7 +17,7 @@ class Login extends Controller{
 	}
 	
 	public function proccess(){
-		if ($this->model('Login_model')->proccess($_POST) === TRUE) {
+		if ($this->model('Login_model')->proccess() === TRUE) {
 			if (isset($_SESSION['onLock'])) {
 				unset($_SESSION['onLock']);
 				header('location: ' . BASEURL . '/dashboard');

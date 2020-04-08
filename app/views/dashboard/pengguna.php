@@ -41,19 +41,7 @@
 							<div>
 								<span>HAK</span>
 								<select name="privilege">
-									<option value="all"
-									
-									<?php
-									
-									if (isset($_POST['privilege'])) {
-										if ($_POST['privilege'] == 'all') {
-											echo 'selected';
-										}
-									}
-									
-									?>
-									
-									>Semua</option>
+									<option>Semua</option>
 									<option value="admin"
 									
 									<?php
@@ -98,19 +86,7 @@
 							<div>
 								<span>SORTIR</span>
 								<select name="sort">
-									<option value="nameASC"
-									
-									<?php
-									
-									if (isset($_POST['sort'])) {
-										if ($_POST['sort'] == 'nameASC') {
-											echo 'selected';
-										}
-									}
-									
-									?>
-									
-									>Nama (A - Z)</option>
+									<option value="nameASC">Nama (A - Z)</option>
 									<option value="nameDESC"
 									
 									<?php
@@ -129,20 +105,7 @@
 							<div>
 								<span>TAMPIL</span>
 								<select name="show">
-									<option value="all">Semua</option>
-									<option value="10"
-									
-									<?php
-									
-									if (isset($_POST['show'])) {
-										if ($_POST['show'] == '10') {
-											echo 'selected';
-										}
-									}
-									
-									?>
-									
-									>10</option>
+									<option value="10">10</option>
 									<option value="20"
 									
 									<?php
@@ -182,11 +145,24 @@
 									?>
 									
 									>100</option>
+									<option value="all"
+									
+									<?php
+									
+									if (isset($_POST['show'])) {
+										if ($_POST['show'] == 'all') {
+											echo 'selected';
+										}
+									}
+									
+									?>
+									
+									>Semua</option>
 								</select>
 							</div>
 						</div>
 						<div class="footer">
-							<button type="submit" name="reset">Atur Ulang</button>
+							<a href="<?= BASEURL ?>/dashboard/pengguna">Atur Ulang</a>
 							<button type="submit" name="filter">Filter</button>
 						</div>
 					</div>
@@ -215,7 +191,7 @@
 								<?php
 								
 								if (file_exists('assets/img/users/' . $user['id'] . '.jpg')) {
-									?><img src="<?= BASEURL ?>/assets/img/users/<?= $user['id'] . '.jpg' ?>?=<?= filemtime('assets/img/users/' . $data['photo']) ?>"><?php
+									?><img src="<?= BASEURL ?>/assets/img/users/<?= $user['id'] . '.jpg' ?>?=<?= filemtime('assets/img/users/' . $user['id'] . '.jpg') ?>"><?php
 								}else {
 									?><img src="<?= BASEURL ?>/assets/img/users/default.png" alt=""><?php
 								}

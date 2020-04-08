@@ -7,36 +7,34 @@ class Data_model{
 		$this->db = new Database;
 	}
 	
-	public function petugas($id){ // ambil data petugas
+	public function petugas(){ // ambil data petugas
 		$query = "SELECT * FROM petugas WHERE id_petugas = ?";
 		$this->db->prepare($query);
-		$this->db->sth->bind_param('s', $id);
+		$this->db->sth->bind_param('s', $_SESSION['petugasID']);
 		$this->db->execute();
-		if ($this->db->getResult() == !NULL) {
-			return $this->db->row;
-		}
+		$this->db->getResult();
+		return $this->db->row;
 	}
 	
-	public function masyarakat($nik){ // ambil data masyarakat
+	public function masyarakat(){ // ambil data masyarakat
 		$query = "SELECT * FROM masyarakat WHERE nik = ?";
 		$this->db->prepare($query);
-		$this->db->sth->bind_param('s', $nik);
+		$this->db->sth->bind_param('s', $_SESSION['masyarakatNIK']);
 		$this->db->execute();
-		if ($this->db->getResult() == !NULL) {
-			return $this->db->row;
-		}
+		$this->db->getResult();
+		return $this->db->row;
 	}
 	
-	public function laporan($id = '', $nik = '', $limit = ''){ // ambil data pengaduan
-		if ($id != '') {
+	public function laporan($id = NULL, $nik = NULL, $limit = NULL){ // ambil data pengaduan
+		if ($id != NULL) {
 			$query = "SELECT pengaduan.*, nama FROM pengaduan JOIN masyarakat USING (nik) WHERE id_pengaduan = ?";
 			$this->db->prepare($query);
 			$this->db->sth->bind_param('s', $id);
-		}else if ($nik != '') {
+		}else if ($nik != NULL) {
 			$query = "SELECT pengaduan.*, nama FROM pengaduan JOIN masyarakat USING (nik) WHERE nik = ?";
 			$this->db->prepare($query);
 			$this->db->sth->bind_param('s', $nik);
-		}else if ($limit != '') {
+		}else if ($limit != NULL) {
 			$query = "SELECT pengaduan.*, nama FROM pengaduan JOIN masyarakat USING (nik) ORDER BY tgl_pengaduan DESC LIMIT ?";
 			$this->db->prepare($query);
 			$this->db->sth->bind_param('s', $limit);
@@ -46,9 +44,8 @@ class Data_model{
 		}
 		
 		$this->db->execute();
-		if ($this->db->getResult() == !NULL) {
-			return $this->db->row;
-		}
+		$this->db->getResult();
+		return $this->db->row;
 	}
 	
 	public function tanggapan($id){ // ambil data tanggapan
@@ -56,9 +53,8 @@ class Data_model{
 		$this->db->prepare($query);
 		$this->db->sth->bind_param('s', $id);
 		$this->db->execute();
-		if ($this->db->getResult() == !NULL) {
-			return $this->db->row;
-		}
+		$this->db->getResult();
+		return $this->db->row;
 	}
 	
 	public function pengguna($select = ''){ // ambil data pengguna
@@ -66,27 +62,25 @@ class Data_model{
 			$query = "SELECT (SELECT COUNT(*) FROM masyarakat ) + (SELECT COUNT(*) FROM petugas ) AS totalRows";
 			$this->db->prepare($query);
 			$this->db->execute();
-			if ($this->db->getResult() == !NULL) {
-				return $this->db->row[0]['totalRows'];
-			}
+			$this->db->getResult();
+			return $this->db->row[0]['totalRows'];
 		}else {
 			$query = "SELECT id_petugas AS id, nama_petugas AS nama, username, telp, level FROM petugas
 						UNION
-						SELECT nik AS id, nama, username, telp, telp AS level FROM masyarakat ORDER BY nama";
+						SELECT nik AS id, nama, username, telp, telp AS level FROM masyarakat ORDER BY nama LIMIT 10";
 			$this->db->prepare($query);
 			$this->db->execute();
-			if ($this->db->getResult() == !NULL) {
-				return $this->db->row;
-			}
+			$this->db->getResult();
+			return $this->db->row;
 		}
 	}
 	
 	public static function timeCounter($time){
 		$diff = date_diff(date_create(date('Y-m-d H:i:s', $time)), date_create(date('Y-m-d H:i:s')));
 		if ($diff->y) {
-			echo date('H:i d/m/Y', $time);
+			return date('d/m/Y', $time);
 		}else if ($diff->m) {
-			return $diff->m . ' bulan yang lalu';
+			return strftime("%d %B", $time);
 		}else if ($diff->d) {
 			return $diff->d . ' hari yang lalu';
 		}else if ($diff->h) {
@@ -95,6 +89,8 @@ class Data_model{
 			return $diff->i . ' menit yang lalu';
 		}else if ($diff->s) {
 			return $diff->s . ' detik yang lalu';
+		}else {
+			return 'Baru saja';
 		}
 	}
 }
