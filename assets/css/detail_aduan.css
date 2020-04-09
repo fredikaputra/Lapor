@@ -72,13 +72,13 @@ main .content div .report > div > span{
 
 main .content div .report > div > img{
 	width: 100%;
-	border-top: .5px solid var(--soft-light-color);
+	border-top: 1px solid #00000025;
 	margin-top: 20px;
 	padding-top: 20px;
 }
 
 main .content div .report > div > span:last-of-type{
-	border-top: .5px solid var(--soft-light-color);
+	border-top: 1px solid #00000025;
 	display: block;
 	margin-top: 20px;
 	padding-top: 20px;
@@ -89,12 +89,14 @@ main .content div .report div > span strong{
 }
 
 main .content div .report div p{
-	margin-top: 1cm;
+	margin-top: 20px;
+	padding-top: 20px;
 	text-align: justify;
 	letter-spacing: 1px;
 	line-height: 30px;
 	color: var(--soft-dark-color);
 	white-space: pre-line;
+	border-top: 1px solid #00000025;
 }
 
 main .content div .action form{

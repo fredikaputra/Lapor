@@ -10,7 +10,7 @@ class Riwayat_aduan extends Controller{
 			// ambil data masyarakat
 			$data['name'] = $this->model('Data_model')->masyarakat()[0]['nama'];
 			$data['username'] = $this->model('Data_model')->masyarakat()[0]['username'];
-			$data['laporan'] = $this->model('Data_model')->laporan(NULL, NULL, NULL);
+			$data['laporan'] = $this->model('Data_model')->laporan(NULL, $_SESSION['masyarakatNIK'], NULL);
 			$data['photo'] = $_SESSION['masyarakatNIK'] . '.jpg';
 			
 			$this->view('template/header', $data);

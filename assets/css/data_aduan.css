@@ -1,72 +1,136 @@
-main .content{
+main .content .header h2{
+	color: var(--primary-color);
+	margin-bottom: 5px;
+	font-size: 25px;
+}
+
+main .content .header span{
+	color: var(--soft-dark-color);
+	font-size: 15px;
+	letter-spacing: .5px;
+}
+
+main .content > div:last-of-type{
+	display: grid;
+	grid-template-columns: 10cm 1fr;
+	grid-gap: 1cm;
+	margin-top: 1cm;
+}
+
+main .content div:last-of-type .filter > div{
+	background: var(--light-color);
+	box-shadow: 0 5px 10px #0000000F;
+	border-radius: 1cm 0;
+	padding: 20px;
+}
+
+main .content div:last-of-type .filter div .header span{
+	display: block;
+	padding: 20px;
+	font-size: 13px;
+	color: var(--soft-dark-color);
+	font-weight: bold;
+}
+
+main .content div:last-of-type .filter div .filter-menu{
+	border-bottom: 1px solid #00000020;
+	border-top: 1px solid #00000020;
+	padding-bottom: 10px;
+}
+
+main .content div:last-of-type .filter div .filter-menu div{
+	padding: 10px 30px;
+}
+
+main .content div:last-of-type .filter div .filter-menu div span{
+	font-size: 12px;
+	font-weight: bold;
+	letter-spacing: 1px;
+	color: var(--soft-dark-color);
+}
+
+main .content div:last-of-type .filter div .filter-menu div select{
+	width: 100%;
+	padding: 10px;
+	margin-top: 5px;
+	font-size: 12px;
+	letter-spacing: 1px;
+	border-radius: 5px;
+	border: 1px solid var(--soft-light-color);
+	color: var(--soft-dark-color);
+	cursor: pointer;
+}
+
+main .content div:last-of-type .filter div .footer{
+	padding-top: 20px;
 	text-align: center;
 }
 
-main .content > div{
+main .content div:last-of-type .filter div .footer > *{
+	background: var(--primary-color);
+	color: var(--light-color);
+	border: none;
+	padding: 10px;
+	width: 2.6cm;
+	margin: 0 5px;
+	font-weight: bold;
+	border-radius: 5px;
+	font-size: 13px;
+	text-align: center;
+}
+
+main .content div .data > div{
 	background: var(--light-color);
 	box-shadow: 0 5px 10px #0000000F;
 }
 
-main .content > div h2{
-	padding: 1cm 0 5px;
-}
-
-main .content > div > span{
-	color: var(--soft-dark-color);
-	letter-spacing: 1px;
-}
-
-main .content div .data{
-	margin-top: 1cm;
-}
-
-main .content div .data > div{
+main .content div .data > div > div{
 	position: relative;
 	border-top: .5px solid #00000050;
 	text-align: left;
 }
 
-main .content div .data > div:hover{
+main .content div .data div > div:hover{
 	background-color: var(--secondary-color);
 }
 
-main .content div .data > div > a{
+main .content div .data div > div > a{
 	display: grid;
 	grid-template-columns: 2cm 6cm 1fr 6cm;
 }
 
-main .content div .data div a div:not(.action){
+main .content div .data div div a div:not(.action){
 	padding: 20px;
 	color: var(--soft-dark-color);
 }
 
-main .content div .data div a div:first-of-type{
+main .content div .data div div a div:first-of-type{
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	line-height: 0;
 }
 
-main .content div .data div a div:nth-of-type(2),
-main .content div .data div a div:nth-of-type(3){
+main .content div .data div div a div:nth-of-type(2),
+main .content div .data div div a div:nth-of-type(3){
 	min-width: 0;
 	align-self: center;
 }
 
-main .content div .data div a div:nth-of-type(2) span,
-main .content div .data div a div:nth-of-type(3) p{
+main .content div .data div div a div:nth-of-type(2) span,
+main .content div .data div div a div:nth-of-type(3) p{
 	display: block;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
 
-main .content div .data div a div:nth-of-type(4){
+main .content div .data div div a div:nth-of-type(4){
 	text-align: right;
 	padding-right: 30px;
 }
 
-main .content div .data div div.action{
+main .content div .data div div div.action{
 	z-index: 1;
 	position: absolute;
 	top: 50%;
@@ -78,21 +142,21 @@ main .content div .data div div.action{
 	text-align: center;
 }
 
-main .content div .data > div:hover div.action{
+main .content div .data div > div:hover div.action{
 	display: block;
 }
 
-main .content div .data div div.action a{
+main .content div .data div div div.action a{
 	display: inline-block;
 	line-height: 0;
 	border-radius: 50%;
 	padding: 10px;
 }
 
-main .content div .data div div.action a:hover{
+main .content div .data div div div.action a:hover{
 	background-color: var(--soft-light-color);
 }
 
-main .content div .data div div.action a img{
+main .content div .data div div div.action a img{
 	width: 25px;
 }

@@ -167,7 +167,7 @@ main .content form .top .filter-menu .footer > *{
 
 main .content form .body > div{
 	display: grid;
-	grid-template-columns: 2cm 1fr 1fr 1fr 1fr 1fr 1.8cm;
+	grid-template-columns: 2cm 10cm 1fr 1fr 1fr 1fr 1.8cm;
 }
 
 main .content form .body > div > div{

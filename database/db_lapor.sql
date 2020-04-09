@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 08, 2020 at 06:10 PM
+-- Generation Time: Apr 09, 2020 at 12:23 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -93,10 +93,9 @@ CREATE TABLE `petugas` (
 
 INSERT INTO `petugas` (`id_petugas`, `nama_petugas`, `username`, `password`, `telp`, `level`) VALUES
 ('PTGS54C347E', 'Angga Pratista Ambara', 'pratista', '$2y$12$.Jgx1r6QavJ/ZBTWsLiNK.36mj2NK9IW3ty.k7FgXugwUBxf0uhWy', '0852783549', '2'),
-('PTGS88CA943', 'asj;flkd', 'fjk', '$2y$12$PwwYALI8JznVYOikAzLGw.oplx7Ys5nAlOo.ogXNCMMjFntVvTftG', '98', '2'),
+('PTGSA686F33', 'Aldi Pradana', 'pradana', '$2y$12$srw6S.cgmyV2bNSG7YGwMefs90bXRrXqOYh9g3u.52/Xv.SNlan4m', '085723984570', '2'),
 ('PTGSBCC908E', 'Ni Putu Ksari Purnamayani', 'ksari', '$2y$12$hFlYn5TYlDKMLvCc68cSLutr7a4dleg8C.C.J3FUCrDnlFAUt1EDC', '085823479', '2'),
 ('PTGSBCC908F', 'I Putu Fredika Putra', 'redtra', '$2y$12$Hi71Po7OsKIIAtJgSD9f7uiFUojmI/BYvrsPZJEdC/XakUio9k8AC', '085829303379', '1'),
-('PTGSBCC908G', 'Aldi Pradana', 'pradana', '$2y$12$Hi71Po7OsKIIAtJgSD9f7uiFUojmI/BYvrsPZJEdC/XakUio9k8AC', '085829683379', '2'),
 ('PTGSBCC9D8E', 'Muqorroba Lada Sattar', 'ladasattar', '$2y$12$Hi71Po7OsKIIAtJgSD9f7uiFUojmI/BYvrsPZJEdC/XakUio9k8AC', '085089683379', '2');
 
 -- --------------------------------------------------------
