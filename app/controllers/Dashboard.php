@@ -29,7 +29,7 @@ class Dashboard extends Controller{
 		}
 	}
 	
-	public function data_aduan($idpengaduan = NULL, $option = NULL){
+	public function data_aduan($param1 = NULL, $param2 = NULL){
 		if (isset($_SESSION['petugasID'])) {
 			$data['photo'] = $_SESSION['petugasID'] . '.jpg';
 			$data['method'] = __FUNCTION__;
@@ -37,7 +37,7 @@ class Dashboard extends Controller{
 			// ambil data
 			$data['petugas'] = $this->model('Data_model')->petugas()[0];
 			
-			if ($idpengaduan == NULL) { // tampilkan semua data aduan
+			if ($param1 == NULL) { // tampilkan semua data aduan
 				$data['webtitle'] = 'Dashboard - Data Aduan';
 				$data['css'] = ['dashboard_header.css', 'data_aduan.css', 'base.css'];
 				
@@ -48,19 +48,13 @@ class Dashboard extends Controller{
 				$this->view('dashboard/header', $data);
 				$this->view('dashboard/data_aduan', $data);
 				$this->view('template/footer');
-			}else { // tampilkan satu data aduan
-				$data['laporan'] = $this->model('Data_model')->laporan($idpengaduan, '', '')[0];
+			}else if ($param1 != NULL && $param2 == NULL) { // tampilkan satu data aduan
+				$data['laporan'] = $this->model('Data_model')->laporan($param1, '', '')[0];
 				
 				if ($data['laporan'] != NULL) {
-					$data['idpengaduan'] = $idpengaduan;
+					$data['idpengaduan'] = $param1;
 					$data['webtitle'] = 'Data Aduan ' . $data['idpengaduan'];
 					$data['css'] = ['dashboard_header.css', 'detail_aduan.css', 'base.css'];
-					
-					if ($option == 'print') {
-						$data['js'] = ['print.js', 'directprint.js'];
-					}else {
-						$data['js'] = ['print.js'];
-					}
 					
 					// ambil data
 					$data['tanggapan'] = $this->model('Data_model')->tanggapan($data['idpengaduan']);
@@ -70,6 +64,32 @@ class Dashboard extends Controller{
 					$this->view('dashboard/detail_aduan', $data);
 					$this->view('template/footer', $data);
 				}else{
+					$this->data_aduan();
+				}
+			}else if ($param1 != NULL && $param2 != NULL) { // tampilkan satu data aduan
+				if ($param1 == 'cetak') {
+					$data['laporan'] = $this->model('Data_model')->laporan($param2, '', '')[0];
+					
+					if ($data['laporan'] != NULL) {
+						$data['idpengaduan'] = $param2;
+						$data['webtitle'] = 'Data Aduan ' . $data['idpengaduan'];
+						$data['css'] = ['dashboard_header.css', 'detail_aduan.css', 'base.css'];
+						$data['js'] = ['print.js', 'directprint.js'];
+						
+						// ambil data
+						$data['tanggapan'] = $this->model('Data_model')->tanggapan($data['idpengaduan']);
+						
+						$this->view('template/header', $data);
+						$this->view('dashboard/header', $data);
+						$this->view('dashboard/detail_aduan', $data);
+						$this->view('template/footer', $data);
+					}else{
+						$this->data_aduan();
+					}
+				}else if ($param1 == 'hapus') {
+					$this->model('Delete_model')->laporan($param2);
+					header('location: ' . BASEURL . '/dashboard/data-aduan');
+				}else {
 					$this->data_aduan();
 				}
 			}

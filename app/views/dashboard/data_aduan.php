@@ -6,13 +6,14 @@
 				<?php
 				
 				if ($data['laporan'] == !NULL) {
+					$no = 1;
 					foreach ($data['laporan'] as $laporan) {
 						?>
 						
 						<div>
 							<a href="<?= BASEURL ?>/dashboard/data-aduan/<?= $laporan['id_pengaduan'] ?>">
 								<div>
-									<input type="checkbox">
+									<span><?= $no ?></span>
 								</div>
 								<div>
 									<span><?= $laporan['nama'] ?></span>
@@ -28,16 +29,17 @@
 								<a href="<?= BASEURL ?>/dashboard/data-aduan/<?= $laporan['id_pengaduan'] ?>">
 									<img src="<?= BASEURL ?>/assets/img/icon/eye.png">
 								</a>
-								<a href="<?= BASEURL ?>/dashboard/data-aduan/<?= $laporan['id_pengaduan'] ?>/print">
+								<a href="<?= BASEURL ?>/dashboard/data-aduan/cetak/<?= $laporan['id_pengaduan'] ?>">
 									<img src="<?= BASEURL ?>/assets/img/icon/print.png">
 								</a>
-								<a href="<?= BASEURL ?>/dashboard/data-aduan/<?= $laporan['id_pengaduan'] ?>">
+								<a href="<?= BASEURL ?>/dashboard/data-aduan/hapus/<?= $laporan['id_pengaduan'] ?>">
 									<img src="<?= BASEURL ?>/assets/img/icon/bin.png">
 								</a>
 							</div>
 						</div>
 						
 						<?php
+						$no++;
 					}
 				}else{
 					?>
