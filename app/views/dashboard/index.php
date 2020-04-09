@@ -10,29 +10,36 @@
 					<div>
 						<img src="<?= BASEURL ?>/assets/img/icon/circle-user.png">
 						<div>
-							<strong>28</strong>
-							<span>Pengguna</span>
+							<strong><?= $data['tableRow']['masyarakat'] ?></strong>
+							<span>Masyarakat</span>
+						</div>
+					</div>
+					<div>
+						<img src="<?= BASEURL ?>/assets/img/icon/circle-user-name.png">
+						<div>
+							<strong><?= $data['tableRow']['petugas'] ?></strong>
+							<span>Petugas</span>
 						</div>
 					</div>
 					<div>
 						<img src="<?= BASEURL ?>/assets/img/icon/paper.png">
 						<div>
-							<strong>28</strong>
-							<span>Laporan</span>
+							<strong><?= $data['tableRow']['laporan'] ?></strong>
+							<span>Laporan Masuk</span>
 						</div>
 					</div>
 					<div>
 						<img src="<?= BASEURL ?>/assets/img/icon/information-desk.png">
 						<div>
-							<strong>28</strong>
-							<span>Status Proses</span>
+							<strong><?= $data['tableRow']['proses'] ?></strong>
+							<span>Laporan Dalam Proses</span>
 						</div>
 					</div>
 					<div>
 						<img src="<?= BASEURL ?>/assets/img/icon/tick.png">
 						<div>
-							<strong>28</strong>
-							<span>Status Selesai</span>
+							<strong><?= $data['tableRow']['selesai'] ?></strong>
+							<span>Kasus Laporan Selesai</span>
 						</div>
 					</div>
 				</div>

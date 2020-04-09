@@ -12,6 +12,13 @@ class Dashboard extends Controller{
 			$data['petugas'] = $this->model('Data_model')->petugas()[0];
 			$data['photo'] = $_SESSION['petugasID'] . '.jpg';
 			$data['laporan'] = $this->model('Data_model')->laporan(NULL, NULL, '5');
+			$data['tableRow'] = [
+				'masyarakat' => $this->model('Data_model')->tableRow('masyarakat', NULL, NULL),
+				'petugas' => $this->model('Data_model')->tableRow('petugas', NULL, NULL),
+				'laporan' => $this->model('Data_model')->tableRow('pengaduan', NULL, NULL),
+				'proses' => $this->model('Data_model')->tableRow('pengaduan', NULL, "status = '0'"),
+				'selesai' => $this->model('Data_model')->tableRow('pengaduan', NULL, "status = '1'")
+			];
 			
 			$this->view('template/header', $data);
 			$this->view('dashboard/header', $data);
@@ -81,7 +88,7 @@ class Dashboard extends Controller{
 				// ambil data
 				$data['petugas'] = $this->model('Data_model')->petugas()[0];
 				$data['pengguna'] = $this->model('Data_model')->pengguna();
-				$data['users'] = $this->model('Data_model')->pengguna('count');
+				$data['users'] = $this->model('Data_model')->tableRow('masyarakat', 'petugas', NULL);
 				
 				$data['photo'] = $_SESSION['petugasID'] . '.jpg';
 				

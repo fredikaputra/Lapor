@@ -59,11 +59,7 @@ class Data_model{
 	
 	public function pengguna($select = ''){ // ambil data pengguna
 		if ($select == 'count') {
-			$query = "SELECT (SELECT COUNT(*) FROM masyarakat ) + (SELECT COUNT(*) FROM petugas ) AS totalRows";
-			$this->db->prepare($query);
-			$this->db->execute();
-			$this->db->getResult();
-			return $this->db->row[0]['totalRows'];
+			
 		}else {
 			$query = "SELECT id_petugas AS id, nama_petugas AS nama, username, telp, level FROM petugas
 						UNION
@@ -73,6 +69,23 @@ class Data_model{
 			$this->db->getResult();
 			return $this->db->row;
 		}
+	}
+	
+	public function tableRow($tb1, $tb2 = NULL, $cond = NULL){
+		$query = "SELECT COUNT(*) AS totalRows FROM $tb1";
+		
+		if ($tb2 != NULL) {
+			$query = "SELECT (SELECT COUNT(*) FROM $tb1 ) + (SELECT COUNT(*) FROM $tb2 ) AS totalRows";
+		}
+		
+		if ($cond != NULL) {
+			$query .= " WHERE $cond";
+		}
+		
+		$this->db->prepare($query);
+		$this->db->execute();
+		$this->db->getResult();
+		return $this->db->row[0]['totalRows'];
 	}
 	
 	public static function timeCounter($time){

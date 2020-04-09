@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 06, 2020 at 10:24 AM
+-- Generation Time: Apr 08, 2020 at 06:10 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -42,7 +42,10 @@ CREATE TABLE `masyarakat` (
 
 INSERT INTO `masyarakat` (`nik`, `nama`, `username`, `password`, `telp`) VALUES
 ('2837450982374592', 'Ni Kadek Silvia', 'silvi', '$2y$12$nJ67umJCRF5UPc7J/6hAzeAINHr4CMxT85FC4z.1RJe9/RINVkv/C', '085859303379'),
-('7584100003743986', 'Hatta Afdillah Syahfar', 'hatta', '$2y$12$GYSvml.PEaQG5dEg6wl3AOCvva2jMMrT1XZ/oGpOV87cwSZbbkHUm', '085534798239');
+('4398572093475927', 'Yogi Leo Lopo', 'leo', '$2y$12$rmYiv/q1w3HR.D.sUm5HiOTCG3EADTobLtJQpqUozPLHPtkYp3aP.', '085278035443'),
+('7584100003743986', 'Hatta Afdillah Syahfar', 'hatta', '$2y$12$GYSvml.PEaQG5dEg6wl3AOCvva2jMMrT1XZ/oGpOV87cwSZbbkHUm', '085534798239'),
+('7584100003743987', 'Darma Yuda', 'yuda', '$2y$12$IijA.nD.JeTYg0U5uqmUJeSx3d004BSc20FXIw.b8m26xm5C1hqmO', '085250437878'),
+('9827345079457029', 'Gung Krisnanda', 'gungkris', '$2y$12$WdFAqi3BrrSQ3SrlyXljCuUthtIpKqheb82ZH0snol5/fn6/qrUeq', '085780594270594');
 
 -- --------------------------------------------------------
 
@@ -65,7 +68,8 @@ CREATE TABLE `pengaduan` (
 
 INSERT INTO `pengaduan` (`id_pengaduan`, `tgl_pengaduan`, `nik`, `isi_laporan`, `foto`, `status`) VALUES
 ('LPRID0BAC54A', '1586161033', '2837450982374592', 'Kak, aku mau mengadu. Kemarin kakakku memaksa aku untuk belajar. Tapi aku melawan dia, karena belajar itu membosankan bagiku. Jadi aku pergi dari rumah selama 12 hari. Selama 12 hari, aku tinggal di rumah temanku. Dia sangat baik, dia ramah, tidak suka marah. Tiba tiba, orang tuaku menghampiriku dan memarahiku di tempat, bahkan aku di pukul bagian jariku hingga luka, sakit banget. Jadi, kak aku minta tolong kak. Tangkap kedua orang tua ku, bawa mereka masuk ke penjara. OK? \r\n\r\nTerima Kasih, Kak', 'LPRID0BAC54A.jpg', '1'),
-('LPRID18AB4CB', '1586083772', '7584100003743986', 'Dengan Hormat,\r\n\r\nSalam sejahtera untuk kita sekalian, sering do\'a semoga kita semua selalu sehat walafiat dan senantiasa dalam lindungan Allah SWT. Dalam melaksanakan tugas dan aktivitas keseharian kita. Amin.Sehubungan dengan pengambil alihan lahan masyarakat menjadi lahan hutan tanaman industri (HTI) kami tidak akan keberatan akan tetapi yang menjadi pertanyaan dan juga sebagai aduan adalah proses atau realisasi pembayaran lahan sudah tidak sesuai dengan hasil sosialisasi yang di lakukan oleh pihak perusahaan yang mengelola Hutan Tanaman Industri (HTI) Pada saat sosialisasi yang di sampaikan adalah bahwa setiap lahan masyarakat yang masuk pada kawasan HTI akan di hargai dengan uang sebesar Rp. 450.000 perhektarnya.\r\nAkan tetapi pada saat proses pembayaran perusahaan membayar lahan masyarakat termasuk lahan saya di bayar hanya 9 Hektar dari keseluruhan lahan milik saya sebesar 23,5 H. Jadi luas lahan yang di gelapkan adalah 14,5 H. Bedasarkan permasalahan yang saya alami di atas maka saya merasa sudah di tipu dan di rugikan oleh pihak-pihak yang sudah masuk di dalamya. Dalam hal ini saya merasa sudah di tipu dan di rampok oleh pihak - pihak atas oknum-oknum yang memanfaatkan kebodohan saya. Oleh sebab itu saya mengadu pada Dewan Perwakilan Rakyat untuk mendapatkan kembali hak saya yang harus di penuhi oleh Perusahaan HTI. Demikian aspirasi aduan saya sampaikan berharap mendapatkan solusi dari DPRD Kab. Gorontalo.\r\n\r\nTerima Kasih.', NULL, '0'),
+('LPRID18AB4CB', '1586083772', '7584100003743986', 'Dengan Hormat,\r\n\r\nSalam sejahtera untuk kita sekalian, sering do\'a semoga kita semua selalu sehat walafiat dan senantiasa dalam lindungan Allah SWT. Dalam melaksanakan tugas dan aktivitas keseharian kita. Amin.Sehubungan dengan pengambil alihan lahan masyarakat menjadi lahan hutan tanaman industri (HTI) kami tidak akan keberatan akan tetapi yang menjadi pertanyaan dan juga sebagai aduan adalah proses atau realisasi pembayaran lahan sudah tidak sesuai dengan hasil sosialisasi yang di lakukan oleh pihak perusahaan yang mengelola Hutan Tanaman Industri (HTI) Pada saat sosialisasi yang di sampaikan adalah bahwa setiap lahan masyarakat yang masuk pada kawasan HTI akan di hargai dengan uang sebesar Rp. 450.000 perhektarnya.\r\nAkan tetapi pada saat proses pembayaran perusahaan membayar lahan masyarakat termasuk lahan saya di bayar hanya 9 Hektar dari keseluruhan lahan milik saya sebesar 23,5 H. Jadi luas lahan yang di gelapkan adalah 14,5 H. Bedasarkan permasalahan yang saya alami di atas maka saya merasa sudah di tipu dan di rugikan oleh pihak-pihak yang sudah masuk di dalamya. Dalam hal ini saya merasa sudah di tipu dan di rampok oleh pihak - pihak atas oknum-oknum yang memanfaatkan kebodohan saya. Oleh sebab itu saya mengadu pada Dewan Perwakilan Rakyat untuk mendapatkan kembali hak saya yang harus di penuhi oleh Perusahaan HTI. Demikian aspirasi aduan saya sampaikan berharap mendapatkan solusi dari DPRD Kab. Gorontalo.\r\n\r\nTerima Kasih.', NULL, '1'),
+('LPRID582BEC9', '1586356823', '4398572093475927', 'Halo pemerintah,\r\n\r\nSaya mau lapor pak, sebulan yang lalu saya beli gitar di toko online. Nyampe nya lama banget kira kira 3 minggu baru nyampe. Awalnya sih saya udh seneng pas kiriman saya udh dateng. Tapi kesenangan saya tidak bertahan lama, barang yang saya beli tidak sesuai dengan yang saya pesan. Gitarnya jelek sekali yang dikirim, tidak sesuai dengan gambar yang ada di toko online tersebut.\r\n\r\nJadi saya hubungi penjualnya tapi tidak di jawab. Saya telpon tidak diangkat, saya email tidak dibalas, saya kirim sms tidak punya pulsa. Ini alamat toko onlinenya: https://www.tokopedia.com/iramamusicstore/yamaha-gitar-silent-slg200s-slg-200s-200-s-akustik-elektrik. Jadi saya minta tolong, saya merasa dirugikan (kurang lebih 7 Juta hilang). Saya butuh keadilan.\r\n\r\nSalam,\r\nYogi Leo', 'LPRID582BEC9.jpg', '1'),
 ('LPRIDD05BCAD', '1586079846', '7584100003743986', 'Halo pemerintah, saya mau lapor pak. Rumah saya dibakar orang pak. Saya ngga tau kenapa dia bakar rumah saya. Saya juga ngg kenal dia pak. Ini kejadiannya tadi malem pak. Pas saya lagi masak, tiba tiba ada bau hangus. Saya kira masakan saya hangus, jadi saya masak telor aja pak, karena waktu lalu saya laper banget. Tapi pas saya ke kamar anak saya. Ternyata udh kebakar semua isinya pak. Anak saya pake headset pak jadi ngg bisa liat pak, gelap. Jadi saya bawa anak saya keluar habis itu saya pukul dia karena saya marah sama dia. Ternyata anak saya bilang dia denger kayak ada yang lempar botol ke dalam kamar nya dia. Mungkin orang itu yang bakar rumah saya. Jadi mohon bantuannya pak. Saya minta #keadilan.', 'LPRIDD05BCAD.jpeg', '1');
 
 -- --------------------------------------------------------
@@ -89,6 +93,7 @@ CREATE TABLE `petugas` (
 
 INSERT INTO `petugas` (`id_petugas`, `nama_petugas`, `username`, `password`, `telp`, `level`) VALUES
 ('PTGS54C347E', 'Angga Pratista Ambara', 'pratista', '$2y$12$.Jgx1r6QavJ/ZBTWsLiNK.36mj2NK9IW3ty.k7FgXugwUBxf0uhWy', '0852783549', '2'),
+('PTGS88CA943', 'asj;flkd', 'fjk', '$2y$12$PwwYALI8JznVYOikAzLGw.oplx7Ys5nAlOo.ogXNCMMjFntVvTftG', '98', '2'),
 ('PTGSBCC908E', 'Ni Putu Ksari Purnamayani', 'ksari', '$2y$12$hFlYn5TYlDKMLvCc68cSLutr7a4dleg8C.C.J3FUCrDnlFAUt1EDC', '085823479', '2'),
 ('PTGSBCC908F', 'I Putu Fredika Putra', 'redtra', '$2y$12$Hi71Po7OsKIIAtJgSD9f7uiFUojmI/BYvrsPZJEdC/XakUio9k8AC', '085829303379', '1'),
 ('PTGSBCC908G', 'Aldi Pradana', 'pradana', '$2y$12$Hi71Po7OsKIIAtJgSD9f7uiFUojmI/BYvrsPZJEdC/XakUio9k8AC', '085829683379', '2'),
@@ -113,9 +118,12 @@ CREATE TABLE `tanggapan` (
 --
 
 INSERT INTO `tanggapan` (`id_tanggapan`, `id_pengaduan`, `tgl_tanggapan`, `tanggapan`, `id_petugas`) VALUES
+('TGPN055AF74', 'LPRID582BEC9', '1586360078', 'Baik yogi leo, kami segera menghubungi polisi, aparat keamanan, bahkan tni untuk melakukan proses penggledahan pada penjual tersebut. Terima kasih atas laporannya. Mohon untuk menunggu instruksi selanjutnya.', 'PTGS54C347E'),
+('TGPN0BBB550', 'LPRID18AB4CB', '1586355219', 'Ok kak hatta, kami akan memproses masalah ini. Terima kasih telah melaporkan hal ini kepada kami. Tunggu informasi selanjutnya ya.', 'PTGSBCC908F'),
 ('TGPN2849C4A', 'LPRIDD05BCAD', '1586083149', 'Halo Hatta, kami telah membaca keluh kesah anda. Untuk itu, kami akan membantu menyelidiki kasus ini. Terima kasih atas laporannya. Salam Admin', 'PTGSBCC908F'),
 ('TGPN47B8B3E', 'LPRIDD05BCAD', '1586089265', 'Baik, petugas kami telah menemukan pelakunya siapa. Ternyata dia istri bapak. Kami sudah membawanya ke kantor polisi. Mohon untuk konfirmasi ke kantor polisi ya. Salam Petugas', 'PTGSBCC9D8E'),
-('TGPN4F6BB48', 'LPRID0BAC54A', '1586161283', 'Baik dek silvi, kakak akan langsung laporkan kepada polisi agar kasus ini bisa di tangani. Cepat sembuh ya. Salam Petugas', 'PTGSBCC9D8E');
+('TGPN4F6BB48', 'LPRID0BAC54A', '1586161283', 'Baik dek silvi, kakak akan langsung laporkan kepada polisi agar kasus ini bisa di tangani. Cepat sembuh ya. Salam Petugas', 'PTGSBCC9D8E'),
+('TGPN7A01E31', 'LPRID582BEC9', '1586360377', 'Saya turut sedih mendengar ceritanya kak leo, kami akan bekerja semaksimal mungkin untuk mengatasi masalah ini, jadi jangan sedih ya. Kami akan membantu kak leo sampai masalahnya tuntas.', 'PTGSBCC908E');
 
 --
 -- Indexes for dumped tables

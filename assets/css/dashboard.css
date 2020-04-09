@@ -28,7 +28,7 @@ main .content > div:first-of-type img:last-of-type{
 
 main .content > div:last-of-type{
 	display: grid;
-	grid-template-columns: 9cm 1fr;
+	grid-template-columns: 11cm 1fr;
 	grid-gap: 1cm;
 	margin-top: 1cm;
 }
@@ -39,7 +39,6 @@ main .content > div:last-of-type > .count-data > div{
 	grid-template-columns: 1fr;
 	box-shadow: 0 0 10px #0000000F;
 	border-radius: 1cm 0;
-	padding: 15px 0;
 }
 
 main .content > div:last-of-type > .count-data > div > div{
