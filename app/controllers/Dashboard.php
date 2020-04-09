@@ -80,6 +80,7 @@ class Dashboard extends Controller{
 	
 	public function pengguna($filter = NULL){
 		if (isset($_SESSION['petugasID'])) {
+			$data['users'] = $this->model('Data_model')->tableRow('masyarakat', 'petugas', NULL);
 			if ($filter == NULL) {
 				$data['webtitle'] = 'Dashboard - Pengguna';
 				$data['css'] = ['dashboard_header.css', 'pengguna.css', 'base.css'];
@@ -88,7 +89,6 @@ class Dashboard extends Controller{
 				// ambil data
 				$data['petugas'] = $this->model('Data_model')->petugas()[0];
 				$data['pengguna'] = $this->model('Data_model')->pengguna();
-				$data['users'] = $this->model('Data_model')->tableRow('masyarakat', 'petugas', NULL);
 				
 				$data['photo'] = $_SESSION['petugasID'] . '.jpg';
 				
@@ -107,7 +107,6 @@ class Dashboard extends Controller{
 					// ambil data
 					$data['petugas'] = $this->model('Data_model')->petugas()[0];
 					$data['pengguna'] = $this->model('PenggunaProccess_model')->search();
-					$data['users'] = $this->model('Data_model')->pengguna('count');
 					
 					$data['photo'] = $_SESSION['petugasID'] . '.jpg';
 					$data['searchactive'] = true;
@@ -125,7 +124,6 @@ class Dashboard extends Controller{
 						// ambil data
 						$data['petugas'] = $this->model('Data_model')->petugas()[0];
 						$data['pengguna'] = $this->model('PenggunaProccess_model')->filter();
-						$data['users'] = $this->model('Data_model')->pengguna('count');
 						
 						$data['photo'] = $_SESSION['petugasID'] . '.jpg';
 						

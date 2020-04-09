@@ -57,18 +57,14 @@ class Data_model{
 		return $this->db->row;
 	}
 	
-	public function pengguna($select = ''){ // ambil data pengguna
-		if ($select == 'count') {
-			
-		}else {
-			$query = "SELECT id_petugas AS id, nama_petugas AS nama, username, telp, level FROM petugas
-						UNION
-						SELECT nik AS id, nama, username, telp, telp AS level FROM masyarakat ORDER BY nama LIMIT 10";
-			$this->db->prepare($query);
-			$this->db->execute();
-			$this->db->getResult();
-			return $this->db->row;
-		}
+	public function pengguna(){ // ambil data pengguna
+		$query = "SELECT id_petugas AS id, nama_petugas AS nama, username, telp, level FROM petugas
+					UNION
+					SELECT nik AS id, nama, username, telp, telp AS level FROM masyarakat ORDER BY nama LIMIT 10";
+		$this->db->prepare($query);
+		$this->db->execute();
+		$this->db->getResult();
+		return $this->db->row;
 	}
 	
 	public function tableRow($tb1, $tb2 = NULL, $cond = NULL){

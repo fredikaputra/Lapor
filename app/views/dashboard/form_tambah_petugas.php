@@ -26,7 +26,7 @@
 				</div>
 				<div>
 					<label for="phone">Nomor Telepon</label>
-					<input type="number" id="phone" placeholder="Nomor Telpon" name="phone" value="<?= (isset($_SESSION['reg'])) ? $_SESSION['reg']['phone'] : '' ?>" required>
+					<input type="number" id="phone" placeholder="Nomor Telpon" name="phone" value="<?= (isset($_SESSION['reg'])) ? $_SESSION['reg']['phone'] : '' ?>" <?= (isset($_SESSION['autofocus']['pass'])) ? 'autofocus' : '' ?> required>
 				</div>
 				<div>
 					<label for="image">Gambar</label>

@@ -44,42 +44,26 @@ main .content form{
 }
 
 main .content form .top{
+	display: flex;
+	align-items: center;
+	width: 100%;
+	position: relative;
 	padding: 20px;
+}
+
+main .content form .top > span{
+	width: 100%;
+	color: var(--soft-dark-color);
+}
+
+main .content form .top .search{
+	width: 100%;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 }
 
-main .content form > .top > button{
-	background: var(--light-color);
-	border: none;
-	padding: 10px;
-	display: flex;
-	align-items: center;
-	color: var(--soft-dark-color);
-	font-weight: bold;
-	font-size: 14px;
-	opacity: .5;
-}
-
-main .content form > .top > button:hover{
-	box-shadow: 0 0 10px #0000000F;
-	opacity: 1;
-}
-
-main .content form .top > button > img{
-	width: 15px;
-	margin-right: 5px;
-}
-
-main .content form .top div{
-	display: flex;
-	align-items: center;
-	width: 100%;
-	position: relative;
-}
-
-main .content form .top div input{
+main .content form .top .search input{
 	text-align: right;
 	border: none;
 	letter-spacing: 1px;
@@ -90,7 +74,7 @@ main .content form .top div input{
 	margin-right: 5px;
 }
 
-main .content form .top > div > button{
+main .content form .top button{
 	background: transparent;
 	border: none;
 	text-align: center;
@@ -99,23 +83,23 @@ main .content form .top > div > button{
 	transition: .3s;
 }
 
-main .content form .top div button:hover{
+main .content form .top button:hover{
 	background-color: var(--secondary-color);
 }
 
-main .content form .top div button img{
+main .content form .top button img{
 	width: 15px;
 }
 
-main .content form .top div > img{
+main .content form .top > img{
 	width: 2px;
 	height: 35px;
 	margin: 0 15px;
 }
 
-main .content form .top div .filter-menu{
+main .content form .top .filter-menu{
 	position: absolute;
-	top: 1.1cm;
+	top: 1.7cm;
 	right: 0;
 	width: 15cm;
 	display: block;
@@ -123,7 +107,7 @@ main .content form .top div .filter-menu{
 	box-shadow: 0 0 10px #00000025;
 }
 
-main .content form .top div .filter-menu > span{
+main .content form .top .filter-menu > span{
 	display: block;
 	padding: 20px;
 	font-size: 13px;
@@ -132,16 +116,17 @@ main .content form .top div .filter-menu > span{
 	border-bottom: 1px solid #0000000F;
 }
 
-main .content form .top div .filter-menu .filter{
+main .content form .top .filter-menu .filter{
 	padding: 20px;
+	display: flex;
 }
 
-main .content form .top div .filter-menu .filter > div{
-	display: block;
+main .content form .top .filter-menu .filter > div{
+	width: 100%;
 	margin: 0 10px;
 }
 
-main .content form .top div .filter-menu .filter > div span{
+main .content form .top .filter-menu .filter > div span{
 	display: block;
 	font-size: 12px;
 	font-weight: bold;
@@ -150,7 +135,7 @@ main .content form .top div .filter-menu .filter > div span{
 	margin-bottom: 5px;
 }
 
-main .content form .top div .filter-menu .filter > div select{
+main .content form .top .filter-menu .filter > div select{
 	width: 100%;
 	padding: 10px;
 	font-size: 12px;
@@ -161,13 +146,13 @@ main .content form .top div .filter-menu .filter > div select{
 	cursor: pointer;
 }
 
-main .content form .top div .filter-menu .footer{
-	justify-content: flex-end;
+main .content form .top .filter-menu .footer{
+	text-align: right;
 	padding: 20px;
 	border-top: 1px solid #0000000F;
 }
 
-main .content form .top div .filter-menu .footer > *{
+main .content form .top .filter-menu .footer > *{
 	background: var(--primary-color);
 	color: var(--light-color);
 	border: none;
@@ -182,7 +167,7 @@ main .content form .top div .filter-menu .footer > *{
 
 main .content form .body > div{
 	display: grid;
-	grid-template-columns: 2cm 1fr 1fr 1fr 1fr 1fr;
+	grid-template-columns: 2cm 1fr 1fr 1fr 1fr 1fr 1.8cm;
 }
 
 main .content form .body > div > div{
@@ -224,11 +209,30 @@ main .content form .body > div.user div:nth-of-type(2) span{
 	font-weight: bold;
 }
 
-main .content form .body > div.user div img{
+main .content form .body > div.user div:nth-of-type(2) img{
 	width: 1.2cm;
 	height: 1.2cm;
 	border-radius: 50%;
 	object-position: center;
 	object-fit: cover;
 	margin-right: 15px;
+}
+
+main .content form .body > div.user div:last-of-type a{
+	padding: 10px;
+	border-radius: 50%;
+	line-height: 0;
+	display: none;
+}
+
+main .content form .body > div.user div:last-of-type a:hover{
+	background: var(--soft-light-color);
+}
+
+main .content form .body > div.user:hover div:last-of-type a{
+	display: block;
+}
+
+main .content form .body > div.user div:last-of-type a img{
+	width: 20px;
 }

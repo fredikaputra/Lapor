@@ -149,18 +149,23 @@ class Daftar_model{
 			if ($this->checkPetugas(NULL, $username) == NULL) {
 				if (strlen($password) >= 8) {
 					if ($password == $repass) {
-						$password = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
-						$level = 2;
-						$query = "INSERT INTO petugas VALUES(?, ?, ?, ?, ?, ?)";
-						$this->db->prepare($query);
-						$this->db->sth->bind_param('ssssss', $this->uniqID, $name, $username, $password, $phone, $level);
-						$this->db->execute();
-						if ($this->db->affectedRows() > 0) {
-							unset($_SESSION['reg']);
-							Flasher::setFlash('Berhasil! ', "$name telah bergabung sebagai petugas", 'success', 'correct');
-							return true;
+						if (strlen($phone) >= 9) {
+							$password = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
+							$level = 2;
+							$query = "INSERT INTO petugas VALUES(?, ?, ?, ?, ?, ?)";
+							$this->db->prepare($query);
+							$this->db->sth->bind_param('ssssss', $this->uniqID, $name, $username, $password, $phone, $level);
+							$this->db->execute();
+							if ($this->db->affectedRows() > 0) {
+								unset($_SESSION['reg']);
+								Flasher::setFlash('Berhasil! ', "$name telah bergabung sebagai petugas", 'success', 'correct');
+								return true;
+							}else {
+								Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
+							}
 						}else {
-							Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
+							Flasher::setFlash('Gagal! ', 'Nomor telepon tidak benar.', 'warning', 'warning');
+							$_SESSION['autofocus']['phone'] = 1;
 						}
 					}else {
 						Flasher::setFlash('Gagal! ', 'Konfirmasi password salah.', 'warning', 'warning');
