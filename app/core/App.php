@@ -11,7 +11,7 @@ class App{
 		
 		// cek kontroler
 		if (isset($url[0])) {
-			if (strpos($url[0], '-')) { // ganti kontroller yang mengandung '-' menjadi '_'
+			if (strpos($url[0], '-') !== FALSE) { // ganti kontroller yang mengandung '-' menjadi '_'
 				$url[0] = str_replace('-', '_', $url[0]);
 			}
 			

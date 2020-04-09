@@ -227,7 +227,8 @@
 									?>
 								</span>
 							</div>
-							<div><a href="" class="singleDel"><img src="<?= BASEURL ?>/assets/img/icon/bin.png"></a></div>
+							<!-- <div><a href="<?= BASEURL ?>/dashboard/hapus/<?= $user['id'] ?>" class="singleDel" <?= ($_SESSION['level'] != '1') ? 'style="display: none"' : '' ?>><img src="<?= BASEURL ?>/assets/img/icon/bin.png"></a></div> -->
+							<div><a href="<?= BASEURL ?>/dashboard/hapus/<?= $user['id'] ?>" class="singleDel"><img src="<?= BASEURL ?>/assets/img/icon/bin.png"></a></div>
 						</div>
 						
 						<?php

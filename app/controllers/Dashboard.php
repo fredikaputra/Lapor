@@ -259,4 +259,17 @@ class Dashboard extends Controller{
 			$this->kunci();
 		}
 	}
+	
+	public function hapus($id = NULL){
+		if (isset($_SESSION['petugasID'])) {
+			if ($id != NULL) {
+				$this->model('Delete_model')->user($id);
+				header('location: ' . BASEURL . '/dashboard/pengguna');
+			}else {
+				$this->index();
+			}
+		}else {
+			$this->kunci();
+		}
+	}
 }
