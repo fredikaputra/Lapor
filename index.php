@@ -7,9 +7,8 @@ require_once 'app/init.php'; // panggil file init.php
 $app = new App; // jalankan aplikasinya
 
 ?>
-
-<!-- Debug Tool -->
-<!-- <!DOCTYPE html>
+<!-- 
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
 	<head>
 		<style type="text/css">
@@ -27,6 +26,9 @@ $app = new App; // jalankan aplikasinya
 	</head>
 	<body class="monitor">
 		<div id="monitor" draggable="true">
+			<div>GET value:</div>
+			<div><pre><?php	print_r($_GET); ?></pre></div>
+			
 			<div>POST value:</div>
 			<div style="margin-bottom: 1cm;"><pre><?php	print_r($_POST); ?></pre></div>
 			

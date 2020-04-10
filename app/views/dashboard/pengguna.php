@@ -18,13 +18,13 @@
 				if (isset($_POST['querysearch'])) {
 					?>
 					
-					<span>Menampilkan <?= ($data['pengguna'] > 0) ? count($data['pengguna']) : '0' ?> pengguna berdasarkan kata kunci: <?= $_POST['querysearch'] ?></span>
+					Menampilkan <?= ($data['pengguna'] > 0) ? count($data['pengguna']) : '0' ?> pengguna untuk <strong>"<?= $_POST['querysearch'] ?>"</strong>
 					
 					<?php
 				}else if (isset($_POST['filter'])) {
-					?><span>Menampilkan <?= ($data['pengguna'] > 0) ? count($data['pengguna']) : '0' ?> pengguna berdasarkan filter.</span><?php
+					?>Menampilkan <?= ($data['pengguna'] > 0) ? count($data['pengguna']) : '0' ?> pengguna berdasarkan filter.<?php
 				}else {
-					?><span>Menampilkan <?= ($data['pengguna'] > 0) ? count($data['pengguna']) : '0' ?> dari <?= $data['users'] ?> pengguna.</span><?php
+					?>Menampilkan <?= ($data['pengguna'] > 0) ? count($data['pengguna']) : '0' ?> dari <?= $data['users'] ?> pengguna.<?php
 				}
 				
 				?>

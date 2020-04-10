@@ -44,9 +44,8 @@ class PenggunaProccess_model{
 		
 		$this->db->prepare($query);
 		$this->db->execute();
-		if ($this->db->getResult() != NULL) {
-			return $this->db->row;
-		}
+		$this->db->getResult();
+		return $this->db->row;
 	}
 	
 	public function search(){

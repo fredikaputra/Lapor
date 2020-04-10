@@ -39,10 +39,59 @@ class Data_model{
 			$this->db->prepare($query);
 			$this->db->sth->bind_param('s', $limit);
 		}else {
-			$query = "SELECT pengaduan.*, nama FROM pengaduan JOIN masyarakat USING (nik) ORDER BY tgl_pengaduan DESC LIMIT 20";
+			$query = "SELECT pengaduan.*, nama FROM pengaduan JOIN masyarakat USING (nik) ORDER BY tgl_pengaduan DESC LIMIT 10";
 			$this->db->prepare($query);
 		}
 		
+		$this->db->execute();
+		$this->db->getResult();
+		return $this->db->row;
+	}
+	
+	public function laporanFilter(){
+		if ($_GET['img'] == 'w/img') {
+			$query = "SELECT pengaduan.*, nama FROM pengaduan JOIN masyarakat USING (nik) WHERE foto IS NOT NULL";
+		}else if ($_GET['img'] == 'wo/img') {
+			$query = "SELECT pengaduan.*, nama FROM pengaduan JOIN masyarakat USING (nik) WHERE foto IS NULL";
+		}else {
+			$query = "SELECT pengaduan.*, nama FROM pengaduan JOIN masyarakat USING (nik)";
+		}
+		
+		if ($_GET['img'] == 'w/img' || $_GET['img'] == 'wo/img') {
+			if ($_GET['status'] == '0') {
+				$query .= " AND status = '0'";
+			}else if ($_GET['status'] == '1') {
+				$query .= " AND status = '1'";
+			}
+		}else {
+			if ($_GET['status'] == '0') {
+				$query .= " WHERE status = '0'";
+			}else if ($_GET['status'] == '1') {
+				$query .= " WHERE status = '1'";
+			}
+		}
+		
+		if ($_GET['sort'] == 'dateDESC') {
+			$query .= " ORDER BY tgl_pengaduan DESC";
+		}else if ($_GET['sort'] == 'dateASC') {
+			$query .= " ORDER BY tgl_pengaduan ASC";
+		}else if ($_GET['sort'] == 'nameASC') {
+			$query .= " ORDER BY nama ASC";
+		}else if ($_GET['sort'] == 'namaASC') {
+			$query .= " ORDER BY nama DESC";
+		}
+		
+		if ($_GET['show'] == '10') {
+			$query .= " LIMIT 10";
+		}else if ($_GET['show'] == '20') {
+			$query .= " LIMIT 20";
+		}else if ($_GET['show'] == '50') {
+			$query .= " LIMIT 50";
+		}else if ($_GET['show'] == '100') {
+			$query .= " LIMIT 100";
+		}
+		
+		$this->db->prepare($query);
 		$this->db->execute();
 		$this->db->getResult();
 		return $this->db->row;

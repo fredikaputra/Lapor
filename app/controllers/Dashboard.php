@@ -51,7 +51,18 @@ class Dashboard extends Controller{
 			}else if ($param1 != NULL && $param2 == NULL) { // tampilkan satu data aduan
 				$data['laporan'] = $this->model('Data_model')->laporan($param1, '', '')[0];
 				
-				if ($data['laporan'] != NULL) {
+				if ($param1 == 'filter') {
+					$data['webtitle'] = 'Dashboard - Data Aduan';
+					$data['css'] = ['dashboard_header.css', 'data_aduan.css', 'base.css'];
+					
+					// ambil data
+					$data['laporan'] = $this->model('Data_model')->laporanFilter();
+					
+					$this->view('template/header', $data);
+					$this->view('dashboard/header', $data);
+					$this->view('dashboard/data_aduan', $data);
+					$this->view('template/footer');
+				}else if ($data['laporan'] != NULL) {
 					$data['idpengaduan'] = $param1;
 					$data['webtitle'] = 'Data Aduan ' . $data['idpengaduan'];
 					$data['css'] = ['dashboard_header.css', 'detail_aduan.css', 'base.css'];
@@ -117,9 +128,7 @@ class Dashboard extends Controller{
 				$this->view('dashboard/pengguna', $data);
 				$this->view('template/footer', $data);
 			}else {
-				if (isset($_POST['delete'])) {
-					echo 'delete proccess';
-				}else if (isset($_POST['search'])) {
+				if (isset($_POST['search'])) {
 					$data['webtitle'] = 'Dashboard - Pengguna';
 					$data['css'] = ['dashboard_header.css', 'pengguna.css', 'base.css'];
 					$data['method'] = __FUNCTION__;
