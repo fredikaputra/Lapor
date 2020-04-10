@@ -240,20 +240,25 @@ class Dashboard extends Controller{
 		$this->view('template/footer');
 	}
 	
-	public function pengaturan(){
+	public function pengaturan($option = NULL){
 		if (isset($_SESSION['petugasID'])) {
-			$data['webtitle'] = 'Dashboard - Pengaturan';
-			$data['css'] = ['dashboard_header.css', 'pengaturan_dashboard.css', 'base.css'];
-			$data['method'] = __FUNCTION__;
-			
-			// ambil data
-			$data['petugas'] = $this->model('Data_model')->petugas()[0];
-			$data['photo'] = $_SESSION['petugasID'] . '.jpg';
-						
-			$this->view('template/header', $data);
-			$this->view('dashboard/header', $data);
-			$this->view('dashboard/pengaturan', $data);
-			$this->view('template/footer', $data);
+			if ($option == NULL) {
+				$data['webtitle'] = 'Dashboard - Pengaturan';
+				$data['css'] = ['dashboard_header.css', 'pengaturan_dashboard.css', 'base.css'];
+				$data['method'] = __FUNCTION__;
+				
+				// ambil data
+				$data['petugas'] = $this->model('Data_model')->petugas()[0];
+				$data['photo'] = $_SESSION['petugasID'] . '.jpg';
+							
+				$this->view('template/header', $data);
+				$this->view('dashboard/header', $data);
+				$this->view('dashboard/pengaturan', $data);
+				$this->view('template/footer', $data);
+			}else if ($option == 'proccess') {
+				$this->model('UpdatePreference_model')->petugas();
+				header('location: ' . BASEURL . '/dashboard/pengaturan');
+			}
 		}else {
 			$this->kunci();
 		}

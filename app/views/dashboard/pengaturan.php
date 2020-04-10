@@ -25,15 +25,15 @@
 			<div class="body">
 				<div>
 					<label for="name">Nama</label>
-					<input type="text" name="name" id="name" placeholder="Nama Lengkap">
+					<input type="text" name="name" id="name" placeholder="Nama Lengkap" value="<?= $data['petugas']['nama_petugas'] ?>">
 				</div>
 				<div>
 					<label for="username">Username</label>
-					<input type="text" name="username" id="username" placeholder="Username">
+					<input type="text" name="username" id="username" placeholder="Username"  value="<?= $data['petugas']['username'] ?>">
 				</div>
 				<div>
 					<label for="phone">Nomor Telepon</label>
-					<input type="text" name="phone" id="phone" placeholder="Nomor Telepon">
+					<input type="text" name="phone" id="phone" placeholder="Nomor Telepon"  value="<?= $data['petugas']['telp'] ?>">
 				</div>
 			</div>
 			<div class="changepass">
