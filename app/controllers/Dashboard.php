@@ -5,7 +5,6 @@ class Dashboard extends Controller{
 		if (isset($_SESSION['petugasID'])) {
 			$data['webtitle'] = 'Dashboard';
 			$data['css'] = ['dashboard_header.css', 'dashboard.css', 'base.css'];
-			$data['js'] = ['detectInputChange.js'];
 			$data['method'] = __FUNCTION__;
 			
 			// ambil data
@@ -239,6 +238,25 @@ class Dashboard extends Controller{
 		$this->view('template/header', $data);
 		$this->view('dashboard/lockscreen', $data);
 		$this->view('template/footer');
+	}
+	
+	public function pengaturan(){
+		if (isset($_SESSION['petugasID'])) {
+			$data['webtitle'] = 'Dashboard - Pengaturan';
+			$data['css'] = ['dashboard_header.css', 'pengaturan_dashboard.css', 'base.css'];
+			$data['method'] = __FUNCTION__;
+			
+			// ambil data
+			$data['petugas'] = $this->model('Data_model')->petugas()[0];
+			$data['photo'] = $_SESSION['petugasID'] . '.jpg';
+						
+			$this->view('template/header', $data);
+			$this->view('dashboard/header', $data);
+			$this->view('dashboard/pengaturan', $data);
+			$this->view('template/footer', $data);
+		}else {
+			$this->kunci();
+		}
 	}
 	
 	public function update_profile(){

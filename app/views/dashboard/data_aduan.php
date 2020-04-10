@@ -4,7 +4,7 @@
 			<span>Semua data aduan yang masuk dari masyarakat</span>
 		</div>
 		<div>
-			<form action="<?= BASEURL ?>/dashboard/data-aduan/filter" method="POST" class="filter">
+			<form action="<?= BASEURL ?>/dashboard/data-aduan/filter" method="GET" class="filter">
 				<div>
 					<div class="header">
 						<span>Filter Laporan</span>
@@ -14,8 +14,8 @@
 							<span>TERLAMPIR</span>
 							<select name="img">
 								<option value="all">Tanpa Filter</option>
-								<option value="w/img">Dengan Gambar</option>
-								<option value="wo/img">Tanpa Gambar</option>
+								<option value="wImg">Dengan Gambar</option>
+								<option value="woImg">Tanpa Gambar</option>
 							</select>
 						</div>
 						<div>

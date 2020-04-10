@@ -49,45 +49,52 @@ class Data_model{
 	}
 	
 	public function laporanFilter(){
-		if ($_GET['img'] == 'w/img') {
+		$urlData = parse_url($_SERVER['REQUEST_URI'])['query'];
+		$urlData = explode('&', $urlData);
+		foreach($urlData as $key => $value) {
+			$data = explode('=', $value);
+			$get[$data[0]] = $data[1];
+		}
+		
+		if ($get['img'] == 'wImg') {
 			$query = "SELECT pengaduan.*, nama FROM pengaduan JOIN masyarakat USING (nik) WHERE foto IS NOT NULL";
-		}else if ($_GET['img'] == 'wo/img') {
+		}else if ($get['img'] == 'woImg') {
 			$query = "SELECT pengaduan.*, nama FROM pengaduan JOIN masyarakat USING (nik) WHERE foto IS NULL";
 		}else {
 			$query = "SELECT pengaduan.*, nama FROM pengaduan JOIN masyarakat USING (nik)";
 		}
 		
-		if ($_GET['img'] == 'w/img' || $_GET['img'] == 'wo/img') {
-			if ($_GET['status'] == '0') {
+		if ($get['img'] == 'wImg' || $get['img'] == 'woImg') {
+			if ($get['status'] == '0') {
 				$query .= " AND status = '0'";
-			}else if ($_GET['status'] == '1') {
+			}else if ($get['status'] == '1') {
 				$query .= " AND status = '1'";
 			}
 		}else {
-			if ($_GET['status'] == '0') {
+			if ($get['status'] == '0') {
 				$query .= " WHERE status = '0'";
-			}else if ($_GET['status'] == '1') {
+			}else if ($get['status'] == '1') {
 				$query .= " WHERE status = '1'";
 			}
 		}
 		
-		if ($_GET['sort'] == 'dateDESC') {
+		if ($get['sort'] == 'dateDESC') {
 			$query .= " ORDER BY tgl_pengaduan DESC";
-		}else if ($_GET['sort'] == 'dateASC') {
+		}else if ($get['sort'] == 'dateASC') {
 			$query .= " ORDER BY tgl_pengaduan ASC";
-		}else if ($_GET['sort'] == 'nameASC') {
+		}else if ($get['sort'] == 'nameASC') {
 			$query .= " ORDER BY nama ASC";
-		}else if ($_GET['sort'] == 'namaASC') {
+		}else if ($get['sort'] == 'nameDESC') {
 			$query .= " ORDER BY nama DESC";
 		}
 		
-		if ($_GET['show'] == '10') {
+		if ($get['show'] == '10') {
 			$query .= " LIMIT 10";
-		}else if ($_GET['show'] == '20') {
+		}else if ($get['show'] == '20') {
 			$query .= " LIMIT 20";
-		}else if ($_GET['show'] == '50') {
+		}else if ($get['show'] == '50') {
 			$query .= " LIMIT 50";
-		}else if ($_GET['show'] == '100') {
+		}else if ($get['show'] == '100') {
 			$query .= " LIMIT 100";
 		}
 		
