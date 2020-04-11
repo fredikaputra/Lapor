@@ -1,6 +1,6 @@
 <?php
 
-class Daftar_model{
+class Register_model{
 	private $db, $uniqID;
 	
 	public function __construct(){
@@ -41,11 +41,11 @@ class Daftar_model{
 				}
 			}
 			
-			if ($this->check($nik, NULL) == NULL) { // cek kalau nik tidak ada yang menggunakan
-				if ($this->check(NULL, $username) == NULL) { // cek username belum digunakan
+			if ($this->checkMasyarakat($nik, NULL) == NULL) { // cek kalau nik tidak ada yang menggunakan
+				if ($this->checkMasyarakat(NULL, $username) == NULL) { // cek username belum digunakan
 					if (strlen($pass) >= 8) { // cek panjang password, min 8 karakter
 						if ($pass == $repass) { // cek password telah terkonfirmasi
-							if (strlen($phone) >= 9) {
+							if (strlen($phone) >= 9) { // nomor telepon minimal 9 karakter
 								$password = password_hash($pass, PASSWORD_BCRYPT, ['cost' => 12]); // encrypt password
 								$query = 'INSERT INTO masyarakat VALUES (?, ?, ?, ?, ?)';
 								$this->db->prepare($query);
@@ -83,36 +83,13 @@ class Daftar_model{
 		}
 	}
 	
-	public function check($nik = NULL, $username = NULL){ // proses check nik
-		if ($nik != NULL) {
-			$query = 'SELECT nik FROM masyarakat WHERE nik = ?';
-			$this->db->prepare($query);
-			$this->db->sth->bind_param('s', $nik);
-			$this->db->execute();
-			return $this->db->getResult();
-		}else if ($username != NULL) {
-			$query = 'SELECT username FROM masyarakat WHERE username = ?';
-			$this->db->prepare($query);
-			$this->db->sth->bind_param('s', $username);
-			$this->db->execute();
-			$this->db->getResult();
-			
-			$query = 'SELECT username FROM petugas WHERE username = ?';
-			$this->db->prepare($query);
-			$this->db->sth->bind_param('s', $username);
-			$this->db->execute();
-			
-			return $this->db->getResult();
-		}
-	}
-	
-	public function petugas(){ // proses tambah laporan
+	public function petugas(){ // proses registrasi petugas
 		$this->db->dbh->real_escape_string(extract($_POST));
 		
 		if (isset($addpetugas)) { // check ketika button submit di tekan pada form
 			do { // generate id laporan yang unik
 				$this->uniqID = strtoupper('ptgs' . substr(md5(uniqid()), 25));
-				if ($this->checkPetugas($this->uniqID, NULL) != $this->uniqID) { // chek ketika id tersedia
+				if ($this->checkPetugas($this->uniqID, NULL) != $this->uniqID) { // stop generate id ketika id tersedia
 					break;
 				}
 			} while ($this->checkPetugas($this->uniqID, NULL) == !NULL);
@@ -123,7 +100,7 @@ class Daftar_model{
 				'phone' => $phone,
 			]; // buat session pada form (untuk kondisi ketika gagal)
 			
-			if (isset($_FILES)) { // ketika masyarakat menyertakan gambar
+			if (isset($_FILES) && $_FILES != NULL) { // ketika masyarakat menyertakan gambar
 				if ($_FILES['photo']['error'] == 0) { // cek file tidak ada masalah
 					$extension = pathinfo($_FILES['photo']['name'], PATHINFO_EXTENSION);
 					if (in_array($extension, ['jpg', 'jpeg'])) { // cek ekstensi gambar
@@ -146,10 +123,10 @@ class Daftar_model{
 				}
 			}
 		
-			if ($this->checkPetugas(NULL, $username) == NULL) {
-				if (strlen($password) >= 8) {
-					if ($password == $repass) {
-						if (strlen($phone) >= 9) {
+			if ($this->checkPetugas(NULL, $username) == NULL) { // cek ketersediaan username
+				if (strlen($password) >= 8) { // password minimal 8 karakter
+					if ($password == $repass) { // konfirmasi password
+						if (strlen($phone) >= 9) { // nomor telepon minimal 9 karakter
 							$password = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
 							$level = 2;
 							$query = "INSERT INTO petugas VALUES(?, ?, ?, ?, ?, ?)";
@@ -182,6 +159,27 @@ class Daftar_model{
 		}else {
 			Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
 		}
+	}
+	
+	public function checkMasyarakat($nik = NULL, $username = NULL){ // proses check nik dan username
+		if ($nik != NULL) {
+			$query = 'SELECT nik FROM masyarakat WHERE nik = ?';
+			$this->db->prepare($query);
+			$this->db->sth->bind_param('s', $nik);
+		}else if ($username != NULL) {
+			$query = 'SELECT username FROM masyarakat WHERE username = ?';
+			$this->db->prepare($query);
+			$this->db->sth->bind_param('s', $username);
+			$this->db->execute();
+			$this->db->getResult();
+			
+			$query = 'SELECT username FROM petugas WHERE username = ?';
+			$this->db->prepare($query);
+			$this->db->sth->bind_param('s', $username);
+		}
+		
+		$this->db->execute();
+		return $this->db->getResult();
 	}
 	
 	public function checkPetugas($id = NULL, $username = NULL){ // proses cek id

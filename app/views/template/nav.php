@@ -49,12 +49,12 @@
 						}
 						
 						?>
-						<a href="<?= BASEURL ?>/pengaturan/foto-profil" class="change">
+						<a href="<?= BASEURL ?>/profil/foto-profil" class="change">
 							<img src="<?= BASEURL ?>/assets/img/icon/camera.png?=<?= filemtime('assets/img/icon/camera.png') ?>">
 						</a>
 						<span class="name"><?= $data['name'] ?></span>
 						<span class="username">@<?= $data['username'] ?></span>
-						<a href="<?= BASEURL ?>/pengaturan">Kelola Akun Lapor Anda</a>
+						<a href="<?= BASEURL ?>/profil">Kelola Akun Lapor Anda</a>
 						<hr>
 						<a href="<?= BASEURL ?>/logout">Logout</a>
 						<hr>

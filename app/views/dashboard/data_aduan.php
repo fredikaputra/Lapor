@@ -4,7 +4,7 @@
 			<span>Semua data aduan yang masuk dari masyarakat</span>
 		</div>
 		<div>
-			<form action="<?= BASEURL ?>/dashboard/data-aduan/filter" method="GET" class="filter">
+			<form action="<?= BASEURL ?>/dashboard/data-aduan" method="GET" class="filter">
 				<div>
 					<div class="header">
 						<span>Filter Laporan</span>
@@ -12,43 +12,42 @@
 					<div class="filter-menu">
 						<div>
 							<span>TERLAMPIR</span>
-							<select name="img">
-								<option value="all">Tanpa Filter</option>
-								<option value="wImg">Dengan Gambar</option>
-								<option value="woImg">Tanpa Gambar</option>
+							<select name="gambar">
+								<option value="0">Tanpa Filter</option>
+								<option value="2">Dengan Gambar</option>
+								<option value="1">Tanpa Gambar</option>
 							</select>
 						</div>
 						<div>
 							<span>STATUS</span>
 							<select name="status">
-								<option value="all">Tanpa Filter</option>
+								<option value="semua">Semua Status</option>
 								<option value="0">Dalam Proses</option>
 								<option value="1">Selesai</option>
 							</select>
 						</div>
 						<div>
 							<span>SORTIR</span>
-							<select name="sort">
-								<option value="dateDESC">Terbaru</option>
-								<option value="dateASC">Terlama</option>
-								<option value="nameASC">Nama Pelapor (A - Z)</option>
-								<option value="nameDESC">Nama Pelapor (Z - A)</option>
+							<select name="urutan">
+								<option value="1">Terbaru</option>
+								<option value="2">Terlama</option>
+								<option value="3">Nama Pelapor (A - Z)</option>
+								<option value="4">Nama Pelapor (Z - A)</option>
 							</select>
 						</div>
 						<div>
 							<span>TAMPIL</span>
-							<select name="show">
+							<select name="tampil">
 								<option value="10">10</option>
 								<option value="20">20</option>
 								<option value="50">50</option>
-								<option value="100">100</option>
-								<option value="all">Semua</option>
+								<option value="semua">Semua</option>
 							</select>
 						</div>
 					</div>
 					<div class="footer">
 						<a href="<?= BASEURL ?>/dashboard/data-aduan">Atur Ulang</a>
-						<button type="submit" name="filter">Filter</button>
+						<button type="submit" name="filter" value="on">Filter</button>
 					</div>
 				</div>
 			</form>
@@ -103,12 +102,12 @@
 									<a href="<?= BASEURL ?>/dashboard/data-aduan/<?= $laporan['id_pengaduan'] ?>">
 										<img src="<?= BASEURL ?>/assets/img/icon/eye.png">
 									</a>
-									<a href="<?= BASEURL ?>/dashboard/data-aduan/cetak/<?= $laporan['id_pengaduan'] ?>">
+									<a href="<?= BASEURL ?>/dashboard/data-aduan/<?= $laporan['id_pengaduan'] ?>?cetak=1">
 										<img src="<?= BASEURL ?>/assets/img/icon/print.png">
 									</a>
-									<a href="<?= BASEURL ?>/dashboard/data-aduan/hapus/<?= $laporan['id_pengaduan'] ?>">
+									<button type="button" data-id="<?= $laporan['id_pengaduan'] ?>" onclick="delPopup(this)">
 										<img src="<?= BASEURL ?>/assets/img/icon/bin.png">
-									</a>
+									</button>
 								</div>
 							</div>
 							
@@ -129,3 +128,32 @@
 		</div>
 	</div>
 </main>
+
+<div class="popup hide">
+	<form method="post" id="deleteForm">
+		<button type="button" onclick="closeDelPopup()">
+			<img src="<?= BASEURL ?>/assets/img/icon/close.png">
+		</button>
+		<img src="<?= BASEURL ?>/assets/img/icon/bin.png">
+		<h2>Apakah anda yakin?</h2>
+		<span>Apakah anda yakin ingin menghapus laporan <strong id="id"></strong>?</span>
+		<span>Anda tidak bisa membatalkan tindakan ini.</span>
+		<div>
+			<button type="button" onclick="closeDelPopup()">Batal</button>
+			<button type="submit">Hapus</button>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	function delPopup(i){
+		document.querySelector('.popup').classList.remove('hide');
+		var id = i.getAttribute('data-id');
+		document.querySelector('#deleteForm').setAttribute('action', '<?= BASEURL ?>/dashboard/hapus/laporan/' + id);
+		document.querySelector('#id').innerHTML = '#' + id;
+	}
+	
+	function closeDelPopup(){
+		document.querySelector('.popup').classList.add('hide');
+	}
+</script>

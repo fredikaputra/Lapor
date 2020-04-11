@@ -9,7 +9,7 @@
 			</a>
 		</div>
 		
-		<form method="post" action="<?= BASEURL ?>/dashboard/pengguna/filter">
+		<form method="get" action="<?= BASEURL ?>/dashboard/pengguna">
 			<div class="top">
 				<span>
 				
@@ -39,7 +39,7 @@
 					
 					?>" required>
 				</div>
-				<button type="submit" name="search">
+				<button type="submit" name="search" value="on">
 					<img src="<?= BASEURL ?>/assets/img/icon/search.png">
 				</button>
 				<img src="<?= BASEURL ?>/assets/img/icon/vertical-line.png">
@@ -52,130 +52,33 @@
 					<div class="filter">
 						<div>
 							<span>HAK</span>
-							<select name="privilege">
+							<select name="hak">
 								<option>Semua</option>
-								<option value="admin"
-								
-								<?php
-								
-								if (isset($_POST['privilege'])) {
-									if ($_POST['privilege'] == 'admin') {
-										echo 'selected';
-									}
-								}
-								
-								?>
-								
-								>Admin</option>
-								<option value="petugas"
-								
-								<?php
-								
-								if (isset($_POST['privilege'])) {
-									if ($_POST['privilege'] == 'petugas') {
-										echo 'selected';
-									}
-								}
-								
-								?>
-								
-								>Petugas</option>
-								<option value="masyarakat"
-								
-								<?php
-								
-								if (isset($_POST['privilege'])) {
-									if ($_POST['privilege'] == 'masyarakat') {
-										echo 'selected';
-									}
-								}
-								
-								?>
-								
-								>Masyarakat</option>
+								<option value="1">Admin</option>
+								<option value="2">Petugas</option>
+								<option value="3">Masyarakat</option>
 							</select>
 						</div>
 						<div>
 							<span>SORTIR</span>
-							<select name="sort">
-								<option value="nameASC">Nama (A - Z)</option>
-								<option value="nameDESC"
-								
-								<?php
-								
-								if (isset($_POST['sort'])) {
-									if ($_POST['sort'] == 'nameDESC') {
-										echo 'selected';
-									}
-								}
-								
-								?>
-								
-								>Nama (Z - A)</option>
+							<select name="urutan">
+								<option value="1">Nama (A - Z)</option>
+								<option value="2">Nama (Z - A)</option>
 							</select>
 						</div>
 						<div>
 							<span>TAMPIL</span>
-							<select name="show">
+							<select name="tampil">
 								<option value="10">10</option>
-								<option value="20"
-								
-								<?php
-								
-								if (isset($_POST['show'])) {
-									if ($_POST['show'] == '20') {
-										echo 'selected';
-									}
-								}
-								
-								?>
-								
-								>20</option>
-								<option value="50"
-								
-								<?php
-								
-								if (isset($_POST['show'])) {
-									if ($_POST['show'] == '50') {
-										echo 'selected';
-									}
-								}
-								
-								?>
-								
-								>50</option>
-								<option value="100"
-								
-								<?php
-								
-								if (isset($_POST['show'])) {
-									if ($_POST['show'] == '100') {
-										echo 'selected';
-									}
-								}
-								
-								?>
-								
-								>100</option>
-								<option value="all"
-								
-								<?php
-								
-								if (isset($_POST['show'])) {
-									if ($_POST['show'] == 'all') {
-										echo 'selected';
-									}
-								}
-								
-								?>
-								
-								>Semua</option>
+								<option value="20">20</option>
+								<option value="50">50</option>
+								<option value="semua">Semua</option>
 							</select>
 						</div>
 					</div>
 					<div class="footer">
 						<a href="<?= BASEURL ?>/dashboard/pengguna">Atur Ulang</a>
-						<button type="submit" name="filter">Filter</button>
+						<button type="submit" name="filter" value="on">Filter</button>
 					</div>
 				</div>
 			</div><!-- top -->

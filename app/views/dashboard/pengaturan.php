@@ -6,7 +6,7 @@
 			</div>
 		</div>
 		
-		<form method="post" action="<?= BASEURL ?>/dashboard/pengaturan/proccess" enctype="multipart/form-data">
+		<form method="post" action="<?= BASEURL ?>/dashboard/profil/proccess" enctype="multipart/form-data">
 			<div class="top">
 				<?php
 				
@@ -20,7 +20,7 @@
 				<label>Upload Gambar
 					<input type="file" name="photo">
 				</label>
-				<a href="<?= BASEURL ?>/dashboard/pengaturan/hapus-foto-profil">Hapus Gambar</a>
+				<a href="<?= BASEURL ?>/dashboard/profil/hapus-foto-profil">Hapus Gambar</a>
 			</div>
 			<div class="body">
 				<div>

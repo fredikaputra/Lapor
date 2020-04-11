@@ -3,6 +3,7 @@
 class Riwayat_aduan extends Controller{
 	public function index(){
 		if (isset($_SESSION['masyarakatNIK'])) {
+			// deklarasikan data
 			$data['webtitle'] = 'Dashboard - Riwayat Aduan';
 			$data['css'] = ['riwayat_aduan.css', 'nav.css', 'base.css'];
 			$data['controller'] = __CLASS__;

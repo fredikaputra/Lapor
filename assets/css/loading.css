@@ -1,0 +1,29 @@
+main{
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+}
+
+main span{
+	font-size: 16px;
+	color: var(--soft-dark-color);
+	font-weight: bold;
+	line-height: 0;
+	display: block;
+	margin-top: 20px;
+}
+
+main img{
+	width: 1cm;
+	animation: 1.5s loading infinite;
+}
+
+@keyframes loading {
+	from{
+		transform: rotate(0);
+	}to{
+		transform: rotate(360deg);
+	}
+}

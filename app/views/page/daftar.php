@@ -1,5 +1,5 @@
 <main>
-	<form method="post" action="<?= BASEURL ?>/daftar/proccess">
+	<form method="post" action="<?= BASEURL ?>/daftar/proses">
 		<a href="<?= BASEURL ?>" title="Beranda">
 			<img src="<?= BASEURL ?>/assets/img/icon/circle-home-page.png">
 		</a>

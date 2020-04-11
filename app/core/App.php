@@ -15,7 +15,7 @@ class App{
 				$url[0] = str_replace('-', '_', $url[0]);
 			}
 			
-			if (!file_exists('app/controllers/' . $url[0] . '.php') || ($url[0] == 'dashboard' && (!isset($_SESSION['petugasID']) && !isset($_SESSION['onLock'])))) {
+			if (!file_exists('app/controllers/' . $url[0] . '.php')) {
 				$this->controller = 'Notfound';
 			}else {
 				$this->controller = $url[0];
