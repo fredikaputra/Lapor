@@ -19,17 +19,8 @@ class Daftar extends Controller{
 	// proses registrasi
 	public function proses(){
 		
-		// tampilkan loading screen
-		// ketika proses memakan waktu yang lama
-		$data['webtitle'] = 'Proses data...';
-		$data['css'] = ['loading.css', 'base.css'];
-		
-		$this->view('template/header', $data);
-		$this->view('page/loading');
-		$this->view('template/footer', $data);
-		
 		// lakukan proses registrasi 
-		if ($this->model('Daftar_model')->masyarakat() === TRUE) {
+		if ($this->model('Register_model')->masyarakat() === TRUE) {
 			// ketika proses berhasil
 			// pindah ke halaman landing page
 			header('location: ' . BASEURL);

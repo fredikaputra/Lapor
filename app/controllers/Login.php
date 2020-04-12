@@ -36,16 +36,38 @@ class Login extends Controller{
 	
 	// proses login masyarakat, petugas, dan admin
 	public function proses(){
+		
+		// lanjut ketika
+		// username dan password benar
 		if ($this->model('Login_model') === TRUE) {
+			
+			// ketika yang login
+			// adalah petugas
+			// dalam kondisi terkunci
+			// maka pindahkan ke halaman dashboard
 			if (isset($_SESSION['onLock'])) {
 				unset($_SESSION['onLock']);
 				header('location: ' . BASEURL . '/dashboard');
-			}else {
+			}
+			
+			// kalau tidak dalam
+			// kondisi terkunci
+			// maka pindahkan ke halaman landing page
+			else {
 				header('location: ' . BASEURL);
 			}
-		}else if (isset($_SESSION['onLock'])){
+		}
+		
+		// kunci pengguna
+		// ketika dalam kondisi terkunci
+		// login gagal
+		else if (isset($_SESSION['onLock'])){
 			header('location: ' . BASEURL . '/dashboard/kunci');
-		}else {
+		}
+		
+		// pindahkan ke halaman login
+		// ketika gagal login
+		else {
 			header('location: ' . BASEURL . '/login');
 		}
 	}

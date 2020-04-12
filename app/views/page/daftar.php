@@ -29,7 +29,7 @@
 			<img src="<?= BASEURL ?>/assets/img/icon/circle-phone-book.png">
 			<input type="number" name="phone" value="<?= (isset($_SESSION['reg'])) ? $_SESSION['reg']['phone'] : '' ?>" onkeypress="if (this.value.length == 15) return false;" min="0" placeholder="Nomor Telepon" required <?= (isset($_SESSION['autofocus']['phone'])) ? 'autofocus' : '' ?>>
 		</div>
-		<button type="submit" name="addmasyarakat" onclick="unsetload()">DAFTAR</button>
+		<button type="submit" name="addmasyarakat" onclick="unsetload(); loadingscreen()">DAFTAR</button>
 		<span>Sudah punya akun? <a href="<?= BASEURL ?>/login">Login</a> sekarang!</span>
 	</form>
 </main>

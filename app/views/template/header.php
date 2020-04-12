@@ -22,6 +22,7 @@
 		}
 		
 		?>
+		<link rel="stylesheet" href="<?= BASEURL ?>/assets/css/loader.css?=<?= filemtime('assets/css/loader.css') ?>">
 		
 		<style type="text/css" media="print">
 			*{
@@ -44,5 +45,23 @@
 		<link rel="icon" href="<?= BASEURL ?>/assets/img/icon/logo.png?=<?= filemtime('assets/img/icon/logo.png') ?>">
 	</head>
 	<body onbeforeunload="<?= (isset($_SESSION['msg']) || isset($_SESSION['reg'])) ? 'return true;' : '' ?>">
+		
+		<div id="loader">
+			<div>
+				<img src="<?= BASEURL ?>/assets/img/icon/dark-setting.png">
+				<span>Memuat Halaman...</span>
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+			function loadingscreen(){
+				console.log('test loadig');
+				document.querySelector("#loader").classList.remove('hide');
+			}
+			
+			window.addEventListener("load", function(){
+				document.querySelector("#loader").classList.add('hide');
+			});
+		</script>
 		
 		<?= Flasher::flash() ?>

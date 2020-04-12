@@ -1,5 +1,5 @@
 <main>
-	<form method="post" action="<?= BASEURL ?>/login/proccess">
+	<form method="post" action="<?= BASEURL ?>/login/proses">
 		<a href="<?= BASEURL ?>" title="Beranda">
 			<img src="<?= BASEURL ?>/assets/img/icon/circle-home-page.png">
 		</a>
