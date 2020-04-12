@@ -53,14 +53,12 @@
 			</div>
 		</div>
 		
-		<script type="text/javascript">
-			function loadingscreen(){
-				document.querySelector("#loader").classList.remove('hide');
-			}
-			
-			// window.addEventListener("load", function(){
-			// 	document.querySelector("#loader").classList.add('hide');
-			// });
+		<script type="text/javascript">			
+			window.addEventListener("load", function(){
+				document.querySelector("form").onsubmit = function(){
+					document.querySelector("#loader").classList.remove('hide');
+				}
+			});
 		</script>
 		
 		<?= Flasher::flash() ?>
