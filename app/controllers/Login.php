@@ -68,6 +68,7 @@ class Login extends Controller{
 		// pindahkan ke halaman login
 		// ketika gagal login
 		else {
+			$_SESSION['loadingscreen'] = 1;
 			header('location: ' . BASEURL . '/login');
 		}
 	}

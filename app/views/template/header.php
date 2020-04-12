@@ -46,7 +46,7 @@
 	</head>
 	<body onbeforeunload="<?= (isset($_SESSION['msg']) || isset($_SESSION['reg'])) ? 'return true;' : '' ?>">
 		
-		<div id="loader" class="hide">
+		<div id="loader" <?= (isset($_SESSION['loadingscreen'])) ? '' : 'class="hide"' ?>>
 			<div>
 				<img src="<?= BASEURL ?>/assets/img/icon/dark-setting.png">
 				<span>Memproses data...</span>
@@ -61,4 +61,22 @@
 			});
 		</script>
 		
-		<?= Flasher::flash() ?>
+		<?php
+		
+		if (isset($_SESSION['loadingscreen'])) {
+			unset($_SESSION['loadingscreen']);
+			
+			?>
+			
+			<script type="text/javascript">			
+				window.addEventListener("load", function(){
+					document.querySelector("#loader").classList.add('hide');
+				});
+			</script>
+			
+			<?php
+		}
+		
+		Flasher::flash()
+		
+		?>
