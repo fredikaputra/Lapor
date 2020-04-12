@@ -7,23 +7,40 @@ class Register_model{
 		$this->db = new Database;
 	}
 	
-	public function masyarakat(){ // proses registrasi masyarakat
+	// proses registrasi masyarakat
+	public function masyarakat(){
 		$this->db->dbh->real_escape_string(extract($_POST));
 		
-		if (isset($addmasyarakat)) { // cek kalau button submit pada form di tekan
-			$_SESSION['reg'] = [ // buat session isi form (untuk keadaan dimana kondisi salah)
+		// jalankan fungsi ketika pengguna
+		// menekan tombol submit pada form
+		if (isset($addmasyarakat)) {
+			
+			// buat session isi form
+			// (untuk keadaan dimana kondisi salah)
+			$_SESSION['reg'] = [
 				'nik' => $nik,
 				'name' => $name,
 				'username' => $username,
 				'phone' => $phone
 			];
 			
-			if (isset($_FILES) && $_FILES != NULL) { // ketika masyarakat menyertakan gambar
-				if ($_FILES['photo']['error'] == 0) { // cek file tidak ada masalah
+			// jalankan fungsi ketika
+			// pengguna meyertakan file
+			// pada formulir pengaduan
+			if (isset($_FILES) && $_FILES != NULL) {
+				
+				// cek kondisi keutuhan file
+				if ($_FILES['photo']['error'] == 0) {
+					
+					// cek extensi gambar
 					$extension = pathinfo($_FILES['photo']['name'], PATHINFO_EXTENSION);
-					if (in_array($extension, ['jpg', 'jpeg'])) { // cek ekstensi gambar
-						if ($_FILES['photo']['size'] <= 2048000) { // cek ukuran gambar
+					if (in_array($extension, ['jpg', 'jpeg'])) {
+						
+						// cek ukuran gambar
+						if ($_FILES['photo']['size'] <= 2048000) {
 							$photo = $nik . '.jpg';
+							
+							// upload
 							if (!move_uploaded_file($_FILES['photo']['tmp_name'], 'assets/img/users/' . $photo)) {
 								Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
 								return;
@@ -41,12 +58,32 @@ class Register_model{
 				}
 			}
 			
-			if ($this->checkMasyarakat($nik, NULL) == NULL) { // cek kalau nik tidak ada yang menggunakan
-				if ($this->checkMasyarakat(NULL, $username) == NULL) { // cek username belum digunakan
-					if (strlen($pass) >= 8) { // cek panjang password, min 8 karakter
-						if ($pass == $repass) { // cek password telah terkonfirmasi
-							if (strlen($phone) >= 9) { // nomor telepon minimal 9 karakter
-								$password = password_hash($pass, PASSWORD_BCRYPT, ['cost' => 12]); // encrypt password
+			// lanjut ketika nik
+			// belum digunakan
+			if ($this->checkMasyarakat($nik, NULL) == NULL) {
+				
+				// lanjut ketika username
+				// belum digunakan
+				if ($this->checkMasyarakat(NULL, $username) == NULL) {
+					
+					// lanjut ketika karakter password
+					// lebih dari 7 karakter
+					if (strlen($pass) >= 8) {
+						
+						// lanjut ketika
+						// konfirmasi password
+						// benar
+						if ($pass == $repass) {
+							
+							// lanjut ketik
+							// nomor telepon
+							// lebih dari 8 digit
+							if (strlen($phone) >= 9) {
+								
+								// enkripsi password
+								$password = password_hash($pass, PASSWORD_BCRYPT, ['cost' => 12]);
+								
+								// masukkan data ke database
 								$query = 'INSERT INTO masyarakat VALUES (?, ?, ?, ?, ?)';
 								$this->db->prepare($query);
 								$this->db->sth->bind_param('sssss', $nik, $name, $username, $password, $phone);
@@ -83,29 +120,48 @@ class Register_model{
 		}
 	}
 	
-	public function petugas(){ // proses registrasi petugas
+	// proses registrasi masyarakat
+	public function petugas(){
 		$this->db->dbh->real_escape_string(extract($_POST));
 		
-		if (isset($addpetugas)) { // check ketika button submit di tekan pada form
-			do { // generate id laporan yang unik
+		// jalankan fungsi ketika pengguna
+		// menekan tombol submit pada form
+		if (isset($addpetugas)) {
+			do {
+				// generate id laporan yang unik
 				$this->uniqID = strtoupper('ptgs' . substr(md5(uniqid()), 25));
-				if ($this->checkPetugas($this->uniqID, NULL) != $this->uniqID) { // stop generate id ketika id tersedia
+				
+				// stop generate id ketika id tersedia
+				if ($this->checkPetugas($this->uniqID, NULL) != $this->uniqID) {
 					break;
 				}
 			} while ($this->checkPetugas($this->uniqID, NULL) == !NULL);
 			
+			// buat session isi form
+			// (untuk keadaan dimana kondisi salah)
 			$_SESSION['reg'] = [
 				'name' => $name,
 				'username' => $username,
 				'phone' => $phone,
-			]; // buat session pada form (untuk kondisi ketika gagal)
+			];
 			
-			if (isset($_FILES) && $_FILES != NULL) { // ketika masyarakat menyertakan gambar
-				if ($_FILES['photo']['error'] == 0) { // cek file tidak ada masalah
+			// jalankan fungsi ketika
+			// pengguna meyertakan file
+			// pada formulir pengaduan
+			if (isset($_FILES) && $_FILES != NULL) {
+				
+				// cek kondisi keutuhan file
+				if ($_FILES['photo']['error'] == 0) {
+					
+					// cek extensi gambar
 					$extension = pathinfo($_FILES['photo']['name'], PATHINFO_EXTENSION);
-					if (in_array($extension, ['jpg', 'jpeg'])) { // cek ekstensi gambar
-						if ($_FILES['photo']['size'] <= 2048000) { // cek ukuran gambar
+					if (in_array($extension, ['jpg', 'jpeg'])) {
+						
+						// cek ukuran gambar
+						if ($_FILES['photo']['size'] <= 2048000) {
 							$photo = $this->uniqID . '.jpg';
+							
+							// upload
 							if (!move_uploaded_file($_FILES['photo']['tmp_name'], 'assets/img/users/' . $photo)) {
 								Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
 								return;
@@ -122,11 +178,26 @@ class Register_model{
 					Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
 				}
 			}
-		
-			if ($this->checkPetugas(NULL, $username) == NULL) { // cek ketersediaan username
-				if (strlen($password) >= 8) { // password minimal 8 karakter
-					if ($password == $repass) { // konfirmasi password
-						if (strlen($phone) >= 9) { // nomor telepon minimal 9 karakter
+			
+			// lanjut ketika username
+			// belum digunakan
+			if ($this->checkPetugas(NULL, $username) == NULL) {
+				
+				// lanjut ketika karakter password
+				// lebih dari 7 karakter
+				if (strlen($password) >= 8) {
+					
+					// lanjut ketika
+					// konfirmasi password
+					// benar
+					if ($password == $repass) {
+						
+						// lanjut ketik
+						// nomor telepon
+						// lebih dari 8 digit
+						if (strlen($phone) >= 9) {
+							
+							// enkripsi password
 							$password = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
 							$level = 2;
 							$query = "INSERT INTO petugas VALUES(?, ?, ?, ?, ?, ?)";
@@ -161,7 +232,8 @@ class Register_model{
 		}
 	}
 	
-	public function checkMasyarakat($nik = NULL, $username = NULL){ // proses check nik dan username
+	// proses check nik dan username
+	public function checkMasyarakat($nik = NULL, $username = NULL){
 		if ($nik != NULL) {
 			$query = 'SELECT nik FROM masyarakat WHERE nik = ?';
 			$this->db->prepare($query);
@@ -182,7 +254,8 @@ class Register_model{
 		return $this->db->getResult();
 	}
 	
-	public function checkPetugas($id = NULL, $username = NULL){ // proses cek id
+	// proses cek id dan username
+	public function checkPetugas($id = NULL, $username = NULL){
 		if ($id != NULL) {
 			$query = "SELECT id_petugas FROM petugas WHERE id_petugas = ?";
 			$this->db->prepare($query);

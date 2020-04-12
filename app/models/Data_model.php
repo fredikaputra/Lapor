@@ -7,7 +7,8 @@ class Data_model{
 		$this->db = new Database;
 	}
 	
-	public function petugas(){ // ambil data petugas
+	// ambil data petugas
+	public function petugas(){
 		$query = "SELECT * FROM petugas WHERE id_petugas = ?";
 		$this->db->prepare($query);
 		$this->db->sth->bind_param('s', $_SESSION['petugasID']);
@@ -16,7 +17,8 @@ class Data_model{
 		return $this->db->row;
 	}
 	
-	public function masyarakat(){ // ambil data masyarakat
+	// ambil data masyarakat
+	public function masyarakat(){
 		$query = "SELECT * FROM masyarakat WHERE nik = ?";
 		$this->db->prepare($query);
 		$this->db->sth->bind_param('s', $_SESSION['masyarakatNIK']);
@@ -25,7 +27,10 @@ class Data_model{
 		return $this->db->row;
 	}
 	
-	public function laporan($id = NULL, $nik = NULL, $limit = NULL){ // ambil data pengaduan
+	// ambil data pengaduan
+	public function laporan($id = NULL, $nik = NULL, $limit = NULL){
+		
+		// cek query pada url (setelah tanda ?)
 		$url = parse_url($_SERVER['REQUEST_URI']);
 		if (isset($url['query'])) {
 			$url = parse_url($_SERVER['REQUEST_URI'])['query'];
@@ -38,62 +43,130 @@ class Data_model{
 			}
 		}
 		
+		// tampilkan data laporar
+		// ketika filter menyala
 		if (isset($get['filter']) && $get['filter'] == 'on') {
+			
+			// ambil data laporan
+			// yang memiliki gambar
 			if ($get['gambar'] == '2') {
 				$query = "SELECT pengaduan.*, nama FROM pengaduan JOIN masyarakat USING (nik) WHERE foto IS NOT NULL";
-			}else if ($get['gambar'] == '1') {
+			}
+			
+			// ambil data laporan
+			// yang tidak memiliki gambar
+			else if ($get['gambar'] == '1') {
 				$query = "SELECT pengaduan.*, nama FROM pengaduan JOIN masyarakat USING (nik) WHERE foto IS NULL";
-			}else {
+			}
+			
+			// ambil data laporan
+			// tanpa filter gambar
+			else {
 				$query = "SELECT pengaduan.*, nama FROM pengaduan JOIN masyarakat USING (nik)";
 			}
 			
+			// beri kondisi status
+			// jika diminta
 			if ($get['gambar'] == '1' || $get['gambar'] == '2') {
+				
+				// tampilkan data laporan
+				// dengan status proses
 				if ($get['status'] == '0') {
 					$query .= " AND status = '0'";
-				}else if ($get['status'] == '1') {
+				}
+				
+				// tampilkan data laporan
+				// dengan status selesai
+				else if ($get['status'] == '1') {
 					$query .= " AND status = '1'";
 				}
 			}else {
+				
+				// tampilkan data laporan
+				// dengan status proses
 				if ($get['status'] == '0') {
 					$query .= " WHERE status = '0'";
-				}else if ($get['status'] == '1') {
+				}
+				
+				// tampilkan data laporan
+				// dengan status selesai
+				else if ($get['status'] == '1') {
 					$query .= " WHERE status = '1'";
 				}
 			}
 			
 			if ($get['urutan'] == '1') {
+				
+				// tampilkan data laporan
+				// dengan urutan data yang terbaru
 				$query .= " ORDER BY tgl_pengaduan DESC";
-			}else if ($get['urutan'] == '2') {
+			}
+			
+			// tampilkan data laporan
+			// dengan urutan data yang terlama
+			else if ($get['urutan'] == '2') {
 				$query .= " ORDER BY tgl_pengaduan ASC";
-			}else if ($get['urutan'] == '3') {
+			}
+			
+			// tampilkan data laporan
+			// dengan urutan nama A - Z
+			else if ($get['urutan'] == '3') {
 				$query .= " ORDER BY nama ASC";
-			}else if ($get['urutan'] == '4') {
+			}
+			
+			// tampilkan data laporan
+			// dengan urutan nama Z - A
+			else if ($get['urutan'] == '4') {
 				$query .= " ORDER BY nama DESC";
 			}
 			
+			// tampilkan data laporan
+			// dengan jumlah 10 data
 			if ($get['tampil'] == '10') {
 				$query .= " LIMIT 10";
-			}else if ($get['tampil'] == '20') {
+			}
+			
+			// tampilkan data laporan
+			// dengan jumlah 20 data
+			else if ($get['tampil'] == '20') {
 				$query .= " LIMIT 20";
-			}else if ($get['tampil'] == '50') {
+			}
+			
+			// tampilkan data laporan
+			// dengan jumlah 50 data
+			else if ($get['tampil'] == '50') {
 				$query .= " LIMIT 50";
 			}
 			
 			$this->db->prepare($query);
 		}else {
+			
+			// tampilkan data laporan
+			// berdasarkan id laporan
 			if ($id != NULL) {
 				$query = "SELECT pengaduan.*, nama FROM pengaduan JOIN masyarakat USING (nik) WHERE id_pengaduan = ?";
 				$this->db->prepare($query);
 				$this->db->sth->bind_param('s', $id);
-			}else if ($nik != NULL) {
+			}
+			
+			// tampilkan data laporan
+			// berdasarkan nik masyarakat
+			else if ($nik != NULL) {
 				$query = "SELECT pengaduan.*, nama FROM pengaduan JOIN masyarakat USING (nik) WHERE nik = ?";
 				$this->db->prepare($query);
 				$this->db->sth->bind_param('s', $nik);
-			}else if ($limit != NULL) {
+			}
+			
+			// tampilkan data laporan
+			// dengan limit tertentu
+			else if ($limit != NULL) {
 				$query = "SELECT pengaduan.*, nama FROM pengaduan JOIN masyarakat USING (nik) ORDER BY tgl_pengaduan DESC LIMIT ?";
 				$this->db->prepare($query);
 				$this->db->sth->bind_param('s', $limit);
-			}else {
+			}
+			
+			// tampilkan semua data laporan
+			else {
 				$query = "SELECT pengaduan.*, nama FROM pengaduan JOIN masyarakat USING (nik) ORDER BY tgl_pengaduan DESC LIMIT 10";
 				$this->db->prepare($query);
 			}
@@ -105,7 +178,8 @@ class Data_model{
 		return $this->db->row;
 	}
 	
-	public function tanggapan($id){ // ambil data tanggapan
+	// ambil data tanggapan
+	public function tanggapan($id){
 		$query = "SELECT tanggapan.*, nama_petugas, level FROM tanggapan JOIN petugas USING(id_petugas) WHERE id_pengaduan = ? ORDER BY tgl_tanggapan DESC";
 		$this->db->prepare($query);
 		$this->db->sth->bind_param('s', $id);
@@ -114,7 +188,11 @@ class Data_model{
 		return $this->db->row;
 	}
 	
-	public function pengguna(){ // ambil data pengguna
+	// ambil data pengguna
+	public function pengguna(){
+		
+		// cek query pada url (setelah tanda ?)
+		$url = parse_url($_SERVER['REQUEST_URI']);
 		if (isset($url['query'])) {
 			$url = parse_url($_SERVER['REQUEST_URI'])['query'];
 			$url = explode('&', $url);
@@ -126,33 +204,69 @@ class Data_model{
 			}
 		}
 		
+		// tampilkan data laporar
+		// ketika filter menyala
 		if (isset($get['filter']) && $get['filter'] == 'on') {
+			
+			// ambil data pengguna
+			// dengan ketentuan hak admin
 			if ($get['hak'] == '1') {
 				$query = "SELECT id_petugas as id, nama_petugas as nama, username, telp, level FROM petugas WHERE level = '1'";
-			}else if ($get['hak'] == '2') {
+			}
+			
+			// ambil data pengguna
+			// dengan ketentuan hak petugas
+			else if ($get['hak'] == '2') {
 				$query = "SELECT id_petugas as id, nama_petugas as nama, username, telp, level FROM petugas WHERE level = '2'";
-			}else if ($get['hak'] == '3') {
+			}
+			
+			// ambil data pengguna
+			// dengan ketentuan hak masyarakat
+			else if ($get['hak'] == '3') {
 				$query = "SELECT nik as id, nama, username, telp, telp as level FROM masyarakat";
-			}else {
+			}
+			
+			// ambil semua data pengguna
+			else {
 				$query = "SELECT id_petugas AS id, nama_petugas AS nama, username, telp, level FROM petugas
 							UNION
 							SELECT nik AS id, nama, username, telp, telp AS level FROM masyarakat";
 			}
 			
+			// ambil data pengguna
+			// dengan urutan nama A - Z
 			if ($get['urutan'] == '1') {
 				$query .= " ORDER BY nama ASC";
-			}else if ($get['urutan'] == '2') {
+			}
+			
+			// ambil data pengguna
+			// dengan urutan nama Z - A
+			else if ($get['urutan'] == '2') {
 				$query .= " ORDER BY nama DESC";
 			}
 			
+			// tampilkan data laporan
+			// dengan jumlah 10 data
 			if ($get['tampil'] == '10') {
 				$query .= " LIMIT 10";
-			}else if ($get['tampil'] == '20') {
+			}
+			
+			// tampilkan data laporan
+			// dengan jumlah 20 data
+			else if ($get['tampil'] == '20') {
 				$query .= " LIMIT 20";
-			}else if ($get['tampil'] == '50') {
+			}
+			
+			// tampilkan data laporan
+			// dengan jumlah 50 data
+			else if ($get['tampil'] == '50') {
 				$query .= " LIMIT 50";
 			}
-		}else if (isset($get['querysearch']) && $get['search'] == 'on') {
+		}
+		
+		// tampilkan data laporar
+		// berdasarkan kata kunci
+		else if (isset($get['querysearch']) && $get['search'] == 'on') {
 			$query = "SELECT id_petugas as id, nama_petugas as nama, username, telp, level FROM petugas WHERE nama_petugas LIKE '%" . $get['querysearch'] . "%' OR username LIKE '%" . $get['querysearch'] . "%'";
 			$this->db->prepare($query);
 			$this->db->execute();
@@ -171,6 +285,7 @@ class Data_model{
 		return $this->db->row;
 	}
 	
+	// ambil total data yang ada pada tabel
 	public function tableRow($tb1, $tb2 = NULL, $cond = NULL){
 		$query = "SELECT COUNT(*) AS totalRows FROM $tb1";
 		
@@ -188,6 +303,7 @@ class Data_model{
 		return $this->db->row[0]['totalRows'];
 	}
 	
+	// ambil data dengan format waktu
 	public static function timeCounter($time){
 		$diff = date_diff(date_create(date('Y-m-d H:i:s', $time)), date_create(date('Y-m-d H:i:s')));
 		if ($diff->y) {

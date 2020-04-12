@@ -9,89 +9,66 @@ class Setting_model{
 	}
 	
 	public function masyarakat($update){
-		if ($update == 'name') {
-			$this->db->dbh->real_escape_string(extract($_POST));
-			
-			if (isset($update)) {
-				if ($this->check($name, '', '') == 0) {
-					$query = 'UPDATE masyarakat SET nama = ? WHERE nik = ?';
-					$this->db->prepare($query);
-					$this->db->sth->bind_param('ss', $name, $_SESSION['masyarakatNIK']);
-					$this->db->execute();
-					if ($this->db->affectedRows() > 0) {
-						Flasher::setFlash('Berhasil! ', 'Nama anda telah diubah.', 'success', 'correct');
-					}else {
-						Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
-					}
-				}else {
-					Flasher::setFlash('Gagal! ', 'Nama tidak diubah.', 'warning', 'warning');
-				}
-			}else {
-				Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
-			}
-		}else if ($update == 'username') {
-			$this->db->dbh->real_escape_string(extract($_POST));
-			
-			if (isset($update)) {
-				if ($this->check('', $username, '') == 0) {
-					$query = 'UPDATE masyarakat SET username = ? WHERE nik = ?';
-					$this->db->prepare($query);
-					$this->db->sth->bind_param('ss', $username, $_SESSION['masyarakatNIK']);
-					$this->db->execute();
-					if ($this->db->affectedRows() > 0) {
-						Flasher::setFlash('Berhasil! ', 'Userame anda telah diubah.', 'success', 'correct');
-					}else {
-						Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
-					}
-				}else {
-					Flasher::setFlash('Gagal! ', 'Userame tidak diubah.', 'warning', 'warning');
-				}
-			}else {
-				Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
-			}
-		}else if ($update == 'phone') {
-			$this->db->dbh->real_escape_string(extract($_POST));
-			
-			if (isset($update)) {
-				if ($this->check('', '', $phone) == 0) {
-					$query = 'UPDATE masyarakat SET telp = ? WHERE nik = ?';
-					$this->db->prepare($query);
-					$this->db->sth->bind_param('ss', $phone, $_SESSION['masyarakatNIK']);
-					$this->db->execute();
-					if ($this->db->affectedRows() > 0) {
-						Flasher::setFlash('Berhasil! ', 'Nomor telepon anda telah diubah.', 'success', 'correct');
-					}else {
-						die();
-						Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
-					}
-				}else {
-					Flasher::setFlash('Gagal! ', 'Nomor telepon tidak diubah.', 'warning', 'warning');
-				}
-			}else {
-				Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
-			}
-		}else if ($update == 'photo') {
-			$this->db->dbh->real_escape_string(extract($_POST));
-			
-			if (isset($update)) {
-				if ($_FILES['photo']['error'] == 0) {
-					$extension = strtolower(pathinfo($_FILES['photo']['name'], PATHINFO_EXTENSION));
-					$photo = $_SESSION['masyarakatNIK'] . '.jpg';
-					if ($extension == 'jpg' || $extension == 'jpeg') {
-						if ($_FILES['photo']['size'] <= 2048000) {
-							if (move_uploaded_file($_FILES['photo']['tmp_name'], 'assets/img/users/' . $photo)) {
-								Flasher::setFlash('Berhasil! ', 'Foto profil anda telah diubah.', 'success', 'correct');
-							}else {
-								Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
-							}
-						}else {
-							Flasher::setFlash('Gagal! ', 'Ukuran file maksimal 2MB.', 'warning', 'warning');
-						}
-					}else {
-						Flasher::setFlash('Gagal! ', 'Format file tidak didukung.', 'warning', 'warning');
-					}
+		$this->db->dbh->real_escape_string(extract($_POST));
+		if ($update == 'name') {	
+			if ($this->check($name, '', '') == 0) {
+				$query = 'UPDATE masyarakat SET nama = ? WHERE nik = ?';
+				$this->db->prepare($query);
+				$this->db->sth->bind_param('ss', $name, $_SESSION['masyarakatNIK']);
+				$this->db->execute();
+				if ($this->db->affectedRows() > 0) {
+					Flasher::setFlash('Berhasil! ', 'Nama anda telah diubah.', 'success', 'correct');
 				}else {
 					Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
+				}
+			}else {
+				Flasher::setFlash('Gagal! ', 'Nama tidak diubah.', 'warning', 'warning');
+			}
+		}else if ($update == 'username') {
+			if ($this->check('', $username, '') == 0) {
+				$query = 'UPDATE masyarakat SET username = ? WHERE nik = ?';
+				$this->db->prepare($query);
+				$this->db->sth->bind_param('ss', $username, $_SESSION['masyarakatNIK']);
+				$this->db->execute();
+				if ($this->db->affectedRows() > 0) {
+					Flasher::setFlash('Berhasil! ', 'Userame anda telah diubah.', 'success', 'correct');
+				}else {
+					Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
+				}
+			}else {
+				Flasher::setFlash('Gagal! ', 'Userame tidak diubah.', 'warning', 'warning');
+			}
+		}else if ($update == 'phone') {
+			if ($this->check('', '', $phone) == 0) {
+				$query = 'UPDATE masyarakat SET telp = ? WHERE nik = ?';
+				$this->db->prepare($query);
+				$this->db->sth->bind_param('ss', $phone, $_SESSION['masyarakatNIK']);
+				$this->db->execute();
+				if ($this->db->affectedRows() > 0) {
+					Flasher::setFlash('Berhasil! ', 'Nomor telepon anda telah diubah.', 'success', 'correct');
+				}else {
+					die();
+					Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
+				}
+			}else {
+				Flasher::setFlash('Gagal! ', 'Nomor telepon tidak diubah.', 'warning', 'warning');
+			}
+		}else if ($update == 'photo') {
+			if ($_FILES['photo']['error'] == 0) {
+				$extension = strtolower(pathinfo($_FILES['photo']['name'], PATHINFO_EXTENSION));
+				$photo = $_SESSION['masyarakatNIK'] . '.jpg';
+				if ($extension == 'jpg' || $extension == 'jpeg') {
+					if ($_FILES['photo']['size'] <= 2048000) {
+						if (move_uploaded_file($_FILES['photo']['tmp_name'], 'assets/img/users/' . $photo)) {
+							Flasher::setFlash('Berhasil! ', 'Foto profil anda telah diubah.', 'success', 'correct');
+						}else {
+							Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
+						}
+					}else {
+						Flasher::setFlash('Gagal! ', 'Ukuran file maksimal 2MB.', 'warning', 'warning');
+					}
+				}else {
+					Flasher::setFlash('Gagal! ', 'Format file tidak didukung.', 'warning', 'warning');
 				}
 			}else {
 				Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');

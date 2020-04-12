@@ -7,29 +7,52 @@ class Insert_model extends Controller{
 		$this->db = new Database;
 	}
 	
-	public function laporan(){ // proses tambah laporan
+	// proses tambah laporan
+	public function laporan(){
 		$this->db->dbh->real_escape_string(extract($_POST));
 		
-		if (isset($report)) { // check ketika button submit di tekan pada form
-			$_SESSION['msg'] = $msg; // buat session pada form (untuk kondisi ketika gagal)
+		// jalankan fungsi ketika pengguna
+		// menekan tombol submit pada form
+		if (isset($report)) {
 			
-			do { // generate id laporan yang unik
+			// buat session pada form
+			// (untuk kondisi ketika gagal)
+			$_SESSION['msg'] = $msg;
+			
+			do {
+				// generate id laporan yang unik
 				$this->uniqID = strtoupper('lprid' . substr(md5(uniqid()), 25));
-				if ($this->checkLap($this->uniqID) != $this->uniqID) { // chek ketika id tersedia
+				
+				// hentikan proses generate id, ketika id tersedia pada tabel
+				if ($this->checkLap($this->uniqID) != $this->uniqID) {
 					break;
 				}
 			} while ($this->checkLap($this->uniqID) == !NULL);
 			
+			// deklarasikan variable
 			$time = time();
-			$nik = $this->model('Data_model')->masyarakat($_SESSION['masyarakatNIK'])[0]['nik'];
 			$status = 0;
 			
-			if (isset($_FILES)) { // ketika masyarakat menyertakan gambar
-				if ($_FILES['photo']['error'] == 0) { // cek file tidak ada masalah
+			// ambil data pengguna
+			$nik = $this->model('Data_model')->masyarakat($_SESSION['masyarakatNIK'])[0]['nik'];
+			
+			// jalankan fungsi ketika
+			// pengguna meyertakan file
+			// pada formulir pengaduan
+			if (isset($_FILES)) {
+				
+				// cek kondisi keutuhan file
+				if ($_FILES['photo']['error'] == 0) {
+					
+					// cek extensi gambar
 					$extension = pathinfo($_FILES['photo']['name'], PATHINFO_EXTENSION);
-					if (in_array($extension, ['jpg', 'jpeg', 'png'])) { // cek ekstensi gambar
-						if ($_FILES['photo']['size'] <= 2048000) { // cek ukuran gambar
+					if (in_array($extension, ['jpg', 'jpeg', 'png'])) {
+						
+						// cek ukuran gambar
+						if ($_FILES['photo']['size'] <= 2048000) {
 							$photo = $this->uniqID . '.' . $extension;
+							
+							// upload
 							if (!move_uploaded_file($_FILES['photo']['tmp_name'], 'assets/img/pengaduan/' . $photo)) {
 								Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
 								return;
@@ -45,7 +68,10 @@ class Insert_model extends Controller{
 				}else {
 					Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
 				}
-			}else { // gambar tidak tercantum
+			}else {
+				
+				// kirim data kosong ketika
+				// pengguna tidak mencantumkan file
 				$photo = NULL;
 			}
 		
@@ -67,14 +93,24 @@ class Insert_model extends Controller{
 	public function tanggapan(){
 		$this->db->dbh->real_escape_string(extract($_POST));
 		
-		if (isset($comment)) { // cek ketika button submit tertekan pada form
+		// jalankan fungsi ketika pengguna
+		// menekan tombol submit pada form
+		if (isset($comment)) {
+			
+			// jalankan fungsi ketika
+			// isi text tidak kosong
 			if ($response != NULL) {
-				$_SESSION['response'] = $response; // buat session isi form (kondisi ketika gagal)
+				
+				// buat session isi form (kondisi ketika gagal)
+				$_SESSION['response'] = $response;
 				$time = time();
 				
-				do { // generate id tanggapan yang unik
+				do {
+					// generate id tanggapan yang unik
 					$this->uniqID = strtoupper('tgpn' . substr(md5(uniqid()), 25));
-					if ($this->checkTan($this->uniqID, '') != $this->uniqID) { // ketika id tersedia
+					
+					// hentikan generate id ketika id tersedia
+					if ($this->checkTan($this->uniqID, '') != $this->uniqID) {
 						break;
 					}
 				} while ($this->checkTan($this->uniqID, '') == !NULL);
@@ -89,7 +125,12 @@ class Insert_model extends Controller{
 											$_SESSION['petugasID']);
 				$this->db->execute();
 				if ($this->db->affectedRows() > 0) {
+					
+					// jalankan fungsi ketika status
+					// data aduan dalam proses
 					if ($this->checkTan('', $id) == 0) {
+						
+						// ubah status dari proses menjadi selesai
 						$query = "UPDATE pengaduan SET status = '1' WHERE id_pengaduan = ?";
 						$this->db->prepare($query);
 						$this->db->sth->bind_param('s', $id);

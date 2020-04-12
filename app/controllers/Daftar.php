@@ -2,20 +2,25 @@
 
 class Daftar extends Controller{
 	public function index(){
-		// deklarasikan data
+		
+		// deklarasikan variable
+		// untuk dikirimkan ke halaman website
 		$data['webtitle'] = 'LAPOR! - Daftar';
 		$data['css'] = ['sign.css', 'base.css'];
 		$data['js'] = ['unsetload.js'];
 		
-		// tampilkan website serta kirim data nya ke view
+		// tampilkan website
+		// kirim semua data ($data) ke dalam website
 		$this->view('template/header', $data);
 		$this->view('page/daftar');
 		$this->view('template/footer', $data);
 	}
 	
-	// bagian proses
-	public function proses(){ // proses daftar
-		// loading screen
+	// proses registrasi
+	public function proses(){
+		
+		// tampilkan loading screen
+		// ketika proses memakan waktu yang lama
 		$data['webtitle'] = 'Proses data...';
 		$data['css'] = ['loading.css', 'base.css'];
 		
@@ -23,10 +28,16 @@ class Daftar extends Controller{
 		$this->view('page/loading');
 		$this->view('template/footer', $data);
 		
+		// lakukan proses registrasi 
 		if ($this->model('Daftar_model')->masyarakat() === TRUE) {
-			header('location: ' . BASEURL); // ketika proses berhasil, pindah ke halaman landing page
-		}else {
-			header('location: ' . BASEURL . '/daftar'); // ketika proses gagal, balik ke halaman daftar
+			// ketika proses berhasil
+			// pindah ke halaman landing page
+			header('location: ' . BASEURL);
+		}
+		else {
+			// ketika proses gagal
+			// kembali ke halaman daftar
+			header('location: ' . BASEURL . '/daftar');
 		}
 	}
 }

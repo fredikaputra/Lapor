@@ -2,26 +2,40 @@
 
 class Login extends Controller{
 	public function index(){
+		
+		// pindah ke halaman formulir pengaduan
+		// jika pengguna sudah login
+		// dan berstatus masyarakat
 		if (isset($_SESSION['masyarakatNIK'])) {
-			// kalau masyarakat sudah login, pindah kan ke halaman formulir pengaduan
 			header('location: ' . BASEURL . '/formulir-pengaduan');
-		}else if (isset($_SESSION['petugasID'])) {
-			// kalau masyarakat sudah login, pindah kan ke halaman dashboard
+		}
+		
+		// pindah ke halaman dashboard
+		// jika pengguna sudah login
+		// dan berstatus petugas
+		else if (isset($_SESSION['petugasID'])) {
 			header('location: ' . BASEURL . '/dashboard');
-		}else {
-			// deklarasikan data
+		}
+		
+		// tampilkan halaman login
+		// jika pengguna belum login
+		else {
+			
+			// deklarasikan variable
+			// untuk dikirimkan ke halaman website
 			$data['webtitle'] = 'LAPOR! - Login';
 			$data['css'] = ['sign.css', 'base.css'];
 			
-			// tampilkan website serta kirim data nya ke view
+			// tampilkan website
+			// kirim semua data ($data) ke dalam website
 			$this->view('template/header', $data);
 			$this->view('page/login');
 			$this->view('template/footer');
 		}
 	}
 	
-	// bagian proses
-	public function proccess(){
+	// proses login masyarakat, petugas, dan admin
+	public function proses(){
 		if ($this->model('Login_model') === TRUE) {
 			if (isset($_SESSION['onLock'])) {
 				unset($_SESSION['onLock']);

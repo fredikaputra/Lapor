@@ -7,7 +7,11 @@ class Delete_model{
 		$this->db = new Database;
 	}
 	
-	public function user($id){
+	// hapus pengguna
+	public function pengguna($id){
+		
+		// hapus pengguna
+		// pada tabel petugas
 		if (strpos($id, 'PTGS') !== FALSE) {
 			$query = "SELECT nama_petugas FROM petugas WHERE id_petugas = ?";
 			$this->db->prepare($query);
@@ -24,7 +28,11 @@ class Delete_model{
 			}else {
 				Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
 			}
-		}else {
+		}
+		
+		// hapus pengguna
+		// pada tabel masyarakat
+		else {
 			$query = "SELECT nama FROM masyarakat WHERE nik = ?";
 			$this->db->prepare($query);
 			$this->db->sth->bind_param('s', $id);
@@ -43,7 +51,8 @@ class Delete_model{
 		}
 	}
 	
-	public function laporan($id){
+	// hapus laporan
+	public function laporan(){
 		$query = "DELETE FROM pengaduan WHERE id_pengaduan = ?";
 		$this->db->prepare($query);
 		$this->db->sth->bind_param('s', $id);
