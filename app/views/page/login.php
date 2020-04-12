@@ -13,7 +13,7 @@
 			<img src="<?= BASEURL ?>/assets/img/icon/circle-padlock.png">
 			<input type="password" placeholder="Password" name="password" required>
 		</div>
-		<button type="submit" name="login">LOGIN</button>
+		<button type="submit" name="login" onclick="loadingscreen()">LOGIN</button>
 		<span>Belum punya akun? <a href="<?= BASEURL ?>/daftar">Daftar</a> sekarang!</span>
 	</form>
 </main>

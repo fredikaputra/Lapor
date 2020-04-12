@@ -46,22 +46,21 @@
 	</head>
 	<body onbeforeunload="<?= (isset($_SESSION['msg']) || isset($_SESSION['reg'])) ? 'return true;' : '' ?>">
 		
-		<div id="loader">
+		<div id="loader" class="hide">
 			<div>
 				<img src="<?= BASEURL ?>/assets/img/icon/dark-setting.png">
-				<span>Memuat Halaman...</span>
+				<span>Memproses data...</span>
 			</div>
 		</div>
 		
 		<script type="text/javascript">
 			function loadingscreen(){
-				console.log('test loadig');
 				document.querySelector("#loader").classList.remove('hide');
 			}
 			
-			window.addEventListener("load", function(){
-				document.querySelector("#loader").classList.add('hide');
-			});
+			// window.addEventListener("load", function(){
+			// 	document.querySelector("#loader").classList.add('hide');
+			// });
 		</script>
 		
 		<?= Flasher::flash() ?>
