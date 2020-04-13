@@ -218,21 +218,23 @@ main .content form .body > div.user div:nth-of-type(2) img{
 	margin-right: 15px;
 }
 
-main .content form .body > div.user div:last-of-type a{
+main .content form .body > div.user div:last-of-type button{
 	padding: 10px;
 	border-radius: 50%;
 	line-height: 0;
 	display: none;
+	background: var(--light-color);
+	border: none;
 }
 
-main .content form .body > div.user div:last-of-type a:hover{
+main .content form .body > div.user div:last-of-type button:hover{
 	background: var(--soft-light-color);
 }
 
-main .content form .body > div.user:hover div:last-of-type a{
+main .content form .body > div.user:hover div:last-of-type button{
 	display: block;
 }
 
-main .content form .body > div.user div:last-of-type a img{
+main .content form .body > div.user div:last-of-type button img{
 	width: 20px;
 }

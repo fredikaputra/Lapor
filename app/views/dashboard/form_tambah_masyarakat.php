@@ -3,7 +3,7 @@
 			<h1>Tambah Masyarakat</h1>
 		</div>
 		
-		<form action="<?= BASEURL ?>/dashboard/proccess-tambah-pengguna/masyarakat" method="post" enctype="multipart/form-data">
+		<form action="<?= BASEURL ?>/dashboard/tambah-pengguna/masyarakat/proses" method="post" enctype="multipart/form-data">
 			<div>
 				<img src="<?= BASEURL ?>/assets/img/icon/petugas.png">
 			</div>

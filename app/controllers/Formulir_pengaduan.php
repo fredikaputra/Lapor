@@ -43,7 +43,7 @@ class Formulir_pengaduan extends Controller{
 	
 	// proses upload formulir pengaduan
 	public function proses(){
-		$this->model('FormulirPengaduan_model')->upload();
+		$this->model('Insert_model')->laporan();
 		header('location: ' . BASEURL . '/formulir-pengaduan');
 	}
 }

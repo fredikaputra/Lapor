@@ -89,7 +89,11 @@ class Register_model{
 								$this->db->sth->bind_param('sssss', $nik, $name, $username, $password, $phone);
 								$this->db->execute();
 								if ($this->db->affectedRows() > 0) {
-									Flasher::setFlash('Berhasil! ', "$name telah bergabung sebagai petugas", 'success', 'correct');
+									if (isset($_SESSION['petugasID'])) {
+										Flasher::setFlash('Berhasil! ', "$name telah bergabung sebagai masyarakat.", 'success', 'correct');
+									}else {
+										Flasher::setFlash('Berhasil! ', "Anda telah terdaftar.", 'success', 'correct');
+									}
 									unset($_SESSION['reg']);
 									return true;
 								}else {

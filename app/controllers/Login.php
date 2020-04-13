@@ -39,7 +39,7 @@ class Login extends Controller{
 		
 		// lanjut ketika
 		// username dan password benar
-		if ($this->model('Login_model') === TRUE) {
+		if ($this->model('Login_model')->proccess() === TRUE) {
 			
 			// ketika yang login
 			// adalah petugas
@@ -47,6 +47,7 @@ class Login extends Controller{
 			// maka pindahkan ke halaman dashboard
 			if (isset($_SESSION['onLock'])) {
 				unset($_SESSION['onLock']);
+				$_SESSION['loadingscreen'] = 1;
 				header('location: ' . BASEURL . '/dashboard');
 			}
 			
@@ -54,6 +55,7 @@ class Login extends Controller{
 			// kondisi terkunci
 			// maka pindahkan ke halaman landing page
 			else {
+				$_SESSION['loadingscreen'] = 1;
 				header('location: ' . BASEURL);
 			}
 		}
@@ -62,6 +64,7 @@ class Login extends Controller{
 		// ketika dalam kondisi terkunci
 		// login gagal
 		else if (isset($_SESSION['onLock'])){
+			$_SESSION['loadingscreen'] = 1;
 			header('location: ' . BASEURL . '/dashboard/kunci');
 		}
 		

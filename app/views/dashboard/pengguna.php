@@ -131,7 +131,12 @@
 								</span>
 							</div>
 							<!-- <div><a href="<?= BASEURL ?>/dashboard/hapus/<?= $user['id'] ?>" class="singleDel" <?= ($_SESSION['level'] != '1') ? 'style="display: none"' : '' ?>><img src="<?= BASEURL ?>/assets/img/icon/bin.png"></a></div> -->
-							<div><a href="<?= BASEURL ?>/dashboard/hapus/<?= $user['id'] ?>" class="singleDel"><img src="<?= BASEURL ?>/assets/img/icon/bin.png"></a></div>
+							<!-- <div><a href="<?= BASEURL ?>/dashboard/pengguna/hapus/" class="singleDel"></a></div> -->
+							<div>
+								<button type="button" class="singleDel" onclick="delPopup(this)" data-id="<?= $user['id'] ?>" data-name="<?= $user['username'] ?>">
+									<img src="<?= BASEURL ?>/assets/img/icon/bin.png">
+								</button>
+							</div>
 						</div>
 						
 						<?php
@@ -157,6 +162,18 @@
 	function showfilter(){
 		document.querySelector('.filter-menu').classList.toggle('hide');
 		document.querySelector('#inputsearch').toggleAttribute('required');
+	}
+	
+	function delPopup(i){
+		document.querySelector('.popup').classList.remove('hide');
+		var id = i.getAttribute('data-id');
+		document.querySelector('#deleteForm').setAttribute('action', '<?= BASEURL ?>/dashboard/pengguna/hapus/' + id);
+		document.querySelector('#info').innerHTML = 'Apakah anda yakin ingin menghapus pengguna';
+		document.querySelector('#id').innerHTML = '@' + i.getAttribute('data-name');
+	}
+
+	function closeDelPopup(){
+		document.querySelector('.popup').classList.add('hide');
 	}
 </script>
 
