@@ -8,7 +8,7 @@ $app = new App; // jalankan aplikasinya
 
 ?>
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en" dir="ltr">
 	<head>
 		<style type="text/css">
@@ -84,4 +84,4 @@ $app = new App; // jalankan aplikasinya
 		}
 		</script>
 	</body>
-</html>
+</html> -->
