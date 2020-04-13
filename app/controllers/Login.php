@@ -63,7 +63,7 @@ class Login extends Controller{
 			// kalau tidak dalam
 			// kondisi terkunci
 			// maka pindahkan ke halaman landing page
-			else if (isset($_SESSION['petugasID'])) {
+			else {
 				$_SESSION['loadingscreen'] = 1;
 				header('location: ' . BASEURL);
 			}
