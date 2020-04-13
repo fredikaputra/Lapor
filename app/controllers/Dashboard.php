@@ -351,7 +351,7 @@ class Dashboard extends Controller{
 			
 			// cek parameter
 			// proses halaman
-			else if ($option == 'proccess') {
+			else if ($option == 'proses') {
 				$this->model('Update_model')->petugas();
 				header('location: ' . BASEURL . '/dashboard/pengaturan');
 			}

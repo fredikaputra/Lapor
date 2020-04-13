@@ -6,7 +6,7 @@
 			</div>
 		</div>
 		
-		<form method="post" action="<?= BASEURL ?>/dashboard/profil/proccess" enctype="multipart/form-data">
+		<form method="post" action="<?= BASEURL ?>/dashboard/pengaturan/proses" enctype="multipart/form-data">
 			<div class="top">
 				<?php
 				
@@ -25,15 +25,15 @@
 			<div class="body">
 				<div>
 					<label for="name">Nama</label>
-					<input type="text" name="name" id="name" placeholder="Nama Lengkap" value="<?= $data['petugas']['nama_petugas'] ?>">
+					<input type="text" name="name" id="name" class="inputchange" placeholder="Nama Lengkap" value="<?= $data['petugas']['nama_petugas'] ?>">
 				</div>
 				<div>
 					<label for="username">Username</label>
-					<input type="text" name="username" id="username" placeholder="Username"  value="<?= $data['petugas']['username'] ?>">
+					<input type="text" name="username" id="username" class="inputchange" placeholder="Username"  value="<?= $data['petugas']['username'] ?>" >
 				</div>
 				<div>
 					<label for="phone">Nomor Telepon</label>
-					<input type="text" name="phone" id="phone" placeholder="Nomor Telepon"  value="<?= $data['petugas']['telp'] ?>">
+					<input type="text" name="phone" id="phone" class="inputchange" placeholder="Nomor Telepon"  value="<?= $data['petugas']['telp'] ?>" >
 				</div>
 			</div>
 			<div class="changepass">
@@ -41,8 +41,19 @@
 				<a href="">Ganti Password</a>
 			</div>
 			<div class="footer">
-				<button type="submit" name="updateprofile">Simpan</button>
+				<button type="submit" name="updateprofile" onclick="checkValueChange()">Simpan</button>
 			</div>
 		</form>
 	</div>
 </main>
+<script type="text/javascript">
+function checkValueChange(){
+	var input_form = document.querySelectorAll('.inputchange');
+	
+	for (var i = 0; i < input_form.length; i++) {
+		if (input_form[i].defaultValue == input_form[i].value) {
+			input_form[i].setAttribute('disabled', '');
+		}
+	}
+}
+</script>

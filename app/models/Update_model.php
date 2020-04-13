@@ -5,11 +5,11 @@ class Update_model{
 	
 	public function __construct(){
 		$this->db = new Database;
-		$this->nik = $_SESSION['masyarakatNIK'];
 	}
 	
 	public function masyarakat($opt){
 		$this->db->dbh->real_escape_string(extract($_POST));
+		$this->nik = $_SESSION['masyarakatNIK'];
 		
 		if ($opt == 'nama') {	
 			$query = 'UPDATE masyarakat SET nama = ? WHERE nik = ?';
@@ -69,31 +69,46 @@ class Update_model{
 	}
 	
 	public function petugas(){
-		$query = "SELECT username FROM petugas WHERE username = ?";
-		$this->db->prepare($query);
-		$this->db->sth->bind_param('s', $username);
-		$this->db->execute();
-		$this->db->getResult();
+		$this->db->dbh->real_escape_string(extract($_POST));
 		
-		$query = "SELECT username FROM masyarakat WHERE username = ?";
-		$this->db->prepare($query);
-		$this->db->sth->bind_param('s', $username);
-		$this->db->execute();
-		$this->db->getResult();
-		
-		if ($this->db->row == NULL) {
-			$query = "UPDATE petugas SET nama_petugas = ?, username = ?, telp = ? WHERE id_petugas = ?";
+		if (isset($name)) {
+			$query = "UPDATE petugas SET nama_petugas = ? WHERE id_petugas = ?";
 			$this->db->prepare($query);
-			$this->db->sth->bind_param('ssss', $name, $username, $phone, $_SESSION['petugasID']);
+			$this->db->sth->bind_param('ss', $name, $_SESSION['petugasID']);
 			$this->db->execute();
-			if ($this->db->affectedRows() > 0) {
-				Flasher::setFlash('Berhasil! ', "Profil anda sudah diupdate", 'success', 'correct');
-			}else {
-				Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
-			}
+		}
+		
+		if (isset($phone)) {
+			$query = "UPDATE petugas SET telp = ? WHERE id_petugas = ?";
+			$this->db->prepare($query);
+			$this->db->sth->bind_param('ss', $phone, $_SESSION['petugasID']);
+			$this->db->execute();
+		}
+		
+		if ($this->db->affectedRows() > 0) {
+			Flasher::setFlash('Berhasil! ', "Profil anda sudah diupdate", 'success', 'correct');
 		}else {
-			Flasher::setFlash('Gagal! ', 'Username sudah digunakan.', 'warning', 'warning');
-			die();
+			Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
+		}
+		
+		if (isset($username)) {
+			$query = "SELECT username FROM petugas WHERE id_petugas = ?";
+			$this->db->prepare($query);
+			$this->db->sth->bind_param('s', $_SESSION['petugasID']);
+			$this->db->execute();
+			if ($this->db->getResult() == 0) {
+				$query = "UPDATE petugas SET username = ? WHERE id_petugas = ?";
+				$this->db->prepare($query);
+				$this->db->sth->bind_param('ss', $username, $_SESSION['petugasID']);
+				$this->db->execute();
+				if ($this->db->affectedRows() > 0) {
+					Flasher::setFlash('Berhasil! ', "Profil anda sudah diupdate", 'success', 'correct');
+				}else {
+					Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
+				}
+			}else {
+				Flasher::setFlash('Gagal! ', "Username sudah digunakan.", 'warning', 'warning');
+			}
 		}
 	}
 	
