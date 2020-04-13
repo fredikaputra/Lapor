@@ -34,7 +34,6 @@ class Login extends Controller{
 		}
 	}
 	
-	// proses login masyarakat, petugas, dan admin
 	public function proses(){
 		
 		// lanjut ketika
@@ -43,26 +42,22 @@ class Login extends Controller{
 			
 			// ketika yang login
 			// adalah petugas
-			// dalam kondisi terkunci
+			// atau dalam kondisi terkunci
 			// maka pindahkan ke halaman dashboard
-			if (isset($_SESSION['onLock'])) {
-				unset($_SESSION['onLock']);
+			if (isset($_SESSION['onLock']) || isset($_SESSION['petugasID'])) {
+				
+				// hilangkan sesi bekas kunci sebelumnya
+				if (isset($_SESSION['onLock'])) {
+					unset($_SESSION['onLock']);
+				}
+				
 				$_SESSION['loadingscreen'] = 1;
 				header('location: ' . BASEURL . '/dashboard');
 			}
 			
-			// kalau tidak dalam
-			// kondisi terkunci
-			// tetapi yang login petugas
-			// maka pindahkan ke halaman dashboard
-			else if (isset($_SESSION['petugasID'])) {
-				$_SESSION['loadingscreen'] = 1;
-				header('location: ' . BASEURL . '/dashboard');
-			}
-			
-			// kalau tidak dalam
-			// kondisi terkunci
-			// maka pindahkan ke halaman landing page
+			// ketika yang login
+			// adalah masyarakat
+			// maka pindahkan ke halaman beranda
 			else {
 				$_SESSION['loadingscreen'] = 1;
 				header('location: ' . BASEURL);

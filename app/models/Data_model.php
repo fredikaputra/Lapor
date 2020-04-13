@@ -43,7 +43,8 @@ class Data_model{
 			}
 		}
 		
-		// tampilkan data laporar
+		// tampilkan data laporan
+		// dengan kondisi terfilter
 		// ketika filter menyala
 		if (isset($get['filter']) && $get['filter'] == 'on') {
 			
@@ -66,7 +67,7 @@ class Data_model{
 			}
 			
 			// beri kondisi status
-			// jika diminta
+			// jika filter gambar menyala
 			if ($get['gambar'] == '1' || $get['gambar'] == '2') {
 				
 				// tampilkan data laporan
@@ -80,7 +81,11 @@ class Data_model{
 				else if ($get['status'] == '1') {
 					$query .= " AND status = '1'";
 				}
-			}else {
+			}
+			
+			// beri kondisi status
+			// jika filter gambar tidak menyala
+			else {
 				
 				// tampilkan data laporan
 				// dengan status proses
@@ -95,10 +100,9 @@ class Data_model{
 				}
 			}
 			
+			// tampilkan data laporan
+			// dengan urutan data yang terbaru
 			if ($get['urutan'] == '1') {
-				
-				// tampilkan data laporan
-				// dengan urutan data yang terbaru
 				$query .= " ORDER BY tgl_pengaduan DESC";
 			}
 			
@@ -139,7 +143,11 @@ class Data_model{
 			}
 			
 			$this->db->prepare($query);
-		}else {
+		}
+		
+		// tampilkan semua data laporan
+		// ketika filter tidak menyala
+		else {
 			
 			// tampilkan data laporan
 			// berdasarkan id laporan
@@ -170,9 +178,9 @@ class Data_model{
 				$query = "SELECT pengaduan.*, nama FROM pengaduan JOIN masyarakat USING (nik) ORDER BY tgl_pengaduan DESC LIMIT 10";
 				$this->db->prepare($query);
 			}
-			
 		}
 		
+		// eksekusi query
 		$this->db->execute();
 		$this->db->getResult();
 		return $this->db->row;
@@ -204,7 +212,7 @@ class Data_model{
 			}
 		}
 		
-		// tampilkan data laporar
+		// tampilkan data pengguna
 		// ketika filter menyala
 		if (isset($get['filter']) && $get['filter'] == 'on') {
 			
@@ -264,7 +272,7 @@ class Data_model{
 			}
 		}
 		
-		// tampilkan data laporar
+		// tampilkan data pengguna
 		// berdasarkan kata kunci
 		else if (isset($get['querysearch']) && $get['search'] == 'on') {
 			$query = "SELECT id_petugas as id, nama_petugas as nama, username, telp, level FROM petugas WHERE nama_petugas LIKE '%" . $get['querysearch'] . "%' OR username LIKE '%" . $get['querysearch'] . "%'";
@@ -273,12 +281,16 @@ class Data_model{
 			$this->db->getResult();
 			
 			$query = "SELECT nik as id, nama, username, telp, telp as level FROM masyarakat WHERE nama LIKE '%" . $get['querysearch'] . "%' OR username LIKE '%" . $get['querysearch'] . "%'";
-		}else {
+		}
+		
+		// tampilkan semua pengguna
+		else {
 			$query = "SELECT id_petugas AS id, nama_petugas AS nama, username, telp, level FROM petugas
 						UNION
 						SELECT nik AS id, nama, username, telp, telp AS level FROM masyarakat ORDER BY nama LIMIT 10";
 		}
 		
+		// eksekusi query
 		$this->db->prepare($query);
 		$this->db->execute();
 		$this->db->getResult();
@@ -287,16 +299,21 @@ class Data_model{
 	
 	// ambil total data yang ada pada tabel
 	public function tableRow($tb1, $tb2 = NULL, $cond = NULL){
+		
+		// tampilkan total data pada satu tabel
 		$query = "SELECT COUNT(*) AS totalRows FROM $tb1";
 		
+		// tampilkan total data pada dua tabel
 		if ($tb2 != NULL) {
 			$query = "SELECT (SELECT COUNT(*) FROM $tb1 ) + (SELECT COUNT(*) FROM $tb2 ) AS totalRows";
 		}
 		
+		// tampilkan total dengan kondisi tertentu
 		if ($cond != NULL) {
 			$query .= " WHERE $cond";
 		}
 		
+		// eksekusi query
 		$this->db->prepare($query);
 		$this->db->execute();
 		$this->db->getResult();
@@ -306,6 +323,7 @@ class Data_model{
 	// ambil data dengan format waktu
 	public static function timeCounter($time){
 		$diff = date_diff(date_create(date('Y-m-d H:i:s', $time)), date_create(date('Y-m-d H:i:s')));
+		
 		if ($diff->y) {
 			return date('d/m/Y', $time);
 		}else if ($diff->m) {

@@ -11,8 +11,9 @@ class Register_model{
 	public function masyarakat(){
 		$this->db->dbh->real_escape_string(extract($_POST));
 		
-		// jalankan fungsi ketika pengguna
-		// menekan tombol submit pada form
+		// lanjutkan proses
+		// ketika pengguna
+		// telah menekan tombol submit
 		if (isset($addmasyarakat)) {
 			
 			// buat session isi form
@@ -36,7 +37,7 @@ class Register_model{
 					$extension = pathinfo($_FILES['photo']['name'], PATHINFO_EXTENSION);
 					if (in_array($extension, ['jpg', 'jpeg'])) {
 						
-						// cek ukuran gambar
+						// ukuran file max 2MB
 						if ($_FILES['photo']['size'] <= 2048000) {
 							$photo = $nik . '.jpg';
 							
@@ -45,15 +46,24 @@ class Register_model{
 								Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
 								return;
 							}
-						}else {
+						}
+						
+						// ukuran file lebih dari 2MB
+						else {
 							Flasher::setFlash('Gagal! ', 'Ukuran file maksimal 2MB.', 'warning', 'warning');
 							return;
 						}
-					}else {
+					}
+					
+					// extensi gambar salah
+					else {
 						Flasher::setFlash('Gagal! ', 'Format file tidak didukung.', 'warning', 'warning');
 						return;
 					}
-				}else {
+				}
+				
+				// terjadi kesalahan
+				else {
 					Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
 				}
 			}
@@ -71,8 +81,7 @@ class Register_model{
 					if (strlen($pass) >= 8) {
 						
 						// lanjut ketika
-						// konfirmasi password
-						// benar
+						// konfirmasi password benar
 						if ($pass == $repass) {
 							
 							// lanjut ketik
@@ -88,51 +97,81 @@ class Register_model{
 								$this->db->prepare($query);
 								$this->db->sth->bind_param('sssss', $nik, $name, $username, $password, $phone);
 								$this->db->execute();
+								
+								// berhasil
 								if ($this->db->affectedRows() > 0) {
+									
+									// petugas yang mendaftarkan
 									if (isset($_SESSION['petugasID'])) {
 										Flasher::setFlash('Berhasil! ', "$name telah bergabung sebagai masyarakat.", 'success', 'correct');
-									}else {
+									}
+									
+									// masyarakat sendiri yang mendaftarkan diri
+									else {
 										Flasher::setFlash('Berhasil! ', "Anda telah terdaftar.", 'success', 'correct');
 									}
 									unset($_SESSION['reg']);
 									return true;
-								}else {
+								}
+								
+								// gagal
+								else {
 									Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
 								}
-							}else {
+							}
+							
+							// nomor telepon tidak valid
+							else {
 								Flasher::setFlash('Gagal! ', 'Nomor telepon tidak benar.', 'warning', 'warning');
 								$_SESSION['autofocus']['phone'] = 1;
 							}
-						}else {
+						}
+						
+						// konfirmasi password salah
+						else {
 							Flasher::setFlash('Gagal! ', 'Konfirmasi password tidak benar.', 'warning', 'warning');
 							$_SESSION['autofocus']['pass'] = 1;
 						}
-					}else {
+					}
+					
+					// password kurang dari 8
+					else {
 						Flasher::setFlash('Gagal! ', 'Password minimal 8 karakter.', 'warning', 'warning');
 						$_SESSION['autofocus']['pass'] = 1;
 					}
-				}else {
+				}
+				
+				// username sudah digunakan
+				else {
 					Flasher::setFlash('Gagal! ', 'Username sudah digunakan.', 'warning', 'warning');
 					$_SESSION['autofocus']['username'] = 1;
 				}
-			}else {
+			}
+			
+			// nik sudah digunakan
+			else {
 				Flasher::setFlash('Gagal! ', 'Nomor Induk Kependudukan sudah digunakan.', 'warning', 'warning');
 				$_SESSION['autofocus']['nik'] = 1;
 			}
-		}else {
+		}
+		
+		// terjadi kesalahan
+		else {
 			Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
 		}
 	}
 	
-	// proses registrasi masyarakat
+	// proses registrasi petugas
 	public function petugas(){
 		$this->db->dbh->real_escape_string(extract($_POST));
 		
-		// jalankan fungsi ketika pengguna
-		// menekan tombol submit pada form
+		// lanjutkan proses
+		// ketika pengguna
+		// telah menekan tombol submit
 		if (isset($addpetugas)) {
+			
+			// generate id laporan yang unik
 			do {
-				// generate id laporan yang unik
 				$this->uniqID = strtoupper('ptgs' . substr(md5(uniqid()), 25));
 				
 				// stop generate id ketika id tersedia
@@ -161,7 +200,7 @@ class Register_model{
 					$extension = pathinfo($_FILES['photo']['name'], PATHINFO_EXTENSION);
 					if (in_array($extension, ['jpg', 'jpeg'])) {
 						
-						// cek ukuran gambar
+						// ukuran gambar max 2MB
 						if ($_FILES['photo']['size'] <= 2048000) {
 							$photo = $this->uniqID . '.jpg';
 							
@@ -170,15 +209,24 @@ class Register_model{
 								Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
 								return;
 							}
-						}else {
+						}
+						
+						// ukuran gambar lebih dari 2MB
+						else {
 							Flasher::setFlash('Gagal! ', 'Ukuran file maksimal 2MB.', 'warning', 'warning');
 							return;
 						}
-					}else {
+					}
+					
+					// extensi file salah
+					else {
 						Flasher::setFlash('Gagal! ', 'Format file tidak didukung.', 'warning', 'warning');
 						return;
 					}
-				}else {
+				}
+				
+				// terjadi kesalahan
+				else {
 					Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
 				}
 			}
@@ -192,8 +240,7 @@ class Register_model{
 				if (strlen($password) >= 8) {
 					
 					// lanjut ketika
-					// konfirmasi password
-					// benar
+					// konfirmasi password benar
 					if ($password == $repass) {
 						
 						// lanjut ketik
@@ -208,30 +255,50 @@ class Register_model{
 							$this->db->prepare($query);
 							$this->db->sth->bind_param('ssssss', $this->uniqID, $name, $username, $password, $phone, $level);
 							$this->db->execute();
+							
+							// berhasil
 							if ($this->db->affectedRows() > 0) {
 								unset($_SESSION['reg']);
 								Flasher::setFlash('Berhasil! ', "$name telah bergabung sebagai petugas", 'success', 'correct');
 								return true;
-							}else {
+							}
+							
+							// gagal
+							else {
 								Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
 							}
-						}else {
+						}
+						
+						// nomor teleopn tidak valid
+						else {
 							Flasher::setFlash('Gagal! ', 'Nomor telepon tidak benar.', 'warning', 'warning');
 							$_SESSION['autofocus']['phone'] = 1;
 						}
-					}else {
+					}
+					
+					// konfirmasi password salah
+					else {
 						Flasher::setFlash('Gagal! ', 'Konfirmasi password salah.', 'warning', 'warning');
 						$_SESSION['autofocus']['pass'] = 1;
 					}
-				}else {
+				}
+				
+				// password kurang dari 8
+				else {
 					Flasher::setFlash('Gagal! ', 'Password minimal 8 karakter.', 'warning', 'warning');
 					$_SESSION['autofocus']['pass'] = 1;
 				}
-			}else {
+			}
+			
+			// username sudah digunakan
+			else {
 				Flasher::setFlash('Gagal! ', 'Username sudah digunakan.', 'warning', 'warning');
 				$_SESSION['autofocus']['username'] = 1;
 			}
-		}else {
+		}
+		
+		// terjadi kesalahan
+		else {
 			Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
 		}
 	}
@@ -242,7 +309,9 @@ class Register_model{
 			$query = 'SELECT nik FROM masyarakat WHERE nik = ?';
 			$this->db->prepare($query);
 			$this->db->sth->bind_param('s', $nik);
-		}else if ($username != NULL) {
+		}
+		
+		else if ($username != NULL) {
 			$query = 'SELECT username FROM masyarakat WHERE username = ?';
 			$this->db->prepare($query);
 			$this->db->sth->bind_param('s', $username);
@@ -268,7 +337,9 @@ class Register_model{
 			$this->db->getResult();
 			
 			return $this->db->row[0]['id_petugas'];
-		}else if ($username != NULL) {
+		}
+		
+		else if ($username != NULL) {
 			$query = 'SELECT username FROM masyarakat WHERE username = ?';
 			$this->db->prepare($query);
 			$this->db->sth->bind_param('s', $username);

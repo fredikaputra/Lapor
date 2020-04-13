@@ -3,7 +3,8 @@
 class Dashboard extends Controller{
 	public function index(){
 		
-		// jalankan ketika petugas sudah login
+		// tampilkan halaman ketika
+		// petugas sudah login
 		if (isset($_SESSION['petugasID'])) {
 			
 			// deklarasikan variable
@@ -43,7 +44,8 @@ class Dashboard extends Controller{
 	
 	public function data_aduan($p1 = NULL, $p2 = NULL){
 		
-		// jalankan ketika petugas sudah login
+		// tampilkan halaman ketika
+		// petugas sudah login
 		if (isset($_SESSION['petugasID'])) {
 			
 			// ambil data pengguna
@@ -51,7 +53,8 @@ class Dashboard extends Controller{
 			$data['photo'] = $_SESSION['petugasID'] . '.jpg';
 			
 			// cek parameter
-			// tampilkan semua data aduan ketika parameter kosong
+			// tampilkan semua data aduan
+			// ketika parameter kosong
 			if ($p1 == NULL) {
 				
 				// deklarasikan variable
@@ -81,7 +84,8 @@ class Dashboard extends Controller{
 			}
 			
 			// cek parameter
-			// tampilkan 1 data laporan (jika ada) ketika parameter tidak kosong
+			// tampilkan 1 data laporan (jika ada)
+			// ketika parameter tidak kosong
 			else {
 				
 				// ambil data laporan
@@ -89,7 +93,8 @@ class Dashboard extends Controller{
 				$data['laporan'] = $this->model('Data_model')->laporan($data['idpengaduan'], '', '')[0];
 				
 				// cek id laporan
-				// tampilkan data laporan ketika id data laporan benar
+				// tampilkan data laporan
+				// ketika id data laporan benar
 				if ($data['laporan'] != NULL) {
 					
 					// deklarasikan variable
@@ -116,6 +121,8 @@ class Dashboard extends Controller{
 					if (isset($get['cetak']) && $get['cetak'] == 1) {
 						$data['js'] = ['print.js', 'directprint.js'];
 					}
+					
+					// ambil fungsi cetak saja
 					else {
 						$data['js'] = ['print.js'];
 					}
@@ -149,10 +156,14 @@ class Dashboard extends Controller{
 	
 	public function pengguna($act = NULL, $id = NULL){
 		
-		// jalankan ketika petugas sudah login
+		// tampilkan halaman ketika
+		// petugas sudah login
 		if (isset($_SESSION['petugasID'])) {
 			
+			// cek parameter
+			// tampilkan seluruh pengguna
 			if ($act == NULL && $id == NULL) {
+				
 				// deklarasikan variable
 				// untuk dikirimkan ke halaman website
 				$data['webtitle'] = 'Dashboard - Pengguna';
@@ -192,7 +203,8 @@ class Dashboard extends Controller{
 	
 	public function tambah_pengguna($user = NULL, $act = NULL){
 		
-		// jalankan ketika petugas sudah login
+		// tampilkan halaman ketika
+		// petugas sudah login
 		if (isset($_SESSION['petugasID'])) {
 			
 			// cek parameter
@@ -221,9 +233,16 @@ class Dashboard extends Controller{
 			// cek parameter
 			// jalankan proses tambah petugas
 			else if ($user == 'petugas' && $act == 'proses') {
+				
+				// pindah ke halaman pengguna
+				// ketika proses tambah pengguna berhasil
 				if ($this->model('Register_model')->petugas() == TRUE) {
 					header('location: ' . BASEURL . '/dashboard/pengguna');
-				}else {
+				}
+				
+				// kembali ke form
+				// ketika proses tambah pengguna gagal
+				else {
 					header('location: ' . BASEURL . '/dashboard/tambah-pengguna/petugas');
 				}
 			}
@@ -254,9 +273,16 @@ class Dashboard extends Controller{
 			// cek parameter
 			// jalankan proses tambah masyarakat
 			else if ($user == 'masyarakat' && $act == 'proses') {
+				
+				// pindah ke halaman pengguna
+				// ketika proses tambah pengguna berhasil
 				if ($this->model('Register_model')->masyarakat() == TRUE) {
 					header('location: ' . BASEURL . '/dashboard/pengguna');
-				}else {
+				}
+				
+				// kembali ke form
+				// ketika proses tambah pengguna gagal
+				else {
 					header('location: ' . BASEURL . '/dashboard/tambah-pengguna/masyarakat');
 				}
 			}
@@ -324,7 +350,8 @@ class Dashboard extends Controller{
 	
 	public function pengaturan($option = NULL){
 		
-		// jalankan ketika petugas sudah login
+		// tampilkan halaman ketika
+		// petugas sudah login
 		if (isset($_SESSION['petugasID'])) {
 			
 			// cek parameter
@@ -366,7 +393,8 @@ class Dashboard extends Controller{
 	
 	public function aktivitas_pengguna(){
 		
-		// jalankan ketika petugas sudah login
+		// tampilkan halaman ketika
+		// petugas sudah login
 		if (isset($_SESSION['petugasID'])) {
 			
 			// deklarasikan variable
@@ -394,10 +422,10 @@ class Dashboard extends Controller{
 		}
 	}
 	
-	// proses tambah tanggapan
 	public function tambah_tanggapan($idpengaduan = NULL){
 		
-		// jalankan ketika petugas sudah login
+		// jalankan proses ketika
+		// petugas sudah login
 		if (isset($_SESSION['petugasID'])) {
 			
 			// jalankan proses

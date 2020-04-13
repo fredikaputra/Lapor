@@ -5,34 +5,47 @@ class App{
 	private $method = 'index';
 	private $parameter = [];
 	
-	// fungsi routing
 	public function __construct(){
 		$url = $this->parseURL();
 		
 		// cek kontroler
 		if (isset($url[0])) {
-			if (strpos($url[0], '-') !== FALSE) { // ganti kontroller yang mengandung '-' menjadi '_'
+			
+			// ubah kontroller yang mengandung '-' menjadi '_'
+			if (strpos($url[0], '-') !== FALSE) {
 				$url[0] = str_replace('-', '_', $url[0]);
 			}
 			
+			// tampilkan halaman '404 notfound'
+			// ketika file controller
+			// tidak ditemukan
 			if (!file_exists('app/controllers/' . $url[0] . '.php')) {
 				$this->controller = 'Notfound';
-			}else {
+			}
+			
+			// tampilkan halaman website yang diminta
+			// ketika file controller ditemukan
+			else {
 				$this->controller = $url[0];
 			}
 			
 			unset($url[0]);
 		}
 		
+		// ambil file controller
 		require_once 'app/controllers/' . $this->controller . '.php';
 		$this->controller = new $this->controller;
 		
 		// cek method
 		if (isset($url[1])) {
-			if (strpos($url[1], '-')) { // ganti method yang mengandung '-' menjadi '_'
+			
+			// ubah method yang mengandung '-' menjadi '_'
+			if (strpos($url[1], '-')) {
 				$url[1] = str_replace('-', '_', $url[1]);
 			}
 			
+			// gunakan method yang diminta
+			// ketika method tersedia
 			if (method_exists($this->controller, $url[1])) {
 				$this->method = $url[1];
 			}

@@ -10,8 +10,9 @@ class Login_model{
 	public function proccess(){
 		$this->db->dbh->real_escape_string(extract($_POST));
 		
-		// jalankan fungsi ketika pengguna
-		// menekan tombol submit pada form
+		// lanjutkan proses
+		// ketika pengguna
+		// telah menekan tombol submit
 		if (isset($login)) {
 			
 			
@@ -29,11 +30,13 @@ class Login_model{
 				$username = $_SESSION['onLock']['username'];
 			}
 			
-			
+			// ambil data masyarakat
 			$query = "SELECT * FROM masyarakat WHERE username = ?";
 			$this->db->prepare($query);
 			$this->db->sth->bind_param('s', $username);
 			$this->db->execute();
+			
+			// berhasil
 			if ($this->db->getResult() > 0) {
 				
 				// lakukan verifikasi password
@@ -42,12 +45,17 @@ class Login_model{
 				if (password_verify($password, $password_db)) {
 					$_SESSION['masyarakatNIK'] = $this->db->row[0]['nik'];
 					
+					// buat log
 					$log  = $_SESSION['masyarakatNIK'] . "|Telah login.|" . time() . PHP_EOL;
 		
+					// simpan log
 					$createLog = file_put_contents(BASEURL . '/app/log/log_' . date('d.m.Y') . '.log', $log, FILE_APPEND);
 					
 					return true;
-				}else {
+				}
+				
+				// password salah
+				else {
 					Flasher::setFlash('Gagal! ', 'Username atau password anda salah.', 'warning', 'warning');
 				}
 			}
@@ -56,10 +64,14 @@ class Login_model{
 			// jika username tidak ditemukan
 			// pada table masyarakat
 			else {
+				
+				// ambil data petugas
 				$query = "SELECT * FROM petugas WHERE username = ?";
 				$this->db->prepare($query);
 				$this->db->sth->bind_param('s', $username);
 				$this->db->execute();
+				
+				// berhasil
 				if ($this->db->getResult() > 0) {
 					
 					// lakukan verifikasi password
@@ -68,19 +80,30 @@ class Login_model{
 					if (password_verify($password, $password_db)) {
 						$_SESSION['petugasID'] = $this->db->row[0]['id_petugas'];
 						
+						// buat log
 						$log  = $_SESSION['petugasID'] . "|Telah login.|" . time() . PHP_EOL;
 			
+						// simpan
 						$createLog = file_put_contents('app/log/log_' . date('d.m.Y') . '.log', $log, FILE_APPEND);
 						
 						return true;
-					}else {
+					}
+					
+					// password salah
+					else {
 						Flasher::setFlash('Gagal! ', 'Username atau password anda salah.', 'warning', 'warning');
 					}
-				}else {
+				}
+				
+				// gagal
+				else {
 					Flasher::setFlash('Gagal! ', 'Username atau password anda salah.', 'warning', 'warning');
 				}
 			}
-		}else {
+		}
+		
+		// terjadi kesalahan
+		else {
 			Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
 		}
 	}

@@ -7,10 +7,14 @@ class Database{
 	private $db_name = DB_NAME;
 	public $dbh, $sth, $row;
 	
-	public function __construct(){ // koneksi
+	public function __construct(){
+		
+		// hubungkan web dengan database
 		$this->dbh = @new mysqli($this->db_host, $this->db_user, $this->db_pass, $this->db_name);
 		
-		if ($this->dbh->connect_errno) { // jika koneksi gagal
+		// tampilkan error ketika
+		// gagal terhubung dengan database
+		if ($this->dbh->connect_errno) {
 			die('Database connection failed!');
 		}
 		
@@ -18,9 +22,15 @@ class Database{
 	}
 	
 	public function prepare($query){
+		
+		// prepare query
 		if ($this->dbh->prepare($query)) {
 			$this->sth = $this->dbh->prepare($query);
-		}else { // jika query salah
+		}
+		
+		// tampilkan error
+		// ketika query salah
+		else {
 			// echo $this->dbh->error;
 			die("<br /><strong>Fatal Error</strong>: Query error!");
 		}
@@ -33,9 +43,13 @@ class Database{
 	public function getResult(){
 		$this->result = $this->sth->get_result();
 		
+		// simpan data yang didapat
+		// dari database ke
+		// variable row
 		while ($row = $this->result->fetch_assoc()) {
 			$this->row[] = $row;
 		}
+		
 		return $this->row;
 	}
 	

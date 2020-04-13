@@ -28,7 +28,7 @@ class Riwayat_aduan extends Controller{
 			$this->view('template/footer');
 		}
 		
-		// pindah ke halaman dashboard / data aduan
+		// pindah ke halaman dashboard (data aduan)
 		// jika pengguna sudah login
 		// dan berstatus petugas
 		else if (isset($_SESSION['petugasID'])) {

@@ -16,18 +16,18 @@ class Daftar extends Controller{
 		$this->view('template/footer', $data);
 	}
 	
-	// proses registrasi
 	public function proses(){
 		
 		// lakukan proses registrasi 
+		// ketika proses berhasil
+		// pindah ke halaman landing page
 		if ($this->model('Register_model')->masyarakat() === TRUE) {
-			// ketika proses berhasil
-			// pindah ke halaman landing page
 			header('location: ' . BASEURL);
 		}
+		
+		// ketika proses gagal
+		// kembali ke halaman daftar
 		else {
-			// ketika proses gagal
-			// kembali ke halaman daftar
 			header('location: ' . BASEURL . '/daftar');
 		}
 	}

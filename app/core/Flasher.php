@@ -1,6 +1,9 @@
 <?php
 
 class Flasher{
+	
+	// fungsi untuk membuat
+	// notifikasi
 	public static function setFlash($subj, $msg, $class, $img){
 		$_SESSION['flash'] = [
 			'subj' => $subj,
@@ -10,6 +13,8 @@ class Flasher{
 		];
 	}
 	
+	// fungsi untuk menampilkan
+	// notifikasi
 	public static function flash(){
 		if (isset($_SESSION['flash'])) {
 			echo '<div id="alert">
