@@ -35,10 +35,22 @@ class Dashboard extends Controller{
 			$this->view('template/footer');
 		}
 		
-		// kunci petugas
-		// ketika session id petugas tidak terdeteksi
+		// kalau belum login
+		// jangan tampilkan halaman ini
 		else {
-			$this->kunci();
+			
+			// kalau petugas dalam
+			// keadaan terkunci
+			// pindah ke halaman lock screen
+			if (isset($_SESSION['onLock'])) {
+				$this->kunci();
+			}
+			
+			// kalau tidak
+			// pindah ke halaman login
+			else {
+				header('location: ' . BASEURL . '/login');
+			}
 		}
 	}
 	
@@ -53,40 +65,9 @@ class Dashboard extends Controller{
 			$data['photo'] = $_SESSION['petugasID'] . '.jpg';
 			
 			// cek parameter
-			// tampilkan semua data aduan
-			// ketika parameter kosong
-			if ($p1 == NULL) {
-				
-				// deklarasikan variable
-				// untuk dikirimkan ke halaman website
-				$data['webtitle'] = 'Dashboard - Data Aduan';
-				$data['css'] = ['side_dashboard.css', 'data_aduan.css', 'popup.css', 'base.css'];
-				$data['method'] = __FUNCTION__;
-				
-				// ambil data laporan
-				$data['laporan'] = $this->model('Data_model')->laporan();
-				
-				// tampilkan website
-				// kirim semua data ($data) ke dalam website
-				$this->view('template/header', $data);
-				$this->view('dashboard/header', $data);
-				$this->view('dashboard/data_aduan', $data);
-				$this->view('template/popup', $data);
-				$this->view('template/footer', $data);
-			}
-			
-			// cek parameter
-			// jalankan proses hapus
-			// ketika parameter bernilai 'hapus'
-			else if ($p1 == 'hapus' && $p2 != NULL) {
-				$this->model('Delete_model')->laporan($p2);
-				header('location: ' . BASEURL . '/dashboard/data_aduan');
-			}
-			
-			// cek parameter
 			// tampilkan 1 data laporan (jika ada)
 			// ketika parameter tidak kosong
-			else {
+			if ($p1 != NULL && $p2 == NULL) {
 				
 				// ambil data laporan
 				$data['idpengaduan'] = $p1;
@@ -145,12 +126,55 @@ class Dashboard extends Controller{
 					$this->data_aduan();
 				}
 			}
+			
+			// cek parameter
+			// jalankan proses hapus
+			// ketika parameter bernilai 'hapus'
+			else if ($p1 == 'hapus' && $p2 != NULL) {
+				$this->model('Delete_model')->laporan($p2);
+				header('location: ' . BASEURL . '/dashboard/data_aduan');
+			}
+			
+			// cek parameter
+			// tampilkan semua data aduan
+			// ketika parameter kosong
+			else {
+				
+				// deklarasikan variable
+				// untuk dikirimkan ke halaman website
+				$data['webtitle'] = 'Dashboard - Data Aduan';
+				$data['css'] = ['side_dashboard.css', 'data_aduan.css', 'popup.css', 'base.css'];
+				$data['method'] = __FUNCTION__;
+				
+				// ambil data laporan
+				$data['laporan'] = $this->model('Data_model')->laporan();
+				
+				// tampilkan website
+				// kirim semua data ($data) ke dalam website
+				$this->view('template/header', $data);
+				$this->view('dashboard/header', $data);
+				$this->view('dashboard/data_aduan', $data);
+				$this->view('template/popup');
+				$this->view('template/footer');
+			}
 		}
 		
-		// kunci petugas
-		// ketika session id petugas tidak terdeteksi
+		// kalau belum login
+		// jangan tampilkan halaman ini
 		else {
-			$this->kunci();
+			
+			// kalau petugas dalam
+			// keadaan terkunci
+			// pindah ke halaman lock screen
+			if (isset($_SESSION['onLock'])) {
+				$this->kunci();
+			}
+			
+			// kalau tidak
+			// pindah ke halaman login
+			else {
+				header('location: ' . BASEURL . '/login');
+			}
 		}
 	}
 	
@@ -161,8 +185,17 @@ class Dashboard extends Controller{
 		if (isset($_SESSION['petugasID'])) {
 			
 			// cek parameter
-			// tampilkan seluruh pengguna
-			if ($act == NULL && $id == NULL) {
+			// jalankan proses hapus
+			// ketika parameter bernilai 'hapus'
+			if ($act == 'hapus' && $id != NULL) {
+				$this->model('Delete_model')->pengguna($id);
+				header('location: ' . BASEURL . '/dashboard/pengguna');
+			}
+			
+			// cek parameter
+			// tampilkan halaman pengguna
+			// jika parameter diluar konteks
+			else {
 				
 				// deklarasikan variable
 				// untuk dikirimkan ke halaman website
@@ -184,20 +217,24 @@ class Dashboard extends Controller{
 				$this->view('template/popup');
 				$this->view('template/footer');
 			}
-			
-			// cek parameter
-			// jalankan proses hapus
-			// ketika parameter bernilai 'hapus'
-			else if ($act == 'hapus' && $id != NULL) {
-				$this->model('Delete_model')->pengguna($id);
-				header('location: ' . BASEURL . '/dashboard/pengguna');
-			}
 		}
 		
-		// kunci petugas
-		// ketika session id petugas tidak terdeteksi
+		// kalau belum login
+		// jangan tampilkan halaman ini
 		else {
-			$this->kunci();
+			
+			// kalau petugas dalam
+			// keadaan terkunci
+			// pindah ke halaman lock screen
+			if (isset($_SESSION['onLock'])) {
+				$this->kunci();
+			}
+			
+			// kalau tidak
+			// pindah ke halaman login
+			else {
+				header('location: ' . BASEURL . '/login');
+			}
 		}
 	}
 	
@@ -311,41 +348,64 @@ class Dashboard extends Controller{
 			}
 		}
 		
-		// kunci petugas
-		// ketika session id petugas tidak terdeteksi
+		// kalau belum login
+		// jangan tampilkan halaman ini
 		else {
-			$this->kunci();
+			
+			// kalau petugas dalam
+			// keadaan terkunci
+			// pindah ke halaman lock screen
+			if (isset($_SESSION['onLock'])) {
+				$this->kunci();
+			}
+			
+			// kalau tidak
+			// pindah ke halaman login
+			else {
+				header('location: ' . BASEURL . '/login');
+			}
 		}
 	}
 	
 	public function kunci(){
 		
-		// deklarasikan variable
-		// untuk dikirimkan ke halaman website
-		$data['webtitle'] = 'Dashboard - Terkunci';
-		$data['css'] = ['lockscreen.css', 'base.css'];
-		
-		// convert data petugas dari POST menjadi SESSION
-		if (!isset($_SESSION['onLock'])) {
-			$_SESSION['onLock'] = [
-				'username' => $this->model('Data_model')->petugas($_SESSION['petugasID'])[0]['username'],
-				'name' => $this->model('Data_model')->petugas($_SESSION['petugasID'])[0]['nama_petugas'],
-				'photo' => $_SESSION['petugasID'] . '.jpg'
-			];
+		// tampilkan halaman ketika
+		// petugas sudah login atau dalam kondisi terkunci
+		if (isset($_SESSION['petugasID']) || isset($_SESSION['onLock'])) {
+			
+			// deklarasikan variable
+			// untuk dikirimkan ke halaman website
+			$data['webtitle'] = 'Dashboard - Terkunci';
+			$data['css'] = ['lockscreen.css', 'base.css'];
+			
+			// convert data petugas dari POST menjadi SESSION
+			if (!isset($_SESSION['onLock'])) {
+				$_SESSION['onLock'] = [
+					'username' => $this->model('Data_model')->petugas($_SESSION['petugasID'])[0]['username'],
+					'name' => $this->model('Data_model')->petugas($_SESSION['petugasID'])[0]['nama_petugas'],
+					'photo' => $_SESSION['petugasID'] . '.jpg'
+				];
+			}
+			
+			// unset id petugas
+			// untuk menghilangkan hak akses
+			// masuk dashboard
+			if (isset($_SESSION['petugasID'])) {
+				unset($_SESSION['petugasID']);
+			}
+			
+			// tampilkan website
+			// kirim semua data ($data) ke dalam website
+			$this->view('template/header', $data);
+			$this->view('dashboard/lockscreen', $data);
+			$this->view('template/footer');
 		}
 		
-		// unset id petugas
-		// untuk menghilangkan hak akses
-		// masuk dashboard
-		if (isset($_SESSION['petugasID'])) {
-			unset($_SESSION['petugasID']);
+		// kalau belum login
+		// jangan tampilkan halaman ini
+		else {
+			header('location: ' . BASEURL . '/login');
 		}
-		
-		// tampilkan website
-		// kirim semua data ($data) ke dalam website
-		$this->view('template/header', $data);
-		$this->view('dashboard/lockscreen', $data);
-		$this->view('template/footer');
 	}
 	
 	public function pengaturan($option = NULL){
@@ -355,8 +415,15 @@ class Dashboard extends Controller{
 		if (isset($_SESSION['petugasID'])) {
 			
 			// cek parameter
+			// proses halaman
+			if ($option == 'proses') {
+				$this->model('Update_model')->petugas();
+				header('location: ' . BASEURL . '/dashboard/pengaturan');
+			}
+			
+			// cek parameter
 			// tampilkan halaman pengaturan profil
-			if ($option == NULL) {
+			else {
 				
 				// deklarasikan variable
 				// untuk dikirimkan ke halaman website
@@ -375,19 +442,24 @@ class Dashboard extends Controller{
 				$this->view('dashboard/pengaturan', $data);
 				$this->view('template/footer');
 			}
-			
-			// cek parameter
-			// proses halaman
-			else if ($option == 'proses') {
-				$this->model('Update_model')->petugas();
-				header('location: ' . BASEURL . '/dashboard/pengaturan');
-			}
 		}
 		
-		// kunci petugas
-		// ketika session id petugas tidak terdeteksi
+		// kalau belum login
+		// jangan tampilkan halaman ini
 		else {
-			$this->kunci();
+			
+			// kalau petugas dalam
+			// keadaan terkunci
+			// pindah ke halaman lock screen
+			if (isset($_SESSION['onLock'])) {
+				$this->kunci();
+			}
+			
+			// kalau tidak
+			// pindah ke halaman login
+			else {
+				header('location: ' . BASEURL . '/login');
+			}
 		}
 	}
 	
@@ -415,10 +487,22 @@ class Dashboard extends Controller{
 			$this->view('template/footer');
 		}
 		
-		// kunci petugas
-		// ketika session id petugas tidak terdeteksi
+		// kalau belum login
+		// jangan tampilkan halaman ini
 		else {
-			$this->kunci();
+			
+			// kalau petugas dalam
+			// keadaan terkunci
+			// pindah ke halaman lock screen
+			if (isset($_SESSION['onLock'])) {
+				$this->kunci();
+			}
+			
+			// kalau tidak
+			// pindah ke halaman login
+			else {
+				header('location: ' . BASEURL . '/login');
+			}
 		}
 	}
 	
@@ -447,10 +531,22 @@ class Dashboard extends Controller{
 			}
 		}
 		
-		// kunci petugas
-		// ketika session id petugas tidak terdeteksi
+		// kalau belum login
+		// jangan tampilkan halaman ini
 		else {
-			$this->kunci();
+			
+			// kalau petugas dalam
+			// keadaan terkunci
+			// pindah ke halaman lock screen
+			if (isset($_SESSION['onLock'])) {
+				$this->kunci();
+			}
+			
+			// kalau tidak
+			// pindah ke halaman login
+			else {
+				header('location: ' . BASEURL . '/login');
+			}
 		}
 	}
 }

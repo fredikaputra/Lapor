@@ -165,6 +165,13 @@ class Profil extends Controller{
 				$this->model('Update_model')->masyarakat($option);
 				header('location: ' . BASEURL . '/profil/sunting/foto-profil');
 			}
+			
+			// cek parameter
+			// tampilkan halaman profil
+			// parameter diluar konteks
+			else {
+				$this->index();
+			}
 		}
 		
 		// pindah ke halaman dashboard

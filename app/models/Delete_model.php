@@ -41,7 +41,7 @@ class Delete_model{
 			
 			// gagal
 			else {
-				Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
+				Flasher::setFlash(NULL, 'Tidak ada pengguna yang dihapus!', 'danger', 'warning');
 			}
 		}
 		
@@ -76,7 +76,7 @@ class Delete_model{
 			
 			// gagal
 			else {
-				Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
+				Flasher::setFlash(NULL, 'Tidak ada pengguna yang dihapus!', 'danger', 'warning');
 			}
 		}
 	}
@@ -104,7 +104,7 @@ class Delete_model{
 		
 		// gagal
 		else {
-			Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
+			Flasher::setFlash(NULL, 'Tidak ada data yang dihapus!', 'danger', 'warning');
 		}
 	}
 }
