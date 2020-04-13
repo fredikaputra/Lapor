@@ -69,7 +69,7 @@ class Profil extends Controller{
 			// jika parameter 1 bernilai 'nama'
 			// dan parameter 2 bernilai proses
 			else if ($option == 'nama' && $action == 'proses') {
-				$this->model('Update_model')->masyarakat('name');
+				$this->model('Update_model')->masyarakat($option);
 				header('location: ' . BASEURL . '/profil/sunting/nama');
 			}
 			
@@ -96,7 +96,7 @@ class Profil extends Controller{
 			// jika parameter 1 bernilai 'username'
 			// dan parameter 2 bernilai proses
 			else if ($option == 'username' && $action == 'proses') {
-				$this->model('Update_model')->masyarakat('username');
+				$this->model('Update_model')->masyarakat($option);
 				header('location: ' . BASEURL . '/profil/sunting/username');
 			}
 			
@@ -124,7 +124,7 @@ class Profil extends Controller{
 			// jika parameter 1 bernilai 'telepon'
 			// dan parameter 2 bernilai proses
 			else if ($option == 'telepon' && $action == 'proses') {
-				$this->model('Update_model')->masyarakat('telepon');
+				$this->model('Update_model')->masyarakat($option);
 				header('location: ' . BASEURL . '/profil/sunting/telepon');
 			}
 			
@@ -150,7 +150,7 @@ class Profil extends Controller{
 			// jika parameter 1 bernilai 'foto-profil'
 			// dan parameter 2 bernilai proses
 			else if ($option == 'foto-profil' && $action == 'proses') {
-				$this->model('Update_model')->masyarakat('foto-profil');
+				$this->model('Update_model')->masyarakat($option);
 				header('location: ' . BASEURL . '/profil/sunting/foto-profil');
 			}
 		}

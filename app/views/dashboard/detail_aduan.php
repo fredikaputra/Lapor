@@ -4,9 +4,9 @@
 			<button onclick="cetak()">
 				<img src="<?= BASEURL ?>/assets/img/icon/print.png"> CETAK
 			</button>
-			<a href="<?= BASEURL ?>/dashboard/data-aduan/hapus/<?= $data['laporan']['id_pengaduan'] ?>">
+			<button type="button" onclick="delPopup(this)" data-id="<?= $data['laporan']['id_pengaduan'] ?>">
 				<img src="<?= BASEURL ?>/assets/img/icon/bin.png"> HAPUS
-			</a>
+			</button>
 		</div>
 		<div>
 			<div class="report">
@@ -28,7 +28,7 @@
 				</div>
 			</div>
 			<div class="action">
-				<form method="post" action="<?= BASEURL ?>/dashboard/report-response/<?= $data['laporan']['id_pengaduan'] ?>">
+				<form method="post" action="<?= BASEURL ?>/dashboard/tambah-tanggapan/<?= $data['laporan']['id_pengaduan'] ?>">
 					<h3>Tanggapan</h3>
 					<textarea placeholder="Tanggapan anda...." name="response"><?= (isset($_SESSION['response'])) ? $_SESSION['response'] : '' ?></textarea>
 					<button type="submit" name="comment">TANGGAPI</button>
@@ -59,6 +59,20 @@
 		</div>
 	</div>
 </main>
+
+<script type="text/javascript">
+	function delPopup(i){
+		document.querySelector('.popup').classList.remove('hide');
+		var id = i.getAttribute('data-id');
+		document.querySelector('#deleteForm').setAttribute('action', '<?= BASEURL ?>/dashboard/data-aduan/hapus/' + id);
+		document.querySelector('#info').innerHTML = 'Apakah anda yakin ingin menghapus laporan';
+		document.querySelector('#id').innerHTML = '#' + id;
+	}
+
+	function closeDelPopup(){
+		document.querySelector('.popup').classList.add('hide');
+	}
+</script>
 
 <?php
 

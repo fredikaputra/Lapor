@@ -5,12 +5,15 @@ class Login_model{
 	
 	public function __construct(){
 		$this->db = new Database;
-		
+	}
+	
+	public function proccess(){
 		$this->db->dbh->real_escape_string(extract($_POST));
 		
 		// jalankan fungsi ketika pengguna
 		// menekan tombol submit pada form
 		if (isset($login)) {
+			
 			
 			// ketika pengguna login
 			// lewat halaman login
@@ -26,6 +29,7 @@ class Login_model{
 				$username = $_SESSION['onLock']['username'];
 			}
 			
+			
 			$query = "SELECT * FROM masyarakat WHERE username = ?";
 			$this->db->prepare($query);
 			$this->db->sth->bind_param('s', $username);
@@ -37,6 +41,11 @@ class Login_model{
 				$password_db = $this->db->row[0]['password'];
 				if (password_verify($password, $password_db)) {
 					$_SESSION['masyarakatNIK'] = $this->db->row[0]['nik'];
+					
+					$log  = $_SESSION['masyarakatNIK'] . "|Telah login.|" . time() . PHP_EOL;
+		
+					$createLog = file_put_contents(BASEURL . '/app/log/log_' . date('d.m.Y') . '.log', $log, FILE_APPEND);
+					
 					return true;
 				}else {
 					Flasher::setFlash('Gagal! ', 'Username atau password anda salah.', 'warning', 'warning');
@@ -58,6 +67,11 @@ class Login_model{
 					$password_db = $this->db->row[0]['password'];
 					if (password_verify($password, $password_db)) {
 						$_SESSION['petugasID'] = $this->db->row[0]['id_petugas'];
+						
+						$log  = $_SESSION['petugasID'] . "|Telah login.|" . time() . PHP_EOL;
+			
+						$createLog = file_put_contents('app/log/log_' . date('d.m.Y') . '.log', $log, FILE_APPEND);
+						
 						return true;
 					}else {
 						Flasher::setFlash('Gagal! ', 'Username atau password anda salah.', 'warning', 'warning');

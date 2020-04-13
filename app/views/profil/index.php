@@ -9,7 +9,7 @@
 		<span>Beberapa informasi dapat dilihat oleh pengguna lainnya saat menggunakan layanan Lapor! <a href="">Pelajari lebih lanjut.</a></span>
 		
 		<div class="row">
-			<a href="<?= BASEURL ?>/profil/ubah/foto-profil">
+			<a href="<?= BASEURL ?>/profil/sunting/foto-profil">
 				<span>FOTO</span>
 				<strong>Gambar Anda</strong>
 				<?php
@@ -27,22 +27,22 @@
 				<strong><?= $data['nik'] ?></strong>
 				<img src="<?= BASEURL ?>/assets/img/icon/chevron-right.png" alt="">
 			</a>
-			<a href="<?= BASEURL ?>/profil/ubah/nama">
+			<a href="<?= BASEURL ?>/profil/sunting/nama">
 				<span>NAMA</span>
 				<strong><?= $data['name'] ?></strong>
 				<img src="<?= BASEURL ?>/assets/img/icon/chevron-right.png" alt="">
 			</a>
-			<a href="<?= BASEURL ?>/profil/ubah/username">
+			<a href="<?= BASEURL ?>/profil/sunting/username">
 				<span>USERNAME</span>
 				<strong>@<?= $data['username'] ?></strong>
 				<img src="<?= BASEURL ?>/assets/img/icon/chevron-right.png" alt="">
 			</a>
-			<a href="<?= BASEURL ?>/profil/ubah/telepon">
+			<a href="<?= BASEURL ?>/profil/sunting/telepon">
 				<span>TELEPON</span>
 				<strong><?= $data['phone'] ?></strong>
 				<img src="<?= BASEURL ?>/assets/img/icon/chevron-right.png" alt="">
 			</a>
-			<a href="<?= BASEURL ?>/profil/ubah/password">
+			<a href="<?= BASEURL ?>/profil/sunting/password">
 				<span>PASSWORD</span>
 				<div>
 					&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;

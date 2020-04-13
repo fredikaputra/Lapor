@@ -7,8 +7,7 @@ main .content > div:first-of-type{
 	display: flex;
 }
 
-main .content > div:first-of-type button,
-main .content > div:first-of-type > a{
+main .content > div:first-of-type button{
 	background: var(--light-color);
 	border: none;
 	padding: 10px;
@@ -18,23 +17,14 @@ main .content > div:first-of-type > a{
 	color: var(--soft-dark-color);
 	font-weight: bold;
 	font-size: 14px;
+	margin-right: 5px;
 }
 
-main .content > div:first-of-type button:hover,
-main .content > div:first-of-type > a:hover{
+main .content > div:first-of-type button:hover{
 	background: #0000000F;
 }
 
 main .content > div:first-of-type button img{
-	width: 20px;
-	margin-right: 5px;
-}
-
-main .content > div:first-of-type > a{
-	margin-left: 10px;
-}
-
-main .content > div:first-of-type > a img{
 	width: 20px;
 	margin-right: 5px;
 }

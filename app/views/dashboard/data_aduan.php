@@ -129,30 +129,15 @@
 	</div>
 </main>
 
-<div class="popup hide">
-	<form method="post" id="deleteForm">
-		<button type="button" onclick="closeDelPopup()">
-			<img src="<?= BASEURL ?>/assets/img/icon/close.png">
-		</button>
-		<img src="<?= BASEURL ?>/assets/img/icon/bin.png">
-		<h2>Apakah anda yakin?</h2>
-		<span>Apakah anda yakin ingin menghapus laporan <strong id="id"></strong>?</span>
-		<span>Anda tidak bisa membatalkan tindakan ini.</span>
-		<div>
-			<button type="button" onclick="closeDelPopup()">Batal</button>
-			<button type="submit">Hapus</button>
-		</div>
-	</div>
-</div>
-
 <script type="text/javascript">
 	function delPopup(i){
 		document.querySelector('.popup').classList.remove('hide');
 		var id = i.getAttribute('data-id');
-		document.querySelector('#deleteForm').setAttribute('action', '<?= BASEURL ?>/dashboard/hapus/laporan/' + id);
+		document.querySelector('#deleteForm').setAttribute('action', '<?= BASEURL ?>/dashboard/data-aduan/hapus/' + id);
+		document.querySelector('#info').innerHTML = 'Apakah anda yakin ingin menghapus laporan';
 		document.querySelector('#id').innerHTML = '#' + id;
 	}
-	
+
 	function closeDelPopup(){
 		document.querySelector('.popup').classList.add('hide');
 	}

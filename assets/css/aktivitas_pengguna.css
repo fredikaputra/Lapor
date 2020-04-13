@@ -1,0 +1,94 @@
+main .content .header div h1{
+	color: var(--primary-color);
+	margin-bottom: 5px;
+	font-size: 25px;
+}
+
+main .content .header div span{
+	color: var(--soft-dark-color);
+	font-size: 15px;
+	letter-spacing: .5px;
+}
+
+main .content .header a{
+	background: var(--light-color);
+	border: none;
+	padding: 10px;
+	box-shadow: 0 0 10px #0000000F;
+	display: flex;
+	align-items: center;
+	color: var(--soft-dark-color);
+	font-weight: bold;
+	font-size: 14px;
+}
+
+main .content .header a:focus{
+	background: var(--soft-light-color);
+}
+
+main .content .header a img{
+	width: 20px;
+	margin-right: 5px;
+}
+
+main .content > .body{
+	display: grid;
+	grid-template-columns: 1fr 10cm;
+	margin-top: 1cm;
+	grid-gap: 1cm;
+}
+
+main .content > .body > .history > div{
+	display: grid;
+	grid-template-columns: 3cm 1fr;
+}
+
+main .content > .body > .history > div > div:first-of-type{
+	text-align: center;
+	color: var(--soft-dark-color);
+}
+
+main .content > .body > .history > div > div:first-of-type span:first-of-type{
+	font-size: 20px;
+	display: block;
+	font-weight: bold;
+}
+
+main .content > .body > .history > div > div:first-of-type span:last-of-type{
+	font-size: 12px;
+}
+
+main .content > .body > .history > div > div:last-of-type > div{
+	display: grid;
+	grid-template-columns: auto 1fr 1cm;
+	grid-gap: 20px;
+	align-items: center;
+	background: var(--light-color);
+	margin-bottom: 5px;
+	padding: 20px;
+	border-radius: 5px;
+	box-shadow: 0 3px 10px #00000010;
+}
+
+main .content > .body > .history > div > div:last-of-type > div > img{
+	width: 1.5cm;
+	height: 1.5cm;
+	object-fit: cover;
+	object-position: center;
+	border-radius: 50%;
+}
+
+main .content > .body > .history > div > div:last-of-type > div > div > strong,
+main .content > .body > .history > div > div:last-of-type > div > div > span:first-of-type{
+	font-size: 15px;
+}
+
+main .content > .body > .history > div > div:last-of-type > div > div > span:last-of-type{
+	display: block;
+	font-size: 14px;
+	margin-top: 3px;
+}
+
+main .content > .body > .history > div > div:last-of-type > div > div:last-of-type a img{
+	width: 20px;
+}

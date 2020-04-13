@@ -90,7 +90,7 @@ class Insert_model extends Controller{
 		}
 	}
 	
-	public function tanggapan(){
+	public function tanggapan($id){
 		$this->db->dbh->real_escape_string(extract($_POST));
 		
 		// jalankan fungsi ketika pengguna
@@ -172,7 +172,7 @@ class Insert_model extends Controller{
 			$this->db->prepare($query);
 			$this->db->sth->bind_param('s', $id);
 			$this->db->execute();
-			$this->db->getResult()
+			$this->db->getResult();
 			
 			return $this->db->row[0]['id_tanggapan'];
 		}else if ($id != NULL) {
@@ -180,7 +180,7 @@ class Insert_model extends Controller{
 			$this->db->prepare($query);
 			$this->db->sth->bind_param('s', $id);
 			$this->db->execute();
-			$this->db->getResult()
+			$this->db->getResult();
 			
 			return $this->db->row[0]['status'];
 		}

@@ -1,5 +1,5 @@
 <main>
-	<form action="<?= BASEURL ?>/login/proccess" method="post">
+	<form action="<?= BASEURL ?>/login/proses" method="post">
 		<h1>Terkunci!</h1>
 		<span>Hallo <?= $_SESSION['onLock']['name'] ?>, masukkan password untuk kembali ke dashboard!</span>
 		

@@ -9,7 +9,7 @@ class Dashboard extends Controller{
 			// deklarasikan variable
 			// untuk dikirimkan ke halaman website
 			$data['webtitle'] = 'Dashboard';
-			$data['css'] = ['dashboard_header.css', 'dashboard.css', 'base.css'];
+			$data['css'] = ['side_dashboard.css', 'dashboard.css', 'base.css'];
 			$data['method'] = __FUNCTION__;
 			
 			// ambil data pengguna
@@ -41,7 +41,7 @@ class Dashboard extends Controller{
 		}
 	}
 	
-	public function data_aduan($p = NULL){
+	public function data_aduan($p1 = NULL, $p2 = NULL){
 		
 		// jalankan ketika petugas sudah login
 		if (isset($_SESSION['petugasID'])) {
@@ -52,12 +52,12 @@ class Dashboard extends Controller{
 			
 			// cek parameter
 			// tampilkan semua data aduan ketika parameter kosong
-			if ($p == NULL) {
+			if ($p1 == NULL) {
 				
 				// deklarasikan variable
 				// untuk dikirimkan ke halaman website
 				$data['webtitle'] = 'Dashboard - Data Aduan';
-				$data['css'] = ['dashboard_header.css', 'data_aduan.css', 'base.css'];
+				$data['css'] = ['side_dashboard.css', 'data_aduan.css', 'popup.css', 'base.css'];
 				$data['method'] = __FUNCTION__;
 				
 				// ambil data laporan
@@ -68,14 +68,15 @@ class Dashboard extends Controller{
 				$this->view('template/header', $data);
 				$this->view('dashboard/header', $data);
 				$this->view('dashboard/data_aduan', $data);
-				$this->view('template/footer');
+				$this->view('template/popup', $data);
+				$this->view('template/footer', $data);
 			}
 			
 			// cek parameter
 			// jalankan proses hapus
 			// ketika parameter bernilai 'hapus'
-			else if ($p == 'hapus') {
-				$this->model('Delete_model')->laporan();
+			else if ($p1 == 'hapus' && $p2 != NULL) {
+				$this->model('Delete_model')->laporan($p2);
 				header('location: ' . BASEURL . '/dashboard/data_aduan');
 			}
 			
@@ -84,7 +85,7 @@ class Dashboard extends Controller{
 			else {
 				
 				// ambil data laporan
-				$data['idpengaduan'] = $p;
+				$data['idpengaduan'] = $p1;
 				$data['laporan'] = $this->model('Data_model')->laporan($data['idpengaduan'], '', '')[0];
 				
 				// cek id laporan
@@ -94,10 +95,22 @@ class Dashboard extends Controller{
 					// deklarasikan variable
 					// untuk dikirimkan ke halaman website
 					$data['webtitle'] = 'Data Aduan #' . $data['idpengaduan'];
-					$data['css'] = ['dashboard_header.css', 'detail_aduan.css', 'base.css'];
+					$data['css'] = ['side_dashboard.css', 'detail_aduan.css', 'popup.css', 'base.css'];
 					$data['method'] = __FUNCTION__;
 					
-					// cek query
+					// cek query pada url (setelah tanda ?)
+					$url = parse_url($_SERVER['REQUEST_URI']);
+					if (isset($url['query'])) {
+						$url = parse_url($_SERVER['REQUEST_URI'])['query'];
+						$url = explode('&', $url);
+						foreach($url as $key => $value) {
+							if (strpos($value, '=') != FALSE) {
+								$query = explode('=', $value);
+								$get[$query[0]] = $query[1];
+							}
+						}
+					}
+					
 					// cetak laporan ketika halaman sedang memuat
 					// jika query cetak terdapat pada url dan bernilai 1
 					if (isset($get['cetak']) && $get['cetak'] == 1) {
@@ -115,6 +128,7 @@ class Dashboard extends Controller{
 					$this->view('template/header', $data);
 					$this->view('dashboard/header', $data);
 					$this->view('dashboard/detail_aduan', $data);
+					$this->view('template/popup');
 					$this->view('template/footer', $data);
 				}
 				
@@ -133,16 +147,16 @@ class Dashboard extends Controller{
 		}
 	}
 	
-	public function pengguna($act = NULL){
+	public function pengguna($act = NULL, $id = NULL){
 		
 		// jalankan ketika petugas sudah login
 		if (isset($_SESSION['petugasID'])) {
 			
-			if ($act == NULL) {
+			if ($act == NULL && $id == NULL) {
 				// deklarasikan variable
 				// untuk dikirimkan ke halaman website
 				$data['webtitle'] = 'Dashboard - Pengguna';
-				$data['css'] = ['dashboard_header.css', 'pengguna.css', 'base.css'];
+				$data['css'] = ['side_dashboard.css', 'pengguna.css', 'popup.css', 'base.css'];
 				$data['method'] = __FUNCTION__;
 				
 				// ambil data
@@ -156,14 +170,15 @@ class Dashboard extends Controller{
 				$this->view('template/header', $data);
 				$this->view('dashboard/header', $data);
 				$this->view('dashboard/pengguna', $data);
+				$this->view('template/popup');
 				$this->view('template/footer');
 			}
 			
 			// cek parameter
 			// jalankan proses hapus
 			// ketika parameter bernilai 'hapus'
-			else if ($act == 'hapus') {
-				$this->model('Delete_model')->user();
+			else if ($act == 'hapus' && $id != NULL) {
+				$this->model('Delete_model')->pengguna($id);
 				header('location: ' . BASEURL . '/dashboard/pengguna');
 			}
 		}
@@ -187,7 +202,7 @@ class Dashboard extends Controller{
 				// deklarasikan variable
 				// untuk dikirimkan ke halaman website
 				$data['webtitle'] = 'Dashboard - Tambah Pengguna Sebagai Petugas';
-				$data['css'] = ['dashboard_header.css', 'form_tambah_petugas.css', 'base.css'];
+				$data['css'] = ['side_dashboard.css', 'form_tambah_petugas.css', 'base.css'];
 				$data['js'] = ['unsetload.js'];
 				$data['method'] = __FUNCTION__;
 				
@@ -206,7 +221,7 @@ class Dashboard extends Controller{
 			// cek parameter
 			// jalankan proses tambah petugas
 			else if ($user == 'petugas' && $act == 'proses') {
-				if ($this->model('Daftar_model')->petugas() == TRUE) {
+				if ($this->model('Register_model')->petugas() == TRUE) {
 					header('location: ' . BASEURL . '/dashboard/pengguna');
 				}else {
 					header('location: ' . BASEURL . '/dashboard/tambah-pengguna/petugas');
@@ -215,12 +230,12 @@ class Dashboard extends Controller{
 			
 			// cek parameter
 			// tampilkan form tambah masyarakat
-			else if($user == 'masyarakat'){
+			else if($user == 'masyarakat' && $act == NULL){
 				
 				// deklarasikan variable
 				// untuk dikirimkan ke halaman website
 				$data['webtitle'] = 'Dashboard - Tambah Pengguna Sebagai Masyarakat';
-				$data['css'] = ['dashboard_header.css', 'form_tambah_masyarakat.css', 'base.css'];
+				$data['css'] = ['side_dashboard.css', 'form_tambah_masyarakat.css', 'base.css'];
 				$data['js'] = ['unsetload.js'];
 				$data['method'] = __FUNCTION__;
 				
@@ -237,9 +252,9 @@ class Dashboard extends Controller{
 			}
 			
 			// cek parameter
-			// jalankan proses tambah petugas
+			// jalankan proses tambah masyarakat
 			else if ($user == 'masyarakat' && $act == 'proses') {
-				if ($this->model('Daftar_model')->masyarakat() == TRUE) {
+				if ($this->model('Register_model')->masyarakat() == TRUE) {
 					header('location: ' . BASEURL . '/dashboard/pengguna');
 				}else {
 					header('location: ' . BASEURL . '/dashboard/tambah-pengguna/masyarakat');
@@ -254,7 +269,7 @@ class Dashboard extends Controller{
 				// deklarasikan variable
 				// untuk dikirimkan ke halaman website
 				$data['webtitle'] = 'Dashboard - Tambah Pengguna';
-				$data['css'] = ['dashboard_header.css', 'tambah_pengguna.css', 'base.css'];
+				$data['css'] = ['side_dashboard.css', 'tambah_pengguna.css', 'base.css'];
 				$data['method'] = __FUNCTION__;
 				
 				// ambil data pengguna
@@ -319,7 +334,7 @@ class Dashboard extends Controller{
 				// deklarasikan variable
 				// untuk dikirimkan ke halaman website
 				$data['webtitle'] = 'Dashboard - Pengaturan';
-				$data['css'] = ['dashboard_header.css', 'pengaturan_dashboard.css', 'base.css'];
+				$data['css'] = ['side_dashboard.css', 'pengaturan_dashboard.css', 'base.css'];
 				$data['method'] = __FUNCTION__;
 				
 				// ambil data pengguna
@@ -349,6 +364,36 @@ class Dashboard extends Controller{
 		}
 	}
 	
+	public function aktivitas_pengguna(){
+		
+		// jalankan ketika petugas sudah login
+		if (isset($_SESSION['petugasID'])) {
+			
+			// deklarasikan variable
+			// untuk dikirimkan ke halaman website
+			$data['webtitle'] = 'Dashboard - Aktifitas pengguna';
+			$data['css'] = ['side_dashboard.css', 'aktivitas_pengguna.css', 'base.css'];
+			$data['method'] = __FUNCTION__;
+			
+			// ambil data pengguna
+			$data['petugas'] = $this->model('Data_model')->petugas()[0];
+			$data['photo'] = $_SESSION['petugasID'] . '.jpg';
+
+			// tampilkan website
+			// kirim semua data ($data) ke dalam website
+			$this->view('template/header', $data);
+			$this->view('dashboard/header', $data);
+			$this->view('dashboard/aktivitas_pengguna', $data);
+			$this->view('template/footer');
+		}
+		
+		// kunci petugas
+		// ketika session id petugas tidak terdeteksi
+		else {
+			$this->kunci();
+		}
+	}
+	
 	// proses tambah tanggapan
 	public function tambah_tanggapan($idpengaduan = NULL){
 		
@@ -361,7 +406,7 @@ class Dashboard extends Controller{
 				
 				// lakukan proses
 				// tambah tanggapan
-				$this->model('ReportResponse_model')->proccess($idpengaduan);
+				$this->model('Insert_model')->tanggapan($idpengaduan);
 				
 				// pindah ke halaman data aduan
 				header('location: ' . BASEURL . '/dashboard/data-aduan/' . $idpengaduan);
