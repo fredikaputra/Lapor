@@ -60,7 +60,7 @@ class Login extends Controller{
 			// maka pindahkan ke halaman beranda
 			else {
 				$_SESSION['loadingscreen'] = 1;
-				header('location: ' . BASEURL);
+				header('location: ' . BASEURL . '/formulir-pengaduan');
 			}
 		}
 		

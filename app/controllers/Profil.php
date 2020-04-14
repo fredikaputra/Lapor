@@ -166,6 +166,34 @@ class Profil extends Controller{
 				header('location: ' . BASEURL . '/profil/sunting/foto-profil');
 			}
 			
+			// tampilkan halaman sunting foto profil
+			// jika parameter bernilai 'foto profil'
+			else if ($option == 'password' && $action == NULL) {
+				$data['webtitle'] = 'Laporan! - Pengaturan';
+				$data['css'] = ['detail_pengaturan.css', 'nav.css', 'base.css'];
+				$data['controller'] = __CLASS__;
+				
+				// ambil data masyarakat
+				$data['name'] = $this->model('Data_model')->masyarakat()[0]['nama'];
+				$data['username'] = $this->model('Data_model')->masyarakat()[0]['username'];
+				$data['photo'] = $_SESSION['masyarakatNIK'] . '.jpg';
+				
+				// tampilkan website
+				// kirim semua data ($data) ke dalam website
+				$this->view('template/header', $data);
+				$this->view('template/nav', $data);
+				$this->view('profil/password', $data);
+				$this->view('template/footer');
+			}
+			
+			// jalankan proses sunting foto-profil
+			// jika parameter 1 bernilai 'foto-profil'
+			// dan parameter 2 bernilai 'proses'
+			else if ($option == 'password' && $action == 'proses') {
+				$this->model('Update_model')->masyarakat($option);
+				header('location: ' . BASEURL . '/profil');
+			}
+			
 			// cek parameter
 			// tampilkan halaman profil
 			// parameter diluar konteks

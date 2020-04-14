@@ -49,7 +49,7 @@ class Login_model{
 					$log  = $_SESSION['masyarakatNIK'] . "|Telah login.|" . time() . PHP_EOL;
 		
 					// simpan log
-					$createLog = file_put_contents(BASEURL . '/app/log/log_' . date('d.m.Y') . '.log', $log, FILE_APPEND);
+					$createLog = file_put_contents(BASEURL . '/app/log/user_activity/log_' . date('d.m.Y') . '.log', $log, FILE_APPEND);
 					
 					return true;
 				}

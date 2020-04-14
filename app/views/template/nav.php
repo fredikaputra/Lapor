@@ -49,7 +49,7 @@
 						}
 						
 						?>
-						<a href="<?= BASEURL ?>/profil/foto-profil" class="change">
+						<a href="<?= BASEURL ?>/profil/sunting/foto-profil" class="change">
 							<img src="<?= BASEURL ?>/assets/img/icon/camera.png?=<?= filemtime('assets/img/icon/camera.png') ?>">
 						</a>
 						<span class="name"><?= $data['name'] ?></span>

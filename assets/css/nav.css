@@ -41,11 +41,8 @@ nav div .menu a{
 }
 
 nav div .menu > a:hover,
-nav div .menu > a:focus{
-	color: var(--secondary-color);
-}
-
-nav div .menu a.active{
+nav div .menu > a:focus,
+nav div .menu > a.active{
 	color: var(--secondary-color);
 }
 
@@ -66,7 +63,7 @@ nav div .menu .logged button{
 	border: 1px solid var(--primary-color);
 	color: var(--light-color);
 	border-radius: 20px;
-	padding: 5px 10px;
+	padding: 5px 10px 5px 5px;
 	font-weight: bold;
 	font-family: 'Calibri';
 	font-size: 15px;
@@ -172,12 +169,8 @@ nav div .menu .logged div.user-menu > a:last-of-type{
 
 nav div .menu .logged div.user-menu > a:nth-of-type(2):hover,
 nav div .menu .logged div.user-menu > a:last-of-type:hover{
-	border: .5px solid var(--secondary-color);
+	border: .5px solid var(--soft-light-color);
 	background: var(--secondary-color);
-}
-
-nav div .menu .logged div.user-menu > div{
-	color: var(--primary-color);
 }
 
 nav div .menu .logged div.user-menu > div a{

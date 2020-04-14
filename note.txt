@@ -1,38 +1,3 @@
-Main Future:
-ok Login
-- Admin
-- Petugas
-- Masyarakat
-
-ok Logout
-
-ok Registrasi
-- Admin Registrasi Masyarakat
-- Masyarakat Registrasi Sendiri
-
-ok Buat Laporan
-
-ok Tampilkan Semua Laporan Masuk
-
-ok Verifikasi dan Validasi
-
-ok Beri Tanggapan
-
-ok Cetak Laporan berdasarkan filter
-
-
-
-
-
-
-Side Future:
-
-ok If Unlogged, doashboard not found
-
-ok lock-screen feature
-
-ok notfound feature
-
 client-side check in register form
 
 phone input give '-' example 0858-9837-3989
@@ -40,19 +5,3 @@ phone input give '-' example 0858-9837-3989
 Tabable website (Keyboarder)
 
 responsive
-
-ok if register uncomplete, make session all data supaya ngg ngetik ulang
-
-ok cek BASEURL
-
-cek coment in all code
-
-ok on textarea hover give hint to login
-
-
-
-
-
-UJI COBA
-
-ok semua fungsi yang ada di index.php (main) pindah ke config.php (run test)

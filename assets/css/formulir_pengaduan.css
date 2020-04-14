@@ -57,7 +57,7 @@ main form textarea[disabled]{
 
 /* INPUT TYPE FILE */
 main form label{
-	border: 1px dashed var(--soft-light-color);
+	border: .5px dashed var(--soft-light-color);
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -69,12 +69,12 @@ main form label{
 
 main form label:hover,
 main form label:focus{
-	border: 1px dashed var(--secondary-color);
+	border: .5px solid var(--primary-color);
 }
 
 main form label[disabled]:hover,
 main form label[disabled]:focus{
-	border: 1px dashed var(--soft-light-color);
+	border: .5px dashed var(--soft-light-color);
 }
 
 main form label img{
@@ -101,5 +101,6 @@ main form button{
 
 main form button:focus{
 	background: var(--secondary-color);
-	border-color: var(--secondary-color);
+	border-color: var(--soft-light-color);
+	color: var(--soft-dark-color);
 }

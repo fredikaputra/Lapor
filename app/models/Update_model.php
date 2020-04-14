@@ -78,6 +78,67 @@ class Update_model{
 				}
 			}
 			
+			// update password
+			else if ($opt == 'password') {
+				$query = 'SELECT password FROM masyarakat WHERE nik = ?';
+				$this->db->prepare($query);
+				$this->db->sth->bind_param('s', $_SESSION['masyarakatNIK']);
+				$this->db->execute();
+				$this->db->getResult();
+				
+				// verifikasi password sekarang
+				if (password_verify($curentPass, $this->db->row[0]['password'])) {
+					
+					// password minimal 8 karakter
+					if (strlen($newPass) >= 8) {
+						
+						// konfirmasi password
+						if ($newPass == $confirmPass) {
+							
+							// enkripsi password
+							$newPass = password_hash($newPass, PASSWORD_BCRYPT, ['cost' => 12]);
+							
+							$query = 'UPDATE masyarakat SET password = ? WHERE nik = ?';
+							$this->db->prepare($query);
+							$this->db->sth->bind_param('ss', $newPass, $_SESSION['masyarakatNIK']);
+							$this->db->execute();
+							
+							// berhasil
+							if ($this->db->affectedRows() > 0) {
+								
+								// buat log
+								$log  = $_SESSION['masyarakatNIK'] . "|" . time() . PHP_EOL;
+					
+								// simpan log
+								$createLog = file_put_contents('app/log/change_pass_time/' . $_SESSION['masyarakatNIK'] . '.log', $log);
+								
+								Flasher::setFlash('Berhasil! ', 'Password anda telah diubah.', 'success', 'correct');
+							}
+							
+							// gagal
+							else {
+								Flasher::setFlash('Gagal! ', 'Password anda tidak diubah.', 'warning', 'warning');
+							}
+						}
+						
+						// Konfirmasi password salah
+						else {
+							Flasher::setFlash('Gagal! ', 'Konfirmasi password baru anda salah.', 'warning', 'warning');
+						}
+					}
+					
+					// password kurang dari 8 karakter
+					else {
+						Flasher::setFlash('Gagal! ', 'Password baru minimal 8 karakter.', 'warning', 'warning');
+					}
+				}
+				
+				// gagal
+				else {
+					Flasher::setFlash('Gagal! ', 'Password saat ini yang anda masukkan tidak benar.', 'warning', 'warning');
+				}
+			}
+			
 			// update foto
 			else if ($opt == 'photo') {
 				

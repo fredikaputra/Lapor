@@ -62,7 +62,7 @@ class Riwayat_aduan extends Controller{
 					// deklarasikan variable
 					// untuk dikirimkan ke halaman website
 					$data['webtitle'] = 'Dashboard - Riwayat Aduan';
-					$data['css'] = ['detail_riwayat_aduan.css', 'nav.css', 'base.css'];
+					$data['css'] = ['detail_riwayat_aduan.css', 'nav.css', 'popup.css', 'base.css'];
 					$data['controller'] = __CLASS__;
 					$data['photo'] = $_SESSION['masyarakatNIK'] . '.jpg';
 					
@@ -76,6 +76,7 @@ class Riwayat_aduan extends Controller{
 					$this->view('template/header', $data);
 					$this->view('template/nav', $data);
 					$this->view('riwayat_aduan/detail', $data);
+					$this->view('template/popup');
 					$this->view('template/footer');
 				}
 				
@@ -85,6 +86,42 @@ class Riwayat_aduan extends Controller{
 				else {
 					$this->index();
 				}
+			}
+			
+			// pindah ke halaman dashboard / data aduan
+			// jika pengguna sudah login
+			// dan berstatus petugas
+			else if (isset($_SESSION['petugasID'])) {
+				header('location: ' . BASEURL . '/dashboard/data-aduan');
+			}
+			
+			// pindah ke halaman login
+			// jika pengguna belum login
+			else {
+				header('location: ' . BASEURL . '/login');
+			}
+		}
+		
+		// tampilkan halaman riwayat aduan
+		// ketika parameter diluar konteks
+		else{
+			$this->index();
+		}
+	}
+	
+	public function hapus($idpengaduan = NULL){
+		
+		// cek parameter
+		// tampilkan detail data aduan
+		if ($idpengaduan != NULL) {
+			
+			// tampilkan halaman detail
+			// jika pengguna sudah login
+			// dan berstatus masyarakat
+			if (isset($_SESSION['masyarakatNIK'])) {
+				
+				$this->model('Delete_model')->laporan($idpengaduan);
+				header('location: ' . BASEURL . '/riwayat-aduan');
 			}
 			
 			// pindah ke halaman dashboard / data aduan

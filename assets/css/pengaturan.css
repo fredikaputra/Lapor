@@ -66,31 +66,28 @@ main div .row{
 	margin-top: 1cm;
 }
 
-main div .row > a{
+main div .row > *{
 	display: grid;
 	grid-template-columns: 5cm 1fr 2cm;
 	color: var(--soft-dark-color);
 	border-bottom: 1px solid #00000015;
-}
-
-main div .row > a{
 	padding: 20px 1cm;
 }
 
-main div .row > a:last-of-type div strong{
+main div .row > *:last-of-type div strong{
 	display: block;
 	margin-top: 5px;
 }
 
-main div .row > a:hover{
+main div .row > *:hover{
 	background: var(--secondary-color);
 }
 
-main div .row a > *{
+main div .row * > *{
 	align-self: center;
 }
 
-main div .row a span{
+main div .row * span{
 	font-size: 12px;
 }
 
@@ -103,7 +100,11 @@ main div .row a:first-of-type img{
 	
 }
 
-main div .row a img{
+main div .row > div img{
+	width: 25px;
+}
+
+main div .row * img{
 	width: 20px;
 	margin-left: auto;
 }

@@ -30,6 +30,6 @@ main a{
 }
 
 main a:focus{
-	background: var(--tertiary-color);
-	color: var(--dark-color);
+	background: var(--secondary-color);
+	color: var(--soft-dark-color);
 }

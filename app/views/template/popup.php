@@ -6,11 +6,11 @@
 		<img src="<?= BASEURL ?>/assets/img/icon/bin.png">
 		<h2>Apakah anda yakin?</h2>
 		<span id="info"></span>
-		<strong id="id"></strong>?
+		<strong id="id"></strong>
 		<span>Anda tidak bisa membatalkan tindakan ini.</span>
 		<div>
-			<button type="button" onclick="closeDelPopup()">Batal</button>
-			<button type="submit">Hapus</button>
+			<button type="button" onclick="closeDelPopup()">BATAL</button>
+			<button type="submit">HAPUS</button>
 		</div>
 	</div>
 </div>

@@ -18,7 +18,12 @@
 			}
 			
 			?>
-			<span>Status: <strong><?= ($data['laporan']['status'] == 1) ? 'Selesai' : 'Dalam Proses' ?></strong></span>
+			<div class="footer">
+				<span>Status: <strong><?= ($data['laporan']['status'] == 1) ? 'Selesai' : 'Dalam Proses' ?></strong></span>
+				<button type="button" onclick="delPopup(this)" data-id="<?= $data['laporan']['id_pengaduan'] ?>">
+					<img src="<?= BASEURL ?>/assets/img/icon/bin.png"> HAPUS
+				</button>
+			</div>
 		</div>
 		<div class="comment">
 			<div>
@@ -59,3 +64,16 @@
 		</div>
 	</div>
 </main>
+
+<script type="text/javascript">
+	function delPopup(i){
+		document.querySelector('.popup').classList.remove('hide');
+		var id = i.getAttribute('data-id');
+		document.querySelector('#deleteForm').setAttribute('action', '<?= BASEURL ?>/riwayat-aduan/hapus/' + id);
+		document.querySelector('#info').innerHTML = 'Apakah anda yakin ingin menghapus laporan ini?';
+	}
+
+	function closeDelPopup(){
+		document.querySelector('.popup').classList.add('hide');
+	}
+</script>
