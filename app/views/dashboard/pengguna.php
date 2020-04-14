@@ -89,7 +89,7 @@
 					<div><span>Nama</span></div>
 					<div><span>Username</span></div>
 					<div><span>No Telepon</span></div>
-					<div><span>Terakhir login</span></div>
+					<div><span>Aktif</span></div>
 					<div><span>Hak</span></div>
 				</div>
 				
@@ -116,7 +116,38 @@
 							</div>
 							<div><span>@<?= $user['username'] ?></span></div>
 							<div><span><?= $user['telp'] ?></span></div>
-							<div><span>2 menit yang lalu</span></div>
+							<div>
+								
+								<?php
+								
+								if ($handle = opendir('app/log/last_login')) {
+									while (false !== ($file = readdir($handle))) {
+										if ($file != "." && $file != "..") {
+											$cekId = explode('.', $file);
+											if ($cekId[0] == $user['id']) {
+												$files = file('app/log/last_login/' . $file);
+											}
+										}else {
+											$files = NULL;
+										}
+									}
+									closedir($handle);
+								}
+								
+								if ($files != NULL) {
+									
+									if ($files[0] == 'active') {
+										?><span class="online">Online</span><?php
+									}else {
+										?><span><?= Data_model::timeCounter(intval($files[0])) ?></span><?php
+									}
+								}else {
+									?><span>-</span><?php
+								}
+								
+								?>
+								
+							</div>
 							<div>
 								<span>
 									<?php
@@ -169,7 +200,7 @@
 		var id = i.getAttribute('data-id');
 		document.querySelector('#deleteForm').setAttribute('action', '<?= BASEURL ?>/dashboard/pengguna/hapus/' + id);
 		document.querySelector('#info').innerHTML = 'Apakah anda yakin ingin menghapus pengguna';
-		document.querySelector('#id').innerHTML = '@' + i.getAttribute('data-name');
+		document.querySelector('#id').innerHTML = '@' + i.getAttribute('data-name') + '?';
 	}
 
 	function closeDelPopup(){

@@ -53,7 +53,7 @@
 							if ($file != "." && $file != "..") {
 								$cekNIK = explode('.', $file);
 								if ($cekNIK[0] == $_SESSION['masyarakatNIK']) {
-									$files[] = file('app/log/change_pass_time/' . $file);
+									$files = file('app/log/change_pass_time/' . $file);
 								}
 							}else {
 								$files = NULL;
@@ -62,14 +62,8 @@
 						closedir($handle);
 					}
 					
-					
 					if ($files != NULL) {
-						foreach ($files as $line) {
-							foreach ($line as $activity) {
-								$part = explode('|', $activity);
-								?><strong>Terakhir diubah <?= strftime("%A, %d %B %Y %H:%M", intval($part[1])) ?></strong><?php
-							}
-						}
+						?><strong>Terakhir diubah <?= strftime("%A, %d %B %Y %H:%M", intval($files[0])) ?></strong><?php
 					}
 					
 					?>

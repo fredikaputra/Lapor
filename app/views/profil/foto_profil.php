@@ -19,7 +19,7 @@
 		}
 		
 		?>
-		<form action="<?= BASEURL ?>/pengaturan/proccess/photo" method="post" enctype="multipart/form-data">
+		<form action="<?= BASEURL ?>/profil/sunting/foto-profil/proses" method="post" enctype="multipart/form-data">
 			<label>Upload Gambar
 				<input type="file" name="photo" accept=".jpg, .jpeg" required>
 			</label>

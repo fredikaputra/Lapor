@@ -46,11 +46,11 @@ class Login_model{
 					$_SESSION['masyarakatNIK'] = $this->db->row[0]['nik'];
 					
 					// buat log
-					$log  = $_SESSION['masyarakatNIK'] . "|Telah login.|" . time() . PHP_EOL;
-		
+					$log  = 'active';
+			
 					// simpan log
-					$createLog = file_put_contents(BASEURL . '/app/log/user_activity/log_' . date('d.m.Y') . '.log', $log, FILE_APPEND);
-					
+					$createLog = file_put_contents('app/log/last_login/' . $_SESSION['masyarakatNIK'] . '.log', $log);
+				
 					return true;
 				}
 				
@@ -81,10 +81,10 @@ class Login_model{
 						$_SESSION['petugasID'] = $this->db->row[0]['id_petugas'];
 						
 						// buat log
-						$log  = $_SESSION['petugasID'] . "|Telah login.|" . time() . PHP_EOL;
-			
-						// simpan
-						$createLog = file_put_contents('app/log/log_' . date('d.m.Y') . '.log', $log, FILE_APPEND);
+						$log  = 'active';
+				
+						// simpan log
+						$createLog = file_put_contents('app/log/last_login/' . $_SESSION['petugasID'] . '.log', $log);
 						
 						return true;
 					}

@@ -13,7 +13,7 @@
 				<div>
 					<div class="header">
 						<span><?= $data['laporan']['id_pengaduan'] ?></span>
-						<span><?= strftime("%A, %d %B %Y %H:%I", $data['laporan']['tgl_pengaduan']) ?></span>
+						<span><?= strftime("%A, %d %B %Y %H:%M", $data['laporan']['tgl_pengaduan']) ?></span>
 					</div>
 					<span>Dari: <strong><?= $data['laporan']['nama'] ?></strong></span>
 					<p><?= $data['laporan']['isi_laporan'] ?></p>

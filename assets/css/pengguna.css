@@ -218,6 +218,13 @@ main .content form .body > div.user div:nth-of-type(2) img{
 	margin-right: 15px;
 }
 
+main .content form .body > div.user div:nth-of-type(5) span.online{
+	background: var(--primary-color);
+	padding: 5px 15px;
+	border-radius: 20px;
+	color: var(--light-color);
+}
+
 main .content form .body > div.user div:last-of-type button{
 	padding: 10px;
 	border-radius: 50%;

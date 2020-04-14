@@ -254,21 +254,21 @@ class Data_model{
 			}
 			
 			// tampilkan data laporan
-			// dengan jumlah 10 data
-			if ($get['tampil'] == '10') {
-				$query .= " LIMIT 10";
-			}
-			
-			// tampilkan data laporan
-			// dengan jumlah 20 data
-			else if ($get['tampil'] == '20') {
-				$query .= " LIMIT 20";
-			}
-			
-			// tampilkan data laporan
 			// dengan jumlah 50 data
-			else if ($get['tampil'] == '50') {
+			if ($get['tampil'] == '50') {
 				$query .= " LIMIT 50";
+			}
+			
+			// tampilkan data laporan
+			// dengan jumlah 75 data
+			else if ($get['tampil'] == '75') {
+				$query .= " LIMIT 75";
+			}
+			
+			// tampilkan data laporan
+			// dengan jumlah 100 data
+			else if ($get['tampil'] == '100') {
+				$query .= " LIMIT 100";
 			}
 		}
 		
@@ -287,7 +287,7 @@ class Data_model{
 		else {
 			$query = "SELECT id_petugas AS id, nama_petugas AS nama, username, telp, level FROM petugas
 						UNION
-						SELECT nik AS id, nama, username, telp, telp AS level FROM masyarakat ORDER BY nama LIMIT 10";
+						SELECT nik AS id, nama, username, telp, telp AS level FROM masyarakat ORDER BY nama LIMIT 20";
 		}
 		
 		// eksekusi query

@@ -107,10 +107,10 @@ class Update_model{
 							if ($this->db->affectedRows() > 0) {
 								
 								// buat log
-								$log  = $_SESSION['masyarakatNIK'] . "|" . time() . PHP_EOL;
+								$log  = time() . PHP_EOL;
 					
 								// simpan log
-								$createLog = file_put_contents('app/log/change_pass_time/' . $_SESSION['masyarakatNIK'] . '.log', $log);
+								$createLog = file_put_contents(BASEURL . '/app/log/change_pass_time/' . $_SESSION['masyarakatNIK'] . '.log', $log);
 								
 								Flasher::setFlash('Berhasil! ', 'Password anda telah diubah.', 'success', 'correct');
 							}
@@ -140,7 +140,7 @@ class Update_model{
 			}
 			
 			// update foto
-			else if ($opt == 'photo') {
+			else if ($opt == 'foto-profil') {
 				
 				// cek keutuhan gambar
 				if ($_FILES['photo']['error'] == 0) {
