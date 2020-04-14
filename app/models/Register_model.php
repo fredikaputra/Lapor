@@ -103,13 +103,24 @@ class Register_model{
 									
 									// petugas yang mendaftarkan
 									if (isset($_SESSION['petugasID'])) {
+										
+										// buat log dan simpan
+										$log  = $_SESSION['petugasID'] . '|Telah mendaftarkan masyarakat dengan NIK: "' . $nik . '".|' . time() . PHP_EOL;
+										$createLog = file_put_contents('app/log/user_activity/log_' . date('d.m.Y') . '.log', $log, FILE_APPEND);
+										
 										Flasher::setFlash('Berhasil! ', "$name telah bergabung sebagai masyarakat.", 'success', 'correct');
 									}
 									
 									// masyarakat sendiri yang mendaftarkan diri
 									else {
+										
+										// buat log dan simpan
+										$log  = $_SESSION['nik'] . "|Telah bergabung sebagai masyarakat.|" . time() . PHP_EOL;
+										$createLog = file_put_contents('app/log/user_activity/log_' . date('d.m.Y') . '.log', $log, FILE_APPEND);
+										
 										Flasher::setFlash('Berhasil! ', "Anda telah terdaftar.", 'success', 'correct');
 									}
+									
 									unset($_SESSION['reg']);
 									return true;
 								}
@@ -258,6 +269,11 @@ class Register_model{
 							
 							// berhasil
 							if ($this->db->affectedRows() > 0) {
+								
+								// buat log dan simpan
+								$log  = $_SESSION['petugasID'] . '|Telah mendaftarkan petugas dengan ID: "' . $this->uniqID . '".|' . time() . PHP_EOL;
+								$createLog = file_put_contents('app/log/user_activity/log_' . date('d.m.Y') . '.log', $log, FILE_APPEND);
+								
 								unset($_SESSION['reg']);
 								Flasher::setFlash('Berhasil! ', "$name telah bergabung sebagai petugas", 'success', 'correct');
 								return true;

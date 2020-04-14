@@ -164,6 +164,11 @@ class Insert_model extends Controller{
 						
 						// berhasil
 						if ($this->db->affectedRows() > 0) {
+							
+							// buat log dan simpan
+							$log  = $_SESSION['petugasID'] . '|Telah menanggapi dan memverifikasi laporan "' . $this->uniqID . '".|' . time() . PHP_EOL;
+							$createLog = file_put_contents('app/log/user_activity/log_' . date('d.m.Y') . '.log', $log, FILE_APPEND);
+							
 							Flasher::setFlash('Berhasil! ', 'Anda telah menambahkan respon anda.', 'info', 'correct');
 							unset($_SESSION['response']);
 						}
@@ -176,6 +181,11 @@ class Insert_model extends Controller{
 					
 					// berhasil
 					else {
+						
+						// buat log dan simpan
+						$log  = $_SESSION['petugasID'] . '|Telah menanggapi laporan "' . $this->uniqID . '".|' . time() . PHP_EOL;
+						$createLog = file_put_contents('app/log/user_activity/log_' . date('d.m.Y') . '.log', $log, FILE_APPEND);
+						
 						Flasher::setFlash('Berhasil! ', 'Anda telah menambahkan respon anda.', 'info', 'correct');
 						unset($_SESSION['response']);
 					}

@@ -10,10 +10,10 @@
 			<div class="history">
 				<?php
 				
-				if ($handle = opendir('app/log')) {
+				if ($handle = opendir('app/log/user_activity')) {
 					while (false !== ($file = readdir($handle))) {
 						if ($file != "." && $file != "..") {
-							$files[] = file('app/log/' . $file);
+							$files[] = file('app/log/user_activity/' . $file);
 						}else {
 							$files = NULL;
 						}
@@ -22,8 +22,8 @@
 				}
 				
 				if ($files != NULL) {
-					foreach ($files as $line) {
-						foreach ($line as $activity) {
+					foreach (array_reverse($files) as $line) {
+						foreach (array_reverse($line) as $activity) {
 							$part = explode('|', $activity);
 							?>
 							
@@ -34,12 +34,20 @@
 								</div>
 								<div>
 									<div>
-										<img src="<?= BASEURL ?>/assets/img/users/<?= $part[0] ?>.jpg">
+										<?php
+										
+										if (file_exists('assets/img/users/' . $part[0] . '.jpg')) {
+											?><img src="<?= BASEURL ?>/assets/img/users/<?= $part[0] . '.jpg' ?>?=<?= filemtime('assets/img/users/' . $part[0] . '.jpg') ?>"><?php
+										}else {
+											?><img src="<?= BASEURL ?>/assets/img/users/default.png"><?php
+										}
+										
+										?>
 										<div>
 											<!-- <strong><?= $part[0] ?></strong> -->
 											<strong>Tets Nama.</strong>
 											<span><?= $part[1] ?></span>
-											<span><?= strftime("%H:%I", intval($part[2])) ?></span>
+											<span><?= strftime("%H:%M", intval($part[2])) ?></span>
 										</div>
 										<div>
 											<a href="#">
