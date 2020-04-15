@@ -1,3 +1,24 @@
+<?php
+
+// cek query pada url (setelah tanda ?)
+$url = parse_url($_SERVER['REQUEST_URI']);
+if (isset($url['query'])) {
+	$url = parse_url($_SERVER['REQUEST_URI'])['query'];
+	$url = explode('&', $url);
+	foreach($url as $key => $value) {
+		if (strpos($value, '=') != FALSE) {
+			$query = explode('=', $value);
+			$get[$query[0]] = $query[1];
+		}
+	}
+}
+
+if (isset($get['querysearch']) && strpos($get['querysearch'], '+')) {
+	$get['querysearch'] = str_replace('+', ' ', $get['querysearch']);
+}
+
+?>
+
 	<div class="content">
 		<div class="header">
 			<h2>Data Aduan</h2>
@@ -13,35 +34,35 @@
 						<div>
 							<span>TERLAMPIR</span>
 							<select name="gambar">
-								<option value="0">Tanpa Filter</option>
-								<option value="2">Dengan Gambar</option>
-								<option value="1">Tanpa Gambar</option>
+								<option value="0" <?= (isset($get['gambar']) && $get['gambar'] == '0') ? 'selected' : '' ?>>Tanpa Filter</option>
+								<option value="2" <?= (isset($get['gambar']) && $get['gambar'] == '2') ? 'selected' : '' ?>>Dengan Gambar</option>
+								<option value="1" <?= (isset($get['gambar']) && $get['gambar'] == '1') ? 'selected' : '' ?>>Tanpa Gambar</option>
 							</select>
 						</div>
 						<div>
 							<span>STATUS</span>
 							<select name="status">
-								<option value="semua">Semua Status</option>
-								<option value="0">Dalam Proses</option>
-								<option value="1">Selesai</option>
+								<option value="semua" <?= (isset($get['status']) && $get['status'] == 'semua') ? 'selected' : '' ?>>Semua Status</option>
+								<option value="0" <?= (isset($get['status']) && $get['status'] == '0') ? 'selected' : '' ?>>Dalam Proses</option>
+								<option value="1" <?= (isset($get['status']) && $get['status'] == '1') ? 'selected' : '' ?>>Selesai</option>
 							</select>
 						</div>
 						<div>
 							<span>SORTIR</span>
 							<select name="urutan">
-								<option value="1">Terbaru</option>
-								<option value="2">Terlama</option>
-								<option value="3">Nama Pelapor (A - Z)</option>
-								<option value="4">Nama Pelapor (Z - A)</option>
+								<option value="1" <?= (isset($get['urutan']) && $get['urutan'] == '1') ? 'selected' : '' ?>>Terbaru</option>
+								<option value="2" <?= (isset($get['urutan']) && $get['urutan'] == '2') ? 'selected' : '' ?>>Terlama</option>
+								<option value="3" <?= (isset($get['urutan']) && $get['urutan'] == '3') ? 'selected' : '' ?>>Nama Pelapor (A - Z)</option>
+								<option value="4" <?= (isset($get['urutan']) && $get['urutan'] == '4') ? 'selected' : '' ?>>Nama Pelapor (Z - A)</option>
 							</select>
 						</div>
 						<div>
 							<span>TAMPIL</span>
 							<select name="tampil">
-								<option value="10">10</option>
-								<option value="20">20</option>
-								<option value="50">50</option>
-								<option value="semua">Semua</option>
+								<option value="10" <?= (isset($get['tampil']) && $get['tampil'] == '10') ? 'selected' : '' ?>>10</option>
+								<option value="20" <?= (isset($get['tampil']) && $get['tampil'] == '20') ? 'selected' : '' ?>>20</option>
+								<option value="50" <?= (isset($get['tampil']) && $get['tampil'] == '50') ? 'selected' : '' ?>>50</option>
+								<option value="semua" <?= (isset($get['tampil']) && $get['tampil'] == 'semua') ? 'selected' : '' ?>>Semua</option>
 							</select>
 						</div>
 					</div>
@@ -53,10 +74,28 @@
 			</form>
 			<div class="data">
 				<form>
-					<span>Menampilkan 10 dari 10 pengguna</span>
+					<span>
+					
+						<?php
+						
+						if (isset($get['querysearch'])) {
+							?>
+							
+							Menampilkan <?= ($data['laporan'] > 0) ? count($data['laporan']) : '0' ?> laporan untuk <strong>"<?= $get['querysearch'] ?>"</strong>
+							
+							<?php
+						}else if (isset($get['filter'])) {
+							?>Menampilkan <?= ($data['laporan'] > 0) ? count($data['laporan']) : '0' ?> laporan berdasarkan filter.<?php
+						}else {
+							?>Menampilkan <?= ($data['laporan'] > 0) ? count($data['laporan']) : '0' ?> dari <?= $data['jml_laporan'] ?> laporan.<?php
+						}
+						
+						?>
+					
+					</span>
 					<div>
-						<input type="text" name="" placeholder="Cari nama pelapor atau topik isi laporan...">
-						<button type="submit" name="search">
+						<input type="text" name="querysearch" placeholder="Cari nama pelapor atau topik isi laporan..." <?= (isset($get['querysearch'])) ? 'value="' . $get['querysearch'] . '"' : '' ?> <?= (isset($get['search']) && $get['search'] == 'on') ? 'autofocus' : '' ?>>
+						<button type="submit" name="search" value="on">
 							<img src="<?= BASEURL ?>/assets/img/icon/search.png">
 						</button>
 					</div>

@@ -20,7 +20,7 @@
 			?>
 			<div class="footer">
 				<span>Status: <strong><?= ($data['laporan']['status'] == 1) ? 'Selesai' : 'Dalam Proses' ?></strong></span>
-				<button type="button" onclick="delPopup(this)" data-id="<?= $data['laporan']['id_pengaduan'] ?>">
+				<button type="button" onclick="delPopup(this)" data-id="<?= $data['laporan']['id_pengaduan'] ?>" <?= ($data['laporan']['status'] == 1) ? 'title="Laporan anda tidak dapat dihapus!" disabled' : '' ?>>
 					<img src="<?= BASEURL ?>/assets/img/icon/bin.png"> HAPUS
 				</button>
 			</div>

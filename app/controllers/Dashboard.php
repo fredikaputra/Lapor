@@ -20,8 +20,9 @@ class Dashboard extends Controller{
 			// ambil data laporan
 			$data['laporan'] = $this->model('Data_model')->laporan(NULL, NULL, '5');
 			$data['tableRow'] = [
+				'admin' => $this->model('Data_model')->tableRow('petugas', NULL, 'level = 1'),
+				'petugas' => $this->model('Data_model')->tableRow('petugas', NULL, 'level = 2'),
 				'masyarakat' => $this->model('Data_model')->tableRow('masyarakat', NULL, NULL),
-				'petugas' => $this->model('Data_model')->tableRow('petugas', NULL, NULL),
 				'laporan' => $this->model('Data_model')->tableRow('pengaduan', NULL, NULL),
 				'proses' => $this->model('Data_model')->tableRow('pengaduan', NULL, "status = '0'"),
 				'selesai' => $this->model('Data_model')->tableRow('pengaduan', NULL, "status = '1'")
@@ -148,6 +149,7 @@ class Dashboard extends Controller{
 				
 				// ambil data laporan
 				$data['laporan'] = $this->model('Data_model')->laporan();
+				$data['jml_laporan'] = $this->model('Data_model')->tableRow('pengaduan', NULL, NULL);
 				
 				// tampilkan website
 				// kirim semua data ($data) ke dalam website

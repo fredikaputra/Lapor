@@ -107,6 +107,16 @@ main .report > div > div.footer button:focus{
 	box-shadow: 0 3px 10px #00000015;
 }
 
+main .report > div > div.footer button[disabled],
+main .report > div > div.footer button[disabled]:hover,
+main .report > div > div.footer button[disabled]:focus{
+	background: var(--soft-light-color);
+	border: 1px solid var(--soft-light-color);
+	color: var(--soft-dark-color);
+	box-shadow: 0 3px 10px #00000020;
+	cursor: not-allowed;
+}
+
 main .report > div > div.footer button img{
 	width: 20px;
 	margin-right: 5px;

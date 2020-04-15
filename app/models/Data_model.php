@@ -100,6 +100,18 @@ class Data_model{
 				}
 			}
 			
+			// beri kondisi nik
+			// ketika yang request filter
+			// adalah masyarakat
+			if (isset($_SESSION['masyarakatNIK'])) {
+				if ($get['gambar'] == '1' || $get['gambar'] == '2'|| $get['status'] == '0'|| $get['status'] == '1') {
+					$query .= " AND nik = '" . $_SESSION['masyarakatNIK'] . "'";
+				}
+				else {
+					$query .= " WHERE nik = '" . $_SESSION['masyarakatNIK'] . "'";
+				}
+			}
+			
 			// tampilkan data laporan
 			// dengan urutan data yang terbaru
 			if ($get['urutan'] == '1') {
@@ -142,6 +154,21 @@ class Data_model{
 				$query .= " LIMIT 50";
 			}
 			
+			$this->db->prepare($query);
+		}
+		
+		// tampilkan data pengguna
+		// berdasarkan kata kunci
+		else if (isset($get['querysearch']) && $get['search'] == 'on') {
+			if (strpos($get['querysearch'], '+')) {
+				$get['querysearch'] = str_replace('+', ' ', $get['querysearch']);
+			}
+			
+			if (isset($_SESSION['masyarakatNIK'])) {
+				$query = "SELECT * FROM pengaduan WHERE nik = '" . $_SESSION['masyarakatNIK'] . "' AND isi_laporan LIKE '%" . $get['querysearch'] . "%'";
+			}else {
+				$query = "SELECT pengaduan.*, nama FROM pengaduan JOIN masyarakat USING (nik) WHERE isi_laporan LIKE '%" . $get['querysearch'] . "%' OR nama LIKE '%" . $get['querysearch'] . "%'";
+			}
 			$this->db->prepare($query);
 		}
 		

@@ -18,6 +18,7 @@ class Riwayat_aduan extends Controller{
 			$data['name'] = $this->model('Data_model')->masyarakat()[0]['nama'];
 			$data['username'] = $this->model('Data_model')->masyarakat()[0]['username'];
 			$data['laporan'] = $this->model('Data_model')->laporan(NULL, $_SESSION['masyarakatNIK'], NULL);
+			$data['jml_laporan'] = $this->model('Data_model')->tableRow('pengaduan', NULL, 'nik = ' . $_SESSION['masyarakatNIK']);
 			$data['photo'] = $_SESSION['masyarakatNIK'] . '.jpg';
 			
 			// tampilkan website

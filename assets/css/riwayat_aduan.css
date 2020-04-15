@@ -163,7 +163,7 @@ main div .data > form div button img{
 
 main div .data > section.header{
 	display: grid;
-	grid-template-columns: 2cm 6cm 1fr 6cm;
+	grid-template-columns: 2cm 3cm 1fr 6cm;
 	text-align: center;
 	background: var(--light-color);
 	box-shadow: 0 5px 10px #0000000F;
@@ -192,7 +192,7 @@ main div .data div > div:hover{
 
 main div .data div > div > a{
 	display: grid;
-	grid-template-columns: 2cm 6cm 1fr 6cm;
+	grid-template-columns: 2cm 3cm 1fr 6cm;
 }
 
 main div .data div div a div:not(.action){
@@ -211,6 +211,10 @@ main div .data div div a div:nth-of-type(2),
 main div .data div div a div:nth-of-type(3){
 	min-width: 0;
 	align-self: center;
+}
+
+main div .data div div a div:nth-of-type(2) span{
+	text-align: center;
 }
 
 main div .data div div a div:nth-of-type(2) span,

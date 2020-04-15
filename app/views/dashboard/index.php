@@ -8,10 +8,10 @@
 			<div class="count-data">
 				<div>
 					<div>
-						<img src="<?= BASEURL ?>/assets/img/icon/circle-user.png">
+						<img src="<?= BASEURL ?>/assets/img/icon/circle-uniq-user.png">
 						<div>
-							<strong><?= $data['tableRow']['masyarakat'] ?></strong>
-							<span>Masyarakat</span>
+							<strong><?= $data['tableRow']['admin'] ?></strong>
+							<span>Admin</span>
 						</div>
 					</div>
 					<div>
@@ -19,6 +19,13 @@
 						<div>
 							<strong><?= $data['tableRow']['petugas'] ?></strong>
 							<span>Petugas</span>
+						</div>
+					</div>
+					<div>
+						<img src="<?= BASEURL ?>/assets/img/icon/circle-user.png">
+						<div>
+							<strong><?= $data['tableRow']['masyarakat'] ?></strong>
+							<span>Masyarakat</span>
 						</div>
 					</div>
 					<div>
