@@ -74,7 +74,63 @@
 				?>
 			</div>
 			<div class="online">
-				yang online
+				<div>
+					<h2>Sedang Online</h2>
+					
+					
+						
+						<?php
+						
+						if ($data['pengguna'] != NULL) {
+							foreach ($data['pengguna'] as $user) {
+								if ($handle = opendir('app/log/last_login')) {
+									while (false !== ($file = readdir($handle))) {
+										if ($file != "." && $file != "..") {
+											$cekId = explode('.', $file);
+											if ($cekId[0] == $user['id'] && $cekId[0] != $_SESSION['petugasID']) {
+												$files = file('app/log/last_login/' . $file);
+											}
+										}else {
+											$files = NULL;
+										}
+									}
+									closedir($handle);
+								}
+								
+								if ($files != NULL) {
+									if ($files[0] == 'active') {
+										
+										?>
+										
+										<div>
+										
+											<?php
+											if (file_exists('assets/img/users/' . $user['id'] . '.jpg')) {
+												?><img src="<?= BASEURL ?>/assets/img/users/<?= $user['id'] . '.jpg' ?>?=<?= filemtime('assets/img/users/' . $user['id'] . '.jpg') ?>"><?php
+											}else {
+												?><img src="<?= BASEURL ?>/assets/img/users/default.png"><?php
+											}
+											
+											?>
+											
+											<div>
+												<span><?= $user['nama'] ?></span>
+												<span>@<?= $user['username'] ?></span>
+											</div>
+											
+										<?php
+										?>
+										</div>
+										<?php
+										
+									}
+								}
+							}
+						}
+						
+						?>
+					
+				</div>
 			</div>
 		</div>
 	</div>

@@ -92,3 +92,44 @@ main .content > .body > .history > div > div:last-of-type > div > div > span:las
 main .content > .body > .history > div > div:last-of-type > div > div:last-of-type a img{
 	width: 20px;
 }
+
+main .content > .body > .online > div{
+	background: var(--light-color);
+	padding: 30px;
+}
+
+main .content > .body > .online > div h2{
+	color: var(--soft-dark-color);
+	font-size: 16px;
+	margin-bottom: 20px;
+}
+
+main .content > .body > .online > div > div{
+	display: flex;
+	align-items: center;
+}
+
+main .content > .body > .online > div > div:not(:last-of-type){
+	margin-bottom: 15px;
+}
+
+main .content > .body > .online > div > div img{
+	width: 1.5cm;
+	height: 1.5cm;
+	object-fit: cover;
+	object-position: center;
+	border-radius: 50%;
+}
+
+main .content > .body > .online > div > div div{
+	margin-left: 10px;
+}
+
+main .content > .body > .online > div > div div span{
+	font-size: 15px;
+}
+
+main .content > .body > .online > div > div div span:first-of-type{
+	display: block;
+	font-weight: bold;
+}

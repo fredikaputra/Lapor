@@ -476,6 +476,7 @@ class Dashboard extends Controller{
 			$data['method'] = __FUNCTION__;
 			
 			// ambil data pengguna
+			$data['pengguna'] = $this->model('Data_model')->pengguna();
 			$data['petugas'] = $this->model('Data_model')->petugas()[0];
 			$data['photo'] = $_SESSION['petugasID'] . '.jpg';
 
