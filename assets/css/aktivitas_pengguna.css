@@ -46,6 +46,7 @@ main .content > .body > .history > div{
 main .content > .body > .history > div > div:first-of-type{
 	text-align: center;
 	color: var(--soft-dark-color);
+	align-self: center;
 }
 
 main .content > .body > .history > div > div:first-of-type span:first-of-type{

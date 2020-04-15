@@ -10,7 +10,7 @@
 	?>
 	<span class="name"><?= $data['petugas']['nama_petugas'] ?></span>
 	<span class="level"><?= ($data['petugas']['level'] == 1) ? 'Admin' : 'Petugas' ?></span>
-	<a href="">
+	<a href="<?= BASEURL ?>/dashboard/pengaturan">
 		<img src="<?= BASEURL ?>/assets/img/icon/light-setting.png" alt="">
 	</a>
 	<a href="<?= BASEURL ?>/dashboard/kunci">

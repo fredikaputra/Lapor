@@ -10,7 +10,7 @@ class Dashboard extends Controller{
 			// deklarasikan variable
 			// untuk dikirimkan ke halaman website
 			$data['webtitle'] = 'Dashboard';
-			$data['css'] = ['side_dashboard.css', 'dashboard.css', 'base.css'];
+			$data['css'] = ['side_dashboard.css', 'dashboard.css', 'popup.css', 'base.css'];
 			$data['method'] = __FUNCTION__;
 			
 			// ambil data pengguna
@@ -33,6 +33,7 @@ class Dashboard extends Controller{
 			$this->view('template/header', $data);
 			$this->view('dashboard/header', $data);
 			$this->view('dashboard/index', $data);
+			$this->view('template/popup');
 			$this->view('template/footer');
 		}
 		
@@ -55,7 +56,7 @@ class Dashboard extends Controller{
 		}
 	}
 	
-	public function data_aduan($p1 = NULL, $p2 = NULL){
+	public function data_aduan($p1 = NULL, $p2 = NULL, $p3 = NULL){
 		
 		// tampilkan halaman ketika
 		// petugas sudah login
@@ -68,7 +69,7 @@ class Dashboard extends Controller{
 			// cek parameter
 			// tampilkan 1 data laporan (jika ada)
 			// ketika parameter tidak kosong
-			if ($p1 != NULL && $p2 == NULL) {
+			if ($p1 != NULL && $p2 == NULL && $p3 == NULL) {
 				
 				// ambil data laporan
 				$data['idpengaduan'] = $p1;
@@ -133,7 +134,12 @@ class Dashboard extends Controller{
 			// ketika parameter bernilai 'hapus'
 			else if ($p1 == 'hapus' && $p2 != NULL) {
 				$this->model('Delete_model')->laporan($p2);
-				header('location: ' . BASEURL . '/dashboard/data_aduan');
+				if ($p3 == 'beranda') {
+					header('location: ' . BASEURL . '/dashboard');
+				}
+				else {
+					header('location: ' . BASEURL . '/dashboard/data_aduan');
+				}
 			}
 			
 			// cek parameter

@@ -78,12 +78,12 @@
 									<a href="<?= BASEURL ?>/dashboard/data-aduan/<?= $laporan['id_pengaduan'] ?>">
 										<img src="<?= BASEURL ?>/assets/img/icon/eye.png">
 									</a>
-									<a href="<?= BASEURL ?>/dashboard/data-aduan/<?= $laporan['id_pengaduan'] ?>/print">
+									<a href="<?= BASEURL ?>/dashboard/data-aduan/<?= $laporan['id_pengaduan'] ?>?cetak=1">
 										<img src="<?= BASEURL ?>/assets/img/icon/print.png">
 									</a>
-									<a href="<?= BASEURL ?>/dashboard/data-aduan/<?= $laporan['id_pengaduan'] ?>">
+									<button type="button" data-id="<?= $laporan['id_pengaduan'] ?>" onclick="delPopup(this)">
 										<img src="<?= BASEURL ?>/assets/img/icon/bin.png">
-									</a>
+									</button>
 								</div>
 							</div>
 							
@@ -104,3 +104,17 @@
 		</div>
 	</div>
 </main>
+
+<script type="text/javascript">
+	function delPopup(i){
+		document.querySelector('.popup').classList.remove('hide');
+		var id = i.getAttribute('data-id');
+		document.querySelector('#deleteForm').setAttribute('action', '<?= BASEURL ?>/dashboard/data-aduan/hapus/' + id + '/beranda');
+		document.querySelector('#info').innerHTML = 'Apakah anda yakin ingin menghapus laporan';
+		document.querySelector('#id').innerHTML = '#' + id;
+	}
+
+	function closeDelPopup(){
+		document.querySelector('.popup').classList.add('hide');
+	}
+</script>
