@@ -1,3 +1,24 @@
+<?php
+
+// cek query pada url (setelah tanda ?)
+$url = parse_url($_SERVER['REQUEST_URI']);
+if (isset($url['query'])) {
+	$url = parse_url($_SERVER['REQUEST_URI'])['query'];
+	$url = explode('&', $url);
+	foreach($url as $key => $value) {
+		if (strpos($value, '=') != FALSE) {
+			$query = explode('=', $value);
+			$get[$query[0]] = $query[1];
+		}
+	}
+}
+
+if (isset($get['querysearch']) && strpos($get['querysearch'], '+')) {
+	$get['querysearch'] = str_replace('+', ' ', $get['querysearch']);
+}
+
+?>
+
 	<div class="content">
 		<div class="header">
 			<div>
@@ -9,19 +30,19 @@
 			</a>
 		</div>
 		
-		<form method="get" action="<?= BASEURL ?>/dashboard/pengguna">
+		<div class="body">
 			<div class="top">
 				<span>
 				
 				<?php
 				
-				if (isset($_POST['querysearch'])) {
+				if (isset($get['querysearch'])) {
 					?>
 					
-					Menampilkan <?= ($data['pengguna'] > 0) ? count($data['pengguna']) : '0' ?> pengguna untuk <strong>"<?= $_POST['querysearch'] ?>"</strong>
+					Menampilkan <?= ($data['pengguna'] > 0) ? count($data['pengguna']) : '0' ?> pengguna untuk <strong>"<?= $get['querysearch'] ?>"</strong>
 					
 					<?php
-				}else if (isset($_POST['filter'])) {
+				}else if (isset($get['filter'])) {
 					?>Menampilkan <?= ($data['pengguna'] > 0) ? count($data['pengguna']) : '0' ?> pengguna berdasarkan filter.<?php
 				}else {
 					?>Menampilkan <?= ($data['pengguna'] > 0) ? count($data['pengguna']) : '0' ?> dari <?= $data['users'] ?> pengguna.<?php
@@ -30,49 +51,44 @@
 				?>
 				
 				</span>
-				<div class="search">
-					<input type="text" placeholder="Cari nama atau username pengguna..." name="querysearch" id="inputsearch" value="<?php
-					
-					if (isset($_POST['querysearch'])) {
-						echo $_POST['querysearch'];
-					}
-					
-					?>" required>
-				</div>
-				<button type="submit" name="search" value="on">
-					<img src="<?= BASEURL ?>/assets/img/icon/search.png">
-				</button>
+				<form method="get" action="<?= BASEURL ?>/dashboard/pengguna">
+					<div class="search">
+						<input type="text" placeholder="Cari nama atau username pengguna..." name="querysearch" id="inputsearch" <?= (isset($get['querysearch'])) ? 'value="' . $get['querysearch'] . '"' : '' ?> <?= (isset($get['search']) && $get['search'] == 'on') ? 'autofocus' : '' ?>>
+					</div>
+					<button type="submit" name="search" value="on">
+						<img src="<?= BASEURL ?>/assets/img/icon/search.png">
+					</button>
+				</form>
 				<img src="<?= BASEURL ?>/assets/img/icon/vertical-line.png">
 				<button type="button" onclick="showfilter()">
 					<img src="<?= BASEURL ?>/assets/img/icon/filter.png">
 				</button>
 				
-				<div class="filter-menu hide">
+				<form method="get" action="<?= BASEURL ?>/dashboard/pengguna" class="filter-menu hide">
 					<span>Filter Pengguna</span>
 					<div class="filter">
 						<div>
 							<span>HAK</span>
 							<select name="hak">
 								<option>Semua</option>
-								<option value="1">Admin</option>
-								<option value="2">Petugas</option>
-								<option value="3">Masyarakat</option>
+								<option value="1" <?= (isset($get['hak']) && $get['hak'] == '1') ? 'selected' : '' ?>>Admin</option>
+								<option value="2" <?= (isset($get['hak']) && $get['hak'] == '2') ? 'selected' : '' ?>>Petugas</option>
+								<option value="3" <?= (isset($get['hak']) && $get['hak'] == '3') ? 'selected' : '' ?>>Masyarakat</option>
 							</select>
 						</div>
 						<div>
 							<span>SORTIR</span>
 							<select name="urutan">
-								<option value="1">Nama (A - Z)</option>
-								<option value="2">Nama (Z - A)</option>
+								<option value="1" <?= (isset($get['urutan']) && $get['urutan'] == '1') ? 'selected' : '' ?>>Nama (A - Z)</option>
+								<option value="2" <?= (isset($get['urutan']) && $get['urutan'] == '2') ? 'selected' : '' ?>>Nama (Z - A)</option>
 							</select>
 						</div>
 						<div>
 							<span>TAMPIL</span>
 							<select name="tampil">
-								<option value="10">10</option>
-								<option value="20">20</option>
-								<option value="50">50</option>
-								<option value="semua">Semua</option>
+								<option value="20" <?= (isset($get['tampil']) && $get['tampil'] == '20') ? 'selected' : '' ?>>20</option>
+								<option value="50" <?= (isset($get['tampil']) && $get['tampil'] == '50') ? 'selected' : '' ?>>50</option>
+								<option value="semua" <?= (isset($get['tampil']) && $get['tampil'] == 'semua') ? 'selected' : '' ?>>Semua</option>
 							</select>
 						</div>
 					</div>
@@ -80,7 +96,7 @@
 						<a href="<?= BASEURL ?>/dashboard/pengguna">Atur Ulang</a>
 						<button type="submit" name="filter" value="on">Filter</button>
 					</div>
-				</div>
+				</form>
 			</div><!-- top -->
 			
 			<div class="body">
@@ -185,7 +201,7 @@
 				
 				?>
 			</div> <!-- body -->
-		</form>
+		</div>
 	</div>
 </main>
 

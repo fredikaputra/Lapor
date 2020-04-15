@@ -121,8 +121,11 @@ class Riwayat_aduan extends Controller{
 			// dan berstatus masyarakat
 			if (isset($_SESSION['masyarakatNIK'])) {
 				
-				$this->model('Delete_model')->laporan($idpengaduan);
-				header('location: ' . BASEURL . '/riwayat-aduan');
+				if ($this->model('Delete_model')->laporan($idpengaduan) == FALSE) {
+					header('location: ' . BASEURL . '/riwayat-aduan/detail/' . $idpengaduan);
+				}else {
+					header('location: ' . BASEURL . '/riwayat-aduan');
+				}
 			}
 			
 			// pindah ke halaman dashboard / data aduan

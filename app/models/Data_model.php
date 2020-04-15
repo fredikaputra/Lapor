@@ -302,6 +302,10 @@ class Data_model{
 		// tampilkan data pengguna
 		// berdasarkan kata kunci
 		else if (isset($get['querysearch']) && $get['search'] == 'on') {
+			if (strpos($get['querysearch'], '+')) {
+				$get['querysearch'] = str_replace('+', ' ', $get['querysearch']);
+			}
+			
 			$query = "SELECT id_petugas as id, nama_petugas as nama, username, telp, level FROM petugas WHERE nama_petugas LIKE '%" . $get['querysearch'] . "%' OR username LIKE '%" . $get['querysearch'] . "%'";
 			$this->db->prepare($query);
 			$this->db->execute();

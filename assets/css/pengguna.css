@@ -37,13 +37,13 @@ main .content .header a img{
 	margin-right: 5px;
 }
 
-main .content form{
+main .content > .body{
 	background: var(--light-color);
 	margin-top: 1cm;
 	box-shadow: 0 0 10px #0000000F;
 }
 
-main .content form .top{
+main .content .body .top{
 	display: flex;
 	align-items: center;
 	width: 100%;
@@ -51,19 +51,24 @@ main .content form .top{
 	padding: 20px;
 }
 
-main .content form .top > span{
+main .content .body .top > span{
 	width: 100%;
 	color: var(--soft-dark-color);
 }
 
-main .content form .top .search{
+main .content .body .top form{
+	display: flex;
 	width: 100%;
+}
+
+main .content .body .top form .search{
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	width: 100%;
 }
 
-main .content form .top .search input{
+main .content .body .top form .search input{
 	text-align: right;
 	border: none;
 	letter-spacing: 1px;
@@ -74,7 +79,7 @@ main .content form .top .search input{
 	margin-right: 5px;
 }
 
-main .content form .top button{
+main .content .body .top button{
 	background: transparent;
 	border: none;
 	text-align: center;
@@ -83,21 +88,21 @@ main .content form .top button{
 	transition: .3s;
 }
 
-main .content form .top button:hover{
+main .content .body .top button:hover{
 	background-color: var(--secondary-color);
 }
 
-main .content form .top button img{
+main .content .body .top button img{
 	width: 15px;
 }
 
-main .content form .top > img{
+main .content .body .top > img{
 	width: 2px;
 	height: 35px;
 	margin: 0 15px;
 }
 
-main .content form .top .filter-menu{
+main .content .body .top form.filter-menu{
 	position: absolute;
 	top: 1.7cm;
 	right: 0;
@@ -107,7 +112,7 @@ main .content form .top .filter-menu{
 	box-shadow: 0 0 10px #00000025;
 }
 
-main .content form .top .filter-menu > span{
+main .content .body .top form.filter-menu > span{
 	display: block;
 	padding: 20px;
 	font-size: 13px;
@@ -116,17 +121,17 @@ main .content form .top .filter-menu > span{
 	border-bottom: 1px solid #0000000F;
 }
 
-main .content form .top .filter-menu .filter{
+main .content .body .top form.filter-menu .filter{
 	padding: 20px;
 	display: flex;
 }
 
-main .content form .top .filter-menu .filter > div{
+main .content .body .top form.filter-menu .filter > div{
 	width: 100%;
 	margin: 0 10px;
 }
 
-main .content form .top .filter-menu .filter > div span{
+main .content .body .top form.filter-menu .filter > div span{
 	display: block;
 	font-size: 12px;
 	font-weight: bold;
@@ -135,7 +140,7 @@ main .content form .top .filter-menu .filter > div span{
 	margin-bottom: 5px;
 }
 
-main .content form .top .filter-menu .filter > div select{
+main .content .body .top form.filter-menu .filter > div select{
 	width: 100%;
 	padding: 10px;
 	font-size: 12px;
@@ -146,13 +151,13 @@ main .content form .top .filter-menu .filter > div select{
 	cursor: pointer;
 }
 
-main .content form .top .filter-menu .footer{
+main .content .body .top form.filter-menu .footer{
 	text-align: right;
 	padding: 20px;
 	border-top: 1px solid #0000000F;
 }
 
-main .content form .top .filter-menu .footer > *{
+main .content .body .top form.filter-menu .footer > *{
 	background: var(--primary-color);
 	color: var(--light-color);
 	border: none;
@@ -165,51 +170,51 @@ main .content form .top .filter-menu .footer > *{
 	text-align: center;
 }
 
-main .content form .body > div{
+main .content .body .body > div{
 	display: grid;
 	grid-template-columns: 2cm 10cm 1fr 1fr 1fr 1fr 1.8cm;
 }
 
-main .content form .body > div > div{
+main .content .body .body > div > div{
 	display: flex;
 	align-items: center;
 }
 
-main .content form .body > div > div:first-of-type{
+main .content .body .body > div > div:first-of-type{
 	justify-content: center;
 }
 
-main .content form .body > div.header{
+main .content .body .body > div.header{
 	padding: 10px 0;
 	border-top: 1px solid #00000025;
 	border-bottom: 1px solid #00000025;
 }
 
-main .content form .body > div.header div span{
+main .content .body .body > div.header div span{
 	color: var(--soft-dark-color);
 	font-size: 13px;
 }
 
-main .content form .body > div.user{
+main .content .body .body > div.user{
 	padding: 10px 0;
 	border-bottom: 1px solid #00000025;
 	transition: .2s;
 }
 
-main .content form .body > div.user:hover{
+main .content .body .body > div.user:hover{
 	background: var(--secondary-color);
 }
 
-main .content form .body > div.user div span{
+main .content .body .body > div.user div span{
 	color: var(--soft-dark-color);
 	font-size: 15px;
 }
 
-main .content form .body > div.user div:nth-of-type(2) span{
+main .content .body .body > div.user div:nth-of-type(2) span{
 	font-weight: bold;
 }
 
-main .content form .body > div.user div:nth-of-type(2) img{
+main .content .body .body > div.user div:nth-of-type(2) img{
 	width: 1.2cm;
 	height: 1.2cm;
 	border-radius: 50%;
@@ -218,14 +223,14 @@ main .content form .body > div.user div:nth-of-type(2) img{
 	margin-right: 15px;
 }
 
-main .content form .body > div.user div:nth-of-type(5) span.online{
+main .content .body .body > div.user div:nth-of-type(5) span.online{
 	background: var(--primary-color);
 	padding: 5px 15px;
 	border-radius: 20px;
 	color: var(--light-color);
 }
 
-main .content form .body > div.user div:last-of-type button{
+main .content .body .body > div.user div:last-of-type button{
 	padding: 10px;
 	border-radius: 50%;
 	line-height: 0;
@@ -234,14 +239,14 @@ main .content form .body > div.user div:last-of-type button{
 	border: none;
 }
 
-main .content form .body > div.user div:last-of-type button:hover{
+main .content .body .body > div.user div:last-of-type button:hover{
 	background: var(--soft-light-color);
 }
 
-main .content form .body > div.user:hover div:last-of-type button{
+main .content .body .body > div.user:hover div:last-of-type button{
 	display: block;
 }
 
-main .content form .body > div.user div:last-of-type button img{
+main .content .body .body > div.user div:last-of-type button img{
 	width: 20px;
 }

@@ -79,26 +79,37 @@ class Delete_model{
 	
 	// hapus laporan
 	public function laporan($id){
-		
-		// hapus laporan
-		$query = "DELETE FROM pengaduan WHERE id_pengaduan = ?";
+		$query = "SELECT status FROM pengaduan WHERE id_pengaduan = ?";
 		$this->db->prepare($query);
 		$this->db->sth->bind_param('s', $id);
 		$this->db->execute();
+		$this->db->getResult();
 		
-		// berhasil
-		if ($this->db->affectedRows() > 0) {
+		if (isset($_SESSION['masyarakatNIK']) && $this->db->row[0]['status'] == '0' || isset($_SESSION['petugasID'])) {
+			// hapus laporan
+			$query = "DELETE FROM pengaduan WHERE id_pengaduan = ?";
+			$this->db->prepare($query);
+			$this->db->sth->bind_param('s', $id);
+			$this->db->execute();
 			
-			// buat log dan simpan
-			$log  = $_SESSION['petugasID'] . "|Telah menghapus data laporan '" . $id . "'.|" . time() . PHP_EOL;
-			$createLog = file_put_contents('app/log/user_activity/log_' . date('d.m.Y') . '.log', $log, FILE_APPEND);
+			// berhasil
+			if ($this->db->affectedRows() > 0) {
+				
+				// buat log dan simpan
+				$log  = $_SESSION['petugasID'] . '|Telah menghapus data laporan "' . $id . '".|' . time() . PHP_EOL;
+				$createLog = file_put_contents('app/log/user_activity/log_' . date('d.m.Y') . '.log', $log, FILE_APPEND);
+				
+				Flasher::setFlash('Berhasil! ', "Laporan dengan ID: " . $id . " telah dihapus.", 'success', 'correct');
+			}
 			
-			Flasher::setFlash('Berhasil! ', "Laporan dengan ID: " . $id . " telah dihapus.", 'success', 'correct');
+			// gagal
+			else {
+				Flasher::setFlash(NULL, 'Tidak ada data yang dihapus!', 'danger', 'warning');
+			}
 		}
-		
-		// gagal
 		else {
-			Flasher::setFlash(NULL, 'Tidak ada data yang dihapus!', 'danger', 'warning');
+			Flasher::setFlash('Gagal! ', 'Anda tidak dapat menghapus laporan yang sudah terverifikas.', 'warning', 'warning');
+			return false;
 		}
 	}
 }

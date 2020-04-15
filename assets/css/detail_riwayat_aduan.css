@@ -103,6 +103,7 @@ main .report > div > div.footer button{
 main .report > div > div.footer button:hover,
 main .report > div > div.footer button:focus{
 	background: var(--danger-background);
+	border-color: var(--danger-background);
 	color: var(--danger-color);
 	box-shadow: 0 3px 10px #00000015;
 }
