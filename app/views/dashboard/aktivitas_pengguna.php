@@ -77,6 +77,24 @@
 				<div>
 					<h2>Sedang Online</h2>
 					
+					<div>
+					
+						<?php
+						if (file_exists('assets/img/users/' . $data['photo'])) {
+							?><img src="<?= BASEURL ?>/assets/img/users/<?= $data['photo'] ?>?=<?= filemtime('assets/img/users/' . $data['photo']) ?>"><?php
+						}else {
+							?><img src="<?= BASEURL ?>/assets/img/users/default.png"><?php
+						}
+						
+						?>
+						
+						<div>
+							<span><?= $data['petugas']['nama_petugas'] ?></span>
+							<span>@<?= $data['petugas']['username'] ?></span>
+						</div>
+						
+					</div>
+					
 					
 						
 						<?php

@@ -101,7 +101,7 @@ main .content > .body > .online > div{
 main .content > .body > .online > div h2{
 	color: var(--soft-dark-color);
 	font-size: 16px;
-	margin-bottom: 20px;
+	margin-bottom: 25px;
 }
 
 main .content > .body > .online > div > div{
@@ -109,13 +109,18 @@ main .content > .body > .online > div > div{
 	align-items: center;
 }
 
+main .content > .body > .online > div > div:nth-of-type(2){
+	border-top: 1px solid #00000020;
+	padding-top: 15px;
+}
+
 main .content > .body > .online > div > div:not(:last-of-type){
 	margin-bottom: 15px;
 }
 
 main .content > .body > .online > div > div img{
-	width: 1.5cm;
-	height: 1.5cm;
+	width: 1cm;
+	height: 1cm;
 	object-fit: cover;
 	object-position: center;
 	border-radius: 50%;
@@ -126,7 +131,7 @@ main .content > .body > .online > div > div div{
 }
 
 main .content > .body > .online > div > div div span{
-	font-size: 15px;
+	font-size: 14px;
 }
 
 main .content > .body > .online > div > div div span:first-of-type{
