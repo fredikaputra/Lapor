@@ -4,6 +4,9 @@
 				<h1>Aktifitas Pengguna</h1>
 				<span>Seluruh aktifitas pengguna saat menggunakan layanan Lapor!.</span>
 			</div>
+			<button type="button">
+				<img src="<?= BASEURL ?>/assets/img/icon/bin.png"> Hapus Riwayat Aktifitas
+			</button>
 		</div>
 		
 		<div class="body">
@@ -31,14 +34,9 @@
 									
 									?>
 									<div>
-										<strong><?= $activity[3] ?></strong>
-										<span><?= $activity[1] ?></span>
+										<strong><?= $activity[3] ?>.</strong>
+										<span><?= $activity[1] ?>.</span>
 										<span><?= strftime("%H:%M", intval($activity[2])) ?></span>
-									</div>
-									<div>
-										<a href="#">
-											<img src="<?= BASEURL ?>/assets/img/icon/eye.png">
-										</a>
 									</div>
 								</div>
 							</div>

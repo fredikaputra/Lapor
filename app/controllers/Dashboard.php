@@ -426,7 +426,31 @@ class Dashboard extends Controller{
 			// proses halaman
 			if ($option == 'proses') {
 				$this->model('Update_model')->petugas();
-				header('location: ' . BASEURL . '/dashboard/pengaturan');
+				if (isset($_POST['updatePassword'])) {
+					header('location: ' . BASEURL . '/dashboard/pengaturan/ganti-password');
+				}else {
+					header('location: ' . BASEURL . '/dashboard/pengaturan');
+				}
+			}
+			
+			else if ($option == 'ganti-password') {
+				
+				// deklarasikan variable
+				// untuk dikirimkan ke halaman website
+				$data['webtitle'] = 'Dashboard - Ubah Password';
+				$data['css'] = ['side_dashboard.css', 'ganti_password_dashboard.css', 'base.css'];
+				$data['method'] = __FUNCTION__;
+				
+				// ambil data pengguna
+				$data['petugas'] = $this->model('Data_model')->petugas()[0];
+				$data['photo'] = $_SESSION['petugasID'] . '.jpg';
+
+				// tampilkan website
+				// kirim semua data ($data) ke dalam website
+				$this->view('template/header', $data);
+				$this->view('dashboard/header', $data);
+				$this->view('dashboard/ganti_password_dashboard', $data);
+				$this->view('template/footer');
 			}
 			
 			// cek parameter

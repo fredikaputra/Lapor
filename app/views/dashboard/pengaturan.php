@@ -20,7 +20,6 @@
 				<label>Upload Gambar
 					<input type="file" name="photo">
 				</label>
-				<a href="<?= BASEURL ?>/dashboard/profil/hapus-foto-profil">Hapus Gambar</a>
 			</div>
 			<div class="body">
 				<div>
@@ -38,7 +37,7 @@
 			</div>
 			<div class="changepass">
 				<span>Ingin Mengubah Password Anda?</span>
-				<a href="">Ganti Password</a>
+				<a href="<?= BASEURL ?>/dashboard/pengaturan/ganti-password">Ganti Password</a>
 			</div>
 			<div class="footer">
 				<button type="submit" name="updateprofile" onclick="checkValueChange()">Simpan</button>

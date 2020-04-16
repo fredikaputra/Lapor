@@ -1,3 +1,9 @@
+main .content .header{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
 main .content .header div h1{
 	color: var(--primary-color);
 	margin-bottom: 5px;
@@ -10,23 +16,23 @@ main .content .header div span{
 	letter-spacing: .5px;
 }
 
-main .content .header a{
-	background: var(--light-color);
+main .content .header button{
+	background: var(--danger-background);
 	border: none;
 	padding: 10px;
 	box-shadow: 0 0 10px #0000000F;
 	display: flex;
 	align-items: center;
-	color: var(--soft-dark-color);
+	color: var(--danger-color);
 	font-weight: bold;
 	font-size: 14px;
 }
 
-main .content .header a:focus{
-	background: var(--soft-light-color);
+main .content .header button:focus{
+	filter: brightness(.9);
 }
 
-main .content .header a img{
+main .content .header button img{
 	width: 20px;
 	margin-right: 5px;
 }
@@ -61,7 +67,7 @@ main .content > .body > .history > div > div:first-of-type span:last-of-type{
 
 main .content > .body > .history > div > div:last-of-type > div{
 	display: grid;
-	grid-template-columns: auto 1fr 1cm;
+	grid-template-columns: auto 1fr;
 	grid-gap: 20px;
 	align-items: center;
 	background: var(--light-color);
