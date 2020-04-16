@@ -105,5 +105,4 @@ main form button:focus{
 /* LINK SPAN */
 main form span a{
 	color: var(--primary-color);
-	border-bottom: 1px solid var(--soft-light-color);
 }

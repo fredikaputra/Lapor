@@ -81,7 +81,7 @@ if (isset($get['querysearch']) && strpos($get['querysearch'], '+')) {
 						if (isset($get['querysearch'])) {
 							?>
 							
-							Menampilkan <?= ($data['laporan'] > 0) ? count($data['laporan']) : '0' ?> laporan untuk <strong>"<?= $get['querysearch'] ?>"</strong>
+							Menampilkan <?= ($data['laporan'] > 0) ? count($data['laporan']) : '0' ?> laporan untuk kata kunci <strong>"<?= $get['querysearch'] ?>"</strong>
 							
 							<?php
 						}else if (isset($get['filter'])) {

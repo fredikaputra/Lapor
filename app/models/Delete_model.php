@@ -108,8 +108,28 @@ class Delete_model{
 			}
 		}
 		else {
-			Flasher::setFlash('Gagal! ', 'Anda tidak dapat menghapus laporan yang sudah terverifikas.', 'warning', 'warning');
+			Flasher::setFlash('Gagal! ', 'Anda tidak dapat menghapus laporan yang sudah terverifikasi.', 'warning', 'warning');
 			return false;
+		}
+	}
+	
+	// hapus log
+	public function log(){
+		
+		$files = glob('app/log/user_activity/*');
+		if ($files != NULL) {
+			foreach($files as $file){
+				if(is_file($file)) unlink($file);
+			}
+		}else {
+			$error = 1;
+		}
+		
+		
+		if (isset($error) && $error == 1) {
+			Flasher::setFlash(NULL, 'Tidak ada riwayat yang dihapus!', 'danger', 'warning');
+		}else {
+			Flasher::setFlash('Berhasil! ', "Anda telah menghapus seluruh riwayat aktifitas.", 'success', 'correct');
 		}
 	}
 }

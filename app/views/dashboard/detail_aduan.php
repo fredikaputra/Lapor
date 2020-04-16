@@ -65,8 +65,7 @@
 		document.querySelector('.popup').classList.remove('hide');
 		var id = i.getAttribute('data-id');
 		document.querySelector('#deleteForm').setAttribute('action', '<?= BASEURL ?>/dashboard/data-aduan/hapus/' + id);
-		document.querySelector('#info').innerHTML = 'Apakah anda yakin ingin menghapus laporan';
-		document.querySelector('#id').innerHTML = '#' + id;
+		document.querySelector('#info').innerHTML = 'Apakah anda yakin ingin menghapus laporan ini?';
 	}
 
 	function closeDelPopup(){

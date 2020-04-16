@@ -4,7 +4,7 @@
 				<h1>Aktifitas Pengguna</h1>
 				<span>Seluruh aktifitas pengguna saat menggunakan layanan Lapor!.</span>
 			</div>
-			<button type="button">
+			<button type="button" onclick="delPopup()">
 				<img src="<?= BASEURL ?>/assets/img/icon/bin.png"> Hapus Riwayat Aktifitas
 			</button>
 		</div>
@@ -13,7 +13,7 @@
 			<div class="history">
 				<?php
 				
-				if ($data['activity'] != NULL) {
+				if (isset($data['activity']) && $data['activity'] != NULL) {
 					foreach ($data['activity'] as $activity) {
 						?>
 						
@@ -137,3 +137,15 @@
 		</div>
 	</div>
 </main>
+
+<script type="text/javascript">		
+	function delPopup(i){
+		document.querySelector('.popup').classList.remove('hide');
+		document.querySelector('#deleteForm').setAttribute('action', '<?= BASEURL ?>/dashboard/aktivitas-pengguna/hapus');
+		document.querySelector('#info').innerHTML = 'Apakah anda yakin ingin menghapus riwayat aktivitas?';
+	}
+
+	function closeDelPopup(){
+		document.querySelector('.popup').classList.add('hide');
+	}
+</script>

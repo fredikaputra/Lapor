@@ -139,7 +139,7 @@ main div .data > form div input{
 	outline: none;
 	width: 100%;
 	font-size: 15px;
-	color: var(--primary-color);
+	color: var(--soft-dark-color);
 	margin-right: 5px;
 }
 

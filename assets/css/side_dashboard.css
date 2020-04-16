@@ -81,7 +81,7 @@ nav .menu > a{
 }
 
 nav .menu > a:hover{
-	color: var(--tertiary-color);
+	color: var(--primary-color);
 }
 
 

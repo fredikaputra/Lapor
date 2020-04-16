@@ -48,6 +48,7 @@ main form textarea{
 	letter-spacing: 1px;
 	text-align: justify;
 	line-height: 25px;
+	outline-color: var(--primary-color);
 }
 
 main form textarea[disabled]{

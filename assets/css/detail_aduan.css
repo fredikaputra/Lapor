@@ -20,8 +20,14 @@ main .content > div:first-of-type button{
 	margin-right: 5px;
 }
 
-main .content > div:first-of-type button:hover{
+main .content > div:first-of-type button:first-of-type:hover{
 	background: #0000000F;
+}
+
+main .content > div:first-of-type button:last-of-type:hover,
+main .content > div:first-of-type button:last-of-type:focus{
+	background: var(--danger-background);
+	color: var(--danger-color);
 }
 
 main .content > div:first-of-type button img{
@@ -107,6 +113,7 @@ main .content div .action form textarea{
 	color: var(--soft-dark-color);
 	margin-top: 20px;
 	line-height: 25px;
+	outline-color: var(--primary-color);
 }
 
 main .content div .action form button{
@@ -119,6 +126,11 @@ main .content div .action form button{
 	font-weight: bold;
 	letter-spacing: 1px;
 	color: var(--light-color);
+}
+
+main .content div .action form button:focus{
+	background: transparent;
+	color: var(--primary-color);
 }
 
 main .content div .action .comment{
@@ -143,9 +155,10 @@ main .content div .action .comment div span{
 main .content div .action .comment p{
 	margin-top: 10px;
 	color: var(--soft-dark-color);
-	line-height: 20px;
+	line-height: 25px;
 	text-align: justify;
 	white-space: pre-line;
+	letter-spacing: .5px;
 }
 
 main .content div .action .comment p::before{

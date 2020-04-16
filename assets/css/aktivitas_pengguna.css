@@ -17,19 +17,22 @@ main .content .header div span{
 }
 
 main .content .header button{
-	background: var(--danger-background);
+	background: var(--light-color);
 	border: none;
 	padding: 10px;
 	box-shadow: 0 0 10px #0000000F;
 	display: flex;
 	align-items: center;
-	color: var(--danger-color);
+	color: var(--soft-dark-color);
 	font-weight: bold;
 	font-size: 14px;
 }
 
+main .content .header button:hover,
 main .content .header button:focus{
-	filter: brightness(.9);
+	background: var(--danger-background);
+	color: var(--danger-color);
+	border-color: var(--danger-background);
 }
 
 main .content .header button img{
