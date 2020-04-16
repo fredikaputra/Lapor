@@ -115,7 +115,7 @@ class Register_model{
 									else {
 										
 										// buat log dan simpan
-										$log  = $_SESSION['nik'] . "|Telah bergabung sebagai masyarakat.|" . time() . PHP_EOL;
+										$log  = $nik . "|Telah bergabung sebagai masyarakat.|" . time() . PHP_EOL;
 										$createLog = file_put_contents('app/log/user_activity/log_' . date('d.m.Y') . '.log', $log, FILE_APPEND);
 										
 										Flasher::setFlash('Berhasil! ', "Anda telah terdaftar.", 'success', 'correct');

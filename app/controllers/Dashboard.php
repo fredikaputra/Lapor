@@ -483,9 +483,34 @@ class Dashboard extends Controller{
 			$data['css'] = ['side_dashboard.css', 'aktivitas_pengguna.css', 'base.css'];
 			$data['method'] = __FUNCTION__;
 			
+			if ($handle = opendir('app/log/user_activity')) {
+				while (false !== ($file = readdir($handle))) {
+					if ($file != "." && $file != "..") {
+						$files[] = file('app/log/user_activity/' . $file);
+					}else {
+						$files = NULL;
+					}
+				}
+				closedir($handle);
+			}
+			
+			if ($files != NULL) {
+				foreach (array_reverse($files) as $activity) {
+					foreach (array_reverse($activity) as $activity) {
+						$row[0] = explode('|', $activity);
+						foreach ($row as &$key) {
+							$key[3] = $this->model('Data_model')->getName($key[0])[0]['name'];
+							foreach ($row as $value) {
+								$data['activity'][] = $value;
+							}
+						}
+					}
+				}
+			}
+						
 			// ambil data pengguna
-			$data['pengguna'] = $this->model('Data_model')->pengguna();
 			$data['petugas'] = $this->model('Data_model')->petugas()[0];
+			$data['pengguna'] = $this->model('Data_model')->pengguna();
 			$data['photo'] = $_SESSION['petugasID'] . '.jpg';
 
 			// tampilkan website

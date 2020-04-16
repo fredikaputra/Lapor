@@ -31,7 +31,7 @@ class Database{
 		// tampilkan error
 		// ketika query salah
 		else {
-			// echo $this->dbh->error;
+			echo $this->dbh->error;
 			die("<br /><strong>Fatal Error</strong>: Query error!");
 		}
 	}

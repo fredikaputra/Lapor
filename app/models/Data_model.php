@@ -371,4 +371,22 @@ class Data_model{
 			return 'Baru saja';
 		}
 	}
+	
+	public function getName($id){
+		$query = "SELECT nik as id, nama as name FROM masyarakat WHERE nik = ?";
+		$this->db->prepare($query);
+		$this->db->sth->bind_param('s', $id);
+		$this->db->execute();
+		if ($this->db->getResult() > 0) {
+			return $this->db->row;
+		}else {
+			$query = "SELECT id_petugas as id, nama_petugas as name FROM petugas WHERE id_petugas = ?";
+			$this->db->prepare($query);
+			$this->db->sth->bind_param('s', $id);
+			$this->db->execute();
+			if ($this->db->getResult() > 0) {
+				return $this->db->row;
+			}
+		}
+	}
 }

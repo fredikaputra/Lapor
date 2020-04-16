@@ -10,56 +10,41 @@
 			<div class="history">
 				<?php
 				
-				if ($handle = opendir('app/log/user_activity')) {
-					while (false !== ($file = readdir($handle))) {
-						if ($file != "." && $file != "..") {
-							$files[] = file('app/log/user_activity/' . $file);
-						}else {
-							$files = NULL;
-						}
-					}
-					closedir($handle);
-				}
-				
-				if ($files != NULL) {
-					foreach (array_reverse($files) as $line) {
-						foreach (array_reverse($line) as $activity) {
-							$part = explode('|', $activity);
-							?>
-							
+				if ($data['activity'] != NULL) {
+					foreach ($data['activity'] as $activity) {
+						?>
+						
+						<div>
+							<div>
+								<span><?= strftime("%d", intval($activity[2])) ?></span>
+								<span><?= strftime("%B", intval($activity[2])) ?></span>
+							</div>
 							<div>
 								<div>
-									<span><?= strftime("%d", intval($part[2])) ?></span>
-									<span><?= strftime("%B", intval($part[2])) ?></span>
-								</div>
-								<div>
+									<?php
+									
+									if (file_exists('assets/img/users/' . $activity[0] . '.jpg')) {
+										?><img src="<?= BASEURL ?>/assets/img/users/<?= $activity[0] . '.jpg' ?>?=<?= filemtime('assets/img/users/' . $activity[0] . '.jpg') ?>"><?php
+									}else {
+										?><img src="<?= BASEURL ?>/assets/img/users/default.png"><?php
+									}
+									
+									?>
 									<div>
-										<?php
-										
-										if (file_exists('assets/img/users/' . $part[0] . '.jpg')) {
-											?><img src="<?= BASEURL ?>/assets/img/users/<?= $part[0] . '.jpg' ?>?=<?= filemtime('assets/img/users/' . $part[0] . '.jpg') ?>"><?php
-										}else {
-											?><img src="<?= BASEURL ?>/assets/img/users/default.png"><?php
-										}
-										
-										?>
-										<div>
-											<!-- <strong><?= $part[0] ?></strong> -->
-											<strong>Tets Nama.</strong>
-											<span><?= $part[1] ?></span>
-											<span><?= strftime("%H:%M", intval($part[2])) ?></span>
-										</div>
-										<div>
-											<a href="#">
-												<img src="<?= BASEURL ?>/assets/img/icon/eye.png">
-											</a>
-										</div>
+										<strong><?= $activity[3] ?></strong>
+										<span><?= $activity[1] ?></span>
+										<span><?= strftime("%H:%M", intval($activity[2])) ?></span>
+									</div>
+									<div>
+										<a href="#">
+											<img src="<?= BASEURL ?>/assets/img/icon/eye.png">
+										</a>
 									</div>
 								</div>
 							</div>
-							
-							<?php
-						}// code...
+						</div>
+						
+						<?php
 					}
 				}else {
 					?>
@@ -72,6 +57,7 @@
 				}
 				
 				?>
+				
 			</div>
 			<div class="online">
 				<div>
