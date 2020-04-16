@@ -192,8 +192,50 @@ class Update_model{
 	public function petugas(){
 		$this->db->dbh->real_escape_string(extract($_POST));
 		
+		if (isset($_FILES) && $_FILES != NULL) {
+			// cek keutuhan gambar
+			if ($_FILES['photo']['error'] == 0) {
+				
+				// cek extensi gambar
+				$extension = strtolower(pathinfo($_FILES['photo']['name'], PATHINFO_EXTENSION));
+				$photo = $_SESSION['petugasID'] . '.jpg';
+				if ($extension == 'jpg' || $extension == 'jpeg') {
+					
+					// ukuran gambar max 2MB
+					if ($_FILES['photo']['size'] <= 2048000) {
+						
+						// berhasil
+						if (move_uploaded_file($_FILES['photo']['tmp_name'], 'assets/img/users/' . $photo)) {
+							$updatePhoto = true;
+							Flasher::setFlash('Berhasil! ', 'Foto profil anda telah diubah.', 'success', 'correct');
+						}
+						
+						// gagal
+						else {
+							Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
+						}
+					}
+					
+					// ukuran gambar lebih dari 2MB
+					else {
+						Flasher::setFlash('Gagal! ', 'Ukuran file maksimal 2MB.', 'warning', 'warning');
+					}
+				}
+				
+				// extensi gambar tidak mendukung
+				else {
+					Flasher::setFlash('Gagal! ', 'Format file tidak didukung.', 'warning', 'warning');
+				}
+			}
+			
+			// terjadi kesalahan
+			else {
+				Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
+			}
+		}
+		
 		// update nama
-		if (isset($name)) {
+		if (isset($name)) {			
 			$query = "UPDATE petugas SET nama_petugas = ? WHERE id_petugas = ?";
 			$this->db->prepare($query);
 			$this->db->sth->bind_param('ss', $name, $_SESSION['petugasID']);
@@ -215,7 +257,11 @@ class Update_model{
 		
 		// gagal
 		else {
-			Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
+			if ($updatePhoto == TRUE) {
+				Flasher::setFlash('Berhasil! ', "Foto profil anda telah diubah", 'success', 'correct');
+			}else {
+				Flasher::setFlash(NULL, 'Terjadi kesalahan saat memproses data!', 'danger', 'warning');
+			}
 		}
 		
 		// update username
@@ -226,9 +272,10 @@ class Update_model{
 			$this->db->prepare($query);
 			$this->db->sth->bind_param('s', $_SESSION['petugasID']);
 			$this->db->execute();
+			$this->db->getResult();
 			
 			// berhasil
-			if ($this->db->getResult() == 0) {
+			if ($this->db->row[0]['username'] != $username) {
 				$query = "UPDATE petugas SET username = ? WHERE id_petugas = ?";
 				$this->db->prepare($query);
 				$this->db->sth->bind_param('ss', $username, $_SESSION['petugasID']);
