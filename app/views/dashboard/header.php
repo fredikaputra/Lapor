@@ -55,7 +55,6 @@
 			clearTimeout(timeout);
 			timeout = setTimeout(function(){
 				window.location.href = "<?= BASEURL ?>/dashboard/kunci";
-			// }, 60000);
-		}, 10000000);
+		}, 180000);
 		}
 	</script>

@@ -5,7 +5,7 @@ class Beranda extends Controller{
 		
 		// deklarasikan variable
 		// untuk dikirimkan ke halaman website
-		$data['webtitle'] = 'LAPOR! - Layanan Pengaduan Petugas Online';
+		$data['webtitle'] = 'LAPOR! - Layanan Pengaduan Masyarakat Online';
 		$data['css'] = ['beranda.css', 'nav.css', 'base.css'];
 		$data['controller'] = __CLASS__;
 		
