@@ -85,6 +85,7 @@ class Delete_model{
 		$this->db->execute();
 		$this->db->getResult();
 		
+		// hapus laporan
 		if (isset($_SESSION['masyarakatNIK']) && $this->db->row[0]['status'] == '0' || isset($_SESSION['petugasID'])) {
 			// hapus laporan
 			$query = "DELETE FROM pengaduan WHERE id_pengaduan = ?";
@@ -107,6 +108,10 @@ class Delete_model{
 				Flasher::setFlash(NULL, 'Tidak ada data yang dihapus!', 'danger', 'warning');
 			}
 		}
+		
+		// jangan hapus laporan ketika
+		// yang hapus itu masyarakat
+		// dan status laporan itu sudah terverifikasi
 		else {
 			Flasher::setFlash('Gagal! ', 'Anda tidak dapat menghapus laporan yang sudah terverifikasi.', 'warning', 'warning');
 			return false;
@@ -118,17 +123,22 @@ class Delete_model{
 		
 		$files = glob('app/log/user_activity/*');
 		if ($files != NULL) {
+			
+			// hapus semua file dalam folder user_activity
 			foreach($files as $file){
 				if(is_file($file)) unlink($file);
 			}
-		}else {
+		}
+		
+		else {
+			// tidak ada file yang dihapus
 			$error = 1;
 		}
 		
-		
 		if (isset($error) && $error == 1) {
 			Flasher::setFlash(NULL, 'Tidak ada riwayat yang dihapus!', 'danger', 'warning');
-		}else {
+		}
+		else {
 			Flasher::setFlash('Berhasil! ', "Anda telah menghapus seluruh riwayat aktifitas.", 'success', 'correct');
 		}
 	}

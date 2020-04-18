@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 16, 2020 at 10:37 AM
+-- Generation Time: Apr 18, 2020 at 12:35 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -45,10 +45,11 @@ INSERT INTO `masyarakat` (`nik`, `nama`, `username`, `password`, `telp`) VALUES
 ('2837450982374592', 'Ni Kadek Silvia', 'silvi', '$2y$12$nJ67umJCRF5UPc7J/6hAzeAINHr4CMxT85FC4z.1RJe9/RINVkv/C', '085859303379'),
 ('4398572093475927', 'Yogi Leo Lopo', 'leo', '$2y$12$rmYiv/q1w3HR.D.sUm5HiOTCG3EADTobLtJQpqUozPLHPtkYp3aP.', '085278035443'),
 ('7290384509275757', 'Gung Inten', 'inten', '$2y$12$oPH1QdLp/c1i/wRkxKjCtekcFgf.rIEwEUMgzm4mpJt7u3ZiXB8ii', '081645798369'),
-('7584100003743986', 'Hatta Afdillah Syahfar', 'hatta', '$2y$12$EsLavpp169v/OQZi7BjHZubH5pKBCCOp4edm2qjectdIzkHMzoU8i', '085534798238'),
+('7584100003743986', 'Hatta Afdillah Syahfar', 'hatta', '$2y$12$sJvKpjH0e.5zxeaJf5f.ReRiTKS3VQvC/8WTg0BzdgnGVR/.j4D2W', '085534798856479'),
 ('7584100003743987', 'Darma Yuda', 'yuda', '$2y$12$phkuo3KKNaceUMgc3TEC5.9wkVRbePySflz1CqPba8AwvtAK9qV3a', '085250437878'),
 ('7778483275490239', 'Riski Saputra', 'iki', '$2y$12$X76Ovmay5prztfd1UFHsTu1FhisnYVV5YIRl9lWxNPqLzRWC6q136', '085857583458'),
 ('7779435793825093', 'Chandra Tri Wijaya', 'wen', '$2y$12$Ovoxs898MFcLzmO0eN3EyuX4fAmA2EPN25oX0xXXtS9G445TocRoe', '085534625783'),
+('7878324698324956', 'Bima Tri Aji Prasetya', 'aji', '$2y$12$UsXRHd5WAagIQfr7/I695.Jhhal3t8VS1AFCuzsyoYPXiiroLHO4i', '085584397598034'),
 ('8834020038745098', 'I Putu Andika Teguh', 'teguh', '$2y$12$c5kD9Pw5E2JJNdljHCEQ8Oy7tw6j311hxNl8PdoRg8YjQlCYqZYZ6', '085777489395'),
 ('8884457434829563', 'Kadek Rama Surya', 'rama', '$2y$12$bp40A9.wmmWsqC/0s5SJieCP3FNxaTxpjzpPnK3MOMP9Nog6paqEG', '085567344875'),
 ('8888349750238475', 'Padma Eka Putra', 'padma', '$2y$12$16aNg1KM36u4j/Ju6ASXmOn6HUr32vlXWygIycXGflbtdsZgpo3a2', '085554382789'),

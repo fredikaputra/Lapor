@@ -110,7 +110,7 @@ class Update_model{
 								$log  = time() . PHP_EOL;
 					
 								// simpan log
-								$createLog = file_put_contents(BASEURL . '/app/log/change_pass_time/' . $_SESSION['masyarakatNIK'] . '.log', $log);
+								$createLog = file_put_contents('app/log/change_pass_time/' . $_SESSION['masyarakatNIK'] . '.log', $log);
 								
 								Flasher::setFlash('Berhasil! ', 'Password anda telah diubah.', 'success', 'correct');
 							}
@@ -324,14 +324,7 @@ class Update_model{
 						$this->db->execute();
 						
 						// berhasil
-						if ($this->db->affectedRows() > 0) {
-							
-							// buat log
-							$log  = time() . PHP_EOL;
-				
-							// simpan log
-							$createLog = file_put_contents(BASEURL . '/app/log/change_pass_time/' . $_SESSION['petugasID'] . '.log', $log);
-							
+						if ($this->db->affectedRows() > 0) {							
 							Flasher::setFlash('Berhasil! ', 'Password anda telah diubah.', 'success', 'correct');
 						}
 						
