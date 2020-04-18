@@ -189,7 +189,7 @@ if (isset($get['querysearch']) && strpos($get['querysearch'], '+')) {
 							</div>
 							<?php
 							
-							if ($data['petugas']['level'] == 1) {
+							if ($data['petugas']['level'] == 1 && $user['id'] != $_SESSION['petugasID']) {
 								?>
 								
 								<div>
