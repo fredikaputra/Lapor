@@ -97,7 +97,12 @@ class Delete_model{
 			if ($this->db->affectedRows() > 0) {
 				
 				// buat log dan simpan
-				$log  = $_SESSION['petugasID'] . '|Telah menghapus data laporan "' . $id . '"|' . time() . PHP_EOL;
+				if (isset($_SESSION['petugasID'])) {
+					$userid = $_SESSION['petugasID'];
+				}else if (isset($_SESSION['masyarakatNIK'])) {
+					$userid = $_SESSION['masyarakatNIK'];
+				}
+				$log  = $userid . '|Telah menghapus data laporan "' . $id . '"|' . time() . PHP_EOL;
 				$createLog = file_put_contents('app/log/user_activity/log_' . date('d.m.Y') . '.log', $log, FILE_APPEND);
 				
 				Flasher::setFlash('Berhasil! ', "Laporan dengan ID: " . $id . " telah dihapus.", 'success', 'correct');
