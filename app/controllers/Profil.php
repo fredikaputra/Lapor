@@ -52,6 +52,7 @@ class Profil extends Controller{
 			
 			// jalankan proses ketika parameter bernilai 'proses'
 			if ($option != NULL && $action == 'proses') {
+				$_SESSION['loadingscreen'] = 1;
 				
 				// jalankan proses sunting nama
 				// jika parameter option bernilai 'nama'

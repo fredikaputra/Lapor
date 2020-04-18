@@ -194,7 +194,7 @@ class Data_model{
 			// tampilkan data laporan
 			// berdasarkan nik masyarakat
 			else if ($nik != NULL) {
-				$query = "SELECT pengaduan.*, nama FROM pengaduan JOIN masyarakat USING (nik) WHERE nik = ?";
+				$query = "SELECT pengaduan.*, nama FROM pengaduan JOIN masyarakat USING (nik) WHERE nik = ? ORDER BY tgl_pengaduan DESC";
 				$this->db->prepare($query);
 				$this->db->sth->bind_param('s', $nik);
 			}

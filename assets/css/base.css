@@ -27,7 +27,6 @@
 	width: 10px;
 }
 
-::-webkit-scrollbar-button,
 ::-webkit-scrollbar-thumb{
 	background: var(--soft-light-color);
 }

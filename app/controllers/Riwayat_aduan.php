@@ -111,6 +111,7 @@ class Riwayat_aduan extends Controller{
 	}
 	
 	public function hapus($idpengaduan = NULL){
+		$_SESSION['loadingscreen'] = 1;
 		
 		// cek parameter
 		// tampilkan detail data aduan

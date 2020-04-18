@@ -45,6 +45,7 @@ class Formulir_pengaduan extends Controller{
 		
 		// proses upload formulir pengaduan
 		$this->model('Insert_model')->laporan();
+		$_SESSION['loadingscreen'] = 1;
 		header('location: ' . BASEURL . '/formulir-pengaduan');
 	}
 }

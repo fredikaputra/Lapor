@@ -134,6 +134,7 @@ class Dashboard extends Controller{
 			// jalankan proses hapus
 			// ketika parameter bernilai 'hapus'
 			else if ($p1 == 'hapus' && $p2 != NULL) {
+				$_SESSION['loadingscreen'] = 1;
 				$this->model('Delete_model')->laporan($p2);
 				
 				// kembali ke beranda
@@ -205,6 +206,7 @@ class Dashboard extends Controller{
 			// jalankan proses hapus
 			// ketika parameter bernilai 'hapus'
 			if ($act == 'hapus' && $id != NULL) {
+				$_SESSION['loadingscreen'] = 1;
 				$this->model('Delete_model')->pengguna($id);
 				header('location: ' . BASEURL . '/dashboard/pengguna');
 			}
@@ -292,6 +294,7 @@ class Dashboard extends Controller{
 				// cek parameter
 				// jalankan proses tambah petugas
 				else if ($user == 'petugas' && $act == 'proses') {
+					$_SESSION['loadingscreen'] = 1;
 					
 					// pindah ke halaman pengguna
 					// ketika proses tambah pengguna berhasil
@@ -331,6 +334,7 @@ class Dashboard extends Controller{
 				// cek parameter
 				// jalankan proses tambah masyarakat
 				else if ($user == 'masyarakat' && $act == 'proses') {
+					$_SESSION['loadingscreen'] = 1;
 					
 					// pindah ke halaman pengguna
 					// ketika proses tambah pengguna berhasil
@@ -443,6 +447,7 @@ class Dashboard extends Controller{
 			// cek parameter
 			// proses halaman
 			if ($option == 'proses') {
+				$_SESSION['loadingscreen'] = 1;
 				$this->model('Update_model')->petugas();
 				
 				// ketika pengaturan yang diupdate
@@ -534,6 +539,7 @@ class Dashboard extends Controller{
 			if ($data['petugas']['level'] == '1') {
 				// hapus riwayat
 				if ($option == 'hapus') {
+					$_SESSION['loadingscreen'] = 1;
 					$this->model('Delete_model')->log();
 					header('location: ' . BASEURL . '/dashboard/aktivitas-pengguna');
 				}
