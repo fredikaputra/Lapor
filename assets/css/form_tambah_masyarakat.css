@@ -40,7 +40,7 @@ main .content form div:last-of-type > div.group div{
 }
 
 main .content form div:last-of-type div label{
-	color: var(--primary-color);
+	color: var(--soft-dark-color);
 }
 
 main .content form div:last-of-type div input,
@@ -53,7 +53,7 @@ main .content form div:last-of-type div:nth-of-type(5) label:last-of-type{
 	border-radius: 30px;
 	border: 1px solid var(--soft-light-color);
 	outline: none;
-	color: var(--primary-color);
+	color: var(--soft-dark-color);
 	font-weight: bold;
 	letter-spacing: .5px;
 }

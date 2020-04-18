@@ -31,7 +31,7 @@ class Delete_model{
 			if ($this->db->affectedRows() > 0) {
 				
 				// buat log dan simpan
-				$log  = $_SESSION['petugasID'] . '|Telah menghapus "' . $this->db->row[0]['nama_petugas'] . '" sebagai petugas.|' . time() . PHP_EOL;
+				$log  = $_SESSION['petugasID'] . '|Telah menghapus "' . $this->db->row[0]['nama_petugas'] . '" dari pengguna petugas|' . time() . PHP_EOL;
 				$createLog = file_put_contents('app/log/user_activity/log_' . date('d.m.Y') . '.log', $log, FILE_APPEND);
 				
 				Flasher::setFlash('Berhasil! ', $this->db->row[0]['nama_petugas'] . " sudah tidak lagi menjadi pengguna.", 'success', 'correct');
@@ -64,7 +64,7 @@ class Delete_model{
 			if ($this->db->affectedRows() > 0) {
 				
 				// buat log dan simpan
-				$log  = $_SESSION['petugasID'] . '|Telah menghapus "' . $this->db->row[0]['nama'] . '" sebagai masyarakat.|' . time() . PHP_EOL;
+				$log  = $_SESSION['petugasID'] . '|Telah menghapus "' . $this->db->row[0]['nama'] . '" dari pengguna masyarakat|' . time() . PHP_EOL;
 				$createLog = file_put_contents('app/log/user_activity/log_' . date('d.m.Y') . '.log', $log, FILE_APPEND);
 				
 				Flasher::setFlash('Berhasil! ', $this->db->row[0]['nama'] . " sudah tidak lagi menjadi pengguna.", 'success', 'correct');
@@ -96,7 +96,7 @@ class Delete_model{
 			if ($this->db->affectedRows() > 0) {
 				
 				// buat log dan simpan
-				$log  = $_SESSION['petugasID'] . '|Telah menghapus data laporan "' . $id . '".|' . time() . PHP_EOL;
+				$log  = $_SESSION['petugasID'] . '|Telah menghapus data laporan "' . $id . '"|' . time() . PHP_EOL;
 				$createLog = file_put_contents('app/log/user_activity/log_' . date('d.m.Y') . '.log', $log, FILE_APPEND);
 				
 				Flasher::setFlash('Berhasil! ', "Laporan dengan ID: " . $id . " telah dihapus.", 'success', 'correct');

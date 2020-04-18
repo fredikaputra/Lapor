@@ -254,105 +254,111 @@ class Dashboard extends Controller{
 			
 			// cek parameter
 			// tampilkan form tambah petugas
-			if ($user == 'petugas' && $act == NULL) {
-				
-				// deklarasikan variable
-				// untuk dikirimkan ke halaman website
-				$data['webtitle'] = 'Dashboard - Tambah Pengguna Sebagai Petugas';
-				$data['css'] = ['side_dashboard.css', 'form_tambah_petugas.css', 'base.css'];
-				$data['js'] = ['unsetload.js'];
-				$data['method'] = __FUNCTION__;
-				
-				// ambil data pengguna
-				$data['petugas'] = $this->model('Data_model')->petugas()[0];
-				$data['photo'] = $_SESSION['petugasID'] . '.jpg';
-				
-				// tampilkan website
-				// kirim semua data ($data) ke dalam website
-				$this->view('template/header', $data);
-				$this->view('dashboard/header', $data);
-				$this->view('dashboard/form_tambah_petugas', $data);
-				$this->view('template/footer', $data);
-			}
-			
-			// cek parameter
-			// jalankan proses tambah petugas
-			else if ($user == 'petugas' && $act == 'proses') {
-				
-				// pindah ke halaman pengguna
-				// ketika proses tambah pengguna berhasil
-				if ($this->model('Register_model')->petugas() == TRUE) {
-					header('location: ' . BASEURL . '/dashboard/pengguna');
+			$data['petugas'] = $this->model('Data_model')->petugas()[0];
+			if ($data['petugas']['level'] == '1') {
+				if ($user == 'petugas' && $act == NULL) {
+					
+					// deklarasikan variable
+					// untuk dikirimkan ke halaman website
+					$data['webtitle'] = 'Dashboard - Tambah Pengguna Sebagai Petugas';
+					$data['css'] = ['side_dashboard.css', 'form_tambah_petugas.css', 'base.css'];
+					$data['js'] = ['unsetload.js'];
+					$data['method'] = __FUNCTION__;
+					
+					// ambil data pengguna
+					$data['photo'] = $_SESSION['petugasID'] . '.jpg';
+					
+					// tampilkan website
+					// kirim semua data ($data) ke dalam website
+					$this->view('template/header', $data);
+					$this->view('dashboard/header', $data);
+					$this->view('dashboard/form_tambah_petugas', $data);
+					$this->view('template/footer', $data);
 				}
 				
-				// kembali ke form
-				// ketika proses tambah pengguna gagal
-				else {
-					header('location: ' . BASEURL . '/dashboard/tambah-pengguna/petugas');
+				// cek parameter
+				// jalankan proses tambah petugas
+				else if ($user == 'petugas' && $act == 'proses') {
+					
+					// pindah ke halaman pengguna
+					// ketika proses tambah pengguna berhasil
+					if ($this->model('Register_model')->petugas() == TRUE) {
+						header('location: ' . BASEURL . '/dashboard/pengguna');
+					}
+					
+					// kembali ke form
+					// ketika proses tambah pengguna gagal
+					else {
+						header('location: ' . BASEURL . '/dashboard/tambah-pengguna/petugas');
+					}
+				}
+				
+				// cek parameter
+				// tampilkan form tambah masyarakat
+				else if($user == 'masyarakat' && $act == NULL){
+					
+					// deklarasikan variable
+					// untuk dikirimkan ke halaman website
+					$data['webtitle'] = 'Dashboard - Tambah Pengguna Sebagai Masyarakat';
+					$data['css'] = ['side_dashboard.css', 'form_tambah_masyarakat.css', 'base.css'];
+					$data['js'] = ['unsetload.js'];
+					$data['method'] = __FUNCTION__;
+					
+					// ambil data pengguna
+					$data['petugas'] = $this->model('Data_model')->petugas()[0];
+					$data['photo'] = $_SESSION['petugasID'] . '.jpg';
+					
+					// tampilkan website
+					// kirim semua data ($data) ke dalam website
+					$this->view('template/header', $data);
+					$this->view('dashboard/header', $data);
+					$this->view('dashboard/form_tambah_masyarakat', $data);
+					$this->view('template/footer', $data);
+				}
+				
+				// cek parameter
+				// jalankan proses tambah masyarakat
+				else if ($user == 'masyarakat' && $act == 'proses') {
+					
+					// pindah ke halaman pengguna
+					// ketika proses tambah pengguna berhasil
+					if ($this->model('Register_model')->masyarakat() == TRUE) {
+						header('location: ' . BASEURL . '/dashboard/pengguna');
+					}
+					
+					// kembali ke form
+					// ketika proses tambah pengguna gagal
+					else {
+						header('location: ' . BASEURL . '/dashboard/tambah-pengguna/masyarakat');
+					}
+				}
+				
+				// cek parameter
+				// tampilkan pilihan tambah pengguna
+				// jika parameter diluar konteks
+				else{
+					
+					// deklarasikan variable
+					// untuk dikirimkan ke halaman website
+					$data['webtitle'] = 'Dashboard - Tambah Pengguna';
+					$data['css'] = ['side_dashboard.css', 'tambah_pengguna.css', 'base.css'];
+					$data['method'] = __FUNCTION__;
+					
+					// ambil data pengguna
+					$data['petugas'] = $this->model('Data_model')->petugas()[0];
+					$data['photo'] = $_SESSION['petugasID'] . '.jpg';
+					
+					// tampilkan website
+					// kirim semua data ($data) ke dalam website
+					$this->view('template/header', $data);
+					$this->view('dashboard/header', $data);
+					$this->view('dashboard/tambah_pengguna', $data);
+					$this->view('template/footer');
 				}
 			}
 			
-			// cek parameter
-			// tampilkan form tambah masyarakat
-			else if($user == 'masyarakat' && $act == NULL){
-				
-				// deklarasikan variable
-				// untuk dikirimkan ke halaman website
-				$data['webtitle'] = 'Dashboard - Tambah Pengguna Sebagai Masyarakat';
-				$data['css'] = ['side_dashboard.css', 'form_tambah_masyarakat.css', 'base.css'];
-				$data['js'] = ['unsetload.js'];
-				$data['method'] = __FUNCTION__;
-				
-				// ambil data pengguna
-				$data['petugas'] = $this->model('Data_model')->petugas()[0];
-				$data['photo'] = $_SESSION['petugasID'] . '.jpg';
-				
-				// tampilkan website
-				// kirim semua data ($data) ke dalam website
-				$this->view('template/header', $data);
-				$this->view('dashboard/header', $data);
-				$this->view('dashboard/form_tambah_masyarakat', $data);
-				$this->view('template/footer', $data);
-			}
-			
-			// cek parameter
-			// jalankan proses tambah masyarakat
-			else if ($user == 'masyarakat' && $act == 'proses') {
-				
-				// pindah ke halaman pengguna
-				// ketika proses tambah pengguna berhasil
-				if ($this->model('Register_model')->masyarakat() == TRUE) {
-					header('location: ' . BASEURL . '/dashboard/pengguna');
-				}
-				
-				// kembali ke form
-				// ketika proses tambah pengguna gagal
-				else {
-					header('location: ' . BASEURL . '/dashboard/tambah-pengguna/masyarakat');
-				}
-			}
-			
-			// cek parameter
-			// tampilkan pilihan tambah pengguna
-			// jika parameter diluar konteks
-			else{
-				
-				// deklarasikan variable
-				// untuk dikirimkan ke halaman website
-				$data['webtitle'] = 'Dashboard - Tambah Pengguna';
-				$data['css'] = ['side_dashboard.css', 'tambah_pengguna.css', 'base.css'];
-				$data['method'] = __FUNCTION__;
-				
-				// ambil data pengguna
-				$data['petugas'] = $this->model('Data_model')->petugas()[0];
-				$data['photo'] = $_SESSION['petugasID'] . '.jpg';
-				
-				// tampilkan website
-				// kirim semua data ($data) ke dalam website
-				$this->view('template/header', $data);
-				$this->view('dashboard/header', $data);
-				$this->view('dashboard/tambah_pengguna', $data);
-				$this->view('template/footer');
+			else {
+				$this->pengguna();
 			}
 		}
 		
@@ -529,7 +535,11 @@ class Dashboard extends Controller{
 						foreach (array_reverse($activity) as $activity) {
 							$row[0] = explode('|', $activity);
 							foreach ($row as &$key) {
-								$key[3] = $this->model('Data_model')->getName($key[0])[0]['name'];
+								if ($this->model('Data_model')->getName($key[0])[0]['name'] !== NULL) {
+									$key[3] = $this->model('Data_model')->getName($key[0])[0]['name'];
+								}else {
+									$key[3] = $key[0];
+								}
 								foreach ($row as $value) {
 									$data['activity'][] = $value;
 								}
@@ -537,7 +547,7 @@ class Dashboard extends Controller{
 						}
 					}
 				}
-							
+				
 				// ambil data pengguna
 				$data['petugas'] = $this->model('Data_model')->petugas()[0];
 				$data['pengguna'] = $this->model('Data_model')->pengguna();

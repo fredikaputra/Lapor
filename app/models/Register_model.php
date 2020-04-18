@@ -105,7 +105,7 @@ class Register_model{
 									if (isset($_SESSION['petugasID'])) {
 										
 										// buat log dan simpan
-										$log  = $_SESSION['petugasID'] . '|Telah mendaftarkan masyarakat dengan NIK: "' . $nik . '".|' . time() . PHP_EOL;
+										$log  = $name . '|Telah mendaftarkan masyarakat dengan NIK: "' . $nik . '"|' . time() . PHP_EOL;
 										$createLog = file_put_contents('app/log/user_activity/log_' . date('d.m.Y') . '.log', $log, FILE_APPEND);
 										
 										Flasher::setFlash('Berhasil! ', "$name telah bergabung sebagai masyarakat.", 'success', 'correct');
@@ -115,7 +115,7 @@ class Register_model{
 									else {
 										
 										// buat log dan simpan
-										$log  = $nik . "|Telah bergabung sebagai masyarakat.|" . time() . PHP_EOL;
+										$log  = $name . "|Telah bergabung sebagai masyarakat|" . time() . PHP_EOL;
 										$createLog = file_put_contents('app/log/user_activity/log_' . date('d.m.Y') . '.log', $log, FILE_APPEND);
 										
 										Flasher::setFlash('Berhasil! ', "Anda telah terdaftar.", 'success', 'correct');
@@ -271,7 +271,7 @@ class Register_model{
 							if ($this->db->affectedRows() > 0) {
 								
 								// buat log dan simpan
-								$log  = $_SESSION['petugasID'] . '|Telah mendaftarkan petugas dengan ID: "' . $this->uniqID . '".|' . time() . PHP_EOL;
+								$log  = $_SESSION['petugasID'] . '|Telah mendaftarkan petugas dengan ID: "' . $this->uniqID . '"|' . time() . PHP_EOL;
 								$createLog = file_put_contents('app/log/user_activity/log_' . date('d.m.Y') . '.log', $log, FILE_APPEND);
 								
 								unset($_SESSION['reg']);

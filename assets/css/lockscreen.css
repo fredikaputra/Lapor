@@ -29,6 +29,9 @@ main form > span:first-of-type{
 
 main form > img{
 	width: 3cm;
+	height: 3cm;
+	object-fit: cover;
+	object-position: center;
 	display: block;
 	margin: 20px auto;
 	border-radius: 50%;

@@ -25,9 +25,19 @@ if (isset($get['querysearch']) && strpos($get['querysearch'], '+')) {
 				<h1>Daftar Pengguna</h1>
 				<span>Terdapat <?= $data['users'] ?> pengguna yang sudah bergabung.</span>
 			</div>
-			<a href="<?= BASEURL ?>/dashboard/tambah-pengguna">
-				<img src="<?= BASEURL ?>/assets/img/icon/add-user.png"> Tambah Pengguna
-			</a>
+			<?php
+			
+			if ($data['petugas']['level'] == '1') {
+				?>
+				
+				<a href="<?= BASEURL ?>/dashboard/tambah-pengguna">
+					<img src="<?= BASEURL ?>/assets/img/icon/add-user.png"> Tambah Pengguna
+				</a>
+				
+				<?php
+			}
+			
+			?>
 		</div>
 		
 		<div class="body">
@@ -177,13 +187,21 @@ if (isset($get['querysearch']) && strpos($get['querysearch'], '+')) {
 									?>
 								</span>
 							</div>
-							<!-- <div><a href="<?= BASEURL ?>/dashboard/hapus/<?= $user['id'] ?>" class="singleDel" <?= ($_SESSION['level'] != '1') ? 'style="display: none"' : '' ?>><img src="<?= BASEURL ?>/assets/img/icon/bin.png"></a></div> -->
-							<!-- <div><a href="<?= BASEURL ?>/dashboard/pengguna/hapus/" class="singleDel"></a></div> -->
-							<div>
-								<button type="button" class="singleDel" onclick="delPopup(this)" data-id="<?= $user['id'] ?>" data-name="<?= $user['nama'] ?>">
-									<img src="<?= BASEURL ?>/assets/img/icon/bin.png">
-								</button>
-							</div>
+							<?php
+							
+							if ($data['petugas']['level'] == 1) {
+								?>
+								
+								<div>
+									<button type="button" class="singleDel" onclick="delPopup(this)" data-id="<?= $user['id'] ?>" data-name="<?= $user['nama'] ?>">
+										<img src="<?= BASEURL ?>/assets/img/icon/bin.png">
+									</button>
+								</div>
+								
+								<?php
+							}
+							
+							?>
 						</div>
 						
 						<?php

@@ -1,13 +1,23 @@
 	<div class="content">
 		<h2>Tinjau Data Aduan</h2>
-		<div>
-			<button onclick="cetak()">
-				<img src="<?= BASEURL ?>/assets/img/icon/print.png"> CETAK
-			</button>
-			<button type="button" onclick="delPopup(this)" data-id="<?= $data['laporan']['id_pengaduan'] ?>">
-				<img src="<?= BASEURL ?>/assets/img/icon/bin.png"> HAPUS
-			</button>
-		</div>
+		<?php
+		
+		if ($data['petugas']['level'] == 1) {
+			?>
+			
+			<div>
+				<button onclick="cetak()">
+					<img src="<?= BASEURL ?>/assets/img/icon/print.png"> CETAK
+				</button>
+				<button type="button" onclick="delPopup(this)" data-id="<?= $data['laporan']['id_pengaduan'] ?>">
+					<img src="<?= BASEURL ?>/assets/img/icon/bin.png"> HAPUS
+				</button>
+			</div>
+			
+			<?php
+		}
+		
+		?>
 		<div>
 			<div class="report">
 				<div>
@@ -28,11 +38,21 @@
 				</div>
 			</div>
 			<div class="action">
-				<form method="post" action="<?= BASEURL ?>/dashboard/tambah-tanggapan/<?= $data['laporan']['id_pengaduan'] ?>">
-					<h3>Tanggapan</h3>
-					<textarea placeholder="Tanggapan anda...." name="response"><?= (isset($_SESSION['response'])) ? $_SESSION['response'] : '' ?></textarea>
-					<button type="submit" name="comment">TANGGAPI</button>
-				</form>
+				<?php
+				
+				if ($data['petugas']['level'] == 2) {
+					?>
+					
+					<form method="post" action="<?= BASEURL ?>/dashboard/tambah-tanggapan/<?= $data['laporan']['id_pengaduan'] ?>" <?= ($data['petugas']['level'] != 2) ? 'title="Hanya petugas yang diperkenankan untuk menanggapi laporan!"' : '' ?>>
+						<h3>Tanggapan</h3>
+						<textarea placeholder="Tanggapan anda...." name="response" <?= ($data['petugas']['level'] != 2) ? 'disabled' : '' ?>><?= (isset($_SESSION['response'])) ? $_SESSION['response'] : '' ?></textarea>
+						<button type="submit" name="comment" <?= ($data['petugas']['level'] != 2) ? 'disabled' : '' ?>>TANGGAPI</button>
+					</form>
+					
+					<?php
+				}
+				
+				?>
 				<div class="comment">
 					<?php
 					

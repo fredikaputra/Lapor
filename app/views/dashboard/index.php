@@ -74,17 +74,27 @@
 										<?= Data_model::timeCounter($laporan['tgl_pengaduan']) ?>
 									</div>
 								</a>
-								<div class="action">
-									<a href="<?= BASEURL ?>/dashboard/data-aduan/<?= $laporan['id_pengaduan'] ?>">
-										<img src="<?= BASEURL ?>/assets/img/icon/eye.png">
-									</a>
-									<a href="<?= BASEURL ?>/dashboard/data-aduan/<?= $laporan['id_pengaduan'] ?>?cetak=1">
-										<img src="<?= BASEURL ?>/assets/img/icon/print.png">
-									</a>
-									<button type="button" data-id="<?= $laporan['id_pengaduan'] ?>" onclick="delPopup(this)">
-										<img src="<?= BASEURL ?>/assets/img/icon/bin.png">
-									</button>
-								</div>
+								<?php
+								
+								if ($data['petugas']['level'] == 1) {
+									?>
+									
+									<div class="action">
+										<a href="<?= BASEURL ?>/dashboard/data-aduan/<?= $laporan['id_pengaduan'] ?>">
+											<img src="<?= BASEURL ?>/assets/img/icon/eye.png">
+										</a>
+										<a href="<?= BASEURL ?>/dashboard/data-aduan/<?= $laporan['id_pengaduan'] ?>?cetak=1">
+											<img src="<?= BASEURL ?>/assets/img/icon/print.png">
+										</a>
+										<button type="button" data-id="<?= $laporan['id_pengaduan'] ?>" onclick="delPopup(this)">
+											<img src="<?= BASEURL ?>/assets/img/icon/bin.png">
+										</button>
+									</div>
+									
+									<?php
+								}
+								
+								?>
 							</div>
 							
 							<?php
