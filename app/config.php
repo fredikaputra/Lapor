@@ -2,10 +2,13 @@
 
 // konfigurasi alamat url
 // ganti isi BASEURL jika alamat url bermasalah
+
 // contoh: http://localhost/lapor
+// define('BASEURL', 'http://localhsot/lapor');
+// define('BASEURL', 'http://192.168.1.2/website/lapor');
+
 // jangan beri tanda '/' (slash) pada akhir alamat url
 define('BASEURL', 'http://localhost/website/lapor');
-// define('BASEURL', 'http://192.168.1.2/website/lapor');
 
 // fungsi untuk mengecek alamat url
 $number = count(explode('/', BASEURL));
