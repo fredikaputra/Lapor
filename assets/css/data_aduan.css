@@ -225,3 +225,9 @@ main .content div .data div div div.action > *:hover{
 main .content div .data div div div.action > * img{
 	width: 25px;
 }
+
+@media screen and (max-width: 1600px){
+	main .content > div:last-of-type{
+		grid-template-columns: 7cm 1fr;
+	}
+}

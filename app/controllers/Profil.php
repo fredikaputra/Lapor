@@ -50,67 +50,57 @@ class Profil extends Controller{
 		// dan berstatus masyarakat
 		if (isset($_SESSION['masyarakatNIK'])) {
 			
-			// tampilkan halaman sunting nama
-			// jika parameter bernilai 'nama'
-			if ($option == 'nama' && $action == NULL) {
-				$data['webtitle'] = 'Laporan! - Pengaturan';
-				$data['css'] = ['detail_pengaturan.css', 'nav.css', 'base.css'];
-				$data['js'] = ['settingDetectInputChange.js'];
-				$data['controller'] = __CLASS__;
+			// jalankan proses ketika parameter bernilai 'proses'
+			if ($option != NULL && $action == 'proses') {
 				
-				// ambil data masyarakat
-				$data['name'] = $this->model('Data_model')->masyarakat()[0]['nama'];
-				$data['username'] = $this->model('Data_model')->masyarakat()[0]['username'];
-				$data['photo'] = $_SESSION['masyarakatNIK'] . '.jpg';
+				// jalankan proses sunting nama
+				// jika parameter option bernilai 'nama'
+				if ($option == 'nama') {
+					$this->model('Update_model')->masyarakat($option);
+					header('location: ' . BASEURL . '/profil/sunting/nama');
+				}
 				
-				// tampilkan website
-				// kirim semua data ($data) ke dalam website
-				$this->view('template/header', $data);
-				$this->view('template/nav', $data);
-				$this->view('profil/nama', $data);
-				$this->view('template/footer', $data);
+				// jalankan proses sunting username
+				// jika parameter option bernilai 'username'
+				else if ($option == 'username') {
+					$this->model('Update_model')->masyarakat($option);
+					header('location: ' . BASEURL . '/profil/sunting/username');
+				}
+				
+				// jalankan proses sunting telepon
+				// jika parameter option bernilai 'telepon'
+				else if ($option == 'telepon') {
+					$this->model('Update_model')->masyarakat($option);
+					header('location: ' . BASEURL . '/profil/sunting/telepon');
+				}
+				
+				// jalankan proses sunting foto-profil
+				// jika parameter option bernilai 'foto-profil'
+				else if ($option == 'foto-profil') {
+					$this->model('Update_model')->masyarakat($option);
+					header('location: ' . BASEURL . '/profil/sunting/foto-profil');
+				}
+				
+				// jalankan proses sunting foto-profil
+				// jika parameter option bernilai 'foto-profil'
+				else if ($option == 'password') {
+					$this->model('Update_model')->masyarakat($option);
+					header('location: ' . BASEURL . '/profil/sunting/password');
+				}
+				
+				// cek parameter
+				// tampilkan halaman profil
+				// parameter diluar konteks
+				else {
+					$this->index();
+				}
 			}
 			
-			// jalankan proses sunting nama
-			// jika parameter 1 bernilai 'nama'
-			// dan parameter 2 bernilai 'proses'
-			else if ($option == 'nama' && $action == 'proses') {
-				$this->model('Update_model')->masyarakat($option);
-				header('location: ' . BASEURL . '/profil/sunting/nama');
-			}
-			
-			// tampilkan halaman sunting username
-			// jika parameter bernilai 'username'
-			else if ($option == 'username' && $action == NULL) {
-				$data['webtitle'] = 'Laporan! - Pengaturan';
-				$data['css'] = ['detail_pengaturan.css', 'nav.css', 'base.css'];
-				$data['js'] = ['settingDetectInputChange.js'];
-				$data['controller'] = __CLASS__;
+			// tampilkan halaman edit
+			else if ($option != NULL && $action == NULL) {
 				
-				// ambil data masyarakat
-				$data['name'] = $this->model('Data_model')->masyarakat()[0]['nama'];
-				$data['username'] = $this->model('Data_model')->masyarakat()[0]['username'];
-				$data['photo'] = $_SESSION['masyarakatNIK'] . '.jpg';
-				
-				// tampilkan website
-				// kirim semua data ($data) ke dalam website
-				$this->view('template/header', $data);
-				$this->view('template/nav', $data);
-				$this->view('profil/username', $data);
-				$this->view('template/footer', $data);
-			}
-			
-			// jalankan proses sunting username
-			// jika parameter 1 bernilai 'username'
-			// dan parameter 2 bernilai 'proses'
-			else if ($option == 'username' && $action == 'proses') {
-				$this->model('Update_model')->masyarakat($option);
-				header('location: ' . BASEURL . '/profil/sunting/username');
-			}
-			
-			// tampilkan halaman sunting telepon
-			// jika parameter bernilai 'telepon'
-			else if ($option == 'telepon' && $action == NULL) {
+				// deklarasikan variable
+				// untuk dikirimkan ke halaman website
 				$data['webtitle'] = 'Laporan! - Pengaturan';
 				$data['css'] = ['detail_pengaturan.css', 'nav.css', 'base.css'];
 				$data['js'] = ['settingDetectInputChange.js'];
@@ -126,72 +116,40 @@ class Profil extends Controller{
 				// kirim semua data ($data) ke dalam website
 				$this->view('template/header', $data);
 				$this->view('template/nav', $data);
-				$this->view('profil/phone', $data);
+				
+				// tampilkan halaman sunting nama
+				if ($option == 'nama') {
+					$this->view('profil/nama', $data);				
+				}
+				
+				// tampilkan halaman sunting username
+				else if ($option == 'username') {
+					$this->view('profil/username', $data);
+				}
+				
+				// tampilkan halaman sunting telepon
+				else if ($option == 'telepon') {
+					$this->view('profil/phone', $data);
+				}
+				
+				// tampilkan halaman sunting foto profil
+				else if ($option == 'foto-profil') {
+					$this->view('profil/foto_profil', $data);
+				}
+				
+				// tampilkan halaman sunting foto profil
+				else if ($option == 'password') {
+					$this->view('profil/password', $data);
+				}
+				
+				// cek parameter
+				// tampilkan halaman profil
+				// parameter diluar konteks
+				else {
+					$this->index();
+				}
+				
 				$this->view('template/footer', $data);
-			}
-			
-			// jalankan proses sunting telepon
-			// jika parameter 1 bernilai 'telepon'
-			// dan parameter 2 bernilai 'proses'
-			else if ($option == 'telepon' && $action == 'proses') {
-				$this->model('Update_model')->masyarakat($option);
-				header('location: ' . BASEURL . '/profil/sunting/telepon');
-			}
-			
-			// tampilkan halaman sunting foto profil
-			// jika parameter bernilai 'foto profil'
-			else if ($option == 'foto-profil' && $action == NULL) {
-				$data['webtitle'] = 'Laporan! - Pengaturan';
-				$data['css'] = ['detail_pengaturan.css', 'nav.css', 'base.css'];
-				$data['controller'] = __CLASS__;
-				
-				// ambil data masyarakat
-				$data['name'] = $this->model('Data_model')->masyarakat()[0]['nama'];
-				$data['username'] = $this->model('Data_model')->masyarakat()[0]['username'];
-				$data['photo'] = $_SESSION['masyarakatNIK'] . '.jpg';
-				
-				// tampilkan website
-				// kirim semua data ($data) ke dalam website
-				$this->view('template/header', $data);
-				$this->view('template/nav', $data);
-				$this->view('profil/foto_profil', $data);
-				$this->view('template/footer');
-			}
-			
-			// jalankan proses sunting foto-profil
-			// jika parameter 1 bernilai 'foto-profil'
-			// dan parameter 2 bernilai 'proses'
-			else if ($option == 'foto-profil' && $action == 'proses') {
-				$this->model('Update_model')->masyarakat($option);
-				header('location: ' . BASEURL . '/profil/sunting/foto-profil');
-			}
-			
-			// tampilkan halaman sunting foto profil
-			// jika parameter bernilai 'foto profil'
-			else if ($option == 'password' && $action == NULL) {
-				$data['webtitle'] = 'Laporan! - Pengaturan';
-				$data['css'] = ['detail_pengaturan.css', 'nav.css', 'base.css'];
-				$data['controller'] = __CLASS__;
-				
-				// ambil data masyarakat
-				$data['name'] = $this->model('Data_model')->masyarakat()[0]['nama'];
-				$data['username'] = $this->model('Data_model')->masyarakat()[0]['username'];
-				$data['photo'] = $_SESSION['masyarakatNIK'] . '.jpg';
-				
-				// tampilkan website
-				// kirim semua data ($data) ke dalam website
-				$this->view('template/header', $data);
-				$this->view('template/nav', $data);
-				$this->view('profil/password', $data);
-				$this->view('template/footer');
-			}
-			
-			// jalankan proses sunting foto-profil
-			// jika parameter 1 bernilai 'foto-profil'
-			// dan parameter 2 bernilai 'proses'
-			else if ($option == 'password' && $action == 'proses') {
-				$this->model('Update_model')->masyarakat($option);
-				header('location: ' . BASEURL . '/profil');
 			}
 			
 			// cek parameter
@@ -199,7 +157,7 @@ class Profil extends Controller{
 			// parameter diluar konteks
 			else {
 				$this->index();
-			}
+			}	
 		}
 		
 		// pindah ke halaman dashboard

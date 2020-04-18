@@ -22,6 +22,16 @@
 	--info-color: #004085;
 }
 
+::-webkit-scrollbar{
+	background: var(--dark-color);
+	width: 10px;
+}
+
+::-webkit-scrollbar-button,
+::-webkit-scrollbar-thumb{
+	background: var(--soft-light-color);
+}
+
 *{
 	margin: 0;
 	padding: 0;
