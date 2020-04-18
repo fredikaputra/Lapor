@@ -1,6 +1,23 @@
 <?php
 
 class Dashboard extends Controller{
+	private $get;
+	
+	public function __construct(){
+		// cek query pada url (setelah tanda ?)
+		$url = parse_url($_SERVER['REQUEST_URI']);
+		if (isset($url['query'])) {
+			$url = parse_url($_SERVER['REQUEST_URI'])['query'];
+			$url = explode('&', $url);
+			foreach($url as $key => $value) {
+				if (strpos($value, '=') != FALSE) {
+					$query = explode('=', $value);
+					$this->get[$query[0]] = $query[1];
+				}
+			}
+		}
+	}
+	
 	public function index(){
 		
 		// tampilkan halaman ketika
@@ -13,11 +30,9 @@ class Dashboard extends Controller{
 			$data['css'] = ['side_dashboard.css', 'dashboard.css', 'popup.css', 'base.css'];
 			$data['method'] = __FUNCTION__;
 			
-			// ambil data pengguna
+			// ambil data
 			$data['petugas'] = $this->model('Data_model')->petugas()[0];
 			$data['photo'] = $_SESSION['petugasID'] . '.jpg';
-			
-			// ambil data laporan
 			$data['laporan'] = $this->model('Data_model')->laporan(NULL, NULL, '5');
 			$data['tableRow'] = [
 				'admin' => $this->model('Data_model')->tableRow('petugas', NULL, 'level = 1'),
@@ -68,7 +83,6 @@ class Dashboard extends Controller{
 			
 			// cek parameter
 			// tampilkan 1 data laporan (jika ada)
-			// ketika parameter tidak kosong
 			if ($p1 != NULL && $p2 == NULL && $p3 == NULL) {
 				
 				// ambil data laporan
@@ -86,22 +100,9 @@ class Dashboard extends Controller{
 					$data['css'] = ['side_dashboard.css', 'detail_aduan.css', 'popup.css', 'base.css'];
 					$data['method'] = __FUNCTION__;
 					
-					// cek query pada url (setelah tanda ?)
-					$url = parse_url($_SERVER['REQUEST_URI']);
-					if (isset($url['query'])) {
-						$url = parse_url($_SERVER['REQUEST_URI'])['query'];
-						$url = explode('&', $url);
-						foreach($url as $key => $value) {
-							if (strpos($value, '=') != FALSE) {
-								$query = explode('=', $value);
-								$get[$query[0]] = $query[1];
-							}
-						}
-					}
-					
 					// cetak laporan ketika halaman sedang memuat
 					// jika query cetak terdapat pada url dan bernilai 1
-					if (isset($get['cetak']) && $get['cetak'] == 1) {
+					if (isset($this->get['cetak']) && $this->get['cetak'] == 1) {
 						$data['js'] = ['print.js', 'directprint.js'];
 					}
 					
@@ -134,9 +135,17 @@ class Dashboard extends Controller{
 			// ketika parameter bernilai 'hapus'
 			else if ($p1 == 'hapus' && $p2 != NULL) {
 				$this->model('Delete_model')->laporan($p2);
+				
+				// kembali ke beranda
+				// ketika hapus datanya
+				// dari beranda
 				if ($p3 == 'beranda') {
 					header('location: ' . BASEURL . '/dashboard');
 				}
+				
+				// kembali ke data aduan
+				// ketika hapus datanya
+				// dari data aduan
 				else {
 					header('location: ' . BASEURL . '/dashboard/data_aduan');
 				}
@@ -252,10 +261,14 @@ class Dashboard extends Controller{
 		// petugas sudah login
 		if (isset($_SESSION['petugasID'])) {
 			
-			// cek parameter
-			// tampilkan form tambah petugas
 			$data['petugas'] = $this->model('Data_model')->petugas()[0];
+			
+			// tampilkan halaman tambah pengguna
+			// ketika pengguna merupakan admin
 			if ($data['petugas']['level'] == '1') {
+				
+				// cek parameter
+				// tampilkan form tambah petugas
 				if ($user == 'petugas' && $act == NULL) {
 					
 					// deklarasikan variable
@@ -272,7 +285,7 @@ class Dashboard extends Controller{
 					// kirim semua data ($data) ke dalam website
 					$this->view('template/header', $data);
 					$this->view('dashboard/header', $data);
-					$this->view('dashboard/form_tambah_petugas', $data);
+					$this->view('dashboard/form_tambah_petugas');
 					$this->view('template/footer', $data);
 				}
 				
@@ -305,14 +318,13 @@ class Dashboard extends Controller{
 					$data['method'] = __FUNCTION__;
 					
 					// ambil data pengguna
-					$data['petugas'] = $this->model('Data_model')->petugas()[0];
 					$data['photo'] = $_SESSION['petugasID'] . '.jpg';
 					
 					// tampilkan website
 					// kirim semua data ($data) ke dalam website
 					$this->view('template/header', $data);
 					$this->view('dashboard/header', $data);
-					$this->view('dashboard/form_tambah_masyarakat', $data);
+					$this->view('dashboard/form_tambah_masyarakat');
 					$this->view('template/footer', $data);
 				}
 				
@@ -344,19 +356,19 @@ class Dashboard extends Controller{
 					$data['css'] = ['side_dashboard.css', 'tambah_pengguna.css', 'base.css'];
 					$data['method'] = __FUNCTION__;
 					
-					// ambil data pengguna
-					$data['petugas'] = $this->model('Data_model')->petugas()[0];
 					$data['photo'] = $_SESSION['petugasID'] . '.jpg';
 					
 					// tampilkan website
 					// kirim semua data ($data) ke dalam website
 					$this->view('template/header', $data);
 					$this->view('dashboard/header', $data);
-					$this->view('dashboard/tambah_pengguna', $data);
+					$this->view('dashboard/tambah_pengguna');
 					$this->view('template/footer');
 				}
 			}
 			
+			// tampilkan halaman pengguna
+			// ketika pengguna bukan admin
 			else {
 				$this->pengguna();
 			}
@@ -392,7 +404,7 @@ class Dashboard extends Controller{
 			$data['webtitle'] = 'Dashboard - Terkunci';
 			$data['css'] = ['lockscreen.css', 'base.css'];
 			
-			// convert data petugas dari POST menjadi SESSION
+			// convert data petugas dari SESSION login menjadi SESSION onLock
 			if (!isset($_SESSION['onLock'])) {
 				$_SESSION['onLock'] = [
 					'username' => $this->model('Data_model')->petugas($_SESSION['petugasID'])[0]['username'],
@@ -432,13 +444,23 @@ class Dashboard extends Controller{
 			// proses halaman
 			if ($option == 'proses') {
 				$this->model('Update_model')->petugas();
+				
+				// ketika pengaturan yang diupdate
+				// adalah password maka
+				// pindahkan ke halaman ganti password
 				if (isset($_POST['updatePassword'])) {
 					header('location: ' . BASEURL . '/dashboard/pengaturan/ganti-password');
-				}else {
+				}
+				
+				// kalau pengaturan lain yang diupdate
+				// maka pindahakan ke halaman pengaturan
+				else {
 					header('location: ' . BASEURL . '/dashboard/pengaturan');
 				}
 			}
 			
+			// cek parameter
+			// tampilkan halaman ganti password
 			else if ($option == 'ganti-password') {
 				
 				// deklarasikan variable
@@ -507,59 +529,80 @@ class Dashboard extends Controller{
 		// petugas sudah login
 		if (isset($_SESSION['petugasID'])) {
 			
-			if ($option == 'hapus') {
-				$this->model('Delete_model')->log();
-				header('location: ' . BASEURL . '/dashboard/aktivitas-pengguna');
-			}
+			$data['petugas'] = $this->model('Data_model')->petugas()[0];
 			
-			else {
-				// deklarasikan variable
-				// untuk dikirimkan ke halaman website
-				$data['webtitle'] = 'Dashboard - Aktifitas pengguna';
-				$data['css'] = ['side_dashboard.css', 'aktivitas_pengguna.css', 'popup.css', 'base.css'];
-				$data['method'] = __FUNCTION__;
-				
-				if ($handle = opendir('app/log/user_activity')) {
-					while (false !== ($file = readdir($handle))) {
-						if ($file != "." && $file != "..") {
-							$files[] = file('app/log/user_activity/' . $file);
-						}else {
-							$files = NULL;
-						}
-					}
-					closedir($handle);
+			if ($data['petugas']['level'] == '1') {
+				// hapus riwayat
+				if ($option == 'hapus') {
+					$this->model('Delete_model')->log();
+					header('location: ' . BASEURL . '/dashboard/aktivitas-pengguna');
 				}
 				
-				if ($files != NULL) {
-					foreach (array_reverse($files) as $activity) {
-						foreach (array_reverse($activity) as $activity) {
-							$row[0] = explode('|', $activity);
-							foreach ($row as &$key) {
-								if ($this->model('Data_model')->getName($key[0])[0]['name'] !== NULL) {
-									$key[3] = $this->model('Data_model')->getName($key[0])[0]['name'];
-								}else {
-									$key[3] = $key[0];
-								}
-								foreach ($row as $value) {
-									$data['activity'][] = $value;
+				// tampilkan seluruh riwayat
+				else {
+					
+					// deklarasikan variable
+					// untuk dikirimkan ke halaman website
+					$data['webtitle'] = 'Dashboard - Aktifitas pengguna';
+					$data['css'] = ['side_dashboard.css', 'aktivitas_pengguna.css', 'popup.css', 'base.css'];
+					$data['method'] = __FUNCTION__;
+					
+					// ambil data log dari folder log
+					if ($handle = opendir('app/log/user_activity')) {
+						while (false !== ($file = readdir($handle))) {
+							if ($file != "." && $file != "..") {
+								$files[] = file('app/log/user_activity/' . $file);
+							}else {
+								$files = NULL;
+							}
+						}
+						closedir($handle);
+					}
+					
+					// tampilkan riwayat ketika
+					// file log ada
+					if ($files != NULL) {
+						foreach (array_reverse($files) as $activity) { // urutkan data dari yang terbaru
+							foreach (array_reverse($activity) as $activity) { // urutkan data dari yang terbaru
+								$row[0] = explode('|', $activity);
+								foreach ($row as &$key) {
+									
+									// ambil data nama berdasarkan id (NIK atau ID PETUGAS)
+									if ($this->model('Data_model')->getName($key[0])[0]['name'] !== NULL) {
+										$key[3] = $this->model('Data_model')->getName($key[0])[0]['name'];
+									}
+									
+									// ambil data nama dari file log itu sendiri
+									else {
+										$key[3] = $key[0];
+									}
+									
+									foreach ($row as $value) {
+										$data['activity'][] = $value;
+									}
 								}
 							}
 						}
 					}
+					
+					// ambil data pengguna
+					$data['pengguna'] = $this->model('Data_model')->pengguna();
+					$data['photo'] = $_SESSION['petugasID'] . '.jpg';
+		
+					// tampilkan website
+					// kirim semua data ($data) ke dalam website
+					$this->view('template/header', $data);
+					$this->view('dashboard/header', $data);
+					$this->view('dashboard/aktivitas_pengguna', $data);
+					$this->view('template/popup');
+					$this->view('template/footer');
 				}
-				
-				// ambil data pengguna
-				$data['petugas'] = $this->model('Data_model')->petugas()[0];
-				$data['pengguna'] = $this->model('Data_model')->pengguna();
-				$data['photo'] = $_SESSION['petugasID'] . '.jpg';
-	
-				// tampilkan website
-				// kirim semua data ($data) ke dalam website
-				$this->view('template/header', $data);
-				$this->view('dashboard/header', $data);
-				$this->view('dashboard/aktivitas_pengguna', $data);
-				$this->view('template/popup');
-				$this->view('template/footer');
+			}
+			
+			// tampilkan halaman dashboard
+			// ketika pengguna bukan admin
+			else {
+				$this->index();
 			}
 		}
 		

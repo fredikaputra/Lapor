@@ -18,7 +18,8 @@ class Daftar extends Controller{
 	
 	public function proses(){
 		
-		// lakukan proses registrasi 
+		// proses registrasi
+		
 		// ketika proses berhasil
 		// pindah ke halaman landing page
 		if ($this->model('Register_model')->masyarakat() === TRUE) {

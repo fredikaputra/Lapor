@@ -57,7 +57,7 @@ class Login extends Controller{
 			
 			// ketika yang login
 			// adalah masyarakat
-			// maka pindahkan ke halaman beranda
+			// maka pindahkan ke halaman formulir pengaduan
 			else {
 				$_SESSION['loadingscreen'] = 1;
 				header('location: ' . BASEURL . '/formulir-pengaduan');
